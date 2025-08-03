@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0eg54howxvnp"]
+
+[ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://character/character/character.tscn" id="1_68cpq"]
+[ext_resource type="Script" uid="uid://du8j6tr1ua2ap" path="res://character/characters/npc/npc.gd" id="2_d78lq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d78lq"]
+radius = 15.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jfpsb"]
+radius = 42.0
+
+[sub_resource type="Gradient" id="Gradient_jfpsb"]
+offsets = PackedFloat32Array(0.95, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ljv8k"]
+gradient = SubResource("Gradient_jfpsb")
+width = 34
+height = 34
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_d78lq"]
+offsets = PackedFloat32Array(0.95, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jfpsb"]
+gradient = SubResource("Gradient_d78lq")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="NPC" instance=ExtResource("1_68cpq")]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("2_d78lq")
+
+[node name="Collision" parent="." index="0"]
+shape = SubResource("CircleShape2D_d78lq")
+
+[node name="InteractArea" type="Area2D" parent="." index="1"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="InteractArea" index="0"]
+shape = SubResource("CircleShape2D_jfpsb")
+
+[node name="Outline" type="Sprite2D" parent="." index="2"]
+modulate = Color(0.392157, 0, 1, 1)
+texture = SubResource("GradientTexture2D_ljv8k")
+
+[node name="Sprite" parent="." index="3"]
+texture = SubResource("GradientTexture2D_jfpsb")
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

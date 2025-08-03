@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw3bdqib6apgc"]
+
+[ext_resource type="PackedScene" uid="uid://d0eg54howxvnp" path="res://character/characters/npc/npc.tscn" id="1_ks3jg"]
+[ext_resource type="Resource" uid="uid://c148ehjk6la0a" path="res://character/characters/npcs/npc_test_01.tres" id="2_4iqtv"]
+
+[node name="NPCTest01" instance=ExtResource("1_ks3jg")]
+resource = ExtResource("2_4iqtv")
+
+[node name="Sprite" parent="." index="2"]
+modulate = Color(1, 0, 0.156863, 1)
+
+[node name="Face" type="Label" parent="Sprite" index="0"]
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 8.0
+rotation = 1.57079
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = ":)"

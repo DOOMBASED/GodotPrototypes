@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemUseable" load_steps=3 format=3 uid="uid://dlr4rl5i1ok6f"]
+
+[ext_resource type="Script" uid="uid://deo1was2s8qs1" path="res://item/item/classes/item_useable.gd" id="1_mk8mj"]
+[ext_resource type="Texture2D" uid="uid://djforhhbjtdfe" path="res://item/items/items_test/textures/item_test_useable_02.tres" id="2_3a4wh"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_mk8mj")
+effect = "UseableTest02"
+magnitude = 1.0
+texture = ExtResource("2_3a4wh")
+id = "item_useable_test_02"
+name = "ItemUseableTest02"
+type = "UseableTest"
+init = Vector2(0, 0)
+quantity = 0
+count = 1
+maximum = 5
+stacked = 0
+stackable = true
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"

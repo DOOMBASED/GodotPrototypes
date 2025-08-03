@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://s24iod3075qo"]
+
+[ext_resource type="Script" uid="uid://b6xt4cir80m7v" path="res://item/item/item_resource.gd" id="1_l0777"]
+[ext_resource type="Texture2D" uid="uid://edyc55tqqkuq" path="res://item/items/items_test/textures/item_test_01.tres" id="2_8m4eq"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_l0777")
+texture = ExtResource("2_8m4eq")
+id = "item_test_01"
+name = "ItemTest01"
+type = "Test"
+init = Vector2(0, 0)
+quantity = 0
+count = 1
+maximum = 5
+stacked = 0
+stackable = true
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"

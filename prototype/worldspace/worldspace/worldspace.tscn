@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba8h5aceaarer"]
+
+[ext_resource type="Script" uid="uid://dbk4jb7wac4q8" path="res://worldspace/worldspace/worldspace.gd" id="1_ymviu"]
+
+[node name="Worldspace" type="Node2D" groups=["Worldspace"]]
+script = ExtResource("1_ymviu")

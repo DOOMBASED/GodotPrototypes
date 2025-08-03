@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=2 format=3 uid="uid://ce3a1gfrc188o"]
+
+[ext_resource type="Script" uid="uid://bs5pfoarvuism" path="res://character/character/character_resource.gd" id="1_ad1we"]
+
+[resource]
+script = ExtResource("1_ad1we")
+id = "npc_test_02"
+name = "NPCTest02"
+speed = 100
+metadata/_custom_type_script = "uid://bs5pfoarvuism"

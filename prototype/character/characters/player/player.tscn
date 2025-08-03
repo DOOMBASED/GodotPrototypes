@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://ubj26actbhxg"]
+
+[ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://character/character/character.tscn" id="1_tqfce"]
+[ext_resource type="Script" uid="uid://d34qsdvnwjw8h" path="res://character/characters/player/player.gd" id="1_w1msd"]
+[ext_resource type="Resource" uid="uid://belhrkqbju3jx" path="res://character/characters/player/player.tres" id="3_3nwe2"]
+[ext_resource type="PackedScene" uid="uid://dh0rusj76xdj0" path="res://components/movement.tscn" id="4_pl86n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqfce"]
+radius = 15.5
+
+[sub_resource type="Gradient" id="Gradient_3nwe2"]
+offsets = PackedFloat32Array(0.95, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pl86n"]
+gradient = SubResource("Gradient_3nwe2")
+width = 34
+height = 34
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_tqfce"]
+offsets = PackedFloat32Array(0.95, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3nwe2"]
+gradient = SubResource("Gradient_tqfce")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Player" groups=["Player"] instance=ExtResource("1_tqfce")]
+collision_layer = 4
+collision_mask = 27
+script = ExtResource("1_w1msd")
+resource = ExtResource("3_3nwe2")
+
+[node name="Collision" parent="." index="0"]
+shape = SubResource("CircleShape2D_tqfce")
+
+[node name="Outline" type="Sprite2D" parent="." index="1"]
+modulate = Color(0.392157, 0, 1, 1)
+texture = SubResource("GradientTexture2D_pl86n")
+
+[node name="Sprite" parent="." index="2"]
+modulate = Color(0.392157, 0, 1, 1)
+texture = SubResource("GradientTexture2D_3nwe2")
+
+[node name="Face" type="Label" parent="Sprite" index="0"]
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 8.0
+rotation = 1.57079
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = ":)"
+
+[node name="Movement" parent="." index="3" instance=ExtResource("4_pl86n")]
