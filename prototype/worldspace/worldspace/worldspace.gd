@@ -13,15 +13,15 @@ func _ready() -> void:
 
 func _get_world_items() -> void:
 	world_items.clear()
-	for item in items.get_children():
-		if item.is_in_group("Item"):
-			world_items.append(item)
+	for item: Item in items.get_children():
+		world_items.append(item)
 
 func _on_item_added(item: ItemResource, _iterator: int) -> void:
-	for i in range(world_items.size()):
-		if world_items[i] != null and world_items[i].resource.id == item.id and world_items[i].resource.init == item.init:
-			world_items[i] = null
-			item.init = Vector2.ZERO
+	for i: int in range(world_items.size()):
+		if world_items[i] != null:
+			if world_items[i].resource.id == item.id and world_items[i].resource.init == item.init:
+				world_items[i] = null
+				item.init = Vector2.ZERO
 	for nul in world_items:
 		if not is_instance_valid(nul):
 			world_items.erase(nul)

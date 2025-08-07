@@ -1,12 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwrlbriyysran"]
+[gd_scene load_steps=10 format=3 uid="uid://dwrlbriyysran"]
 
 [ext_resource type="PackedScene" uid="uid://d0eg54howxvnp" path="res://character/characters/npc/npc.tscn" id="1_rcfsu"]
 [ext_resource type="Resource" uid="uid://ce3a1gfrc188o" path="res://character/characters/npcs/npc_test_02.tres" id="2_n7n0q"]
+[ext_resource type="Script" uid="uid://b6jqrdj0bdxd2" path="res://autoloads/quests/_quest_resource.gd" id="3_4738l"]
+[ext_resource type="Script" uid="uid://d35atbvkibbaw" path="res://autoloads/quests/_quest_resource_objective.gd" id="4_vtcbb"]
+[ext_resource type="Script" uid="uid://xvfokx3era3m" path="res://autoloads/quests/_quest_resource_reward.gd" id="5_4738l"]
+[ext_resource type="Resource" uid="uid://bxyycrokd1wki" path="res://item/items/items_test/item_test_useable_01.tres" id="6_4738l"]
+
+[sub_resource type="Resource" id="Resource_4hbbq"]
+script = ExtResource("4_vtcbb")
+id = "quest_test_02_obj_01"
+description = "Talk to Red Guy"
+target_id = "npc_test_01"
+target_type = "talk_to"
+objective_dialogue = "The Red Items are over there with all the other stuff."
+required_quantity = 0
+collected_quantity = 0
+is_completed = false
+metadata/_custom_type_script = "uid://dqdmxcap5f4pi"
+
+[sub_resource type="Resource" id="Resource_6ymca"]
+script = ExtResource("5_4738l")
+type = ExtResource("6_4738l")
+amount = 1
+metadata/_custom_type_script = "uid://dk6ick82r7vsf"
+
+[sub_resource type="Resource" id="Resource_vtcbb"]
+resource_local_to_scene = true
+script = ExtResource("3_4738l")
+id = "quest_test_02"
+unlock = "npc_test_02_01"
+name = "QuestTest02"
+description = "Ask Red Guy about Red Items"
+state = "not_started"
+objectives = Array[ExtResource("4_vtcbb")]([SubResource("Resource_4hbbq")])
+rewards = Array[ExtResource("5_4738l")]([SubResource("Resource_6ymca")])
 
 [node name="NPCTest02" instance=ExtResource("1_rcfsu")]
 resource = ExtResource("2_n7n0q")
 
-[node name="Sprite" parent="." index="2"]
+[node name="DialogueManager" parent="." index="0"]
+dialogue_file_path = "res://resources/dialogues/dialogue_test.json"
+quests = Array[ExtResource("3_4738l")]([SubResource("Resource_vtcbb")])
+
+[node name="Sprite" parent="." index="4"]
 modulate = Color(0.156863, 0.392157, 1, 1)
 
 [node name="Face" type="Label" parent="Sprite" index="0"]

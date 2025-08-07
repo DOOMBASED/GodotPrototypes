@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxob8mur260to"]
 
-[ext_resource type="Script" uid="uid://d1jy3utay7rxf" path="res://autoloads/_inventory.gd" id="1_7v4id"]
-[ext_resource type="PackedScene" uid="uid://byb8dh5liaixo" path="res://autoloads/inventory_ui.tscn" id="2_w84aj"]
+[ext_resource type="Script" uid="uid://d1jy3utay7rxf" path="res://autoloads/inventory/_inventory.gd" id="1_7v4id"]
+[ext_resource type="PackedScene" uid="uid://byb8dh5liaixo" path="res://autoloads/inventory/_inventory_ui.tscn" id="2_w84aj"]
 
 [node name="Inventory" type="Node"]
 script = ExtResource("1_7v4id")

@@ -1,0 +1,166 @@
+{
+	"npc_test_01": {
+		"trees": [
+			{
+				"branch_id": "npc_test_01_01",
+				"dialogues": [
+					{
+						"state": "start",
+						"text": "Hello, #PLAYER#! I am #NPC#. What can I do for you?",
+						"options": {
+							"Tell me about this place.": "in_progress",
+							"Do you need me to do anything?": "give_quests",
+							"Goodbye.": "exit"
+						}
+					},
+					{
+						"state": "in_progress",
+						"text": "There isn't much to say...",
+						"options": {
+							"Okay then.": "start"
+						}
+					},
+					{
+						"state": "give_quests",
+						"text": "Yes, I need you to go and talk to the Blue Guy over there. He will tell you what you need to do next.",
+						"options": {
+							"Okay, I guess so.": "end"
+						}
+					},
+					{
+						"state": "end",
+						"text": "Thanks, #PLAYER#!",
+						"options": {}
+					},
+					{
+						"state": "exit",
+						"text": "",
+						"options": {}
+					}
+				]
+			},
+			{
+				"branch_id": "npc_test_01_02",
+				"dialogues": [
+					{
+						"state": "start",
+						"text": "Hey #PLAYER#! Back so soon?",
+						"options": {
+							"Anthing else you can tell me?": "in_progress",
+							"Anthing else you need me to do?": "give_quests",
+							"Goodbye.": "exit"
+						}
+					},
+					{
+						"state": "in_progress",
+						"text": "I think that the Blue Guy smells good.",
+						"options": {
+							"That's pretty weird.": "start",
+							"Okay, bye.": "end"
+						}
+					},
+					{
+						"state": "give_quests",
+						"text": "Just go and pick up that Red Item over there.",
+						"options": {
+							"Got it.": "exit"
+						}
+					},
+					{
+						"state": "end",
+						"text": "Come back soon, #PLAYER#!",
+						"options": {}
+					},
+					{
+						"state": "exit",
+						"text": "",
+						"options": {}
+					}
+				]
+			},
+			{
+				"branch_id": "npc_test_01_00_default",
+				"dialogues": [
+					{
+						"state": "start",
+						"text": "Hey #PLAYER#! Thanks again for helping me.",
+						"options": {
+							"Do you have anything you need done?": "give_quests",
+							"Goodbye.": "exit"
+						}
+					},
+					{
+						"state": "give_quests",
+						"text": "If there is anything else I can think of I will let you know.",
+						"options": {
+							"Okay, thanks anyway.": "start"
+						}
+					}
+				]
+			},
+		],
+	},
+	"npc_test_02": {
+		"trees": [
+			{
+				"branch_id": "npc_test_02_01",
+				"dialogues": [
+					{
+						"state": "start",
+						"text": "Yo, #PLAYER#! Do you need something?",
+						"options": {
+							"Tell me about this place.": "in_progress",
+							"Is there anything to do around here?": "give_quests",
+							"Goodbye.": "exit"
+						}
+					},
+					{
+						"state": "in_progress",
+						"text": "It's just me and the Red Guy over there.",
+						"options": {
+							"Interesting.": "start",
+							"Goodbye.": "end"
+						}
+					},
+					{
+						"state": "give_quests",
+						"text": "Go and talk to the Red Guy. He will tell you what to do next.",
+						"options": {
+							"Okay.": "exit"
+						}
+					},
+					{
+						"state": "end",
+						"text": "Later, #PLAYER#!",
+						"options": {}
+					},
+					{
+						"state": "exit",
+						"text": "",
+						"options": {}
+					}
+				]
+			},
+			{
+				"branch_id": "npc_test_02_00_default",
+				"dialogues": [
+					{
+						"state": "start",
+						"text": "I wonder why the Red Guy is always smelling me...",
+						"options": {
+							"Is there anything else to do besides pick up some little squares?": "give_quests",
+							"Goodbye.": "exit"
+						}
+					},
+					{
+						"state": "give_quests",
+						"text": "Nah, not really right now. We are open to suggestions.",
+						"options": {
+							"Okay, thanks.": "start"
+						}
+					},
+				]
+			},
+		],
+	},
+}

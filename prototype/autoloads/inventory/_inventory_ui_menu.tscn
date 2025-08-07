@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://e0gi6hmx56sr"]
+
+[ext_resource type="Script" uid="uid://clbsjpjpicyu5" path="res://autoloads/inventory/_inventory_ui_menu.gd" id="1_8kc6f"]
+
+[node name="InventoryUIMenu" type="PanelContainer"]
+top_level = true
+custom_minimum_size = Vector2(212, 48)
+offset_right = 212.0
+offset_bottom = 48.0
+script = ExtResource("1_8kc6f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Item Name Label"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EffectLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Item Effect Label"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="UseButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "USE"
+
+[node name="SplitButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "SPLIT"
+
+[node name="DropButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "DROP"
+
+[connection signal="mouse_exited" from="." to="." method="_on_menu_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/UseButton" to="." method="_on_use_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/SplitButton" to="." method="_on_split_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/DropButton" to="." method="_on_drop_button_pressed"]

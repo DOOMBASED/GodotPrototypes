@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdo34epvls2mf"]
+
+[ext_resource type="Script" uid="uid://cyao2cope1cov" path="res://autoloads/inventory/_inventory_ui_slot.gd" id="1_6h5df"]
+
+[node name="InventorySlot" type="Panel"]
+custom_minimum_size = Vector2(48, 48)
+offset_right = 48.0
+offset_bottom = 48.0
+script = ExtResource("1_6h5df")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite" type="Sprite2D" parent="MarginContainer/CenterContainer"]
+
+[node name="QuantityLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 2
+
+[node name="SlotButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="SlotButton" to="." method="_on_slot_button_gui_input"]

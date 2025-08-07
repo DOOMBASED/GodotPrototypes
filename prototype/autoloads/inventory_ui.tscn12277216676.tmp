@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://byb8dh5liaixo"]
+[gd_scene load_steps=3 format=3 uid="uid://byb8dh5liaixo"]
 
 [ext_resource type="Script" uid="uid://dcq3sxqkeou4x" path="res://autoloads/_inventory_ui.gd" id="1_7wbx3"]
+[ext_resource type="PackedScene" uid="uid://e0gi6hmx56sr" path="res://autoloads/inventory_ui_menu.tscn" id="2_ddixa"]
 
 [node name="InventoryUI" type="Control"]
 layout_mode = 3
@@ -39,3 +40,7 @@ grow_vertical = 2
 [node name="InventoryGrid" type="GridContainer" parent="Inventory/MarginContainer"]
 layout_mode = 2
 columns = 4
+
+[node name="InventoryUIMenu" parent="." instance=ExtResource("2_ddixa")]
+layout_mode = 0
+offset_bottom = 90.0

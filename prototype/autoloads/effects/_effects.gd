@@ -15,7 +15,7 @@ func item_effect(item: ItemResource, slot_index) -> void:
 			_:
 				Global.set_debug_text("This item has no effect")
 	else:
-		Global.set_debug_text("This item is not useable")
+		Global.set_debug_text("This is not a useable item")
 
 func _item_used(item: ItemResource, slot_index: int) -> void:
 	should_use = true

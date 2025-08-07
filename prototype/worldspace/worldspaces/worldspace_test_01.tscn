@@ -1416,7 +1416,7 @@ resource = SubResource("Resource_ujl5r")
 position = Vector2(640, 360)
 
 [node name="NPCTest01" parent="." index="3" instance=ExtResource("3_rhh2s")]
-position = Vector2(960, 120)
+position = Vector2(744, 288)
 
 [node name="NPCTest02" parent="." index="4" instance=ExtResource("4_nfay2")]
-position = Vector2(1088, 120)
+position = Vector2(744, 432)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0eg54howxvnp"]
+[gd_scene load_steps=10 format=3 uid="uid://d0eg54howxvnp"]
 
 [ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://character/character/character.tscn" id="1_68cpq"]
 [ext_resource type="Script" uid="uid://du8j6tr1ua2ap" path="res://character/characters/npc/npc.gd" id="2_d78lq"]
+[ext_resource type="PackedScene" uid="uid://b7yl1u5jkdrp" path="res://components/dialogue_manager.tscn" id="3_jfpsb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d78lq"]
 radius = 15.5
@@ -38,21 +39,23 @@ collision_layer = 8
 collision_mask = 5
 script = ExtResource("2_d78lq")
 
-[node name="Collision" parent="." index="0"]
+[node name="DialogueManager" parent="." index="0" instance=ExtResource("3_jfpsb")]
+
+[node name="Collision" parent="." index="1"]
 shape = SubResource("CircleShape2D_d78lq")
 
-[node name="InteractArea" type="Area2D" parent="." index="1"]
+[node name="InteractArea" type="Area2D" parent="." index="2"]
 collision_layer = 0
 collision_mask = 4
 
 [node name="Collision" type="CollisionShape2D" parent="InteractArea" index="0"]
 shape = SubResource("CircleShape2D_jfpsb")
 
-[node name="Outline" type="Sprite2D" parent="." index="2"]
+[node name="Outline" type="Sprite2D" parent="." index="3"]
 modulate = Color(0.392157, 0, 1, 1)
 texture = SubResource("GradientTexture2D_ljv8k")
 
-[node name="Sprite" parent="." index="3"]
+[node name="Sprite" parent="." index="4"]
 texture = SubResource("GradientTexture2D_jfpsb")
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
