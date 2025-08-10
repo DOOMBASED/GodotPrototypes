@@ -1,30 +1,33 @@
-# movement.gd
+# movement_manager.gd
 
 extends Node
 
 var character: Character
 var velocity: Vector2
 var facing: Vector2
-@export var walk_speed: float = 120.0
-@export var run_speed: float = 240.0
+var last_position: Vector2
+@export var walk_speed: float = 64.0
+@export var run_speed: float = 96.0
 var speed: float
-var can_move: bool
+var moving: bool = false
 
 func _ready() -> void:
 	if character == null and get_parent() is Character:
 		character = get_parent()
+	last_position = character.position
 
 func move(direction: Vector2) -> void:
 	if character == null:
 		return
 	if direction:
-		can_move = true
+		moving = true
 		direction = direction.round()
 		facing = direction.round()
 		character.position = character.position.round()
 		velocity = direction * speed
-	else:
-		can_move = false
-		velocity = Vector2.ZERO
-	character.velocity = velocity
-	character.move_and_slide()
+	if last_position.distance_to(character.position) == 0:
+		moving = false
+	if character.animation_manager.current_state != 3:
+		last_position = character.position
+		character.velocity = velocity
+		character.move_and_slide()

@@ -3,7 +3,7 @@ class_name Item extends Area2D
 
 @export var resource: ItemResource
 @onready var sprite: Sprite2D = $Sprite
-var player_in_range = false
+var player_in_range: bool = false
 
 func _ready() -> void:
 	resource.init = position
@@ -32,7 +32,7 @@ func _item_pickup(delta: float) -> void:
 			Inventory.recent_pickup = true
 			if resource.quest:
 				if Quests.quest_check_items(resource.id):
-					Quests.quest_check_objectives(resource.id, "collection", resource.count)
+					Quests.quest_check_objectives(resource.id, 1, resource.count)
 			Inventory.item_add(resource)
 			queue_free.call_deferred()
 

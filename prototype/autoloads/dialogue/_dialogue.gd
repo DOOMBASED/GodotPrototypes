@@ -2,7 +2,7 @@
 extends Node
 
 @onready var dialogue_ui: Control = $Interface/DialogueUI
-@export var dialogues: Dictionary = {}
+@onready var dialogues: Dictionary = {}
 
 func dialogue_load(file_path: String) -> void:
 	var data: String = FileAccess.get_file_as_string(file_path)

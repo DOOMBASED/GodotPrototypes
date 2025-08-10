@@ -2,8 +2,8 @@
 extends Control
 
 @onready var menu: PanelContainer = $InventoryUIMenu
+@onready var inventory: PanelContainer = $Inventory
 @onready var inventory_grid: GridContainer = $Inventory/MarginContainer/VBoxContainer/InventoryGrid
-
 var current_slot: Panel = null
 
 const slot_scene: PackedScene = preload("res://autoloads/inventory/_inventory_ui_slot.tscn")
@@ -13,6 +13,7 @@ func _ready() -> void:
 	Inventory.connect("item_added", _on_item_added)
 	for i: int in Inventory.inventory_size:
 		_slot_new(str(Inventory.inventory.size()))
+	_inventory_toggle()
 
 func _process(_delta: float) -> void:
 	if current_slot != null:
@@ -23,17 +24,20 @@ func _process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("show_inventory"):
-			visible = !visible
+			_inventory_toggle()
+
+func _inventory_toggle() -> void:
+	inventory.visible = not inventory.visible
 
 func _slot_new(new_name: String) -> void:
-	var new_slot = slot_scene.instantiate()
+	var new_slot: Panel = slot_scene.instantiate()
 	new_slot.drag_start.connect(_on_drag_start)
 	new_slot.drag_release.connect(_on_drag_release)
 	inventory_grid.add_child(new_slot)
 	new_slot.name = new_name
 
 func _slot_check(target_slot: Panel) -> void:
-	var current_slot_index = _get_slot_index(current_slot)
+	var current_slot_index: int = _get_slot_index(current_slot)
 	if current_slot.resource.id == target_slot.resource.id:
 		if target_slot.resource.quantity != target_slot.resource.maximum:
 			target_slot.resource.quantity = current_slot.resource.quantity + target_slot.resource.quantity
@@ -54,7 +58,7 @@ func _get_slot_index(slot: Panel) -> int:
 func _get_slot_target() -> Panel:
 	var mouse_position: Vector2 = get_global_mouse_position()
 	for slot: Panel in inventory_grid.get_children():
-		var slot_rect = Rect2(slot.global_position, slot.size)
+		var slot_rect := Rect2(slot.global_position, slot.size)
 		if slot_rect.has_point(mouse_position) and slot != current_slot:
 			slot.init_position = slot.global_position
 			return slot
@@ -91,7 +95,10 @@ func _on_drag_end(slot_1: Panel, slot_2: Panel) -> void:
 
 func _on_item_added(item: ItemResource, iterator: int) -> void:
 	if item != null:
-		inventory_grid.get_child(iterator).quantity_label.text = str(Inventory.inventory[iterator].quantity)
+		if item.maximum == 1:
+			inventory_grid.get_child(iterator).quantity_label.hide()
+		elif item.maximum > 1:
+			inventory_grid.get_child(iterator).quantity_label.text = str(Inventory.inventory[iterator].quantity)
 
 func _on_inventory_updated() -> void:
 	if Inventory.inventory.size() > inventory_grid.get_child_count():

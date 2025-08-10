@@ -6,8 +6,11 @@ var current_item: ItemResource = null
 @onready var name_label: Label = $MarginContainer/VBoxContainer/NameLabel
 @onready var effect_label: Label = $MarginContainer/VBoxContainer/EffectLabel
 @onready var use_button: Button = $MarginContainer/VBoxContainer/ButtonContainer/UseButton
+@onready var equip_button: Button = $MarginContainer/VBoxContainer/ButtonContainer/EquipButton
 @onready var split_button: Button = $MarginContainer/VBoxContainer/ButtonContainer/SplitButton
 @onready var drop_button: Button = $MarginContainer/VBoxContainer/ButtonContainer/DropButton
+
+signal item_equipped(current_iterator: int)
 
 func _ready() -> void:
 	_menu_hide()
@@ -23,6 +26,10 @@ func menu_show(item: ItemResource, iterator: int) -> void:
 		effect_label.text = str(item.effect, " +" , item.magnitude)
 		effect_label.show()
 		use_button.show()
+	if item is ItemEquipment:
+		effect_label.text = str(item.equip_effect, " +", item.equip_effect_magnitude)
+		effect_label.show()
+		equip_button.show()
 	if current_item.quantity >= 2:
 		split_button.disabled = false
 		split_button.show()
@@ -32,10 +39,10 @@ func menu_show(item: ItemResource, iterator: int) -> void:
 
 func _menu_hide() -> void:
 	hide()
-	drop_button.hide()
 	effect_label.hide()
-	split_button.hide()
 	use_button.hide()
+	split_button.hide()
+	drop_button.hide()
 	position = Vector2(-size.x, -size.y)
 	size = custom_minimum_size
 	process_mode = Node.PROCESS_MODE_DISABLED
@@ -54,6 +61,11 @@ func _on_use_button_pressed() -> void:
 		else:
 			Global.set_debug_text(str(current_item.name, " is not a useable item"))
 	use_button.release_focus()
+
+func _on_equip_button_pressed() -> void:
+	if current_item != null and current_item is ItemEquipment:
+		Global.player.animation_manager.equip_anim = current_item.equip_anim
+		item_equipped.emit(current_iterator)
 
 func _on_split_button_pressed() -> void:
 	if not Inventory.inventory_full:

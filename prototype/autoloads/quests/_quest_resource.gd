@@ -10,12 +10,12 @@ class_name QuestResource extends Resource
 @export var rewards: Array[QuestResourceReward] = []
 
 func complete_objective(objective_id: String, quantity: int = 1) -> void:
-	for i in range(objectives.size()):
+	for i: int in range(objectives.size()):
 		if objectives[i].id == objective_id:
-			if i != 0:
+			if i > 0:
 				if not objectives[i - 1].is_completed:
 					return
-			if objectives[i].target_type == "collection":
+			if objectives[i].target_type == objectives[i].target_types["collection"]:
 				objectives[i].collected_quantity += quantity
 				if objectives[i].collected_quantity >= objectives[i].required_quantity:
 					objectives[i].is_completed = true
@@ -27,7 +27,7 @@ func complete_objective(objective_id: String, quantity: int = 1) -> void:
 		state = "completed"
 
 func complete_check() -> bool:
-	for objective in objectives:
+	for objective: QuestResourceObjective in objectives:
 		if not objective.is_completed:
 			return false
 	return true

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2s13nnrgu68v"]
+[gd_scene load_steps=2 format=3 uid="uid://d2s13nnrgu68v"]
 
 [ext_resource type="Script" uid="uid://37q61wg3agu5" path="res://autoloads/quests/_quest_ui.gd" id="1_3864o"]
-[ext_resource type="PackedScene" uid="uid://c66mwpsp7rkj1" path="res://autoloads/quests/_quest_tracker.tscn" id="2_rvoj4"]
 
 [node name="QuestUI" type="Control"]
 layout_mode = 3
@@ -14,7 +13,7 @@ mouse_filter = 2
 script = ExtResource("1_3864o")
 
 [node name="Quests" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(212, 0)
+custom_minimum_size = Vector2(212, 64)
 layout_direction = 2
 layout_mode = 1
 anchors_preset = 6
@@ -22,19 +21,17 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -146.0
-offset_top = -29.0
-offset_bottom = 29.0
+offset_left = -212.0
+offset_top = -46.0
+offset_bottom = 18.0
 grow_horizontal = 0
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Quests"]
 layout_mode = 2
+theme_override_constants/margin_top = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Quests/MarginContainer"]
-layout_mode = 2
-
-[node name="QuestList" type="VBoxContainer" parent="Quests/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="Quests/MarginContainer/VBoxContainer"]
@@ -43,16 +40,65 @@ text = "Quest Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HSeparator" type="HSeparator" parent="Quests/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="DescriptionLabel" type="Label" parent="Quests/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Quest Description"
 
 [node name="ObjectivesList" type="VBoxContainer" parent="Quests/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="RewardsList" type="VBoxContainer" parent="Quests/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
-[node name="QuestTracker" parent="." instance=ExtResource("2_rvoj4")]
+[node name="QuestListContainer" type="MarginContainer" parent="Quests/MarginContainer/VBoxContainer"]
 visible = false
-layout_mode = 1
+layout_mode = 2
+
+[node name="QuestList" type="VBoxContainer" parent="Quests/MarginContainer/VBoxContainer/QuestListContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CompletedQuestList" type="VBoxContainer" parent="Quests/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Quests/MarginContainer/VBoxContainer/CompletedQuestList"]
+layout_mode = 2
+text = "Completed Quests"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Quests/MarginContainer/VBoxContainer/CompletedQuestList"]
+layout_mode = 2
+
+[node name="QuestUITracker" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(212, 64)
+layout_mode = 0
+offset_top = 27.0
+offset_right = 98.0
+offset_bottom = 57.0
+
+[node name="MarginContainer" type="MarginContainer" parent="QuestUITracker"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestUITracker/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="QuestUITracker/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quest Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="QuestUITracker/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ObjectivesList" type="VBoxContainer" parent="QuestUITracker/MarginContainer/VBoxContainer"]
+layout_mode = 2

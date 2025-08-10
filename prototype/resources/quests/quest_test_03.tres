@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QuestResource" load_steps=7 format=3 uid="uid://fadct2pluppl"]
+[gd_resource type="Resource" script_class="QuestResource" load_steps=8 format=3 uid="uid://fadct2pluppl"]
 
 [ext_resource type="Script" uid="uid://d35atbvkibbaw" path="res://autoloads/quests/_quest_resource_objective.gd" id="1_74xb2"]
 [ext_resource type="Script" uid="uid://xvfokx3era3m" path="res://autoloads/quests/_quest_resource_reward.gd" id="2_glgwk"]
@@ -10,12 +10,19 @@ script = ExtResource("1_74xb2")
 id = "quest_test_03_obj_01"
 description = "Pickup the Red Items"
 target_id = "item_test_02"
-target_type = "collection"
+target_type = 1
 objective_dialogue = ""
 required_quantity = 5
-collected_quantity = 0
-is_completed = false
-metadata/_custom_type_script = "uid://dqdmxcap5f4pi"
+
+[sub_resource type="Resource" id="Resource_odx8i"]
+script = ExtResource("1_74xb2")
+id = "quest_test_03_obj_02"
+description = "Talk to the Orange Guy again"
+target_id = "npc_test_01"
+target_type = 0
+objective_dialogue = "Thanks again for the help. Here is another Slot."
+required_quantity = 0
+metadata/_custom_type_script = "uid://d35atbvkibbaw"
 
 [sub_resource type="Resource" id="Resource_1ralu"]
 script = ExtResource("2_glgwk")
@@ -31,5 +38,5 @@ unlock = "npc_test_01_02"
 name = "QuestTest03"
 description = "Get the Red Items"
 state = "not_started"
-objectives = Array[ExtResource("1_74xb2")]([SubResource("Resource_i5js0")])
+objectives = Array[ExtResource("1_74xb2")]([SubResource("Resource_i5js0"), SubResource("Resource_odx8i")])
 rewards = Array[ExtResource("2_glgwk")]([SubResource("Resource_1ralu")])

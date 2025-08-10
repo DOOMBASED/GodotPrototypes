@@ -3,35 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://character/character/character.tscn" id="1_tqfce"]
 [ext_resource type="Script" uid="uid://d34qsdvnwjw8h" path="res://character/characters/player/player.gd" id="1_w1msd"]
 [ext_resource type="Resource" uid="uid://belhrkqbju3jx" path="res://character/characters/player/player.tres" id="3_3nwe2"]
-[ext_resource type="PackedScene" uid="uid://dh0rusj76xdj0" path="res://components/movement_manager.tscn" id="4_pl86n"]
-[ext_resource type="PackedScene" uid="uid://bn86dot07cvvk" path="res://components/input_manager.tscn" id="4_wtm62"]
+[ext_resource type="PackedScene" uid="uid://dh0rusj76xdj0" path="res://components/movement/movement_manager.tscn" id="4_pl86n"]
+[ext_resource type="PackedScene" uid="uid://bn86dot07cvvk" path="res://components/input/input_manager.tscn" id="4_wtm62"]
+[ext_resource type="Texture2D" uid="uid://4ykv3c23arnp" path="res://character/characters/player/player.png" id="6_4lert"]
+[ext_resource type="PackedScene" uid="uid://bi85xrljyyams" path="res://components/animation/animation_manager.tscn" id="6_twsev"]
+[ext_resource type="AnimationLibrary" uid="uid://cisf8ftdmh4yr" path="res://resources/animations/animations_human.res" id="7_h2ua1"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bdh0fnwt0lekf" path="res://resources/animations/animation_human_state_machine.tres" id="8_h2ua1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tqfce"]
-radius = 15.5
-
-[sub_resource type="Gradient" id="Gradient_3nwe2"]
-offsets = PackedFloat32Array(0.95, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_pl86n"]
-gradient = SubResource("Gradient_3nwe2")
-width = 34
-height = 34
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
-
-[sub_resource type="Gradient" id="Gradient_tqfce"]
-offsets = PackedFloat32Array(0.95, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3nwe2"]
-gradient = SubResource("Gradient_tqfce")
-width = 32
-height = 32
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtbbx"]
+radius = 6.0
+height = 20.0
 
 [node name="Player" groups=["Player"] instance=ExtResource("1_tqfce")]
 collision_layer = 4
@@ -43,23 +24,28 @@ resource = ExtResource("3_3nwe2")
 
 [node name="MovementManager" parent="." index="1" instance=ExtResource("4_pl86n")]
 
-[node name="Collision" parent="." index="2"]
-shape = SubResource("CircleShape2D_tqfce")
+[node name="AnimationManager" parent="." index="2" instance=ExtResource("6_twsev")]
 
-[node name="Outline" type="Sprite2D" parent="." index="3"]
-modulate = Color(0.392157, 0, 1, 1)
-texture = SubResource("GradientTexture2D_pl86n")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationManager" index="0"]
+libraries = {
+&"animations_human": ExtResource("7_h2ua1")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationManager" index="1"]
+tree_root = ExtResource("8_h2ua1")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/ActionAxe/blend_position = Vector2(0, 0)
+parameters/ActionPickaxe/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Run/blend_position = Vector2(0, 0)
+parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="Collision" parent="." index="3"]
+position = Vector2(0.5, 1)
+shape = SubResource("CapsuleShape2D_jtbbx")
 
 [node name="Sprite" parent="." index="4"]
-modulate = Color(0.392157, 0, 1, 1)
-texture = SubResource("GradientTexture2D_3nwe2")
-
-[node name="Face" type="Label" parent="Sprite" index="0"]
-offset_left = 8.0
-offset_top = -8.0
-offset_right = 24.0
-offset_bottom = 8.0
-rotation = 1.57079
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 0
-text = ":)"
+texture = ExtResource("6_4lert")
+hframes = 12
+vframes = 22

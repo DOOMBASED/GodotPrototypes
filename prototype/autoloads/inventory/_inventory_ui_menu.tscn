@@ -38,6 +38,11 @@ layout_mode = 2
 mouse_filter = 1
 text = "USE"
 
+[node name="EquipButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "EQUIP"
+
 [node name="SplitButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
 layout_mode = 2
 mouse_filter = 1
@@ -50,5 +55,6 @@ text = "DROP"
 
 [connection signal="mouse_exited" from="." to="." method="_on_menu_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/UseButton" to="." method="_on_use_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/EquipButton" to="." method="_on_equip_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/SplitButton" to="." method="_on_split_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/DropButton" to="." method="_on_drop_button_pressed"]

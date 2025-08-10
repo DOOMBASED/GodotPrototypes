@@ -2,7 +2,7 @@
 extends Node
 
 @onready var global_ui: Control = $Interface/GlobalUI
-
+var viewport: SubViewportContainer = null
 var worldspace: Worldspace = null
 var player: Player = null
 
@@ -12,6 +12,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			_set_time_slow()
 		if Input.is_action_just_pressed("time_fast"):
 			_set_time_fast()
+
+func set_viewport(current_viewport: SubViewportContainer) -> void:
+	viewport = current_viewport
 
 func set_worldspace(current_worldspace: Worldspace) -> void:
 	worldspace = current_worldspace

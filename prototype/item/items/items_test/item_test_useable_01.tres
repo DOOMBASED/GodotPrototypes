@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="ItemUseable" load_steps=3 format=3 uid="uid://bxyycrokd1wki"]
 
 [ext_resource type="Script" uid="uid://deo1was2s8qs1" path="res://item/item/classes/item_useable.gd" id="1_dvrgt"]
-[ext_resource type="Texture2D" uid="uid://ubk1thhho0s2" path="res://item/items/items_test/textures/item_test_useable_01.tres" id="2_h0le2"]
+[ext_resource type="Texture2D" uid="uid://bol8lpyamdi4x" path="res://item/items/potions/textures/potion_purple_01.png" id="2_dvrgt"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_dvrgt")
 effect = "Slot"
 magnitude = 1.0
-texture = ExtResource("2_h0le2")
+texture = ExtResource("2_dvrgt")
 id = "item_useable_test_01"
 name = "Slot+"
 type = "UseableTest"

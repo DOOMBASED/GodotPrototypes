@@ -76,7 +76,7 @@ func item_remove(item: ItemResource, slot_index: int) -> bool:
 func item_swap(index1: int, index2: int) -> bool:
 	if index1 < 0 or index1 > inventory.size() or index2 > inventory.size():
 		return false
-	var temp = inventory[index1]
+	var temp: ItemResource = inventory[index1]
 	inventory[index1] = inventory[index2]
 	inventory[index2] = temp
 	inventory_updated.emit()

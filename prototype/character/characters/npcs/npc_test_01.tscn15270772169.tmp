@@ -1,0 +1,111 @@
+[gd_scene load_steps=16 format=3 uid="uid://dw3bdqib6apgc"]
+
+[ext_resource type="PackedScene" uid="uid://d0eg54howxvnp" path="res://character/characters/npc/npc.tscn" id="1_ks3jg"]
+[ext_resource type="Resource" uid="uid://c148ehjk6la0a" path="res://character/characters/npcs/npc_test_01.tres" id="2_4iqtv"]
+[ext_resource type="Script" uid="uid://b6jqrdj0bdxd2" path="res://autoloads/quests/_quest_resource.gd" id="3_jk2qn"]
+[ext_resource type="Script" uid="uid://d35atbvkibbaw" path="res://autoloads/quests/_quest_resource_objective.gd" id="4_ws8vw"]
+[ext_resource type="Script" uid="uid://xvfokx3era3m" path="res://autoloads/quests/_quest_resource_reward.gd" id="5_o7m6m"]
+[ext_resource type="Resource" uid="uid://bxyycrokd1wki" path="res://item/items/items_test/item_test_useable_01.tres" id="6_xmhsq"]
+
+[sub_resource type="Resource" id="Resource_w6ngp"]
+script = ExtResource("4_ws8vw")
+id = "quest_test_01_obj_01"
+description = "Talk to Pink Girl"
+target_id = "npc_test_02"
+target_type = 0
+objective_dialogue = "Go pick up some of those Blue Items over there."
+required_quantity = 0
+
+[sub_resource type="Resource" id="Resource_5dn57"]
+script = ExtResource("4_ws8vw")
+id = "quest_test_01_obj_02"
+description = "Collect the Blue Items"
+target_id = "item_test_01"
+target_type = 1
+objective_dialogue = ""
+required_quantity = 5
+metadata/_custom_type_script = "uid://bm8hpebg2ypo7"
+
+[sub_resource type="Resource" id="Resource_xnyo5"]
+script = ExtResource("4_ws8vw")
+id = "quest_test_01_obj_03"
+description = "Talk to the Orange Guy again"
+target_id = "npc_test_01"
+target_type = 0
+objective_dialogue = "Thanks for picking up that trash. Here are some extra Slots for your Inventory"
+required_quantity = 0
+metadata/_custom_type_script = "uid://d35atbvkibbaw"
+
+[sub_resource type="Resource" id="Resource_20hir"]
+script = ExtResource("5_o7m6m")
+type = ExtResource("6_xmhsq")
+amount = 2
+metadata/_custom_type_script = "uid://x8giocmgdxfo"
+
+[sub_resource type="Resource" id="Resource_tvvwn"]
+resource_local_to_scene = true
+script = ExtResource("3_jk2qn")
+id = "quest_test_01"
+unlock = "npc_test_01_01"
+name = "QuestTest01"
+description = "Talk to Pink Girl about Items"
+state = "not_started"
+objectives = Array[ExtResource("4_ws8vw")]([SubResource("Resource_w6ngp"), SubResource("Resource_5dn57"), SubResource("Resource_xnyo5")])
+rewards = Array[ExtResource("5_o7m6m")]([SubResource("Resource_20hir")])
+
+[sub_resource type="Resource" id="Resource_i5js0"]
+script = ExtResource("4_ws8vw")
+id = "quest_test_03_obj_01"
+description = "Pickup the Red Items"
+target_id = "item_test_02"
+target_type = 1
+objective_dialogue = ""
+required_quantity = 5
+
+[sub_resource type="Resource" id="Resource_odx8i"]
+script = ExtResource("4_ws8vw")
+id = "quest_test_03_obj_02"
+description = "Talk to the Orange Guy again"
+target_id = "npc_test_01"
+target_type = 0
+objective_dialogue = "Thanks again for the help. Here is another Slot."
+required_quantity = 0
+metadata/_custom_type_script = "uid://d35atbvkibbaw"
+
+[sub_resource type="Resource" id="Resource_1ralu"]
+script = ExtResource("5_o7m6m")
+type = ExtResource("6_xmhsq")
+amount = 1
+metadata/_custom_type_script = "uid://dk6ick82r7vsf"
+
+[sub_resource type="Resource" id="Resource_wjiqy"]
+resource_local_to_scene = true
+script = ExtResource("3_jk2qn")
+id = "quest_test_03"
+unlock = "npc_test_01_02"
+name = "QuestTest03"
+description = "Get the Red Items"
+state = "not_started"
+objectives = Array[ExtResource("4_ws8vw")]([SubResource("Resource_i5js0"), SubResource("Resource_odx8i")])
+rewards = Array[ExtResource("5_o7m6m")]([SubResource("Resource_1ralu")])
+
+[node name="NPCTest01" instance=ExtResource("1_ks3jg")]
+resource = ExtResource("2_4iqtv")
+
+[node name="DialogueManager" parent="." index="0"]
+quests = Array[ExtResource("3_jk2qn")]([SubResource("Resource_tvvwn"), SubResource("Resource_wjiqy")])
+dialogue_file_path = "res://resources/dialogues/dialogue_test.json"
+valediction = null
+
+[node name="Sprite" parent="." index="4"]
+modulate = Color(1, 0, 0.156863, 1)
+
+[node name="Face" type="Label" parent="Sprite" index="0"]
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 8.0
+rotation = 1.57079
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = ":)"

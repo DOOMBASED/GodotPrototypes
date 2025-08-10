@@ -22,6 +22,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Sprite" type="Sprite2D" parent="MarginContainer/CenterContainer"]
+scale = Vector2(2, 2)
 
 [node name="QuantityLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2

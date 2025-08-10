@@ -8,36 +8,30 @@
 [sub_resource type="Resource" id="Resource_w6ngp"]
 script = ExtResource("1_20hir")
 id = "quest_test_01_obj_01"
-description = "Talk to Blue Guy"
+description = "Talk to Pink Girl"
 target_id = "npc_test_02"
-target_type = "talk_to"
-objective_dialogue = "Go pick up some of those Yellow Items over there."
+target_type = 0
+objective_dialogue = "Go pick up some of those Blue Items over there."
 required_quantity = 0
-collected_quantity = 0
-is_completed = false
 
 [sub_resource type="Resource" id="Resource_5dn57"]
 script = ExtResource("1_20hir")
 id = "quest_test_01_obj_02"
-description = "Collect the Yellow Items"
+description = "Collect the Blue Items"
 target_id = "item_test_01"
-target_type = "collection"
+target_type = 1
 objective_dialogue = ""
 required_quantity = 5
-collected_quantity = 0
-is_completed = false
 metadata/_custom_type_script = "uid://bm8hpebg2ypo7"
 
 [sub_resource type="Resource" id="Resource_xnyo5"]
 script = ExtResource("1_20hir")
 id = "quest_test_01_obj_03"
-description = "Talk to the Red Guy again"
+description = "Talk to the Orange Guy again"
 target_id = "npc_test_01"
-target_type = "talk_to"
+target_type = 0
 objective_dialogue = "Thanks for picking up that trash. Here are some extra Slots for your Inventory"
 required_quantity = 0
-collected_quantity = 0
-is_completed = false
 metadata/_custom_type_script = "uid://d35atbvkibbaw"
 
 [sub_resource type="Resource" id="Resource_20hir"]
@@ -52,7 +46,7 @@ script = ExtResource("1_vqgeq")
 id = "quest_test_01"
 unlock = "npc_test_01_01"
 name = "QuestTest01"
-description = "Talk to Blue Guy about Items"
+description = "Talk to Pink Girl about Items"
 state = "not_started"
 objectives = Array[ExtResource("1_20hir")]([SubResource("Resource_w6ngp"), SubResource("Resource_5dn57"), SubResource("Resource_xnyo5")])
 rewards = Array[ExtResource("2_a1s43")]([SubResource("Resource_20hir")])

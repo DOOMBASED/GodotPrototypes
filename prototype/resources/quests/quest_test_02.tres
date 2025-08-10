@@ -8,13 +8,11 @@
 [sub_resource type="Resource" id="Resource_4hbbq"]
 script = ExtResource("1_74xb2")
 id = "quest_test_02_obj_01"
-description = "Talk to Red Guy"
+description = "Talk to Orange Guy"
 target_id = "npc_test_01"
-target_type = "talk_to"
+target_type = 0
 objective_dialogue = "The Red Items are over there with all the other stuff."
 required_quantity = 0
-collected_quantity = 0
-is_completed = false
 metadata/_custom_type_script = "uid://dqdmxcap5f4pi"
 
 [sub_resource type="Resource" id="Resource_6ymca"]
@@ -29,7 +27,7 @@ script = ExtResource("3_guq2i")
 id = "quest_test_02"
 unlock = "npc_test_02_01"
 name = "QuestTest02"
-description = "Ask Red Guy about Red Items"
+description = "Ask Orange Guy about Red Items"
 state = "not_started"
 objectives = Array[ExtResource("1_74xb2")]([SubResource("Resource_4hbbq")])
 rewards = Array[ExtResource("2_glgwk")]([SubResource("Resource_6ymca")])

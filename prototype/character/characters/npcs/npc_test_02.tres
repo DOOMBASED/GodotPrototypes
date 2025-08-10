@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_ad1we")
 id = "npc_test_02"
-name = "NPCTest02"
-speed = 100
+name = "Pink Girl"
+color_hex = "ff64ff"
+color = Color(1, 0.392157, 1, 1)
 metadata/_custom_type_script = "uid://bs5pfoarvuism"

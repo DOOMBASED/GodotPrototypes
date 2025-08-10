@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dc83rlggq7rri" path="res://item/item/item.tscn" id="1_5qjpl"]
 [ext_resource type="Resource" uid="uid://bxyycrokd1wki" path="res://item/items/items_test/item_test_useable_01.tres" id="2_34ld8"]
-[ext_resource type="Texture2D" uid="uid://ubk1thhho0s2" path="res://item/items/items_test/textures/item_test_useable_01.tres" id="3_34ld8"]
+[ext_resource type="Texture2D" uid="uid://bol8lpyamdi4x" path="res://item/items/potions/textures/potion_purple_01.png" id="3_34ld8"]
 
 [node name="ItemTestUseable01" instance=ExtResource("1_5qjpl")]
 resource = ExtResource("2_34ld8")

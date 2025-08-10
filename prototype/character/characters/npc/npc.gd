@@ -1,9 +1,9 @@
 # npc.gd
 class_name NPC extends Character
 
-var player_in_range: bool = false
-
 @onready var dialogue_manager: Node = $DialogueManager
+
+var player_in_range: bool = false
 
 func _ready() -> void:
 	dialogue_manager.npc = self
