@@ -27,6 +27,8 @@ func _on_slot_button_gui_input(event: InputEvent) -> void:
 
 func _on_item_equipped(iterator: int) -> void:
 	if iterator == int(name):
+		quantity_label.text = "E"
 		self_modulate = Color.GREEN
 	else:
+		quantity_label.text = ""
 		self_modulate = Color.WHITE

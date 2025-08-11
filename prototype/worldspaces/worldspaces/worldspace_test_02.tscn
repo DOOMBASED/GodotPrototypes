@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ojpj7rvywry8"]
+
+[ext_resource type="PackedScene" uid="uid://ba8h5aceaarer" path="res://worldspaces/worldspace/worldspace.tscn" id="1_u13d0"]
+[ext_resource type="Resource" uid="uid://bt7bl4d6kn6tf" path="res://worldspaces/worldspaces/worldspace_test_02.tres" id="2_yb10p"]
+
+[node name="WorldspaceTest02" instance=ExtResource("1_u13d0")]
+resource = ExtResource("2_yb10p")

@@ -41,6 +41,7 @@ func _menu_hide() -> void:
 	hide()
 	effect_label.hide()
 	use_button.hide()
+	equip_button.hide()
 	split_button.hide()
 	drop_button.hide()
 	position = Vector2(-size.x, -size.y)
@@ -63,9 +64,10 @@ func _on_use_button_pressed() -> void:
 	use_button.release_focus()
 
 func _on_equip_button_pressed() -> void:
-	if current_item != null and current_item is ItemEquipment:
-		Global.player.animation_manager.equip_anim = current_item.equip_anim
-		item_equipped.emit(current_iterator)
+	if Global.player.animation_manager.current_state != 3:
+		if current_item != null and current_item is ItemEquipment:
+			Global.player.animation_manager.equip_anim = current_item.equip_anim
+			item_equipped.emit(current_iterator)
 
 func _on_split_button_pressed() -> void:
 	if not Inventory.inventory_full:
@@ -81,12 +83,20 @@ func _on_split_button_pressed() -> void:
 		Global.set_debug_text("Inventory full, stack not split.")
 
 func _on_drop_button_pressed() -> void:
-	if not Inventory.cooldown:
+	if not Inventory.cooldown and Global.player.animation_manager.current_state != 3:
 		if current_item.quantity > 1:
 			Inventory.item_remove(current_item, current_iterator)
 			drop_button.release_focus()
 			Inventory.item_timer()
 		else:
+			if current_item is ItemEquipment:
+				if current_item.equip_anim == Global.player.animation_manager.equip_anim:
+					var current_slot: Panel = Inventory.inventory_ui.inventory_grid.get_child(current_iterator)
+					current_slot.self_modulate = Color.WHITE
+					if Global.player.animation_manager.current_state == 3:
+						Global.player.animation_manager.current_state = 0
+						await Global.player.animation_manager.animation_player.animation_finished
+					Global.player.animation_manager.equip_anim = ""
 			Inventory.item_remove(current_item, current_iterator)
 			current_item = null
 			Inventory.item_timer()

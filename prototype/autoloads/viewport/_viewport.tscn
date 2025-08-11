@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cehwxufi5rukr"]
 
 [ext_resource type="Script" uid="uid://wsca5vjdqj23" path="res://autoloads/viewport/_viewport.gd" id="1_7ijiq"]
-[ext_resource type="PackedScene" uid="uid://d3imks6wf5d0s" path="res://worldspace/worldspaces/worldspace_test_01.tscn" id="2_wj2rk"]
+[ext_resource type="PackedScene" uid="uid://d3imks6wf5d0s" path="res://worldspaces/worldspaces/worldspace_test_01.tscn" id="2_wj2rk"]
 [ext_resource type="Shader" uid="uid://bpii1hjbj5j3s" path="res://autoloads/viewport/_viewport_subpixel_camera.gdshader" id="3_7ipyg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sww6t"]

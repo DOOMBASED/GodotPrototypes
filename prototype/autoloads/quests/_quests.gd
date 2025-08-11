@@ -34,7 +34,7 @@ func quest_get_active() -> Array:
 func quest_check_items(item_id: String) -> bool:
 	if current_quest != null:
 		for objective: QuestResourceObjective in current_quest.objectives:
-			if objective.target_id == item_id and objective.target_type == objective.target_types["collection"] and not objective.is_completed:
+			if objective.target_id == item_id and objective.target_type == objective.TargetTypes["collection"] and not objective.is_completed:
 				return true
 	return false
 
@@ -87,7 +87,7 @@ func _quest_check_tracker(quest: QuestResource) -> void:
 		for objective: QuestResourceObjective in quest.objectives:
 			var label := Label.new()
 			label.text = objective.description
-			if objective.target_type == objective.target_types["collection"]:
+			if objective.target_type == objective.TargetTypes["collection"]:
 				label.text = str(objective.description, "(", str(objective.collected_quantity), "/", str(objective.required_quantity), ")")
 			if objective.is_completed:
 				label.add_theme_color_override("font_color", Color(0, 1, 0))

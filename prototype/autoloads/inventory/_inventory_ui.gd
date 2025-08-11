@@ -65,6 +65,7 @@ func _get_slot_target() -> Panel:
 	return null
 
 func _on_drag_start(dragged_slot: Panel) -> void:
+	dragged_slot.self_modulate = Color.WHITE
 	dragged_slot.init_position = dragged_slot.global_position
 	current_slot = dragged_slot
 	current_slot.z_index = 1
@@ -76,6 +77,10 @@ func _on_drag_release() -> void:
 			_slot_check(target_slot)
 		else:
 			_on_drag_end(current_slot, target_slot)
+	if current_slot.resource is ItemEquipment:
+		if current_slot.resource.equip_anim == Global.player.animation_manager.equip_anim:
+			current_slot.self_modulate = Color.GREEN
+			current_slot.quantity_label.text = "E"
 	current_slot.global_position = current_slot.init_position
 	current_slot.z_index = 0
 	current_slot = null
@@ -87,6 +92,18 @@ func _on_drag_end(slot_1: Panel, slot_2: Panel) -> void:
 	slot_2.z_index = 0
 	slot_1.global_position = slot_1.init_position
 	slot_2.global_position = slot_2.init_position
+	if slot_1.resource is ItemEquipment:
+		if slot_1.resource.equip_anim == Global.player.animation_manager.equip_anim:
+			slot_1.quantity_label.text = ""
+			slot_2.quantity_label.text = "E"
+			slot_1.self_modulate = Color.WHITE
+			slot_2.self_modulate = Color.GREEN
+		if slot_2.resource is ItemEquipment:
+			if slot_2.resource.equip_anim == Global.player.animation_manager.equip_anim:
+				slot_1.quantity_label.text = "E"
+				slot_2.quantity_label.text = ""
+				slot_1.self_modulate = Color.GREEN
+				slot_2.self_modulate = Color.WHITE
 	if slot_1_index == -1 or slot_2_index == -1:
 		return
 	else:
@@ -95,10 +112,10 @@ func _on_drag_end(slot_1: Panel, slot_2: Panel) -> void:
 
 func _on_item_added(item: ItemResource, iterator: int) -> void:
 	if item != null:
-		if item.maximum == 1:
-			inventory_grid.get_child(iterator).quantity_label.hide()
-		elif item.maximum > 1:
+		if item.maximum > 1:
 			inventory_grid.get_child(iterator).quantity_label.text = str(Inventory.inventory[iterator].quantity)
+		elif item.maximum == 1:
+			inventory_grid.get_child(iterator).quantity_label.text = ""
 
 func _on_inventory_updated() -> void:
 	if Inventory.inventory.size() > inventory_grid.get_child_count():
@@ -108,7 +125,8 @@ func _on_inventory_updated() -> void:
 			if Inventory.inventory[i] != null:
 				if i == slot.get_index():
 					slot.sprite.texture = Inventory.inventory[i].texture
-					slot.quantity_label.text = str(Inventory.inventory[i].quantity)
+					if slot.quantity_label.text != "" and  slot.quantity_label.text != "E":
+						slot.quantity_label.text = str(Inventory.inventory[i].quantity)
 					slot.resource = Inventory.inventory[i]
 			else:
 				if i == slot.get_index():

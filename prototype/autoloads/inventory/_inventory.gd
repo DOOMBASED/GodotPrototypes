@@ -12,7 +12,7 @@ var cooldown: bool
 var recent_pickup: bool = false
 var inventory_full: bool = false
 
-const item_scene: PackedScene = preload("res://item/item/item.tscn")
+const item_scene: PackedScene = preload("res://items/item/item.tscn")
 
 signal item_added(item: ItemResource, iterator: int)
 signal item_dropped(item: Item)

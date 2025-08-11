@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=2 format=3 uid="uid://ce3a1gfrc188o"]
+
+[ext_resource type="Script" uid="uid://bs5pfoarvuism" path="res://characters/character/character_resource.gd" id="1_ad1we"]
+
+[resource]
+script = ExtResource("1_ad1we")
+id = "npc_test_02"
+name = "Pink Girl"
+color_hex = "ff64ff"
+color = Color(1, 0.392157, 1, 1)
+metadata/_custom_type_script = "uid://bs5pfoarvuism"

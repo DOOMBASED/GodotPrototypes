@@ -1,3 +1,4 @@
+# animation_manager.gd
 extends Node
 
 @onready var character: Character = null

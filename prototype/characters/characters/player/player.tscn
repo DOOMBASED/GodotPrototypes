@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://ubj26actbhxg"]
+
+[ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://characters/character/character.tscn" id="1_tqfce"]
+[ext_resource type="Script" uid="uid://d34qsdvnwjw8h" path="res://characters/characters/player/player.gd" id="1_w1msd"]
+[ext_resource type="Resource" uid="uid://belhrkqbju3jx" path="res://characters/characters/player/player.tres" id="3_3nwe2"]
+[ext_resource type="PackedScene" uid="uid://dh0rusj76xdj0" path="res://components/movement/movement_manager.tscn" id="4_pl86n"]
+[ext_resource type="PackedScene" uid="uid://bn86dot07cvvk" path="res://components/input/input_manager.tscn" id="4_wtm62"]
+[ext_resource type="Texture2D" uid="uid://4ykv3c23arnp" path="res://characters/characters/player/player.png" id="6_4lert"]
+[ext_resource type="PackedScene" uid="uid://bi85xrljyyams" path="res://components/animation/animation_manager.tscn" id="6_twsev"]
+[ext_resource type="AnimationLibrary" uid="uid://cisf8ftdmh4yr" path="res://resources/animations/animations_human.res" id="7_h2ua1"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bdh0fnwt0lekf" path="res://resources/animations/animation_human_state_machine.tres" id="8_h2ua1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtbbx"]
+radius = 6.0
+height = 20.0
+
+[node name="Player" groups=["Player"] instance=ExtResource("1_tqfce")]
+collision_layer = 4
+collision_mask = 27
+script = ExtResource("1_w1msd")
+resource = ExtResource("3_3nwe2")
+
+[node name="InputManager" parent="." index="0" instance=ExtResource("4_wtm62")]
+
+[node name="MovementManager" parent="." index="1" instance=ExtResource("4_pl86n")]
+
+[node name="AnimationManager" parent="." index="2" instance=ExtResource("6_twsev")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationManager" index="0"]
+libraries = {
+&"animations_human": ExtResource("7_h2ua1")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationManager" index="1"]
+tree_root = ExtResource("8_h2ua1")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/ActionAxe/blend_position = Vector2(0, 0)
+parameters/ActionPickaxe/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Run/blend_position = Vector2(0, 0)
+parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="Collision" parent="." index="3"]
+position = Vector2(0.5, 1)
+shape = SubResource("CapsuleShape2D_jtbbx")
+
+[node name="Sprite" parent="." index="4"]
+texture = ExtResource("6_4lert")
+hframes = 12
+vframes = 22

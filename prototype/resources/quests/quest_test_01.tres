@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d35atbvkibbaw" path="res://autoloads/quests/_quest_resource_objective.gd" id="1_20hir"]
 [ext_resource type="Script" uid="uid://b6jqrdj0bdxd2" path="res://autoloads/quests/_quest_resource.gd" id="1_vqgeq"]
 [ext_resource type="Script" uid="uid://xvfokx3era3m" path="res://autoloads/quests/_quest_resource_reward.gd" id="2_a1s43"]
-[ext_resource type="Resource" uid="uid://bxyycrokd1wki" path="res://item/items/items_test/item_test_useable_01.tres" id="3_xnyo5"]
+[ext_resource type="Resource" uid="uid://bxyycrokd1wki" path="res://items/items/items_test/item_test_useable_01.tres" id="3_xnyo5"]
 
 [sub_resource type="Resource" id="Resource_w6ngp"]
 script = ExtResource("1_20hir")

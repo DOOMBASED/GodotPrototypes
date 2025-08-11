@@ -55,7 +55,7 @@ func _quest_set_objectives(quest: QuestResource) -> void:
 				if objective.collected_quantity < objective.required_quantity:
 					objective.collected_quantity = Inventory.inventory[i].quantity
 				Quests.quest_check_objectives(Inventory.inventory[i].id, 1, 0)
-		if objective.target_type == objective.target_types["collection"]:
+		if objective.target_type == objective.TargetTypes["collection"]:
 			if objective.collected_quantity > objective.required_quantity:
 				objective.collected_quantity = objective.required_quantity
 			label.text = str(objective.description, "(", str(objective.collected_quantity), "/", str(objective.required_quantity), ")")

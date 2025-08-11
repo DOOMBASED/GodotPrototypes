@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WorldspaceResource" load_steps=2 format=3 uid="uid://vqlxqt4lh0v4"]
+
+[ext_resource type="Script" uid="uid://clea4bchbcf61" path="res://worldspaces/worldspace/worldspace_resource.gd" id="1_uumqp"]
+
+[resource]
+script = ExtResource("1_uumqp")
+id = "worldspace_test_01"
+name = "WorldspaceTest01"
+metadata/_custom_type_script = "uid://clea4bchbcf61"

@@ -15,7 +15,7 @@ func complete_objective(objective_id: String, quantity: int = 1) -> void:
 			if i > 0:
 				if not objectives[i - 1].is_completed:
 					return
-			if objectives[i].target_type == objectives[i].target_types["collection"]:
+			if objectives[i].target_type == objectives[i].TargetTypes["collection"]:
 				objectives[i].collected_quantity += quantity
 				if objectives[i].collected_quantity >= objectives[i].required_quantity:
 					objectives[i].is_completed = true

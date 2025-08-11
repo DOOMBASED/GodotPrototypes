@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=2 format=3 uid="uid://c148ehjk6la0a"]
+
+[ext_resource type="Script" uid="uid://bs5pfoarvuism" path="res://characters/character/character_resource.gd" id="1_x8mg7"]
+
+[resource]
+script = ExtResource("1_x8mg7")
+id = "npc_test_01"
+name = "Orange Guy"
+color_hex = "ff6428"
+color = Color(1, 0.392157, 0.156863, 1)
+metadata/_custom_type_script = "uid://bs5pfoarvuism"
