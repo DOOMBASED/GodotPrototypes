@@ -9,5 +9,6 @@ script = ExtResource("1_7v4id")
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="InventoryUI" parent="Interface" instance=ExtResource("2_w84aj")]
+metadata/_edit_use_anchors_ = true
 
 [connection signal="inventory_updated" from="." to="Interface/InventoryUI" method="_on_inventory_updated"]

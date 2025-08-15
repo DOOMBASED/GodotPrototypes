@@ -1,11 +1,10 @@
-[gd_scene load_steps=67 format=3 uid="uid://d3imks6wf5d0s"]
+[gd_scene load_steps=124 format=3 uid="uid://d3imks6wf5d0s"]
 
 [ext_resource type="PackedScene" uid="uid://ba8h5aceaarer" path="res://worldspaces/worldspace/worldspace.tscn" id="1_uet8l"]
 [ext_resource type="PackedScene" uid="uid://ubj26actbhxg" path="res://characters/characters/player/player.tscn" id="2_5ph3w"]
 [ext_resource type="Resource" uid="uid://vqlxqt4lh0v4" path="res://worldspaces/worldspaces/worldspace_test_01.tres" id="2_wq1oj"]
 [ext_resource type="PackedScene" uid="uid://de8245v0vu2ka" path="res://tilemaps/tile_map_test_01.tscn" id="3_gc77g"]
 [ext_resource type="PackedScene" uid="uid://dw3bdqib6apgc" path="res://characters/characters/npcs/npc_test_01.tscn" id="3_rhh2s"]
-[ext_resource type="PackedScene" uid="uid://dwrlbriyysran" path="res://characters/characters/npcs/npc_test_02.tscn" id="4_nfay2"]
 [ext_resource type="Texture2D" uid="uid://bkopvlx6n26nb" path="res://items/items/potions/textures/potion_blue_01.png" id="6_gc77g"]
 [ext_resource type="PackedScene" uid="uid://cvbwpqpnljg4a" path="res://items/items/items_test/item_test_01.tscn" id="6_wq1oj"]
 [ext_resource type="Script" uid="uid://b6xt4cir80m7v" path="res://items/item/item_resource.gd" id="7_corho"]
@@ -17,7 +16,18 @@
 [ext_resource type="Texture2D" uid="uid://da8uxhecqbt35" path="res://items/items/potions/textures/potion_green_01.png" id="13_6sh32"]
 [ext_resource type="PackedScene" uid="uid://c420lteam4ktw" path="res://items/items/items_test/item_test_useable_02.tscn" id="13_gc77g"]
 [ext_resource type="PackedScene" uid="uid://o0grfqsry4j1" path="res://items/items/equipment/item_axe_01.tscn" id="14_fki0f"]
+[ext_resource type="Script" uid="uid://csnmkj7pgmfg2" path="res://items/item/classes/item_equipment.gd" id="15_44jdy"]
+[ext_resource type="Texture2D" uid="uid://cpvinm7duai3x" path="res://items/items/equipment/textures/item_axe_01.png" id="16_ild02"]
 [ext_resource type="PackedScene" uid="uid://b7wphx1phwg8i" path="res://items/items/equipment/item_pickaxe_01.tscn" id="17_g6d2y"]
+[ext_resource type="Texture2D" uid="uid://d1tbg04lnc1lu" path="res://items/items/equipment/textures/item_pickaxe_01.png" id="18_stq7t"]
+[ext_resource type="PackedScene" uid="uid://boy0b4hxgapxr" path="res://props/harvestables/harvestable_rock_01.tscn" id="22_onp00"]
+[ext_resource type="PackedScene" uid="uid://c40j7b02adn4q" path="res://props/harvestables/harvestable_tree_01.tscn" id="23_odmvc"]
+[ext_resource type="PackedScene" uid="uid://cgtq1mmtwuu34" path="res://items/items/materials/item_stone_01.tscn" id="23_yngfc"]
+[ext_resource type="Script" uid="uid://hfcml6sgwe01" path="res://items/item/classes/item_material.gd" id="24_pxa4t"]
+[ext_resource type="Texture2D" uid="uid://bo0n6a8t8om4m" path="res://items/items/materials/textures/material_stone_01.png" id="25_ysfsw"]
+[ext_resource type="PackedScene" uid="uid://dwrlbriyysran" path="res://characters/characters/npcs/npc_test_02.tscn" id="26_yngfc"]
+[ext_resource type="PackedScene" uid="uid://dvi1n1d64vmur" path="res://items/items/materials/item_wood_01.tscn" id="27_ljpwh"]
+[ext_resource type="Texture2D" uid="uid://bcdw6pb4w5kak" path="res://items/items/materials/textures/material_wood_01.png" id="28_baf65"]
 
 [sub_resource type="Resource" id="Resource_gvsxj"]
 resource_local_to_scene = true
@@ -187,6 +197,90 @@ quantity = 0
 quest = true
 metadata/_custom_type_script = "uid://b6xt4cir80m7v"
 
+[sub_resource type="Resource" id="Resource_0atj2"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("6_gc77g")
+id = "item_test_01"
+name = "ItemTest01"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_ge77w"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("6_gc77g")
+id = "item_test_01"
+name = "ItemTest01"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_cs62o"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("6_gc77g")
+id = "item_test_01"
+name = "ItemTest01"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_yewex"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("6_gc77g")
+id = "item_test_01"
+name = "ItemTest01"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_5ayt8"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("6_gc77g")
+id = "item_test_01"
+name = "ItemTest01"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_miypp"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("6_gc77g")
+id = "item_test_01"
+name = "ItemTest01"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
 [sub_resource type="Resource" id="Resource_6idlx"]
 resource_local_to_scene = true
 script = ExtResource("7_corho")
@@ -342,6 +436,90 @@ quest = true
 metadata/_custom_type_script = "uid://b6xt4cir80m7v"
 
 [sub_resource type="Resource" id="Resource_bpj6o"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("8_fki0f")
+id = "item_test_02"
+name = "ItemTest02"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_fuk8i"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("8_fki0f")
+id = "item_test_02"
+name = "ItemTest02"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_k5uns"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("8_fki0f")
+id = "item_test_02"
+name = "ItemTest02"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_6whgu"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("8_fki0f")
+id = "item_test_02"
+name = "ItemTest02"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_4dopd"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("8_fki0f")
+id = "item_test_02"
+name = "ItemTest02"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_au8wf"]
+resource_local_to_scene = true
+script = ExtResource("7_corho")
+texture = ExtResource("8_fki0f")
+id = "item_test_02"
+name = "ItemTest02"
+type = "Test"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = true
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_jd1pm"]
 resource_local_to_scene = true
 script = ExtResource("7_corho")
 texture = ExtResource("8_fki0f")
@@ -532,6 +710,102 @@ quest = false
 metadata/_custom_type_script = "uid://deo1was2s8qs1"
 
 [sub_resource type="Resource" id="Resource_c886p"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "Slot"
+magnitude = 1.0
+texture = ExtResource("11_qteno")
+id = "item_useable_test_01"
+name = "Slot+"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_yj1yi"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "Slot"
+magnitude = 1.0
+texture = ExtResource("11_qteno")
+id = "item_useable_test_01"
+name = "Slot+"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_bvk1f"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "Slot"
+magnitude = 1.0
+texture = ExtResource("11_qteno")
+id = "item_useable_test_01"
+name = "Slot+"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_lq3la"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "Slot"
+magnitude = 1.0
+texture = ExtResource("11_qteno")
+id = "item_useable_test_01"
+name = "Slot+"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_fbrf7"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "Slot"
+magnitude = 1.0
+texture = ExtResource("11_qteno")
+id = "item_useable_test_01"
+name = "Slot+"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_0tcvg"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "Slot"
+magnitude = 1.0
+texture = ExtResource("11_qteno")
+id = "item_useable_test_01"
+name = "Slot+"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_oxqtw"]
 resource_local_to_scene = true
 script = ExtResource("12_qteno")
 effect = "Slot"
@@ -739,215 +1013,854 @@ quantity = 0
 quest = false
 metadata/_custom_type_script = "uid://deo1was2s8qs1"
 
+[sub_resource type="Resource" id="Resource_5u4hq"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "UseableTest02"
+magnitude = 1.0
+texture = ExtResource("13_6sh32")
+id = "item_useable_test_02"
+name = "ItemUseableTest02"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_tv7sq"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "UseableTest02"
+magnitude = 1.0
+texture = ExtResource("13_6sh32")
+id = "item_useable_test_02"
+name = "ItemUseableTest02"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_uabt0"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "UseableTest02"
+magnitude = 1.0
+texture = ExtResource("13_6sh32")
+id = "item_useable_test_02"
+name = "ItemUseableTest02"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_lv815"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "UseableTest02"
+magnitude = 1.0
+texture = ExtResource("13_6sh32")
+id = "item_useable_test_02"
+name = "ItemUseableTest02"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_vn6ad"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "UseableTest02"
+magnitude = 1.0
+texture = ExtResource("13_6sh32")
+id = "item_useable_test_02"
+name = "ItemUseableTest02"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_igp3i"]
+resource_local_to_scene = true
+script = ExtResource("12_qteno")
+effect = "UseableTest02"
+magnitude = 1.0
+texture = ExtResource("13_6sh32")
+id = "item_useable_test_02"
+name = "ItemUseableTest02"
+type = "UseableTest"
+init = Vector2(0, 0)
+count = 1
+maximum = 5
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_yngfc"]
+resource_local_to_scene = true
+script = ExtResource("15_44jdy")
+equip_anim = "Axe"
+equip_effect = "Damage"
+equip_effect_magnitude = 2.0
+texture = ExtResource("16_ild02")
+id = "item_axe_01"
+name = "Axe"
+type = "Equipment"
+init = Vector2(0, 0)
+count = 1
+maximum = 1
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://csnmkj7pgmfg2"
+
+[sub_resource type="Resource" id="Resource_pxa4t"]
+resource_local_to_scene = true
+script = ExtResource("15_44jdy")
+equip_anim = "Pickaxe"
+equip_effect = "Damage"
+equip_effect_magnitude = 1.0
+texture = ExtResource("18_stq7t")
+id = "item_pickaxe_01"
+name = "Pickaxe"
+type = "Equipment"
+init = Vector2(0, 0)
+count = 1
+maximum = 1
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://csnmkj7pgmfg2"
+
+[sub_resource type="Resource" id="Resource_ygdhh"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Stone"
+material_tool_type = "Pickaxe"
+texture = ExtResource("25_ysfsw")
+id = "item_stone_01"
+name = "Stone"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_4wjy4"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Wood"
+material_tool_type = "Pickaxe"
+texture = ExtResource("28_baf65")
+id = "item_wood_01"
+name = "Wood"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_odmvc"]
+vertices = PackedVector2Array(212, 212, -212, 212, 65, 186, 90, 186, 34, 186, 171, -122, 149, -122, 59, -150, 93, -150, 171, -74, 149, -74, 59, -102, 93, -102, 177, 119, 146, 119, 65, 90, 90, 90, 177, 167, 146, 167, 65, 138, 90, 138, 171, -54, 212, -212, 171, -102, 171, -150, 171, -170, -212, -212, 149, -170, 59, -54, 59, -74, 93, -74, 93, -54, 90, 71, 65, 71, 34, 167, 146, 71, 146, 90, 121, 90, 121, 71, 146, 138, 121, 138, 121, 119, 90, 119, 34, 90, 146, 186, 121, 186, 121, 167, 90, 167, 34, 138, 149, -150, 115, -150, 115, -170, 93, -170, 149, -102, 115, -102, 115, -122, 93, -122, 115, -54, 115, -74, 149, -54, 37, -102, 37, -74, 177, 71, 177, 186, 177, 138, 37, -150, 59, -122, 65, 119, 65, 167, 34, 119, 59, -170, 37, -170, 37, -122, 37, -54, 34, 71, 177, 90)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(21, 9, 22, 0), PackedInt32Array(23, 22, 9), PackedInt32Array(22, 23, 5), PackedInt32Array(24, 22, 5), PackedInt32Array(22, 24, 25), PackedInt32Array(26, 22, 25, 27), PackedInt32Array(28, 29, 30, 31, 32, 33), PackedInt32Array(4, 1, 26, 34), PackedInt32Array(35, 36, 37, 38), PackedInt32Array(14, 39, 40, 41), PackedInt32Array(15, 14, 41), PackedInt32Array(15, 41, 42, 43), PackedInt32Array(18, 44, 45, 46), PackedInt32Array(19, 18, 46), PackedInt32Array(19, 46, 47, 48), PackedInt32Array(27, 49, 50, 51), PackedInt32Array(26, 27, 51), PackedInt32Array(26, 51, 52), PackedInt32Array(49, 24, 5), PackedInt32Array(6, 53, 54, 55), PackedInt32Array(7, 6, 55), PackedInt32Array(7, 55, 56), PackedInt32Array(53, 23, 9), PackedInt32Array(57, 58, 10, 59, 35, 38), PackedInt32Array(11, 10, 58), PackedInt32Array(11, 58, 30), PackedInt32Array(11, 30, 29, 60), PackedInt32Array(60, 29, 61, 26), PackedInt32Array(59, 21, 0, 62), PackedInt32Array(0, 63, 17), PackedInt32Array(64, 0, 17), PackedInt32Array(39, 64, 17), PackedInt32Array(50, 49, 5), PackedInt32Array(54, 53, 9), PackedInt32Array(65, 7, 56, 12, 66), PackedInt32Array(43, 42, 20, 67), PackedInt32Array(48, 47, 3, 68), PackedInt32Array(40, 39, 17), PackedInt32Array(44, 63, 0), PackedInt32Array(20, 40, 17), PackedInt32Array(20, 19, 67), PackedInt32Array(43, 67, 69), PackedInt32Array(8, 50, 5), PackedInt32Array(52, 8, 7, 70), PackedInt32Array(26, 52, 70), PackedInt32Array(26, 70, 71), PackedInt32Array(26, 71, 65), PackedInt32Array(12, 54, 9), PackedInt32Array(12, 11, 66), PackedInt32Array(65, 66, 72, 26), PackedInt32Array(26, 72, 60), PackedInt32Array(26, 61, 73, 74), PackedInt32Array(0, 64, 13), PackedInt32Array(75, 0, 13), PackedInt32Array(36, 75, 13), PackedInt32Array(37, 36, 13), PackedInt32Array(16, 37, 13), PackedInt32Array(32, 16, 15, 33), PackedInt32Array(45, 44, 0), PackedInt32Array(0, 75, 62), PackedInt32Array(59, 62, 35), PackedInt32Array(57, 38, 32, 31), PackedInt32Array(28, 33, 74, 73), PackedInt32Array(26, 74, 43), PackedInt32Array(26, 43, 69), PackedInt32Array(26, 69, 48), PackedInt32Array(34, 26, 48), PackedInt32Array(68, 34, 48), PackedInt32Array(2, 68, 3), PackedInt32Array(0, 3, 45)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-216, -216, 216, -216, 216, 216, -216, 216)])
+agent_radius = 4.0
+
+[sub_resource type="Resource" id="Resource_ysfsw"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Stone"
+material_tool_type = "Pickaxe"
+texture = ExtResource("25_ysfsw")
+id = "item_stone_01"
+name = "Stone"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_baf65"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Stone"
+material_tool_type = "Pickaxe"
+texture = ExtResource("25_ysfsw")
+id = "item_stone_01"
+name = "Stone"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_o74ck"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Stone"
+material_tool_type = "Pickaxe"
+texture = ExtResource("25_ysfsw")
+id = "item_stone_01"
+name = "Stone"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_poues"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Stone"
+material_tool_type = "Pickaxe"
+texture = ExtResource("25_ysfsw")
+id = "item_stone_01"
+name = "Stone"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_bjafk"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Stone"
+material_tool_type = "Pickaxe"
+texture = ExtResource("25_ysfsw")
+id = "item_stone_01"
+name = "Stone"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_rwtjc"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Stone"
+material_tool_type = "Pickaxe"
+texture = ExtResource("25_ysfsw")
+id = "item_stone_01"
+name = "Stone"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_2xo63"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Stone"
+material_tool_type = "Pickaxe"
+texture = ExtResource("25_ysfsw")
+id = "item_stone_01"
+name = "Stone"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_w5n6n"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Stone"
+material_tool_type = "Pickaxe"
+texture = ExtResource("25_ysfsw")
+id = "item_stone_01"
+name = "Stone"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_vgqnd"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Stone"
+material_tool_type = "Pickaxe"
+texture = ExtResource("25_ysfsw")
+id = "item_stone_01"
+name = "Stone"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_ljpwh"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Wood"
+material_tool_type = "Axe"
+texture = ExtResource("28_baf65")
+id = "item_wood_01"
+name = "Wood"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_kdeok"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Wood"
+material_tool_type = "Axe"
+texture = ExtResource("28_baf65")
+id = "item_wood_01"
+name = "Wood"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_g83ph"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Wood"
+material_tool_type = "Axe"
+texture = ExtResource("28_baf65")
+id = "item_wood_01"
+name = "Wood"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_ohj6u"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Wood"
+material_tool_type = "Axe"
+texture = ExtResource("28_baf65")
+id = "item_wood_01"
+name = "Wood"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_v1xty"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Wood"
+material_tool_type = "Axe"
+texture = ExtResource("28_baf65")
+id = "item_wood_01"
+name = "Wood"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_oehjd"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Wood"
+material_tool_type = "Axe"
+texture = ExtResource("28_baf65")
+id = "item_wood_01"
+name = "Wood"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_p54ex"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Wood"
+material_tool_type = "Axe"
+texture = ExtResource("28_baf65")
+id = "item_wood_01"
+name = "Wood"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_b6rpo"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Wood"
+material_tool_type = "Axe"
+texture = ExtResource("28_baf65")
+id = "item_wood_01"
+name = "Wood"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
+[sub_resource type="Resource" id="Resource_bn3h2"]
+resource_local_to_scene = true
+script = ExtResource("24_pxa4t")
+material_type = "Wood"
+material_tool_type = "Axe"
+texture = ExtResource("28_baf65")
+id = "item_wood_01"
+name = "Wood"
+type = "Material"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://hfcml6sgwe01"
+
 [node name="WorldspaceTest01" instance=ExtResource("1_uet8l")]
 resource = ExtResource("2_wq1oj")
 
 [node name="TileMapTest01" parent="." index="0" instance=ExtResource("3_gc77g")]
+metadata/_edit_lock_ = true
 
 [node name="Items" type="Node2D" parent="." index="1"]
 
 [node name="ItemTest0101" parent="Items" index="0" instance=ExtResource("6_wq1oj")]
-position = Vector2(-120, -32)
+position = Vector2(-120, -24)
 resource = SubResource("Resource_gvsxj")
 
 [node name="ItemTest0102" parent="Items" index="1" instance=ExtResource("6_wq1oj")]
-position = Vector2(-152, -32)
+position = Vector2(-152, -24)
 resource = SubResource("Resource_v1g80")
 
 [node name="ItemTest0103" parent="Items" index="2" instance=ExtResource("6_wq1oj")]
-position = Vector2(-184, -32)
+position = Vector2(-184, -24)
 resource = SubResource("Resource_uxqqo")
 
 [node name="ItemTest0104" parent="Items" index="3" instance=ExtResource("6_wq1oj")]
-position = Vector2(-120, -64)
+position = Vector2(-120, -56)
 resource = SubResource("Resource_g6d2y")
 
 [node name="ItemTest0105" parent="Items" index="4" instance=ExtResource("6_wq1oj")]
-position = Vector2(-152, -64)
+position = Vector2(-152, -56)
 resource = SubResource("Resource_fg0jr")
 
 [node name="ItemTest0106" parent="Items" index="5" instance=ExtResource("6_wq1oj")]
-position = Vector2(-184, -64)
+position = Vector2(-184, -56)
 resource = SubResource("Resource_6jvbi")
 
 [node name="ItemTest0107" parent="Items" index="6" instance=ExtResource("6_wq1oj")]
-position = Vector2(-120, -96)
+position = Vector2(-120, -88)
 resource = SubResource("Resource_cghf8")
 
 [node name="ItemTest0108" parent="Items" index="7" instance=ExtResource("6_wq1oj")]
-position = Vector2(-152, -96)
+position = Vector2(-152, -88)
 resource = SubResource("Resource_3t1a0")
 
 [node name="ItemTest0109" parent="Items" index="8" instance=ExtResource("6_wq1oj")]
-position = Vector2(-184, -96)
+position = Vector2(-184, -88)
 resource = SubResource("Resource_2ds5y")
 
 [node name="ItemTest0110" parent="Items" index="9" instance=ExtResource("6_wq1oj")]
-position = Vector2(-120, -128)
+position = Vector2(-120, -120)
 resource = SubResource("Resource_nwgj6")
 
 [node name="ItemTest0111" parent="Items" index="10" instance=ExtResource("6_wq1oj")]
-position = Vector2(-152, -128)
+position = Vector2(-152, -120)
 resource = SubResource("Resource_dfirn")
 
 [node name="ItemTest0112" parent="Items" index="11" instance=ExtResource("6_wq1oj")]
-position = Vector2(-184, -128)
+position = Vector2(-184, -120)
 resource = SubResource("Resource_mvm12")
 
-[node name="ItemTest0201" parent="Items" index="12" instance=ExtResource("7_kvn61")]
-position = Vector2(-88, -128)
+[node name="ItemTest0113" parent="Items" index="12" instance=ExtResource("6_wq1oj")]
+position = Vector2(-120, -152)
+resource = SubResource("Resource_0atj2")
+
+[node name="ItemTest0114" parent="Items" index="13" instance=ExtResource("6_wq1oj")]
+position = Vector2(-152, -152)
+resource = SubResource("Resource_ge77w")
+
+[node name="ItemTest0115" parent="Items" index="14" instance=ExtResource("6_wq1oj")]
+position = Vector2(-184, -152)
+resource = SubResource("Resource_cs62o")
+
+[node name="ItemTest0116" parent="Items" index="15" instance=ExtResource("6_wq1oj")]
+position = Vector2(-120, -184)
+resource = SubResource("Resource_yewex")
+
+[node name="ItemTest0117" parent="Items" index="16" instance=ExtResource("6_wq1oj")]
+position = Vector2(-152, -184)
+resource = SubResource("Resource_5ayt8")
+
+[node name="ItemTest0118" parent="Items" index="17" instance=ExtResource("6_wq1oj")]
+position = Vector2(-184, -184)
+resource = SubResource("Resource_miypp")
+
+[node name="ItemTest0201" parent="Items" index="18" instance=ExtResource("7_kvn61")]
+position = Vector2(-88, -184)
 resource = SubResource("Resource_6idlx")
 
-[node name="ItemTest0202" parent="Items" index="13" instance=ExtResource("7_kvn61")]
-position = Vector2(-56, -128)
+[node name="ItemTest0202" parent="Items" index="19" instance=ExtResource("7_kvn61")]
+position = Vector2(-56, -184)
 resource = SubResource("Resource_nb4ei")
 
-[node name="ItemTest0203" parent="Items" index="14" instance=ExtResource("7_kvn61")]
-position = Vector2(-24, -128)
+[node name="ItemTest0203" parent="Items" index="20" instance=ExtResource("7_kvn61")]
+position = Vector2(-24, -184)
 resource = SubResource("Resource_mx3yi")
 
-[node name="ItemTest0204" parent="Items" index="15" instance=ExtResource("7_kvn61")]
-position = Vector2(-88, -96)
+[node name="ItemTest0204" parent="Items" index="21" instance=ExtResource("7_kvn61")]
+position = Vector2(-88, -152)
 resource = SubResource("Resource_x8ejh")
 
-[node name="ItemTest0205" parent="Items" index="16" instance=ExtResource("7_kvn61")]
-position = Vector2(-56, -96)
+[node name="ItemTest0205" parent="Items" index="22" instance=ExtResource("7_kvn61")]
+position = Vector2(-56, -152)
 resource = SubResource("Resource_ti6un")
 
-[node name="ItemTest0206" parent="Items" index="17" instance=ExtResource("7_kvn61")]
-position = Vector2(-24, -96)
+[node name="ItemTest0206" parent="Items" index="23" instance=ExtResource("7_kvn61")]
+position = Vector2(-24, -152)
 resource = SubResource("Resource_ygxj3")
 
-[node name="ItemTest0207" parent="Items" index="18" instance=ExtResource("7_kvn61")]
-position = Vector2(-88, -64)
+[node name="ItemTest0207" parent="Items" index="24" instance=ExtResource("7_kvn61")]
+position = Vector2(-88, -120)
 resource = SubResource("Resource_xtnhi")
 
-[node name="ItemTest0208" parent="Items" index="19" instance=ExtResource("7_kvn61")]
-position = Vector2(-56, -64)
+[node name="ItemTest0208" parent="Items" index="25" instance=ExtResource("7_kvn61")]
+position = Vector2(-56, -120)
 resource = SubResource("Resource_j6xkt")
 
-[node name="ItemTest0209" parent="Items" index="20" instance=ExtResource("7_kvn61")]
-position = Vector2(-24, -64)
+[node name="ItemTest0209" parent="Items" index="26" instance=ExtResource("7_kvn61")]
+position = Vector2(-24, -120)
 resource = SubResource("Resource_pkf7a")
 
-[node name="ItemTest0210" parent="Items" index="21" instance=ExtResource("7_kvn61")]
-position = Vector2(-88, -32)
+[node name="ItemTest0210" parent="Items" index="27" instance=ExtResource("7_kvn61")]
+position = Vector2(-88, -88)
 resource = SubResource("Resource_ifpgl")
 
-[node name="ItemTest0211" parent="Items" index="22" instance=ExtResource("7_kvn61")]
-position = Vector2(-56, -32)
+[node name="ItemTest0211" parent="Items" index="28" instance=ExtResource("7_kvn61")]
+position = Vector2(-56, -88)
 resource = SubResource("Resource_bwh7x")
 
-[node name="ItemTest0212" parent="Items" index="23" instance=ExtResource("7_kvn61")]
-position = Vector2(-24, -32)
+[node name="ItemTest0212" parent="Items" index="29" instance=ExtResource("7_kvn61")]
+position = Vector2(-24, -88)
 resource = SubResource("Resource_bpj6o")
 
-[node name="ItemTestUseable0101" parent="Items" index="24" instance=ExtResource("10_3bh01")]
-position = Vector2(-120, 128)
+[node name="ItemTest0213" parent="Items" index="30" instance=ExtResource("7_kvn61")]
+position = Vector2(-88, -56)
+resource = SubResource("Resource_fuk8i")
+
+[node name="ItemTest0214" parent="Items" index="31" instance=ExtResource("7_kvn61")]
+position = Vector2(-56, -56)
+resource = SubResource("Resource_k5uns")
+
+[node name="ItemTest0215" parent="Items" index="32" instance=ExtResource("7_kvn61")]
+position = Vector2(-24, -56)
+resource = SubResource("Resource_6whgu")
+
+[node name="ItemTest0216" parent="Items" index="33" instance=ExtResource("7_kvn61")]
+position = Vector2(-88, -24)
+resource = SubResource("Resource_4dopd")
+
+[node name="ItemTest0217" parent="Items" index="34" instance=ExtResource("7_kvn61")]
+position = Vector2(-56, -24)
+resource = SubResource("Resource_au8wf")
+
+[node name="ItemTest0218" parent="Items" index="35" instance=ExtResource("7_kvn61")]
+position = Vector2(-24, -24)
+resource = SubResource("Resource_jd1pm")
+
+[node name="ItemTestUseable0101" parent="Items" index="36" instance=ExtResource("10_3bh01")]
+position = Vector2(-120, 184)
 resource = SubResource("Resource_b436b")
 
-[node name="ItemTestUseable0102" parent="Items" index="25" instance=ExtResource("10_3bh01")]
-position = Vector2(-152, 128)
+[node name="ItemTestUseable0102" parent="Items" index="37" instance=ExtResource("10_3bh01")]
+position = Vector2(-152, 184)
 resource = SubResource("Resource_t8bc2")
 
-[node name="ItemTestUseable0103" parent="Items" index="26" instance=ExtResource("10_3bh01")]
-position = Vector2(-184, 128)
+[node name="ItemTestUseable0103" parent="Items" index="38" instance=ExtResource("10_3bh01")]
+position = Vector2(-184, 184)
 resource = SubResource("Resource_0lbfs")
 
-[node name="ItemTestUseable0104" parent="Items" index="27" instance=ExtResource("10_3bh01")]
-position = Vector2(-120, 96)
+[node name="ItemTestUseable0104" parent="Items" index="39" instance=ExtResource("10_3bh01")]
+position = Vector2(-120, 152)
 resource = SubResource("Resource_cexy5")
 
-[node name="ItemTestUseable0105" parent="Items" index="28" instance=ExtResource("10_3bh01")]
-position = Vector2(-152, 96)
+[node name="ItemTestUseable0105" parent="Items" index="40" instance=ExtResource("10_3bh01")]
+position = Vector2(-152, 152)
 resource = SubResource("Resource_cyyun")
 
-[node name="ItemTestUseable0106" parent="Items" index="29" instance=ExtResource("10_3bh01")]
-position = Vector2(-184, 96)
+[node name="ItemTestUseable0106" parent="Items" index="41" instance=ExtResource("10_3bh01")]
+position = Vector2(-184, 152)
 resource = SubResource("Resource_4qeiw")
 
-[node name="ItemTestUseable0107" parent="Items" index="30" instance=ExtResource("10_3bh01")]
-position = Vector2(-120, 64)
+[node name="ItemTestUseable0107" parent="Items" index="42" instance=ExtResource("10_3bh01")]
+position = Vector2(-120, 120)
 resource = SubResource("Resource_perx4")
 
-[node name="ItemTestUseable0108" parent="Items" index="31" instance=ExtResource("10_3bh01")]
-position = Vector2(-152, 64)
+[node name="ItemTestUseable0108" parent="Items" index="43" instance=ExtResource("10_3bh01")]
+position = Vector2(-152, 120)
 resource = SubResource("Resource_31cf2")
 
-[node name="ItemTestUseable0109" parent="Items" index="32" instance=ExtResource("10_3bh01")]
-position = Vector2(-184, 64)
+[node name="ItemTestUseable0109" parent="Items" index="44" instance=ExtResource("10_3bh01")]
+position = Vector2(-184, 120)
 resource = SubResource("Resource_8a6u4")
 
-[node name="ItemTestUseable0110" parent="Items" index="33" instance=ExtResource("10_3bh01")]
-position = Vector2(-120, 32)
+[node name="ItemTestUseable0110" parent="Items" index="45" instance=ExtResource("10_3bh01")]
+position = Vector2(-120, 88)
 resource = SubResource("Resource_qudv8")
 
-[node name="ItemTestUseable0111" parent="Items" index="34" instance=ExtResource("10_3bh01")]
-position = Vector2(-152, 32)
+[node name="ItemTestUseable0111" parent="Items" index="46" instance=ExtResource("10_3bh01")]
+position = Vector2(-152, 88)
 resource = SubResource("Resource_0rvq0")
 
-[node name="ItemTestUseable0112" parent="Items" index="35" instance=ExtResource("10_3bh01")]
-position = Vector2(-184, 32)
+[node name="ItemTestUseable0112" parent="Items" index="47" instance=ExtResource("10_3bh01")]
+position = Vector2(-184, 88)
 resource = SubResource("Resource_c886p")
 
-[node name="ItemTestUseable0201" parent="Items" index="36" instance=ExtResource("13_gc77g")]
-position = Vector2(-88, 32)
+[node name="ItemTestUseable0113" parent="Items" index="48" instance=ExtResource("10_3bh01")]
+position = Vector2(-120, 56)
+resource = SubResource("Resource_yj1yi")
+
+[node name="ItemTestUseable0114" parent="Items" index="49" instance=ExtResource("10_3bh01")]
+position = Vector2(-152, 56)
+resource = SubResource("Resource_bvk1f")
+
+[node name="ItemTestUseable0115" parent="Items" index="50" instance=ExtResource("10_3bh01")]
+position = Vector2(-184, 56)
+resource = SubResource("Resource_lq3la")
+
+[node name="ItemTestUseable0116" parent="Items" index="51" instance=ExtResource("10_3bh01")]
+position = Vector2(-120, 24)
+resource = SubResource("Resource_fbrf7")
+
+[node name="ItemTestUseable0117" parent="Items" index="52" instance=ExtResource("10_3bh01")]
+position = Vector2(-152, 24)
+resource = SubResource("Resource_0tcvg")
+
+[node name="ItemTestUseable0118" parent="Items" index="53" instance=ExtResource("10_3bh01")]
+position = Vector2(-184, 24)
+resource = SubResource("Resource_oxqtw")
+
+[node name="ItemTestUseable0201" parent="Items" index="54" instance=ExtResource("13_gc77g")]
+position = Vector2(-88, 24)
 resource = SubResource("Resource_yhcni")
 
-[node name="ItemTestUseable0202" parent="Items" index="37" instance=ExtResource("13_gc77g")]
-position = Vector2(-56, 32)
+[node name="ItemTestUseable0202" parent="Items" index="55" instance=ExtResource("13_gc77g")]
+position = Vector2(-56, 24)
 resource = SubResource("Resource_3hjtv")
 
-[node name="ItemTestUseable0203" parent="Items" index="38" instance=ExtResource("13_gc77g")]
-position = Vector2(-24, 32)
+[node name="ItemTestUseable0203" parent="Items" index="56" instance=ExtResource("13_gc77g")]
+position = Vector2(-24, 24)
 resource = SubResource("Resource_ac0nd")
 
-[node name="ItemTestUseable0204" parent="Items" index="39" instance=ExtResource("13_gc77g")]
-position = Vector2(-88, 64)
+[node name="ItemTestUseable0204" parent="Items" index="57" instance=ExtResource("13_gc77g")]
+position = Vector2(-88, 56)
 resource = SubResource("Resource_xjdjl")
 
-[node name="ItemTestUseable0205" parent="Items" index="40" instance=ExtResource("13_gc77g")]
-position = Vector2(-56, 64)
+[node name="ItemTestUseable0205" parent="Items" index="58" instance=ExtResource("13_gc77g")]
+position = Vector2(-56, 56)
 resource = SubResource("Resource_xo54t")
 
-[node name="ItemTestUseable0206" parent="Items" index="41" instance=ExtResource("13_gc77g")]
-position = Vector2(-24, 64)
+[node name="ItemTestUseable0206" parent="Items" index="59" instance=ExtResource("13_gc77g")]
+position = Vector2(-24, 56)
 resource = SubResource("Resource_yp4yq")
 
-[node name="ItemTestUseable0207" parent="Items" index="42" instance=ExtResource("13_gc77g")]
-position = Vector2(-88, 96)
+[node name="ItemTestUseable0207" parent="Items" index="60" instance=ExtResource("13_gc77g")]
+position = Vector2(-88, 88)
 resource = SubResource("Resource_42ye7")
 
-[node name="ItemTestUseable0208" parent="Items" index="43" instance=ExtResource("13_gc77g")]
-position = Vector2(-56, 96)
+[node name="ItemTestUseable0208" parent="Items" index="61" instance=ExtResource("13_gc77g")]
+position = Vector2(-56, 88)
 resource = SubResource("Resource_ukslv")
 
-[node name="ItemTestUseable0209" parent="Items" index="44" instance=ExtResource("13_gc77g")]
-position = Vector2(-24, 96)
+[node name="ItemTestUseable0209" parent="Items" index="62" instance=ExtResource("13_gc77g")]
+position = Vector2(-24, 88)
 resource = SubResource("Resource_qfdqm")
 
-[node name="ItemTestUseable0210" parent="Items" index="45" instance=ExtResource("13_gc77g")]
-position = Vector2(-88, 128)
+[node name="ItemTestUseable0210" parent="Items" index="63" instance=ExtResource("13_gc77g")]
+position = Vector2(-88, 120)
 resource = SubResource("Resource_co64l")
 
-[node name="ItemTestUseable0211" parent="Items" index="46" instance=ExtResource("13_gc77g")]
-position = Vector2(-56, 128)
+[node name="ItemTestUseable0211" parent="Items" index="64" instance=ExtResource("13_gc77g")]
+position = Vector2(-56, 120)
 resource = SubResource("Resource_hx7tu")
 
-[node name="ItemTestUseable0212" parent="Items" index="47" instance=ExtResource("13_gc77g")]
-position = Vector2(-24, 128)
+[node name="ItemTestUseable0212" parent="Items" index="65" instance=ExtResource("13_gc77g")]
+position = Vector2(-24, 120)
 resource = SubResource("Resource_3dex0")
 
-[node name="ItemAxe01" parent="Items" index="48" instance=ExtResource("14_fki0f")]
-position = Vector2(32, -32)
+[node name="ItemTestUseable0213" parent="Items" index="66" instance=ExtResource("13_gc77g")]
+position = Vector2(-88, 152)
+resource = SubResource("Resource_5u4hq")
 
-[node name="ItemPickaxe01" parent="Items" index="49" instance=ExtResource("17_g6d2y")]
+[node name="ItemTestUseable0214" parent="Items" index="67" instance=ExtResource("13_gc77g")]
+position = Vector2(-56, 152)
+resource = SubResource("Resource_tv7sq")
+
+[node name="ItemTestUseable0215" parent="Items" index="68" instance=ExtResource("13_gc77g")]
+position = Vector2(-24, 152)
+resource = SubResource("Resource_uabt0")
+
+[node name="ItemTestUseable0216" parent="Items" index="69" instance=ExtResource("13_gc77g")]
+position = Vector2(-88, 184)
+resource = SubResource("Resource_lv815")
+
+[node name="ItemTestUseable0217" parent="Items" index="70" instance=ExtResource("13_gc77g")]
+position = Vector2(-56, 184)
+resource = SubResource("Resource_vn6ad")
+
+[node name="ItemTestUseable0218" parent="Items" index="71" instance=ExtResource("13_gc77g")]
+position = Vector2(-24, 184)
+resource = SubResource("Resource_igp3i")
+
+[node name="ItemAxe01" parent="Items" index="72" instance=ExtResource("14_fki0f")]
+position = Vector2(32, -32)
+resource = SubResource("Resource_yngfc")
+
+[node name="ItemPickaxe01" parent="Items" index="73" instance=ExtResource("17_g6d2y")]
 position = Vector2(32, 32)
+resource = SubResource("Resource_pxa4t")
+
+[node name="ItemStone01" parent="Items" index="74" instance=ExtResource("23_yngfc")]
+position = Vector2(64, 32)
+resource = SubResource("Resource_ygdhh")
+
+[node name="ItemWood01" parent="Items" index="75" instance=ExtResource("27_ljpwh")]
+position = Vector2(64, -32)
+resource = SubResource("Resource_4wjy4")
 
 [node name="Player" parent="." index="2" instance=ExtResource("2_5ph3w")]
 
 [node name="NPCTest01" parent="." index="3" instance=ExtResource("3_rhh2s")]
-position = Vector2(88, -64)
+position = Vector2(104, -32)
 
-[node name="NPCTest02" parent="." index="4" instance=ExtResource("4_nfay2")]
-position = Vector2(88, 64)
+[node name="NPCTest02" parent="." index="4" instance=ExtResource("26_yngfc")]
+position = Vector2(104, 32)
+
+[node name="NavigationRegion" type="NavigationRegion2D" parent="." index="6"]
+navigation_polygon = SubResource("NavigationPolygon_odmvc")
+metadata/_edit_lock_ = true
+
+[node name="HarvestableRock01_01" parent="NavigationRegion" index="0" instance=ExtResource("22_onp00")]
+position = Vector2(48, 72)
+resource = SubResource("Resource_ysfsw")
+
+[node name="HarvestableRock01_02" parent="NavigationRegion" index="1" instance=ExtResource("22_onp00")]
+position = Vector2(48, 120)
+resource = SubResource("Resource_baf65")
+
+[node name="HarvestableRock01_03" parent="NavigationRegion" index="2" instance=ExtResource("22_onp00")]
+position = Vector2(48, 168)
+resource = SubResource("Resource_o74ck")
+
+[node name="HarvestableRock01_04" parent="NavigationRegion" index="3" instance=ExtResource("22_onp00")]
+position = Vector2(104, 72)
+resource = SubResource("Resource_poues")
+
+[node name="HarvestableRock01_05" parent="NavigationRegion" index="4" instance=ExtResource("22_onp00")]
+position = Vector2(104, 120)
+resource = SubResource("Resource_bjafk")
+
+[node name="HarvestableRock01_06" parent="NavigationRegion" index="5" instance=ExtResource("22_onp00")]
+position = Vector2(104, 168)
+resource = SubResource("Resource_rwtjc")
+
+[node name="HarvestableRock01_07" parent="NavigationRegion" index="6" instance=ExtResource("22_onp00")]
+position = Vector2(160, 72)
+resource = SubResource("Resource_2xo63")
+
+[node name="HarvestableRock01_08" parent="NavigationRegion" index="7" instance=ExtResource("22_onp00")]
+position = Vector2(160, 120)
+resource = SubResource("Resource_w5n6n")
+
+[node name="HarvestableRock01_09" parent="NavigationRegion" index="8" instance=ExtResource("22_onp00")]
+position = Vector2(160, 168)
+resource = SubResource("Resource_vgqnd")
+
+[node name="HarvestableTree01_01" parent="NavigationRegion" index="9" instance=ExtResource("23_odmvc")]
+position = Vector2(48, -80)
+resource = SubResource("Resource_ljpwh")
+
+[node name="HarvestableTree01_02" parent="NavigationRegion" index="10" instance=ExtResource("23_odmvc")]
+position = Vector2(48, -128)
+resource = SubResource("Resource_kdeok")
+
+[node name="HarvestableTree01_03" parent="NavigationRegion" index="11" instance=ExtResource("23_odmvc")]
+position = Vector2(48, -176)
+resource = SubResource("Resource_g83ph")
+
+[node name="HarvestableTree01_04" parent="NavigationRegion" index="12" instance=ExtResource("23_odmvc")]
+position = Vector2(104, -176)
+resource = SubResource("Resource_ohj6u")
+
+[node name="HarvestableTree01_05" parent="NavigationRegion" index="13" instance=ExtResource("23_odmvc")]
+position = Vector2(104, -128)
+resource = SubResource("Resource_v1xty")
+
+[node name="HarvestableTree01_06" parent="NavigationRegion" index="14" instance=ExtResource("23_odmvc")]
+position = Vector2(104, -80)
+resource = SubResource("Resource_oehjd")
+
+[node name="HarvestableTree01_07" parent="NavigationRegion" index="15" instance=ExtResource("23_odmvc")]
+position = Vector2(160, -80)
+resource = SubResource("Resource_p54ex")
+
+[node name="HarvestableTree01_08" parent="NavigationRegion" index="16" instance=ExtResource("23_odmvc")]
+position = Vector2(160, -128)
+resource = SubResource("Resource_b6rpo")
+
+[node name="HarvestableTree01_09" parent="NavigationRegion" index="17" instance=ExtResource("23_odmvc")]
+position = Vector2(160, -176)
+resource = SubResource("Resource_bn3h2")

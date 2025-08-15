@@ -9,3 +9,4 @@ script = ExtResource("1_vhke2")
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="QuestUI" parent="Interface" instance=ExtResource("2_7sm0l")]
+metadata/_edit_use_anchors_ = true

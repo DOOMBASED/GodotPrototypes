@@ -14,20 +14,24 @@ var moving: bool = false
 func _ready() -> void:
 	if character == null and get_parent() is Character:
 		character = get_parent()
-	last_position = character.position
+	last_position = character.global_position
 
-func move(direction: Vector2) -> void:
+func move(delta: float, direction: Vector2) -> void:
 	if character == null:
 		return
 	if direction:
 		moving = true
-		direction = direction.round()
-		facing = direction.round()
-		character.position = character.position.round()
+		direction = direction.normalized()
+		facing = direction.normalized()
 		velocity = direction * speed
-	if last_position.distance_to(character.position) == 0:
-		moving = false
+		if character.has_node("NavigationManager"):
+			character.global_position.lerp(character.navigation_manager.next_position.round(), 0.5 * delta).normalized()
+		else:
+			character.global_position = character.global_position.round()
 	if character.animation_manager.current_state != 3:
-		last_position = character.position
+		last_position = character.global_position
 		character.velocity = velocity
 		character.move_and_slide()
+	if last_position.distance_to(character.global_position) < 0.6:
+		moving = false
+		velocity = Vector2.ZERO

@@ -14,7 +14,7 @@ var current_quest: QuestResource = null
 
 func _ready() -> void:
 	_quest_list_clear()
-	Inventory.connect("item_added", _on_item_added)
+	Inventory.item_added.connect(_on_item_added)
 	Quests.quest_updated.connect(_on_quest_updated)
 
 func _unhandled_input(event: InputEvent) -> void:

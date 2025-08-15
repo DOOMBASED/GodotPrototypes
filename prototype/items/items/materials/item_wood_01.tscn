@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvi1n1d64vmur"]
+
+[ext_resource type="PackedScene" uid="uid://dc83rlggq7rri" path="res://items/item/item.tscn" id="1_ay5g4"]
+[ext_resource type="Texture2D" uid="uid://bcdw6pb4w5kak" path="res://items/items/materials/textures/material_wood_01.png" id="2_2q2ji"]
+[ext_resource type="Resource" uid="uid://cu420vc6kkdyr" path="res://items/items/materials/item_wood_01.tres" id="2_5a0tn"]
+
+[node name="ItemWood01" instance=ExtResource("1_ay5g4")]
+resource = ExtResource("2_5a0tn")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_2q2ji")

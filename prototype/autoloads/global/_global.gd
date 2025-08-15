@@ -6,6 +6,8 @@ var viewport: SubViewportContainer = null
 var worldspace: Worldspace = null
 var player: Player = null
 
+signal worldspace_set
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("time_slow"):
@@ -18,16 +20,18 @@ func set_viewport(current_viewport: SubViewportContainer) -> void:
 
 func set_worldspace(current_worldspace: Worldspace) -> void:
 	worldspace = current_worldspace
+	worldspace_set.emit()
 
 func set_player(player_instance: Player) -> void:
 	player = player_instance
 
 func set_debug_text(new_text: String) -> void:
-	global_ui.debug_label.text = str("DEBUG: ", new_text)
-	global_ui.debug_label.self_modulate = Color.RED
-	await get_tree().create_timer(PI).timeout
-	global_ui.debug_label.self_modulate = Color.WHITE
-	global_ui.debug_label.text = "DEBUG: "
+	if global_ui.debug_label.text == "DEBUG: ":
+		global_ui.debug_label.text = str("DEBUG: ", new_text)
+		global_ui.debug_label.self_modulate = Color.RED
+		await get_tree().create_timer(PI).timeout
+		global_ui.debug_label.self_modulate = Color.WHITE
+		global_ui.debug_label.text = "DEBUG: "
 
 func _set_time_slow() -> void:
 	if Engine.time_scale == 1.0:

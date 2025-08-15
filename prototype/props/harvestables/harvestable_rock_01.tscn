@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://boy0b4hxgapxr"]
+
+[ext_resource type="PackedScene" uid="uid://cmc3kd0qqcrpr" path="res://props/harvestable/harvestable.tscn" id="1_f8kgy"]
+[ext_resource type="Texture2D" uid="uid://cdj6xjp0enma7" path="res://props/harvestables/textures/rocks_01.png" id="2_cskqs"]
+[ext_resource type="Resource" uid="uid://cxwnohnce3ov" path="res://items/items/materials/item_stone_01.tres" id="2_i4hsw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4hsw"]
+size = Vector2(23, 11)
+
+[node name="HarvestableRock01" instance=ExtResource("1_f8kgy")]
+z_index = -4095
+resource = ExtResource("2_i4hsw")
+resource_min_amount = 5
+resource_max_amount = 10
+
+[node name="Collision" parent="." index="0"]
+position = Vector2(1.5, 8.5)
+shape = SubResource("RectangleShape2D_i4hsw")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_cskqs")
+hframes = 4

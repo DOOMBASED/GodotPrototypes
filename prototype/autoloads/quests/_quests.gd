@@ -31,10 +31,10 @@ func quest_get_active() -> Array:
 			active_quests.append(quest)
 	return active_quests
 
-func quest_check_items(item_id: String) -> bool:
+func quest_check_items(id: String) -> bool:
 	if current_quest != null:
 		for objective: QuestResourceObjective in current_quest.objectives:
-			if objective.target_id == item_id and objective.target_type == objective.TargetTypes["collection"] and not objective.is_completed:
+			if objective.target_id == id and objective.target_type == objective.TargetTypes["collection"] and not objective.is_completed:
 				return true
 	return false
 

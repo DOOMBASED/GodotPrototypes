@@ -4,13 +4,15 @@ extends Control
 @onready var menu: PanelContainer = $InventoryUIMenu
 @onready var inventory: PanelContainer = $Inventory
 @onready var inventory_grid: GridContainer = $Inventory/MarginContainer/VBoxContainer/InventoryGrid
+@onready var inventory_ui_hotbar: PanelContainer = $InventoryUIHotbar
+
 var current_slot: Panel = null
 
 const slot_scene: PackedScene = preload("res://autoloads/inventory/_inventory_ui_slot.tscn")
 
 func _ready() -> void:
 	Inventory.set_ui(self)
-	Inventory.connect("item_added", _on_item_added)
+	Inventory.item_added.connect(_on_item_added)
 	for i: int in Inventory.inventory_size:
 		_slot_new(str(Inventory.inventory.size()))
 	_inventory_toggle()
@@ -23,7 +25,7 @@ func _process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if Input.is_action_just_pressed("show_inventory"):
+		if not Input.is_key_pressed(KEY_SHIFT) and Input.is_action_just_pressed("show_inventory"):
 			_inventory_toggle()
 
 func _inventory_toggle() -> void:
@@ -95,27 +97,27 @@ func _on_drag_end(slot_1: Panel, slot_2: Panel) -> void:
 	if slot_1.resource is ItemEquipment:
 		if slot_1.resource.equip_anim == Global.player.animation_manager.equip_anim:
 			slot_1.quantity_label.text = ""
-			slot_2.quantity_label.text = "E"
 			slot_1.self_modulate = Color.WHITE
-			slot_2.self_modulate = Color.GREEN
+			if slot_2.resource is ItemEquipment:
+				slot_2.quantity_label.text = "E"
+				slot_2.self_modulate = Color.GREEN
 		if slot_2.resource is ItemEquipment:
 			if slot_2.resource.equip_anim == Global.player.animation_manager.equip_anim:
-				slot_1.quantity_label.text = "E"
 				slot_2.quantity_label.text = ""
-				slot_1.self_modulate = Color.GREEN
 				slot_2.self_modulate = Color.WHITE
+				if slot_1.resource is ItemEquipment:
+					slot_1.quantity_label.text = "E"
+					slot_1.self_modulate = Color.GREEN
 	if slot_1_index == -1 or slot_2_index == -1:
 		return
 	else:
-		if Inventory.item_swap(slot_1_index, slot_2_index):
+		if Inventory.item_swap(Inventory.inventory, slot_1_index, slot_2_index):
 			_on_inventory_updated()
 
 func _on_item_added(item: ItemResource, iterator: int) -> void:
 	if item != null:
-		if item.maximum > 1:
+		if item is not ItemEquipment:
 			inventory_grid.get_child(iterator).quantity_label.text = str(Inventory.inventory[iterator].quantity)
-		elif item.maximum == 1:
-			inventory_grid.get_child(iterator).quantity_label.text = ""
 
 func _on_inventory_updated() -> void:
 	if Inventory.inventory.size() > inventory_grid.get_child_count():
@@ -125,8 +127,17 @@ func _on_inventory_updated() -> void:
 			if Inventory.inventory[i] != null:
 				if i == slot.get_index():
 					slot.sprite.texture = Inventory.inventory[i].texture
-					if slot.quantity_label.text != "" and  slot.quantity_label.text != "E":
-						slot.quantity_label.text = str(Inventory.inventory[i].quantity)
+					if slot.resource != null:
+						if slot.resource is not ItemEquipment:
+							slot.quantity_label.text = str(slot.resource.quantity)
+							slot.self_modulate = Color.WHITE
+						else:
+							if slot.resource.equip_anim == Global.player.animation_manager.equip_anim:
+								slot.quantity_label.text = "E"
+								slot.self_modulate = Color.GREEN
+							else:
+								slot.quantity_label.text = ""
+								slot.self_modulate = Color.WHITE
 					slot.resource = Inventory.inventory[i]
 			else:
 				if i == slot.get_index():

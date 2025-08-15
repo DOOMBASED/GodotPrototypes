@@ -44,7 +44,7 @@ type = ExtResource("6_xmhsq")
 amount = 2
 metadata/_custom_type_script = "uid://x8giocmgdxfo"
 
-[sub_resource type="Resource" id="Resource_o7m6m"]
+[sub_resource type="Resource" id="Resource_g8skd"]
 resource_local_to_scene = true
 script = ExtResource("3_jk2qn")
 id = "quest_test_01"
@@ -80,7 +80,7 @@ type = ExtResource("6_xmhsq")
 amount = 1
 metadata/_custom_type_script = "uid://dk6ick82r7vsf"
 
-[sub_resource type="Resource" id="Resource_xmhsq"]
+[sub_resource type="Resource" id="Resource_vaeiv"]
 resource_local_to_scene = true
 script = ExtResource("3_jk2qn")
 id = "quest_test_03"
@@ -94,9 +94,10 @@ rewards = Array[ExtResource("5_o7m6m")]([SubResource("Resource_1ralu")])
 [node name="NPCTest01" instance=ExtResource("1_ks3jg")]
 resource = ExtResource("2_4iqtv")
 
-[node name="DialogueManager" parent="." index="0"]
-quests = Array[ExtResource("3_jk2qn")]([SubResource("Resource_o7m6m"), SubResource("Resource_xmhsq")])
+[node name="DialogueManager" parent="." index="2"]
+quests = Array[ExtResource("3_jk2qn")]([SubResource("Resource_g8skd"), SubResource("Resource_vaeiv")])
 dialogue_file_path = "res://resources/dialogues/dialogue_test.json"
 
-[node name="Sprite" parent="." index="4"]
+[node name="Sprite" parent="." index="7"]
 texture = ExtResource("7_o7m6m")
+frame = 0

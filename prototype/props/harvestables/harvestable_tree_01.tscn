@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c40j7b02adn4q"]
+
+[ext_resource type="PackedScene" uid="uid://cmc3kd0qqcrpr" path="res://props/harvestable/harvestable.tscn" id="1_jcdri"]
+[ext_resource type="Resource" uid="uid://cu420vc6kkdyr" path="res://items/items/materials/item_wood_01.tres" id="2_glkmk"]
+[ext_resource type="Texture2D" uid="uid://c5fhbqosoo7yc" path="res://props/harvestables/textures/tree_01.png" id="2_uto5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_glkmk"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glkmk"]
+size = Vector2(14, 12)
+
+[node name="HarvestableTree01" instance=ExtResource("1_jcdri")]
+z_index = -4095
+resource = ExtResource("2_glkmk")
+resource_min_amount = 5
+resource_max_amount = 10
+
+[node name="ModulateArea" type="Area2D" parent="." index="0"]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ModulateArea" index="0"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_glkmk")
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_glkmk")
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource("2_uto5u")
+hframes = 4
+vframes = 8
+frame = 4
+
+[connection signal="body_entered" from="ModulateArea" to="." method="_on_modulate_area_body_entered"]
+[connection signal="body_exited" from="ModulateArea" to="." method="_on_modulate_area_body_exited"]

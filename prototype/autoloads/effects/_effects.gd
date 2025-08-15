@@ -3,14 +3,15 @@ extends Node
 
 var should_use: bool = false
 
-func item_effect(item: ItemResource, slot_index) -> void:
+func item_effect(item: ItemResource) -> void:
 	if item is ItemUseable:
+		should_use = false
 		match item.effect:
 			"Slot":
 				if Inventory.inventory.size() >= Inventory.inventory_max:
 					_item_not_used("Already at max Slots")
 				else:
-					_item_used(item, slot_index)
+					_item_used(item, item.slot)
 					_add_slots(item.magnitude)
 			_:
 				Global.set_debug_text("This item has no effect")

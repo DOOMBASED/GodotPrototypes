@@ -1,15 +1,15 @@
 # worldspace.gd
 class_name Worldspace extends Node2D
 
-
 @export var resource: WorldspaceResource
+@onready var navigation_region: NavigationRegion2D = $NavigationRegion
 @onready var items: Node2D = $Items
 var world_items: Array[Item]
 
 func _ready() -> void:
 	Global.set_worldspace(self)
-	Inventory.connect("item_added", _on_item_added)
-	Inventory.connect("item_dropped", _on_item_dropped)
+	Inventory.item_added.connect(_on_item_added)
+	Inventory.item_dropped.connect(_on_item_dropped)
 	_get_world_items()
 
 func _get_world_items() -> void:

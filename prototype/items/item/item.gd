@@ -2,6 +2,7 @@
 class_name Item extends Area2D
 
 @export var resource: ItemResource
+@onready var collision: CollisionShape2D = $Collision
 @onready var sprite: Sprite2D = $Sprite
 var player_in_range: bool = false
 

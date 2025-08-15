@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgtq1mmtwuu34"]
+
+[ext_resource type="PackedScene" uid="uid://dc83rlggq7rri" path="res://items/item/item.tscn" id="1_fx02c"]
+[ext_resource type="Texture2D" uid="uid://bo0n6a8t8om4m" path="res://items/items/materials/textures/material_stone_01.png" id="2_03nag"]
+[ext_resource type="Resource" uid="uid://cxwnohnce3ov" path="res://items/items/materials/item_stone_01.tres" id="2_nqnit"]
+
+[node name="ItemStone01" instance=ExtResource("1_fx02c")]
+resource = ExtResource("2_nqnit")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_03nag")

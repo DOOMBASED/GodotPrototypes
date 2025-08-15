@@ -83,13 +83,15 @@ animation = &"animations_human/run_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_r6w5g"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_1fuik")
-blend_point_0/pos = Vector2(0, 1)
+blend_point_0/pos = Vector2(0, 1.1)
 blend_point_1/node = SubResource("AnimationNodeAnimation_tf3pr")
-blend_point_1/pos = Vector2(0, -1)
+blend_point_1/pos = Vector2(0, -1.1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_1wcx3")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_e6d8s")
 blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ogs70"]
@@ -106,13 +108,15 @@ animation = &"animations_human/walk_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_j2llw"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_ogs70")
-blend_point_0/pos = Vector2(0, 1)
+blend_point_0/pos = Vector2(0, 1.1)
 blend_point_1/node = SubResource("AnimationNodeAnimation_xc7ek")
-blend_point_1/pos = Vector2(0, -1)
+blend_point_1/pos = Vector2(0, -1.1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_vbsoe")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_a6oy1")
 blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xc7ek"]
@@ -216,4 +220,4 @@ states/Start/position = Vector2(201, 100)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_j2llw")
 states/Walk/position = Vector2(469, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_xc7ek"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_r6w5g"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_j2llw"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_klsy1"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_fcd10"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_ogs70"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_vbsoe"), "Idle", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_a6oy1"), "ActionAxe", "Idle", SubResource("AnimationNodeStateMachineTransition_1fuik"), "Run", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_tf3pr"), "Walk", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_1wcx3"), "ActionAxe", "Walk", SubResource("AnimationNodeStateMachineTransition_e6d8s"), "ActionAxe", "Run", SubResource("AnimationNodeStateMachineTransition_h8fy8"), "Idle", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_df6lw"), "ActionPickaxe", "Idle", SubResource("AnimationNodeStateMachineTransition_pa0f5"), "ActionPickaxe", "Run", SubResource("AnimationNodeStateMachineTransition_xkhob"), "Run", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_e0jlf"), "Walk", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_t5dfg"), "ActionPickaxe", "Walk", SubResource("AnimationNodeStateMachineTransition_3lyhp")]
-graph_offset = Vector2(-147, -166)
+graph_offset = Vector2(-164, -8)

@@ -24,7 +24,7 @@ type = ExtResource("6_ftla0")
 amount = 1
 metadata/_custom_type_script = "uid://dk6ick82r7vsf"
 
-[sub_resource type="Resource" id="Resource_ga5qr"]
+[sub_resource type="Resource" id="Resource_oosgj"]
 resource_local_to_scene = true
 script = ExtResource("3_itre4")
 id = "quest_test_02"
@@ -38,10 +38,10 @@ rewards = Array[ExtResource("5_ga5qr")]([SubResource("Resource_6ymca")])
 [node name="NPCTest02" instance=ExtResource("1_rcfsu")]
 resource = ExtResource("2_n7n0q")
 
-[node name="DialogueManager" parent="." index="0"]
-quests = Array[ExtResource("3_itre4")]([SubResource("Resource_ga5qr")])
+[node name="DialogueManager" parent="." index="2"]
+quests = Array[ExtResource("3_itre4")]([SubResource("Resource_oosgj")])
 dialogue_file_path = "res://resources/dialogues/dialogue_test.json"
 
-[node name="Sprite" parent="." index="4"]
+[node name="Sprite" parent="." index="7"]
 texture = ExtResource("7_ga5qr")
-frame = 1
+frame = 0

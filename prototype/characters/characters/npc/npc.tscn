@@ -1,26 +1,35 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0eg54howxvnp"]
+[gd_scene load_steps=14 format=3 uid="uid://d0eg54howxvnp"]
 
 [ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://characters/character/character.tscn" id="1_68cpq"]
 [ext_resource type="Script" uid="uid://du8j6tr1ua2ap" path="res://characters/characters/npc/npc.gd" id="2_d78lq"]
 [ext_resource type="PackedScene" uid="uid://b7yl1u5jkdrp" path="res://components/dialogue/dialogue_manager.tscn" id="3_jfpsb"]
+[ext_resource type="PackedScene" uid="uid://bhuq1o1ww2n3n" path="res://components/navigation/navigation_manager.tscn" id="4_4x0iw"]
+[ext_resource type="PackedScene" uid="uid://dh0rusj76xdj0" path="res://components/movement/movement_manager.tscn" id="4_6l25c"]
 [ext_resource type="PackedScene" uid="uid://bi85xrljyyams" path="res://components/animation/animation_manager.tscn" id="4_a3fbc"]
 [ext_resource type="Texture2D" uid="uid://cjif376cx2aoj" path="res://characters/characters/npc/npc.png" id="4_ljv8k"]
 [ext_resource type="AnimationLibrary" uid="uid://cisf8ftdmh4yr" path="res://resources/animations/animations_human.res" id="5_1sat4"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bdh0fnwt0lekf" path="res://resources/animations/animation_human_state_machine.tres" id="6_1sat4"]
+[ext_resource type="Script" uid="uid://mhjw5u6cfc10" path="res://components/weapon/weapon_manager.gd" id="7_5ji7b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rthyg"]
-radius = 6.0
-height = 20.0
+radius = 4.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6tk1"]
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jfpsb"]
 radius = 24.0
 
 [node name="NPC" instance=ExtResource("1_68cpq")]
 collision_layer = 8
-collision_mask = 5
+collision_mask = 37
+wall_min_slide_angle = 0.0
 script = ExtResource("2_d78lq")
 
-[node name="DialogueManager" parent="." index="0" instance=ExtResource("3_jfpsb")]
+[node name="Collision" parent="." index="0"]
+position = Vector2(0.5, 6)
+shape = SubResource("CapsuleShape2D_rthyg")
 
 [node name="AnimationManager" parent="." index="1" instance=ExtResource("4_a3fbc")]
 
@@ -28,7 +37,6 @@ script = ExtResource("2_d78lq")
 libraries = {
 &"animations_human": ExtResource("5_1sat4")
 }
-autoplay = "animations_human/RESET"
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationManager" index="1"]
 tree_root = ExtResource("6_1sat4")
@@ -40,21 +48,37 @@ parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
-[node name="Collision" parent="." index="2"]
-position = Vector2(0.5, 1)
-shape = SubResource("CapsuleShape2D_rthyg")
+[node name="DialogueManager" parent="." index="2" instance=ExtResource("3_jfpsb")]
 
-[node name="InteractArea" type="Area2D" parent="." index="3"]
+[node name="MovementManager" parent="." index="3" instance=ExtResource("4_6l25c")]
+walk_speed = 60.0
+run_speed = 90.0
+
+[node name="NavigationManager" parent="." index="4" instance=ExtResource("4_4x0iw")]
+
+[node name="WeaponManager" type="Node2D" parent="." index="5"]
+script = ExtResource("7_5ji7b")
+
+[node name="Weapon" type="Area2D" parent="WeaponManager" index="0"]
+collision_layer = 0
+collision_mask = 32
+
+[node name="Collision" type="CollisionShape2D" parent="WeaponManager/Weapon" index="0"]
+position = Vector2(0.5, 0)
+shape = SubResource("CircleShape2D_x6tk1")
+
+[node name="InteractArea" type="Area2D" parent="." index="6"]
 collision_layer = 0
 collision_mask = 4
 
 [node name="Collision" type="CollisionShape2D" parent="InteractArea" index="0"]
 shape = SubResource("CircleShape2D_jfpsb")
 
-[node name="Sprite" parent="." index="4"]
+[node name="Sprite" parent="." index="7"]
 texture = ExtResource("4_ljv8k")
 hframes = 12
 vframes = 22
 
+[connection signal="body_entered" from="WeaponManager/Weapon" to="WeaponManager" method="_on_weapon_body_entered"]
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

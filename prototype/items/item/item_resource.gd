@@ -9,5 +9,6 @@ class_name ItemResource extends Resource
 @export var count: int = 1
 @export var maximum: int = 999
 @export var quantity: int
+var slot: int = -1
 @export var quest: bool = false
-const speed: int = 300
+const speed: int = 240

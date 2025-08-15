@@ -39,13 +39,11 @@ func dialogue_ui_show(npc: NPC, text: String, options: Dictionary) -> void:
 	await get_tree().create_timer(visible_characters_duration + 0.5).timeout
 	dialogue_typing = false
 	if options.keys().size() == 0 and not dialogue_typing:
-		_dialogue_timeout(visible_characters_duration)
+		_dialogue_timeout()
 
 func dialogue_ui_hide() -> void:
 	name_label.text = "NAME"
 	dialogue_label.text = "DIALOGUE"
-	for child: Button in dialogue_options.get_children():
-		dialogue_options.remove_child(child)
 	dialogue.hide()
 
 func _dialogue_init(npc: NPC, text: String) -> void:
@@ -76,13 +74,13 @@ func _dialogue_check_input() -> void:
 				break
 
 func _dialogue_type(char_count: float, typing_duration: float) -> void:
-	var visible_characters_tween = create_tween()
+	var visible_characters_tween: Tween = create_tween()
 	visible_characters_tween.tween_property(dialogue_label, "visible_characters", char_count, typing_duration)
 	dialogue_typing = true
 
-func _dialogue_timeout(duration: float) -> void:
+func _dialogue_timeout() -> void:
 		dialogue_timeout = true
-		await get_tree().create_timer(duration + 3.0).timeout
+		await get_tree().create_timer(3.0).timeout
 		dialogue_ui_hide()
 		dialogue_timeout = false
 

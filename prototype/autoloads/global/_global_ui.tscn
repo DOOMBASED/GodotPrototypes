@@ -23,4 +23,4 @@ layout_mode = 2
 [node name="DebugLabel" type="Label" parent="Global/MarginContainer"]
 custom_minimum_size = Vector2(1270, 16)
 layout_mode = 2
-text = "DEBUG:"
+text = "DEBUG: "

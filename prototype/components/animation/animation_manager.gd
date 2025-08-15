@@ -19,20 +19,23 @@ func _process(_delta: float) -> void:
 		if character.has_node("MovementManager"):
 			if character.movement_manager.moving:
 				current_state = AnimationState.WALK
-				animation_tree.set("parameters/Walk/blend_position", character.movement_manager.velocity.normalized())
+				if character.has_node("NavagationManager"):
+					animation_tree["parameters/Walk/blend_position"] = character.navigation_manager.direction
+				else:
+					animation_tree["parameters/Walk/blend_position"] = character.movement_manager.velocity.normalized()
 				if character.has_node("InputManager"):
 					if character.input_manager.run:
 						current_state = AnimationState.RUN
-						animation_tree.set("parameters/Run/blend_position", character.movement_manager.velocity.normalized())
+						animation_tree["parameters/Run/blend_position"] = character.movement_manager.velocity.normalized()
 			else:
 				current_state = AnimationState.IDLE
-				animation_tree.set("parameters/Idle/blend_position", character.movement_manager.facing.normalized())
+				animation_tree["parameters/Idle/blend_position"] = character.movement_manager.facing.normalized()
 
 func action_start() -> void:
 	current_state = AnimationState.ACTION
-	animation_tree.set(str("parameters/Action", equip_anim,"/blend_position"), character.movement_manager.facing.normalized())
+	animation_tree[str("parameters/Action", equip_anim,"/blend_position")] = character.movement_manager.facing.normalized()
 
 func action_finished() -> void:
 	if not Input.is_action_pressed("action"):
 		current_state = AnimationState.IDLE
-		animation_tree.set("parameters/Idle/blend_position", character.movement_manager.facing.normalized())
+		animation_tree["parameters/Idle/blend_position"] = character.movement_manager.facing.normalized()

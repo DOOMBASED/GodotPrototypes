@@ -33,6 +33,11 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 6
 
+[node name="AssignButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "ASSIGN"
+
 [node name="UseButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
 layout_mode = 2
 mouse_filter = 1
@@ -54,6 +59,7 @@ mouse_filter = 1
 text = "DROP"
 
 [connection signal="mouse_exited" from="." to="." method="_on_menu_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/AssignButton" to="." method="_on_assign_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/UseButton" to="." method="_on_use_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/EquipButton" to="." method="_on_equip_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/SplitButton" to="." method="_on_split_button_pressed"]

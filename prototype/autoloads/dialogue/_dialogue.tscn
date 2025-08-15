@@ -9,3 +9,4 @@ script = ExtResource("1_y415f")
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="DialogueUI" parent="Interface" instance=ExtResource("2_k46fp")]
+metadata/_edit_use_anchors_ = true

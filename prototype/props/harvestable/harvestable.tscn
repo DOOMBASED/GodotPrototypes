@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmc3kd0qqcrpr"]
+
+[ext_resource type="Script" uid="uid://bdxcvv52vpcp8" path="res://props/harvestable/harvestable.gd" id="1_i2inm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eu18t"]
+radius = 16.0
+
+[node name="Harvestable" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 12
+script = ExtResource("1_i2inm")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eu18t")
+
+[node name="Sprite" type="Sprite2D" parent="."]

@@ -14,16 +14,17 @@ mouse_filter = 2
 script = ExtResource("1_42peo")
 
 [node name="Dialogue" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(506, 58)
+custom_minimum_size = Vector2(512, 58)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -253.0
-offset_top = -58.0
-offset_right = 253.0
+offset_left = -256.0
+offset_top = -164.0
+offset_right = 256.0
+offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 0
 
