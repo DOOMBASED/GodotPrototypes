@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bowepi7duuto1"]
+
+[ext_resource type="PackedScene" uid="uid://dc83rlggq7rri" path="res://items/item/item.tscn" id="1_cuvba"]
+[ext_resource type="Resource" uid="uid://by5d6bq8jr6tn" path="res://items/items/potions/item_potion_magic_01.tres" id="2_2we5x"]
+[ext_resource type="Texture2D" uid="uid://bkopvlx6n26nb" path="res://items/items/potions/_textures/potion_blue_01.png" id="3_sy823"]
+
+[node name="ItemPotionMagic01" instance=ExtResource("1_cuvba")]
+resource = ExtResource("2_2we5x")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("3_sy823")

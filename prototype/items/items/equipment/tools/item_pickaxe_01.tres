@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemEquipment" load_steps=3 format=3 uid="uid://dyqacn6kumtu6"]
+
+[ext_resource type="Script" uid="uid://csnmkj7pgmfg2" path="res://items/item/classes/item_equipment.gd" id="1_c66eo"]
+[ext_resource type="Texture2D" uid="uid://d1tbg04lnc1lu" path="res://items/items/equipment/tools/_textures/tool_pickaxe_01.png" id="2_c66eo"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_c66eo")
+equip_anim = "Pickaxe"
+equip_effect = "Damage"
+equip_effect_magnitude = 1.0
+texture = ExtResource("2_c66eo")
+id = "item_pickaxe_01"
+name = "Pickaxe"
+type = "Tool - Mining"
+init = Vector2(0, 0)
+count = 1
+maximum = 1
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://csnmkj7pgmfg2"

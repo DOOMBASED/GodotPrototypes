@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemEquipment" load_steps=3 format=3 uid="uid://ouqsgddenjq8"]
+
+[ext_resource type="Script" uid="uid://csnmkj7pgmfg2" path="res://items/item/classes/item_equipment.gd" id="1_caf0e"]
+[ext_resource type="Texture2D" uid="uid://cr81ddirauuy3" path="res://items/items/equipment/weapons/_textures/weapon_bow_01.png" id="2_m7hw3"]
+
+[resource]
+script = ExtResource("1_caf0e")
+equip_anim = "Bow"
+equip_effect = "Damage"
+equip_effect_magnitude = 3.0
+texture = ExtResource("2_m7hw3")
+id = "item_bow_01"
+name = "Wooden Bow"
+type = "Weapon - Ranged"
+init = Vector2(0, 0)
+count = 1
+maximum = 1
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://csnmkj7pgmfg2"

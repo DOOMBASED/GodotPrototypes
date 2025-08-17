@@ -3,7 +3,7 @@ extends PanelContainer
 
 @onready var hotbar_container: HBoxContainer = $MarginContainer/HotbarContainer
 
-var current_slot: Panel = null
+var current_slot: InventorySlot = null
 
 func _ready() -> void:
 	Inventory.set_hotbar(self)
@@ -22,7 +22,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if Input.is_key_pressed(KEY_SHIFT) and Input.is_action_just_pressed("show_inventory"):
 			_hotbar_toggle()
-		if visible:
+		if visible and not Dialogue.dialogue_ui.dialogue.visible and Global.player.animation_manager.current_state != AnimationManager.AnimationState.ACTION:
 			for i in range(Inventory.hotbar_size):
 					if Input.is_action_just_pressed(str(i + 1)):
 						_hotbar_use_item(i)
@@ -62,13 +62,13 @@ func _hotbar_equip_item(item: ItemResource) -> void:
 		Inventory.item_cooldown_timer()
 
 func _slot_new(new_name: String) -> void:
-	var new_slot: Panel = Inventory.inventory_ui.slot_scene.instantiate()
+	var new_slot: InventorySlot = Inventory.inventory_ui.slot_scene.instantiate()
 	new_slot.drag_start.connect(_on_drag_start)
 	new_slot.drag_release.connect(_on_drag_release)
 	hotbar_container.add_child(new_slot)
 	new_slot.name = new_name
 
-func _slot_check(target_slot: Panel) -> void:
+func _slot_check(target_slot: InventorySlot) -> void:
 	var current_slot_index: int = _get_slot_index(current_slot)
 	if current_slot.resource.id == target_slot.resource.id:
 		if target_slot.resource.quantity != target_slot.resource.maximum:
@@ -81,29 +81,29 @@ func _slot_check(target_slot: Panel) -> void:
 				Inventory.item_remove(current_slot.resource, current_slot_index)
 	_on_drag_end(current_slot, target_slot)
 
-func _get_slot_index(slot: Panel) -> int:
+func _get_slot_index(slot: InventorySlot) -> int:
 	for i: int in range(hotbar_container.get_child_count()):
 		if hotbar_container.get_child(i) == slot:
 			return i
 	return -1
 
-func _get_slot_target() -> Panel:
+func _get_slot_target() -> InventorySlot:
 	var mouse_position: Vector2 = get_global_mouse_position()
-	for slot: Panel in hotbar_container.get_children():
+	for slot: InventorySlot in hotbar_container.get_children():
 		var slot_rect := Rect2(slot.global_position, slot.size)
 		if slot_rect.has_point(mouse_position) and slot != current_slot:
 			slot.init_position = slot.global_position
 			return slot
 	return null
 
-func _on_drag_start(dragged_slot: Panel) -> void:
+func _on_drag_start(dragged_slot: InventorySlot) -> void:
 	dragged_slot.self_modulate = Color.WHITE
 	dragged_slot.init_position = dragged_slot.global_position
 	current_slot = dragged_slot
 	current_slot.z_index = 1
 
 func _on_drag_release() -> void:
-	var target_slot: Panel = _get_slot_target()
+	var target_slot: InventorySlot = _get_slot_target()
 	if target_slot and current_slot != target_slot:
 		if current_slot.resource != null and target_slot.resource != null:
 			_slot_check(target_slot)
@@ -117,7 +117,7 @@ func _on_drag_release() -> void:
 	current_slot.z_index = 0
 	current_slot = null
 
-func _on_drag_end(slot_1: Panel, slot_2: Panel) -> void:
+func _on_drag_end(slot_1: InventorySlot, slot_2: InventorySlot) -> void:
 	var slot_1_index: int = _get_slot_index(slot_1)
 	var slot_2_index: int = _get_slot_index(slot_2)
 	slot_1.z_index = 0
@@ -148,7 +148,7 @@ func _on_hotbar_updated() -> void:
 	if Inventory.hotbar_inventory.size() > hotbar_container.get_child_count():
 		_slot_new(str(Inventory.hotbar_inventory.size() - 1))
 	for i: int in range(Inventory.hotbar_inventory.size()):
-		for slot: Panel in hotbar_container.get_children():
+		for slot: InventorySlot in hotbar_container.get_children():
 			if Inventory.hotbar_inventory[i] != null:
 				if i == slot.get_index():
 					slot.sprite.texture = Inventory.hotbar_inventory[i].texture

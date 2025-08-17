@@ -1,5 +1,5 @@
 # _inventory_ui_slot.gd
-extends Panel
+class_name InventorySlot extends Panel
 
 var resource: ItemResource = null
 @onready var sprite: Sprite2D = $MarginContainer/CenterContainer/Sprite
@@ -7,7 +7,7 @@ var resource: ItemResource = null
 var init_position := Vector2.ZERO
 var assigned: bool = false
 
-signal drag_start(slot: Panel)
+signal drag_start(slot: InventorySlot)
 signal drag_release
 
 func _ready() -> void:

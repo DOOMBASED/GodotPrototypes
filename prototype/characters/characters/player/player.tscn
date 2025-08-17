@@ -1,45 +1,54 @@
-[gd_scene load_steps=15 format=3 uid="uid://ubj26actbhxg"]
+[gd_scene load_steps=16 format=3 uid="uid://ubj26actbhxg"]
 
 [ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://characters/character/character.tscn" id="1_tqfce"]
 [ext_resource type="Script" uid="uid://d34qsdvnwjw8h" path="res://characters/characters/player/player.gd" id="1_w1msd"]
 [ext_resource type="Resource" uid="uid://belhrkqbju3jx" path="res://characters/characters/player/player.tres" id="3_3nwe2"]
-[ext_resource type="PackedScene" uid="uid://dh0rusj76xdj0" path="res://components/movement/movement_manager.tscn" id="4_pl86n"]
-[ext_resource type="PackedScene" uid="uid://bn86dot07cvvk" path="res://components/input/input_manager.tscn" id="4_wtm62"]
+[ext_resource type="PackedScene" uid="uid://dh0rusj76xdj0" path="res://managers/movement/movement_manager.tscn" id="4_pl86n"]
+[ext_resource type="PackedScene" uid="uid://bn86dot07cvvk" path="res://managers/input/input_manager.tscn" id="4_wtm62"]
 [ext_resource type="Texture2D" uid="uid://4ykv3c23arnp" path="res://characters/characters/player/player.png" id="6_4lert"]
-[ext_resource type="PackedScene" uid="uid://bi85xrljyyams" path="res://components/animation/animation_manager.tscn" id="6_twsev"]
+[ext_resource type="PackedScene" uid="uid://bi85xrljyyams" path="res://managers/animation/animation_manager.tscn" id="6_twsev"]
 [ext_resource type="AnimationLibrary" uid="uid://cisf8ftdmh4yr" path="res://resources/animations/animations_human.res" id="7_h2ua1"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bdh0fnwt0lekf" path="res://resources/animations/animation_human_state_machine.tres" id="8_h2ua1"]
-[ext_resource type="Script" uid="uid://mhjw5u6cfc10" path="res://components/weapon/weapon_manager.gd" id="9_grl8r"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtbbx"]
-radius = 4.0
-height = 10.0
+[ext_resource type="Script" uid="uid://mhjw5u6cfc10" path="res://managers/weapon/weapon_manager.gd" id="9_grl8r"]
+[ext_resource type="PackedScene" uid="uid://dmhjqbrfbr5mx" path="res://managers/stats/stats_manager.tscn" id="9_u6xi3"]
 
 [sub_resource type="Animation" id="Animation_grl8r"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../WeaponManager/Weapon/Collision:disabled")
+tracks/0/path = NodePath("../WeaponManager/ProjectileOrigin:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true]
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../WeaponManager/Weapon:position")
+tracks/1/path = NodePath("../WeaponManager/Weapon/WeaponCollision:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../WeaponManager/Weapon/WeaponCollision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0.5, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ubcm"]
@@ -50,17 +59,17 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6tk1"]
 radius = 4.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtbbx"]
+radius = 5.5
+height = 11.0
+
 [node name="Player" groups=["Player"] instance=ExtResource("1_tqfce")]
 collision_layer = 4
-collision_mask = 59
+collision_mask = 123
 script = ExtResource("1_w1msd")
 resource = ExtResource("3_3nwe2")
 
-[node name="Collision" parent="." index="0"]
-position = Vector2(0.5, 6)
-shape = SubResource("CapsuleShape2D_jtbbx")
-
-[node name="AnimationManager" parent="." index="1" instance=ExtResource("6_twsev")]
+[node name="AnimationManager" parent="." index="0" instance=ExtResource("6_twsev")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationManager" index="0"]
 libraries = {
@@ -73,14 +82,17 @@ tree_root = ExtResource("8_h2ua1")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/ActionAxe/blend_position = Vector2(0, 0)
+parameters/ActionBow/blend_position = Vector2(0, 0)
 parameters/ActionPickaxe/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
-[node name="InputManager" parent="." index="2" instance=ExtResource("4_wtm62")]
+[node name="InputManager" parent="." index="1" instance=ExtResource("4_wtm62")]
 
-[node name="MovementManager" parent="." index="3" instance=ExtResource("4_pl86n")]
+[node name="MovementManager" parent="." index="2" instance=ExtResource("4_pl86n")]
+
+[node name="StatsManager" parent="." index="3" instance=ExtResource("9_u6xi3")]
 
 [node name="WeaponManager" type="Node2D" parent="." index="4"]
 script = ExtResource("9_grl8r")
@@ -89,17 +101,22 @@ script = ExtResource("9_grl8r")
 collision_layer = 0
 collision_mask = 32
 
-[node name="Collision" type="CollisionShape2D" parent="WeaponManager/Weapon" index="0"]
-y_sort_enabled = true
+[node name="WeaponCollision" type="CollisionShape2D" parent="WeaponManager/Weapon" index="0"]
 position = Vector2(0.5, 0)
 shape = SubResource("CircleShape2D_x6tk1")
 disabled = true
 
-[node name="Sprite" parent="." index="5"]
+[node name="ProjectileOrigin" type="Marker2D" parent="WeaponManager" index="1"]
+
+[node name="Collision" parent="." index="5"]
+position = Vector2(0.5, 6)
+shape = SubResource("CapsuleShape2D_jtbbx")
+
+[node name="Sprite" parent="." index="6"]
 y_sort_enabled = true
 texture = ExtResource("6_4lert")
 hframes = 12
 vframes = 22
-frame = 3
+frame = 54
 
 [connection signal="body_entered" from="WeaponManager/Weapon" to="WeaponManager" method="_on_weapon_body_entered"]

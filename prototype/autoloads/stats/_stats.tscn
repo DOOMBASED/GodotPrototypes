@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmj5y5dmv1qdl"]
+
+[ext_resource type="Script" uid="uid://tbdt42v4fmap" path="res://autoloads/stats/_stats.gd" id="1_eqg84"]
+[ext_resource type="PackedScene" uid="uid://68baroii34et" path="res://autoloads/stats/_stats_ui.tscn" id="2_efm0e"]
+
+[node name="Stats" type="Node"]
+script = ExtResource("1_eqg84")
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="StatsUI" parent="Interface" instance=ExtResource("2_efm0e")]

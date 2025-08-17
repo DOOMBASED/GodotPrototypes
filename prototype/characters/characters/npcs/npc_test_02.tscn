@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://b6jqrdj0bdxd2" path="res://autoloads/quests/_quest_resource.gd" id="3_itre4"]
 [ext_resource type="Script" uid="uid://d35atbvkibbaw" path="res://autoloads/quests/_quest_resource_objective.gd" id="4_4738l"]
 [ext_resource type="Script" uid="uid://xvfokx3era3m" path="res://autoloads/quests/_quest_resource_reward.gd" id="5_ga5qr"]
-[ext_resource type="Resource" uid="uid://bxyycrokd1wki" path="res://items/items/items_test/item_test_useable_01.tres" id="6_ftla0"]
 [ext_resource type="Texture2D" uid="uid://c7f5xvx3iv80v" path="res://characters/characters/npcs/npc_test_02.png" id="7_ga5qr"]
+[ext_resource type="Resource" uid="uid://bhp4crbuakegm" path="res://items/items/equipment/weapons/item_arrow_01.tres" id="7_oosgj"]
 
 [sub_resource type="Resource" id="Resource_4hbbq"]
 script = ExtResource("4_4738l")
@@ -20,8 +20,8 @@ metadata/_custom_type_script = "uid://dqdmxcap5f4pi"
 
 [sub_resource type="Resource" id="Resource_6ymca"]
 script = ExtResource("5_ga5qr")
-type = ExtResource("6_ftla0")
-amount = 1
+type = ExtResource("7_oosgj")
+amount = 50
 metadata/_custom_type_script = "uid://dk6ick82r7vsf"
 
 [sub_resource type="Resource" id="Resource_oosgj"]
@@ -38,10 +38,10 @@ rewards = Array[ExtResource("5_ga5qr")]([SubResource("Resource_6ymca")])
 [node name="NPCTest02" instance=ExtResource("1_rcfsu")]
 resource = ExtResource("2_n7n0q")
 
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("7_ga5qr")
+frame = 0
+
 [node name="DialogueManager" parent="." index="2"]
 quests = Array[ExtResource("3_itre4")]([SubResource("Resource_oosgj")])
 dialogue_file_path = "res://resources/dialogues/dialogue_test.json"
-
-[node name="Sprite" parent="." index="7"]
-texture = ExtResource("7_ga5qr")
-frame = 0

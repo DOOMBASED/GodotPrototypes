@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="ItemMaterial" load_steps=3 format=3 uid="uid://cxwnohnce3ov"]
 
 [ext_resource type="Script" uid="uid://hfcml6sgwe01" path="res://items/item/classes/item_material.gd" id="1_o805f"]
-[ext_resource type="Texture2D" uid="uid://bo0n6a8t8om4m" path="res://items/items/materials/textures/material_stone_01.png" id="2_lv5ay"]
+[ext_resource type="Texture2D" uid="uid://bo0n6a8t8om4m" path="res://items/items/materials/_textures/material_stone_01.png" id="2_lv5ay"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_o805f")
 material_type = "Stone"
 material_tool_type = "Pickaxe"
+material_exp_multiplier = 5.0
 texture = ExtResource("2_lv5ay")
 id = "item_stone_01"
 name = "Stone"

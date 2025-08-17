@@ -6,6 +6,7 @@ var viewport: SubViewportContainer = null
 var worldspace: Worldspace = null
 var player: Player = null
 
+signal player_set
 signal worldspace_set
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -24,6 +25,7 @@ func set_worldspace(current_worldspace: Worldspace) -> void:
 
 func set_player(player_instance: Player) -> void:
 	player = player_instance
+	player_set.emit()
 
 func set_debug_text(new_text: String) -> void:
 	if global_ui.debug_label.text == "DEBUG: ":

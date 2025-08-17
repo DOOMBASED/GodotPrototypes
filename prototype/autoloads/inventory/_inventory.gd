@@ -118,7 +118,7 @@ func item_remove(item: ItemResource, slot_index: int) -> bool:
 		if Effects.should_use:
 			Effects.should_use = false
 			return true
-		if item.quantity >= 0:
+		if item is not ItemProjectile and item.quantity >= 0:
 			item_drop(item)
 		return true
 	if Inventory.inventory_ui.menu.visible:
@@ -132,6 +132,22 @@ func item_remove_from_hotbar(id: String) -> bool:
 			inventory_updated.emit()
 			return true
 	return false
+
+func item_get_count(item: ItemResource) -> int:
+	var count: int = 0
+	for i in range(inventory.size()):
+		if inventory[i] != null:
+			if inventory[i].id == item.id:
+				count = inventory[i].quantity
+	return count
+
+func item_get_index(item: ItemResource) -> int:
+	var index: int = -1
+	for i in range(inventory.size()):
+		if inventory[i] != null:
+			if inventory[i].id == item.id:
+				index = inventory[i].slot
+	return index
 
 func item_cooldown_timer() -> void:
 	cooldown = true

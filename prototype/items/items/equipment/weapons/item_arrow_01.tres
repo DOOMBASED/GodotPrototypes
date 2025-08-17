@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemProjectile" load_steps=3 format=3 uid="uid://bhp4crbuakegm"]
+
+[ext_resource type="Script" uid="uid://cnbsgt5bm575n" path="res://items/item/classes/item_projectile.gd" id="1_nfp5d"]
+[ext_resource type="Texture2D" uid="uid://deufkpg2e8qpv" path="res://items/items/equipment/weapons/_textures/weapon_bow_arrow_01.png" id="3_6f07i"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_nfp5d")
+projectile_damage = 2.0
+projectile_speed = 180.0
+projectile_range = 180.0
+is_spell = false
+recoverable = true
+texture = ExtResource("3_6f07i")
+id = "item_arrow_01"
+name = "Wooden Arrow"
+type = "Projectile"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://cnbsgt5bm575n"

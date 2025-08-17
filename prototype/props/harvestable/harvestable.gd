@@ -4,10 +4,12 @@ class_name Harvestable extends StaticBody2D
 @export var resource: ItemMaterial
 @export var resource_min_amount: int
 @export var resource_max_amount: int
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite
 
 var resource_remaining: int
 
+var init_position: Vector2
 var launch_velocity: Vector2
 var launch_direction: Vector2
 var launch_speed: float = 150
@@ -22,10 +24,13 @@ var item_instance: Node
 var smoke_instance: Node
 var tween: Tween
 
+signal harvested
+
 func _ready() -> void:
 	resource_remaining = randi_range(resource_min_amount, resource_max_amount)
 	await Global.worldspace_set
 	item_spawn_point = Global.worldspace.items
+	init_position = global_position
 
 func _process(delta: float) -> void:
 	_launch_check(delta)
@@ -37,12 +42,20 @@ func _process(delta: float) -> void:
 		smoke_instance.emitting = true
 		tween.tween_property(self, "scale", Vector2(), 0.5)
 		smoke_instance.finished.connect(smoke_instance.queue_free)
-		tween.tween_callback(queue_free)
 		smoke_instance.emitting = false
+		harvested.emit(init_position)
+		if not launching:
+			queue_free.call_deferred()
 
 func material_harvest() -> void:
+	if resource_remaining > 1:
+		animation_player.play("hit")
 	_material_spawn()
 	resource_remaining -= 1
+	if Global.player.weapon_manager.equipped_item.type == "Tool - Mining":
+		Stats.stats["mining_exp"] += Stats.base_exp_rate * resource.material_exp_multiplier
+	if Global.player.weapon_manager.equipped_item.type == "Tool - Woodcutting":
+		Stats.stats["woodcutting_exp"] += Stats.base_exp_rate * resource.material_exp_multiplier
 
 func _material_spawn() -> void:
 	item_instance = item_scene.instantiate()

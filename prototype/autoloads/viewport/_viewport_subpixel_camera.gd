@@ -1,5 +1,5 @@
 # _viewport_subpixel_camera.gd
-extends Camera2D
+class_name SubpixelCamera extends Camera2D
 
 var camera_position: Vector2
 var camera_speed: float

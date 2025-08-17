@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="ItemMaterial" load_steps=3 format=3 uid="uid://cu420vc6kkdyr"]
 
 [ext_resource type="Script" uid="uid://hfcml6sgwe01" path="res://items/item/classes/item_material.gd" id="1_of1mg"]
-[ext_resource type="Texture2D" uid="uid://bcdw6pb4w5kak" path="res://items/items/materials/textures/material_wood_01.png" id="2_sglxo"]
+[ext_resource type="Texture2D" uid="uid://bcdw6pb4w5kak" path="res://items/items/materials/_textures/material_wood_01.png" id="2_sglxo"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_of1mg")
 material_type = "Wood"
 material_tool_type = "Axe"
+material_exp_multiplier = 5.0
 texture = ExtResource("2_sglxo")
 id = "item_wood_01"
 name = "Wood"

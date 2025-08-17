@@ -10,6 +10,8 @@ collision_layer = 32
 collision_mask = 12
 script = ExtResource("1_i2inm")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eu18t")
 

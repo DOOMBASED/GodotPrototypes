@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://hui0figf7guk"]
+
+[ext_resource type="PackedScene" uid="uid://dc83rlggq7rri" path="res://items/item/item.tscn" id="1_uavlf"]
+[ext_resource type="Resource" uid="uid://c5g10issnadn4" path="res://items/items/potions/item_potion_stamina_01.tres" id="2_yxi8a"]
+[ext_resource type="Texture2D" uid="uid://da8uxhecqbt35" path="res://items/items/potions/_textures/potion_green_01.png" id="3_kegpl"]
+
+[node name="ItemPotionStamina01" instance=ExtResource("1_uavlf")]
+resource = ExtResource("2_yxi8a")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("3_kegpl")

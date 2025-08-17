@@ -1,33 +1,78 @@
-[gd_scene load_steps=6 format=3 uid="uid://c40j7b02adn4q"]
+[gd_scene load_steps=9 format=3 uid="uid://c40j7b02adn4q"]
 
 [ext_resource type="PackedScene" uid="uid://cmc3kd0qqcrpr" path="res://props/harvestable/harvestable.tscn" id="1_jcdri"]
 [ext_resource type="Resource" uid="uid://cu420vc6kkdyr" path="res://items/items/materials/item_wood_01.tres" id="2_glkmk"]
-[ext_resource type="Texture2D" uid="uid://c5fhbqosoo7yc" path="res://props/harvestables/textures/tree_01.png" id="2_uto5u"]
+[ext_resource type="Texture2D" uid="uid://c5fhbqosoo7yc" path="res://props/harvestables/_textures/harvest_trees_01.png" id="2_uto5u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_glkmk"]
-radius = 16.0
+radius = 14.0
+
+[sub_resource type="Animation" id="Animation_7cjrc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_glkmk"]
+resource_name = "hit"
+length = 0.25
+step = 0.0624
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fo28g"]
+_data = {
+&"RESET": SubResource("Animation_7cjrc"),
+&"hit": SubResource("Animation_glkmk")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glkmk"]
 size = Vector2(14, 12)
 
 [node name="HarvestableTree01" instance=ExtResource("1_jcdri")]
-z_index = -4095
 resource = ExtResource("2_glkmk")
 resource_min_amount = 5
 resource_max_amount = 10
 
 [node name="ModulateArea" type="Area2D" parent="." index="0"]
+position = Vector2(0, -10)
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ModulateArea" index="0"]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_glkmk")
 
-[node name="Collision" parent="." index="1"]
-position = Vector2(0, 16)
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_fo28g")
+}
+
+[node name="Collision" parent="." index="2"]
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_glkmk")
 
-[node name="Sprite" parent="." index="2"]
+[node name="Sprite" parent="." index="3"]
+y_sort_enabled = true
+position = Vector2(0, -10)
 texture = ExtResource("2_uto5u")
 hframes = 4
 vframes = 8

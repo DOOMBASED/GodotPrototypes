@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl4gg0pereqvv"]
+
+[ext_resource type="Script" uid="uid://mhjw5u6cfc10" path="res://managers/weapon/weapon_manager.gd" id="1_or3kj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6tk1"]
+radius = 4.0
+
+[node name="WeaponManager" type="Node2D"]
+script = ExtResource("1_or3kj")
+
+[node name="Weapon" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="WeaponCollision" type="CollisionShape2D" parent="Weapon"]
+position = Vector2(0.5, 0)
+shape = SubResource("CircleShape2D_x6tk1")
+disabled = true
+
+[node name="ProjectileOrigin" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="Weapon" to="." method="_on_weapon_body_entered"]

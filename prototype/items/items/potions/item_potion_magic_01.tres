@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemUseable" load_steps=3 format=3 uid="uid://by5d6bq8jr6tn"]
+
+[ext_resource type="Script" uid="uid://deo1was2s8qs1" path="res://items/item/classes/item_useable.gd" id="1_kasc5"]
+[ext_resource type="Texture2D" uid="uid://bkopvlx6n26nb" path="res://items/items/potions/_textures/potion_blue_01.png" id="2_4f0ut"]
+
+[resource]
+script = ExtResource("1_kasc5")
+effect = "Magic"
+magnitude = 15.0
+texture = ExtResource("2_4f0ut")
+id = "item_potion_magic_01"
+name = "Magic Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 10
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"

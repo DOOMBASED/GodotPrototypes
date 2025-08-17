@@ -7,6 +7,7 @@ extends Control
 @onready var dialogue_label: Label = $Dialogue/MarginContainer/VBoxContainer/DialogueLabel
 @onready var dialogue_options: VBoxContainer = $Dialogue/MarginContainer/VBoxContainer/MarginContainer/DialogueOptions
 @onready var dialogue_labels: VBoxContainer = $DialogueUIHistory/MarginContainer/ScrollContainer/MarginContainer/DialogueLabels
+var talking_to: String
 var default_button_size := Vector2(488.0, 18.0)
 var default_label_size := Vector2(486.0, 16.0)
 var dialogue_typing_duration: float = 0.025
@@ -31,6 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func dialogue_ui_show(npc: NPC, text: String, options: Dictionary) -> void:
 	_dialogue_init(npc, text)
 	var history_text: String = str(name_label.text, ": ", dialogue_label.text)
+	talking_to = npc.resource.name
 	_add_history_label(npc ,history_text)
 	_dialogue_set_options(npc, options)
 	var dialogue_label_characters: float = float(dialogue_label.get_total_character_count())
@@ -42,8 +44,9 @@ func dialogue_ui_show(npc: NPC, text: String, options: Dictionary) -> void:
 		_dialogue_timeout()
 
 func dialogue_ui_hide() -> void:
-	name_label.text = "NAME"
-	dialogue_label.text = "DIALOGUE"
+	name_label.text = "NO ONE"
+	talking_to = name_label.text
+	dialogue_label.text = "NO DIALOGUE"
 	dialogue.hide()
 
 func _dialogue_init(npc: NPC, text: String) -> void:

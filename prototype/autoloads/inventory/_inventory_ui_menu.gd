@@ -56,7 +56,7 @@ func _menu_hide() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func _on_assign_button_pressed() -> void:
-	if Global.player.animation_manager.current_state != 3:
+	if Global.player.animation_manager.current_state != AnimationManager.AnimationState.ACTION:
 		var assigned = Inventory.inventory_ui.inventory_ui_hotbar.hotbar_assignment_check(current_item)
 		if current_item != null:
 			if assigned:
@@ -91,7 +91,7 @@ func _on_use_button_pressed() -> void:
 	use_button.release_focus()
 
 func _on_equip_button_pressed() -> void:
-	if Global.player.animation_manager.current_state != 3:
+	if Global.player.animation_manager.current_state != AnimationManager.AnimationState.ACTION:
 		if current_item != null and current_item is ItemEquipment:
 			Global.player.animation_manager.equip_anim = current_item.equip_anim
 			Global.player.weapon_manager.equipped_item = current_item
@@ -101,6 +101,7 @@ func _on_equip_button_pressed() -> void:
 				assign_button.text = "UNASSIGN"
 			item_equipped.emit(current_iterator)
 			item_assigned.emit(current_item)
+			hide()
 			Inventory.inventory_updated.emit()
 
 func _on_split_button_pressed() -> void:
@@ -117,7 +118,7 @@ func _on_split_button_pressed() -> void:
 		Global.set_debug_text("Inventory full, stack not split.")
 
 func _on_drop_button_pressed() -> void:
-	if not Inventory.cooldown and Global.player.animation_manager.current_state != 3:
+	if not Inventory.cooldown and Global.player.animation_manager.current_state != AnimationManager.AnimationState.ACTION:
 		if current_item.quantity > 1:
 			Inventory.item_remove(current_item, current_item.slot)
 			drop_button.release_focus()
@@ -125,10 +126,10 @@ func _on_drop_button_pressed() -> void:
 		else:
 			if current_item is ItemEquipment:
 				if current_item.equip_anim == Global.player.animation_manager.equip_anim:
-					var current_slot: Panel = Inventory.inventory_ui.inventory_grid.get_child(current_iterator)
+					var current_slot: InventorySlot = Inventory.inventory_ui.inventory_grid.get_child(current_iterator)
 					current_slot.self_modulate = Color.WHITE
-					if Global.player.animation_manager.current_state == 3:
-						Global.player.animation_manager.current_state = 0
+					if Global.player.animation_manager.current_state == AnimationManager.AnimationState.ACTION:
+						Global.player.animation_manager.current_state = AnimationManager.AnimationState.IDLE
 						await Global.player.animation_manager.animation_player.animation_finished
 					Global.player.animation_manager.equip_anim = ""
 					Global.player.weapon_manager.equipped_item = null

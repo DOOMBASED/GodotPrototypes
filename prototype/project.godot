@@ -26,7 +26,13 @@ Global="*res://autoloads/global/_global.tscn"
 Inventory="*res://autoloads/inventory/_inventory.tscn"
 Dialogue="*res://autoloads/dialogue/_dialogue.tscn"
 Quests="*res://autoloads/quests/_quests.tscn"
+Stats="*res://autoloads/stats/_stats.tscn"
 Effects="*res://autoloads/effects/_effects.gd"
+
+[debug]
+
+shapes/navigation/geometry_edge_color=Color(0.501961, 1, 1, 0)
+shapes/navigation/geometry_face_color=Color(0.501961, 1, 1, 0.392157)
 
 [display]
 
@@ -167,6 +173,7 @@ time_fast={
 2d_physics/layer_4="NPC"
 2d_physics/layer_5="Item"
 2d_physics/layer_6="Harvestable"
+2d_physics/layer_7="Projectile"
 
 [physics]
 
