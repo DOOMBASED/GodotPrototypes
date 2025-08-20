@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://dur01paq6nlp2"]
+
+[ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://characters/character/character.tscn" id="1_wyxaj"]
+[ext_resource type="Script" uid="uid://cpleo3h6rup2w" path="res://characters/characters/slime/slime.gd" id="2_6yodn"]
+[ext_resource type="PackedScene" uid="uid://dh0rusj76xdj0" path="res://managers/movement/movement_manager.tscn" id="2_wlwvt"]
+[ext_resource type="PackedScene" uid="uid://dmhjqbrfbr5mx" path="res://managers/stats/stats_manager.tscn" id="3_6yodn"]
+[ext_resource type="Texture2D" uid="uid://yuc8c45qk27j" path="res://characters/characters/slime/slimes/slime_purple_03.png" id="3_r5xdl"]
+[ext_resource type="PackedScene" uid="uid://bhuq1o1ww2n3n" path="res://managers/navigation/navigation_manager.tscn" id="4_r5xdl"]
+[ext_resource type="PackedScene" uid="uid://bi85xrljyyams" path="res://managers/animation/animation_manager.tscn" id="5_gm1iw"]
+[ext_resource type="AnimationLibrary" uid="uid://b15coitwgry3r" path="res://resources/animations/animations_slime.res" id="8_gm1iw"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bba7k4coaxw2x" path="res://resources/animations/animation_slime_state_machine.tres" id="9_8w8ib"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gm1iw"]
+radius = 7.0
+height = 21.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8w8ib"]
+radius = 8.0
+height = 22.0
+
+[node name="Slime" instance=ExtResource("1_wyxaj")]
+collision_layer = 8
+collision_mask = 109
+script = ExtResource("2_6yodn")
+
+[node name="Collision" parent="." index="0"]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gm1iw")
+
+[node name="Shadow" type="Sprite2D" parent="." index="1"]
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource("3_r5xdl")
+hframes = 4
+vframes = 15
+frame = 40
+
+[node name="MovementManager" parent="." index="3" instance=ExtResource("2_wlwvt")]
+
+[node name="StatsManager" parent="." index="4" instance=ExtResource("3_6yodn")]
+
+[node name="NavigationManager" parent="." index="5" instance=ExtResource("4_r5xdl")]
+
+[node name="AnimationManager" parent="." index="6" instance=ExtResource("5_gm1iw")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationManager" index="0"]
+libraries = {
+&"slime": ExtResource("8_gm1iw")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationManager" index="1"]
+tree_root = ExtResource("9_8w8ib")
+anim_player = NodePath("../AnimationPlayer")
+parameters/DEAD/blend_position = Vector2(0, 0)
+parameters/Damage/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="InteractArea" type="Area2D" parent="." index="7"]
+collision_layer = 0
+collision_mask = 12
+
+[node name="Collision" type="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8w8ib")
+
+[node name="Control" type="Control" parent="." index="8"]
+z_index = 1
+custom_minimum_size = Vector2(0, 0.5)
+layout_mode = 3
+anchors_preset = 0
+offset_top = -15.0
+offset_bottom = -14.0
+
+[node name="TestHealthLabel" type="Label" parent="Control" index="0"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_enemy_interact_area_body_entered"]

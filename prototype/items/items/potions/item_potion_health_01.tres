@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bhbdxhfwikm80" path="res://items/items/potions/_textures/potion_red_01.png" id="2_0yous"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_1gup5")
 effect = "Health"
 magnitude = 15.0

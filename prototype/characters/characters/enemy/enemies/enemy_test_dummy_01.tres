@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://b0f1ltw4s6p8r"]
+
+[ext_resource type="Script" uid="uid://b33pbrpxg44aq" path="res://characters/characters/enemy/enemy_resource.gd" id="1_qwky1"]
+
+[resource]
+script = ExtResource("1_qwky1")
+touch_damage = 10.0
+touch_knockback_force = 2.5
+id = "enemy_test_dummy_01"
+name = "Test Dummy"
+color_hex = "ff0028"
+color = Color(1, 0, 0.156863, 1)
+metadata/_custom_type_script = "uid://bs5pfoarvuism"

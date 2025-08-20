@@ -1,0 +1,19 @@
+[gd_scene load_steps=7 format=3 uid="uid://dw3bdqib6apgc"]
+
+[ext_resource type="PackedScene" uid="uid://d0eg54howxvnp" path="res://characters/characters/npc/npc.tscn" id="1_ks3jg"]
+[ext_resource type="Resource" uid="uid://c148ehjk6la0a" path="res://characters/characters/npc/npcs/npc_test_01.tres" id="2_4iqtv"]
+[ext_resource type="Script" uid="uid://b6jqrdj0bdxd2" path="res://autoloads/quests/_quest_resource.gd" id="3_jk2qn"]
+[ext_resource type="Resource" uid="uid://chmvbo5vx0lfd" path="res://resources/quests/quest_test_01.tres" id="5_jl72f"]
+[ext_resource type="Resource" uid="uid://fadct2pluppl" path="res://resources/quests/quest_test_03.tres" id="6_g8skd"]
+[ext_resource type="Texture2D" uid="uid://b8frgge34sb43" path="res://characters/characters/npc/npcs/npc_test_01.png" id="7_o7m6m"]
+
+[node name="NPCTest01" instance=ExtResource("1_ks3jg")]
+resource = ExtResource("2_4iqtv")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("7_o7m6m")
+frame = 1
+
+[node name="DialogueManager" parent="." index="2"]
+quests = Array[ExtResource("3_jk2qn")]([ExtResource("5_jl72f"), ExtResource("6_g8skd")])
+dialogue_file_path = "res://resources/dialogues/dialogue_test.json"

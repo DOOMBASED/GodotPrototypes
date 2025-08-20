@@ -8,8 +8,8 @@
 [sub_resource type="Resource" id="Resource_i5js0"]
 script = ExtResource("1_74xb2")
 id = "quest_test_03_obj_01"
-description = "Pickup the Red Items"
-target_id = "item_test_02"
+description = "Collect the Health Potions"
+target_id = "item_potion_health_01"
 target_type = 1
 objective_dialogue = ""
 required_quantity = 5
@@ -20,7 +20,7 @@ id = "quest_test_03_obj_02"
 description = "Talk to the Orange Guy again"
 target_id = "npc_test_01"
 target_type = 0
-objective_dialogue = "Thanks again for the help. Here is another Slot."
+objective_dialogue = "Thanks again for the help. Here are some Wooden Arrows"
 required_quantity = 0
 metadata/_custom_type_script = "uid://d35atbvkibbaw"
 

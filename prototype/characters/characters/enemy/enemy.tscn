@@ -1,5 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://fv2yok26sk77"]
+[gd_scene load_steps=3 format=3 uid="uid://fv2yok26sk77"]
 
-[ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://characters/character/character.tscn" id="1_00fun"]
+[ext_resource type="PackedScene" uid="uid://d0eg54howxvnp" path="res://characters/characters/npc/npc.tscn" id="1_00fun"]
+[ext_resource type="Script" uid="uid://b6vtn88bsp85e" path="res://characters/characters/enemy/enemy.gd" id="2_dns70"]
 
 [node name="Enemy" instance=ExtResource("1_00fun")]
+script = ExtResource("2_dns70")
+
+[node name="Sprite" parent="." index="2"]
+frame = 3
+
+[node name="Sprite" parent="WeaponManager" index="2"]
+position = Vector2(9, 0)

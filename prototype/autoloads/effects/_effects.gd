@@ -7,6 +7,30 @@ func item_effect(item: ItemResource) -> void:
 	if item is ItemUseable:
 		should_use = false
 		match item.effect:
+			"Health":
+				if Global.player.stats_manager.health < Global.player.stats_manager.health_max:
+					Global.player.stats_manager.health += item.magnitude
+					if Global.player.stats_manager.health > Global.player.stats_manager.health_max:
+						Global.player.stats_manager.health = Global.player.stats_manager.health_max
+					_item_used(item, item.slot)
+				else:
+					_item_not_used("Already at max Health")
+			"Stamina":
+				if Global.player.stats_manager.stamina < Global.player.stats_manager.stamina_max:
+					Global.player.stats_manager.stamina += item.magnitude
+					if Global.player.stats_manager.stamina > Global.player.stats_manager.stamina_max:
+						Global.player.stats_manager.stamina = Global.player.stats_manager.stamina_max
+					_item_used(item, item.slot)
+				else:
+					_item_not_used("Already at max Stamina")
+			"Magic":
+				if Global.player.stats_manager.magic < Global.player.stats_manager.magic_max:
+					Global.player.stats_manager.magic += item.magnitude
+					if Global.player.stats_manager.magic > Global.player.stats_manager.magic_max:
+						Global.player.stats_manager.magic = Global.player.stats_manager.magic_max
+					_item_used(item, item.slot)
+				else:
+					_item_not_used("Already at max Magic")
 			"Slot":
 				if Inventory.inventory.size() >= Inventory.inventory_max:
 					_item_not_used("Already at max Slots")

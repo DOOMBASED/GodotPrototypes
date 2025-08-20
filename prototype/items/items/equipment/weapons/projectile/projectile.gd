@@ -10,7 +10,11 @@ var damage_full: float = 0.0
 
 func _ready() -> void:
 	rotation = Global.player.weapon_manager.projectile_direction.angle()
-	direction = Global.player.weapon_manager.projectile_direction
+	direction = Global.player.animation_manager.animation_tree["parameters/ActionBow/blend_position"].round()
+	if direction == Vector2(-1.0, 1.0) or direction == Vector2(1.0, 1.0):
+		direction = Vector2(0.0, 1.0)
+	elif direction == Vector2(-1.0, -1.0) or direction == Vector2(1.0, -1.0):
+		direction = Vector2(0.0, -1.0)
 	damage_full = Global.player.weapon_manager.equipped_item.equip_effect_magnitude + resource.projectile_damage
 	distance = 0.0
 
@@ -35,6 +39,11 @@ func _physics_process(delta: float) -> void:
 				Global.set_debug_text("Projectile disappeared into thin air...")
 				queue_free.call_deferred()
 
+func _knockback(body: Character) -> void:
+	var knockback_direction = global_position.direction_to(body.global_position)
+	body.movement_manager.knockback_direction = knockback_direction * resource.knockback_force
+	body.movement_manager.knockback = true
+
 func _set_drop_direction(instance: Item) -> void:
 	if direction != Vector2.ZERO:
 		if direction == Vector2.DOWN:
@@ -47,9 +56,11 @@ func _set_drop_direction(instance: Item) -> void:
 			instance.sprite.rotation_degrees = 0.0
 
 func _on_body_entered(body) -> void:
-	if body is Enemy and body.has_node("StatsManager"):
+	if body.resource is EnemyResource:
 		if Global.player.weapon_manager.equipped_item.type == "Weapon - Ranged":
 			Stats.stats["ranged_exp"] += Stats.base_exp_rate * damage_full
+		_knockback(body)
 		body.stats_manager.health_damage(damage_full)
+		SignalBus.attacked.emit(body)
 	direction = Vector2.ZERO
 	queue_free.call_deferred()

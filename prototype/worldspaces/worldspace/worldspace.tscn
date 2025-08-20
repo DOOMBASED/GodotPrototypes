@@ -8,3 +8,5 @@ script = ExtResource("1_ymviu")
 
 [node name="SubpixelCamera" type="Camera2D" parent="."]
 script = ExtResource("2_0rmg2")
+
+[node name="LightingColor" type="CanvasModulate" parent="."]

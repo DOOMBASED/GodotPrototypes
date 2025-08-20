@@ -5,9 +5,9 @@ class_name AnimationManager extends Node
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 
-enum AnimationState {IDLE, WALK, RUN, ACTION}
-
 var equip_anim: String = ""
+
+enum AnimationState {IDLE, WALK, RUN, ACTION, DAMAGE, DEAD}
 var current_state: AnimationState = AnimationState.IDLE
 
 func _ready() -> void:
@@ -15,8 +15,25 @@ func _ready() -> void:
 		character = get_parent()
 
 func _process(_delta: float) -> void:
+	if character.modulate == Color.TRANSPARENT:
+		if character is not Player:
+			character.queue_free.call_deferred()
+		else:
+			Global.global_ui.death_message.visible = true
 	if current_state != AnimationState.ACTION:
-		if character.has_node("MovementManager"):
+		if current_state == AnimationState.DEAD:
+			animation_tree["parameters/DEAD/blend_position"] = character.movement_manager.facing.normalized()
+		if current_state == AnimationState.DAMAGE:
+			if character.has_node("NavagationManager"):
+				animation_tree["parameters/Damage/blend_position"] = character.navigation_manager.direction
+			else:
+				animation_tree["parameters/Damage/blend_position"] = character.movement_manager.facing.normalized()
+			if character.movement_manager.knockback == false:
+				if not character.stats_manager.dead:
+					current_state = AnimationState.IDLE
+				else:
+					current_state = AnimationState.DEAD
+		if current_state != AnimationState.DAMAGE and current_state != AnimationState.DEAD:
 			if character.movement_manager.moving:
 				current_state = AnimationState.WALK
 				if character.has_node("NavagationManager"):
@@ -39,3 +56,10 @@ func action_finished() -> void:
 	if not Input.is_action_pressed("action"):
 		current_state = AnimationState.IDLE
 		animation_tree["parameters/Idle/blend_position"] = character.movement_manager.facing.normalized()
+
+func _on_death() -> void:
+	SignalBus.dead.emit(character)
+	await get_tree().create_timer(2.0).timeout
+	var alpha_tween: Tween
+	alpha_tween = get_tree().create_tween()
+	alpha_tween.tween_property(character, "modulate", Color.TRANSPARENT, 1.0)

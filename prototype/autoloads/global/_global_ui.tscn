@@ -14,13 +14,43 @@ script = ExtResource("1_rw1ud")
 
 [node name="Global" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_right = 50.0
-offset_bottom = 18.0
+offset_right = 1285.0
+offset_bottom = 26.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Global"]
 layout_mode = 2
 
-[node name="DebugLabel" type="Label" parent="Global/MarginContainer"]
-custom_minimum_size = Vector2(1270, 16)
+[node name="HBoxContainer" type="HBoxContainer" parent="Global/MarginContainer"]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="Global/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "FPS: 60.0 |"
+horizontal_alignment = 2
+
+[node name="TimeLabel" type="Label" parent="Global/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "00:00 |"
+
+[node name="DebugLabel" type="Label" parent="Global/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "DEBUG: "
+
+[node name="DeathMessage" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0.156863, 1)
+theme_override_font_sizes/font_size = 64
+text = "YOU ARE DEAD"

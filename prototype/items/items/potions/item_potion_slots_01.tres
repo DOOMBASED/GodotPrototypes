@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bol8lpyamdi4x" path="res://items/items/potions/_textures/potion_purple_01.png" id="2_e5bwo"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_s1qg5")
 effect = "Slot"
 magnitude = 1.0

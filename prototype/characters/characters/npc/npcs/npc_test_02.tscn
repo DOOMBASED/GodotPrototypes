@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwrlbriyysran"]
+
+[ext_resource type="PackedScene" uid="uid://d0eg54howxvnp" path="res://characters/characters/npc/npc.tscn" id="1_rcfsu"]
+[ext_resource type="Resource" uid="uid://ce3a1gfrc188o" path="res://characters/characters/npc/npcs/npc_test_02.tres" id="2_n7n0q"]
+[ext_resource type="Script" uid="uid://b6jqrdj0bdxd2" path="res://autoloads/quests/_quest_resource.gd" id="3_itre4"]
+[ext_resource type="Resource" uid="uid://bppupfk7fv21b" path="res://resources/quests/quest_test_02.tres" id="5_0vg10"]
+[ext_resource type="Texture2D" uid="uid://c7f5xvx3iv80v" path="res://characters/characters/npc/npcs/npc_test_02.png" id="7_ga5qr"]
+
+[node name="NPCTest02" instance=ExtResource("1_rcfsu")]
+resource = ExtResource("2_n7n0q")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("7_ga5qr")
+frame = 2
+
+[node name="DialogueManager" parent="." index="2"]
+quests = Array[ExtResource("3_itre4")]([ExtResource("5_0vg10")])
+dialogue_file_path = "res://resources/dialogues/dialogue_test.json"
+
+[node name="Sprite" parent="WeaponManager" index="2"]
+position = Vector2(9, 0)

@@ -4,3 +4,4 @@ class_name ItemEquipment extends ItemResource
 @export var equip_anim: String
 @export var equip_effect: String
 @export var equip_effect_magnitude: float
+@export var knockback_force: float

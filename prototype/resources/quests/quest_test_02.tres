@@ -11,7 +11,8 @@ id = "quest_test_02_obj_01"
 description = "Talk to Orange Guy"
 target_id = "npc_test_01"
 target_type = 0
-objective_dialogue = "The Red Items are over there with all the other stuff."
+objective_dialogue = "The Health Potions are over there on the ground.
+They are the red ones. Here, have some arrows."
 required_quantity = 0
 metadata/_custom_type_script = "uid://dqdmxcap5f4pi"
 

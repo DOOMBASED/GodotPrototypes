@@ -9,6 +9,7 @@ script = ExtResource("1_5a8jm")
 equip_anim = "Axe"
 equip_effect = "Damage"
 equip_effect_magnitude = 2.0
+knockback_force = 2.0
 texture = ExtResource("2_q527m")
 id = "item_axe_01"
 name = "Axe"

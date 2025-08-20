@@ -10,7 +10,8 @@ var current_branch_index: int = 0
 var player_has_met: bool = false
 
 func _ready() -> void:
-	Dialogue.dialogue_load(dialogue_file_path)
+	if dialogue_file_path != "":
+		Dialogue.dialogue_load(dialogue_file_path)
 
 func dialogue_start() -> void:
 	if not Dialogue.dialogue_ui.dialogue_timeout:

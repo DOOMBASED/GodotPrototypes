@@ -27,8 +27,11 @@ func _process(_delta: float) -> void:
 	_health_check()
 	_stamina_check()
 	_magic_check()
+	if character is not Player and dead:
+		character.navigation_manager.target_position = character.global_position
+		character.animation_manager.current_state = AnimationManager.AnimationState.DEAD
 
-func health_damage(damage: int) -> void:
+func health_damage(damage: float) -> void:
 	Global.set_debug_text(str("Applied ", damage, " damage."))
 	health -= damage
 

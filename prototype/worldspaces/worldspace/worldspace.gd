@@ -3,14 +3,15 @@ class_name Worldspace extends Node2D
 
 @export var resource: WorldspaceResource
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion
+@onready var lighting_color: CanvasModulate = $LightingColor
 @onready var items: Node2D = $WorldItems
 var world_items: Array[Item]
 var world_harvestables: Array[Harvestable]
 
 func _ready() -> void:
+	Global.set_worldspace(self)
 	for node: Harvestable in navigation_region.get_children():
 		node.harvested.connect(_on_harvested)
-	Global.set_worldspace(self)
 	Inventory.item_added.connect(_on_item_added)
 	Inventory.item_dropped.connect(_on_item_dropped)
 	_get_world_items()
@@ -31,7 +32,8 @@ func _on_harvested(pos: Vector2) -> void:
 		if not is_instance_valid(nul):
 			world_harvestables.erase(nul)
 	await get_tree().create_timer(0.5).timeout
-	Global.worldspace.navigation_region.bake_navigation_polygon(true)
+	if not Global.worldspace.navigation_region.is_baking():
+		Global.worldspace.navigation_region.bake_navigation_polygon(true)
 
 func _on_item_added(item: ItemResource, _iterator: int) -> void:
 	for i: int in range(world_items.size()):

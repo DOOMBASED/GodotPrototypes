@@ -16,49 +16,17 @@
 radius = 5.5
 height = 11.0
 
-[sub_resource type="Animation" id="Animation_4x0iw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../WeaponManager/ProjectileOrigin:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../WeaponManager/Weapon/WeaponCollision:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../WeaponManager/Weapon/WeaponCollision:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 0)]
-}
+[sub_resource type="Gradient" id="Gradient_6m5nh"]
+offsets = PackedFloat32Array(0.96, 1)
+colors = PackedColorArray(0.027451, 0.027451, 0.027451, 0.498039, 0.027451, 0.027451, 0.027451, 0)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m5nh"]
-_data = {
-&"RESET": SubResource("Animation_4x0iw")
-}
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h5o6i"]
+gradient = SubResource("Gradient_6m5nh")
+width = 12
+height = 6
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jfpsb"]
 radius = 24.0
@@ -76,27 +44,30 @@ script = ExtResource("2_d78lq")
 position = Vector2(0.5, 6)
 shape = SubResource("CapsuleShape2D_rthyg")
 
-[node name="Sprite" parent="." index="1"]
+[node name="Shadow" type="Sprite2D" parent="." index="1"]
+position = Vector2(0.5, 9)
+texture = SubResource("GradientTexture2D_h5o6i")
+
+[node name="Sprite" parent="." index="2"]
 texture = ExtResource("4_ljv8k")
 hframes = 12
 vframes = 22
-frame = 105
+frame = 3
 
-[node name="DialogueManager" parent="." index="2" instance=ExtResource("3_jfpsb")]
+[node name="DialogueManager" parent="." index="3" instance=ExtResource("3_jfpsb")]
 
-[node name="MovementManager" parent="." index="3" instance=ExtResource("4_6l25c")]
+[node name="MovementManager" parent="." index="4" instance=ExtResource("4_6l25c")]
 walk_speed = 60.0
 run_speed = 90.0
 
-[node name="StatsManager" parent="." index="4" instance=ExtResource("6_6m5nh")]
+[node name="StatsManager" parent="." index="5" instance=ExtResource("6_6m5nh")]
 
-[node name="NavigationManager" parent="." index="5" instance=ExtResource("4_4x0iw")]
+[node name="NavigationManager" parent="." index="6" instance=ExtResource("4_4x0iw")]
 
-[node name="AnimationManager" parent="." index="6" instance=ExtResource("4_a3fbc")]
+[node name="AnimationManager" parent="." index="7" instance=ExtResource("4_a3fbc")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationManager" index="0"]
 libraries = {
-&"": SubResource("AnimationLibrary_6m5nh"),
 &"animations_human": ExtResource("5_1sat4")
 }
 
@@ -107,18 +78,20 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/ActionAxe/blend_position = Vector2(0, 0)
 parameters/ActionBow/blend_position = Vector2(0, 0)
 parameters/ActionPickaxe/blend_position = Vector2(0, 0)
+parameters/DEAD/blend_position = Vector2(0, 0)
+parameters/Damage/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
-[node name="InteractArea" type="Area2D" parent="." index="7"]
+[node name="InteractArea" type="Area2D" parent="." index="8"]
 collision_layer = 0
 collision_mask = 4
 
 [node name="Collision" type="CollisionShape2D" parent="InteractArea" index="0"]
 shape = SubResource("CircleShape2D_jfpsb")
 
-[node name="WeaponManager" type="Node2D" parent="." index="8"]
+[node name="WeaponManager" type="Node2D" parent="." index="9"]
 script = ExtResource("7_5ji7b")
 
 [node name="Weapon" type="Area2D" parent="WeaponManager" index="0"]
@@ -126,11 +99,12 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="WeaponManager/Weapon" index="0"]
-position = Vector2(0.5, 0)
 shape = SubResource("CircleShape2D_x6tk1")
-disabled = true
 
 [node name="ProjectileOrigin" type="Marker2D" parent="WeaponManager" index="1"]
+
+[node name="Sprite" type="Sprite2D" parent="WeaponManager" index="2"]
+position = Vector2(9, 0)
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

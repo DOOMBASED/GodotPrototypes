@@ -9,6 +9,7 @@ script = ExtResource("1_nfp5d")
 projectile_damage = 2.0
 projectile_speed = 180.0
 projectile_range = 180.0
+knockback_force = 1.0
 is_spell = false
 recoverable = true
 texture = ExtResource("3_6f07i")

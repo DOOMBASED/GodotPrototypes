@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c40j7b02adn4q"]
+[gd_scene load_steps=10 format=3 uid="uid://c40j7b02adn4q"]
 
 [ext_resource type="PackedScene" uid="uid://cmc3kd0qqcrpr" path="res://props/harvestable/harvestable.tscn" id="1_jcdri"]
 [ext_resource type="Resource" uid="uid://cu420vc6kkdyr" path="res://items/items/materials/item_wood_01.tres" id="2_glkmk"]
 [ext_resource type="Texture2D" uid="uid://c5fhbqosoo7yc" path="res://props/harvestables/_textures/harvest_trees_01.png" id="2_uto5u"]
+[ext_resource type="Texture2D" uid="uid://b444urwjohplp" path="res://props/harvestables/_textures/harvest_trees_shadow.png" id="3_7cjrc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_glkmk"]
 radius = 14.0
@@ -70,7 +71,12 @@ libraries = {
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_glkmk")
 
-[node name="Sprite" parent="." index="3"]
+[node name="Shadow" type="Sprite2D" parent="." index="3"]
+self_modulate = Color(0.027451, 0.027451, 0.027451, 0.498039)
+position = Vector2(0, -10)
+texture = ExtResource("3_7cjrc")
+
+[node name="Sprite" parent="." index="4"]
 y_sort_enabled = true
 position = Vector2(0, -10)
 texture = ExtResource("2_uto5u")

@@ -1,13 +1,16 @@
 # player.gd
 class_name Player extends Character
 
+@onready var collision: CollisionShape2D = $Collision
 @onready var animation_manager: AnimationManager = $AnimationManager
 @onready var input_manager: InputManager = $InputManager
 @onready var movement_manager: MovementManager = $MovementManager
 @onready var stats_manager: StatsManager = $StatsManager
 @onready var weapon_manager: WeaponManager = $WeaponManager
 
+
 func _ready() -> void:
+	SignalBus.dead.connect(_on_death)
 	Global.set_player(self)
 	name = resource.name
 
@@ -29,4 +32,9 @@ func _movement_check(delta: float) -> void:
 			stats_manager.stamina_cooldown = true
 	else:
 		movement_manager.speed = movement_manager.walk_speed
-	movement_manager.move(delta, input_manager.direction)
+	movement_manager.char_move(delta, input_manager.direction)
+
+func _on_death(character: Character) -> void:
+	if character == self:
+		z_index = -1
+		collision.disabled = true

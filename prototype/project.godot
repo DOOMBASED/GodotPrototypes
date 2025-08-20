@@ -28,11 +28,7 @@ Dialogue="*res://autoloads/dialogue/_dialogue.tscn"
 Quests="*res://autoloads/quests/_quests.tscn"
 Stats="*res://autoloads/stats/_stats.tscn"
 Effects="*res://autoloads/effects/_effects.gd"
-
-[debug]
-
-shapes/navigation/geometry_edge_color=Color(0.501961, 1, 1, 0)
-shapes/navigation/geometry_face_color=Color(0.501961, 1, 1, 0.392157)
+SignalBus="*res://autoloads/_signal_bus/_signal_bus.gd"
 
 [display]
 
@@ -177,6 +173,7 @@ time_fast={
 
 [physics]
 
+common/physics_jitter_fix=0.0
 2d/default_gravity=0.0
 
 [rendering]

@@ -40,9 +40,10 @@ func _process(delta: float) -> void:
 		smoke_instance.position = position
 		tween = create_tween()
 		smoke_instance.emitting = true
-		tween.tween_property(self, "scale", Vector2(), 0.5)
-		smoke_instance.finished.connect(smoke_instance.queue_free)
-		smoke_instance.emitting = false
+		tween.tween_property(self, "scale", Vector2.ZERO, 0.5)
+		if scale.x < 0.96:
+			smoke_instance.emitting = false
+			smoke_instance.queue_free.call_deferred()
 		harvested.emit(init_position)
 		if not launching:
 			queue_free.call_deferred()

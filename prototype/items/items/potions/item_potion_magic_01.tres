@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bkopvlx6n26nb" path="res://items/items/potions/_textures/potion_blue_01.png" id="2_4f0ut"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_kasc5")
 effect = "Magic"
 magnitude = 15.0
