@@ -1,6 +1,7 @@
 # slime.gd
 class_name Slime extends Character
 
+@onready var shadow: Sprite2D = $Shadow
 @onready var collision: CollisionShape2D = $Collision
 @onready var movement_manager: MovementManager = $MovementManager
 @onready var stats_manager: StatsManager = $StatsManager
@@ -12,6 +13,8 @@ class_name Slime extends Character
 var player_in_range: bool = false
 
 func _ready() -> void:
+	Global.time_is_dawn.connect(_at_dawn_hour)
+	Global.time_is_dusk.connect(_at_dusk_hour)
 	SignalBus.dead.connect(_on_death)
 	name = resource.name
 
@@ -45,8 +48,26 @@ func _on_enemy_interact_area_body_entered(body: Node2D) -> void:
 				body.movement_manager.knockback = true
 				body.stats_manager.health_damage(resource.touch_damage)
 
+func _at_dawn_hour() -> void:
+	shadow.visible = true
+	var shadow_tween: Tween = create_tween()
+	shadow_tween.tween_property(shadow, "modulate", Color.WHITE, 60.0)
+	await shadow_tween.finished
+
+func _at_dusk_hour() -> void:
+	var shadow_tween: Tween = create_tween()
+	shadow_tween.tween_property(shadow, "modulate", Color.TRANSPARENT, 60.0)
+	await shadow_tween.finished
+	shadow.visible = false
+
 func _on_death(character: Character) -> void:
 	if character == self:
 		z_index = -1
 		collision.disabled = true
 		interact_area.monitoring = false
+		for key in Stats.kill_stats.keys():
+			if key == character.resource.id:
+				Stats.kill_stats[character.resource.id] += 1
+			else:
+				Stats.kill_stats[character.resource.id] = 1
+			Stats.kills_updated.emit()

@@ -50,15 +50,26 @@ func _quest_set_objectives(quest: QuestResource) -> void:
 		objectives_list.remove_child(child)
 	for objective: QuestResourceObjective in quest.objectives:
 		var label := Label.new()
-		for i: int in range(Inventory.inventory.size()):
-			if Inventory.inventory[i] != null and Inventory.inventory[i].id == objective.target_id:
-				if objective.collected_quantity < objective.required_quantity:
-					objective.collected_quantity = Inventory.inventory[i].quantity
-				Quests.quest_check_objectives(Inventory.inventory[i].id, 1, 0)
-		if objective.target_type == objective.TargetTypes["collection"]:
-			if objective.collected_quantity > objective.required_quantity:
-				objective.collected_quantity = objective.required_quantity
-			label.text = str(objective.description, "(", str(objective.collected_quantity), "/", str(objective.required_quantity), ")")
+		if objective.target_type == QuestResourceObjective.TargetTypes.collection:
+			for i: int in range(Inventory.inventory.size()):
+				if Inventory.inventory[i] != null and Inventory.inventory[i].id == objective.target_id:
+					if objective.collected_count < objective.required_count:
+						objective.collected_count = Inventory.inventory[i].quantity
+					Quests.quest_check_objectives(Inventory.inventory[i].id, 1, 0)
+		if objective.target_type == QuestResourceObjective.TargetTypes.eliminate:
+			for key: String in Stats.kill_stats.keys():
+				if key != null and key == objective.target_id:
+					if objective.kill_count < objective.required_kills:
+						objective.kill_count = Stats.kill_stats[key]
+					Quests.quest_check_objectives(key, 2, 0)
+		if objective.target_type == objective.TargetTypes.collection:
+			if objective.collected_count > objective.required_count:
+				objective.collected_count = objective.required_count
+			label.text = str(objective.description, "(", str(objective.collected_count), "/", str(objective.required_count), ")")
+		if objective.target_type == objective.TargetTypes.eliminate:
+			if objective.kill_count > objective.required_kills:
+				objective.kill_count = objective.required_kills
+			label.text = str(objective.description, "(", str(objective.kill_count), "/", str(objective.required_kills), ")")
 		else:
 			label.text = objective.description
 		if objective.is_completed:

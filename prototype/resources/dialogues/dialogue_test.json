@@ -118,7 +118,7 @@
 					},
 					{
 						"state": "give_quests",
-						"text": "Go and talk to the Orange Guy.\nHe will tell you what to do next.",
+						"text": "Can you please get rid of that bit ugly Purple Slime?\nIt grosses me out...",
 						"options": {
 							"Okay.": "exit"
 						}

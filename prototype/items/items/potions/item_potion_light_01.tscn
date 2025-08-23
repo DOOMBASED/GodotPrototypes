@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://7qwbimqlagl3"]
+
+[ext_resource type="PackedScene" uid="uid://dc83rlggq7rri" path="res://items/item/item.tscn" id="1_dboeh"]
+[ext_resource type="Resource" uid="uid://bi37dwl48b1my" path="res://items/items/potions/item_potion_light_01.tres" id="2_mi0qj"]
+[ext_resource type="Texture2D" uid="uid://bkdbvnfjgdxjv" path="res://items/items/potions/_textures/potion_yellow_01.png" id="2_ve0ma"]
+
+[node name="ItemPotionLight01" instance=ExtResource("1_dboeh")]
+resource = ExtResource("2_mi0qj")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_ve0ma")

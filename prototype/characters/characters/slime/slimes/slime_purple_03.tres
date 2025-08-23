@@ -6,7 +6,7 @@
 script = ExtResource("1_0kbp5")
 touch_damage = 5.0
 touch_knockback_force = 2.0
-id = "slime_purple_01"
+id = "slime_purple_03"
 name = "Big Purple Slime"
 color_hex = "6400ff"
 color = Color(0.392157, 0, 1, 1)

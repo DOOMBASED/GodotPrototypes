@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://68baroii34et"]
+[gd_scene load_steps=5 format=3 uid="uid://68baroii34et"]
 
 [ext_resource type="Script" uid="uid://d0oefn44ewu0o" path="res://autoloads/stats/_stats_ui.gd" id="1_i52xt"]
 [ext_resource type="Texture2D" uid="uid://ot2c0scv2b" path="res://resources/_textures/placeholder_08.tres" id="2_8o1cx"]
+
+[sub_resource type="Gradient" id="Gradient_3dvs4"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8o1cx"]
+gradient = SubResource("Gradient_3dvs4")
+width = 84
+height = 14
 
 [node name="StatsUI" type="Control"]
 layout_mode = 3
@@ -31,6 +39,49 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 theme_override_constants/separation = 5
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HungerBar" type="TextureProgressBar" parent="Stats/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 100.0
+rounded = true
+texture_progress = SubResource("GradientTexture2D_8o1cx")
+tint_progress = Color(1, 0.392157, 0.156863, 1)
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/HBoxContainer/HungerBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_horizontal = 2
+text = "HUNGER"
+horizontal_alignment = 1
+
+[node name="ThirstBar" type="TextureProgressBar" parent="Stats/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 100.0
+rounded = true
+texture_progress = SubResource("GradientTexture2D_8o1cx")
+tint_progress = Color(0.156863, 0.392157, 1, 1)
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/HBoxContainer/ThirstBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_horizontal = 2
+text = "THIRST"
+horizontal_alignment = 1
+
 [node name="HealthBar" type="TextureProgressBar" parent="Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 1.0
@@ -38,6 +89,18 @@ value = 100.0
 rounded = true
 texture_progress = ExtResource("2_8o1cx")
 tint_progress = Color(1, 0, 0.156863, 1)
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/HealthBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_horizontal = 2
+text = "HEALTH"
+horizontal_alignment = 1
 
 [node name="StaminaBar" type="TextureProgressBar" parent="Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -47,10 +110,34 @@ rounded = true
 texture_progress = ExtResource("2_8o1cx")
 tint_progress = Color(0, 1, 0.156863, 1)
 
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/StaminaBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_right = 28.0
+offset_bottom = 16.0
+grow_horizontal = 2
+text = "STAMINA"
+horizontal_alignment = 1
+
 [node name="MagicBar" type="TextureProgressBar" parent="Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 100.0
 rounded = true
 texture_progress = ExtResource("2_8o1cx")
-tint_progress = Color(0.156863, 0.392157, 1, 1)
+tint_progress = Color(0.392157, 0, 1, 1)
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/MagicBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_horizontal = 2
+text = "MAGIC"
+horizontal_alignment = 1

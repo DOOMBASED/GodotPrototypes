@@ -51,12 +51,15 @@ func _hotbar_equip_item(item: ItemResource) -> void:
 		if Global.player.animation_manager.equip_anim == "":
 			Global.player.animation_manager.equip_anim = effect
 			Global.player.weapon_manager.equipped_item = item
+			Global.player.weapon_manager.sprite.texture = item.texture
 		elif Global.player.animation_manager.equip_anim == effect:
 			Global.player.animation_manager.equip_anim = ""
 			Global.player.weapon_manager.equipped_item = null
+			Global.player.weapon_manager.sprite.texture = null
 		elif Global.player.animation_manager.equip_anim != "" and Global.player.animation_manager.equip_anim != effect:
 			Global.player.animation_manager.equip_anim = ""
 			Global.player.weapon_manager.equipped_item = null
+			Global.player.weapon_manager.sprite.texture = null
 			_hotbar_equip_item(item)
 		Inventory.inventory_updated.emit()
 		Inventory.item_cooldown_timer()
@@ -67,6 +70,7 @@ func _slot_new(new_name: String) -> void:
 	new_slot.drag_release.connect(_on_drag_release)
 	hotbar_container.add_child(new_slot)
 	new_slot.name = new_name
+	new_slot.key_label.text = str(int(new_name) + 1)
 
 func _slot_check(target_slot: InventorySlot) -> void:
 	var current_slot_index: int = _get_slot_index(current_slot)
@@ -157,12 +161,25 @@ func _on_hotbar_updated() -> void:
 							slot.quantity_label.text = str(slot.resource.quantity)
 							slot.self_modulate = Color.WHITE
 						else:
-							if slot.resource.equip_anim == Global.player.animation_manager.equip_anim:
-								slot.quantity_label.text = "E"
-								slot.self_modulate = Color.GREEN
+							if slot.resource.type == "Weapon - Ranged":
+								var projectile_count: int = 0
+								for projectile: ItemProjectile in slot.resource.valid_projectiles:
+									projectile_count += Inventory.item_get_count(projectile)
+								if slot.resource.equip_anim == Global.player.animation_manager.equip_anim:
+									slot.self_modulate = Color.GREEN
+								else:
+									slot.self_modulate = Color.WHITE
+								if projectile_count > 0:
+									slot.quantity_label.text = str(projectile_count)
+								else:
+									slot.quantity_label.text = "E"
 							else:
-								slot.quantity_label.text = ""
-								slot.self_modulate = Color.WHITE
+								if slot.resource.equip_anim == Global.player.animation_manager.equip_anim:
+									slot.quantity_label.text = "E"
+									slot.self_modulate = Color.GREEN
+								else:
+									slot.quantity_label.text = ""
+									slot.self_modulate = Color.WHITE
 					slot.resource = Inventory.hotbar_inventory[i]
 			else:
 				if i == slot.get_index():

@@ -102,7 +102,7 @@ func _quest_get_dialogue() -> Dictionary:
 				if quest.objectives[i].id == quest.objectives[i].id:
 						if i != 0 and not quest.objectives[i - 1].is_completed:
 							return {"text": "", "options": {}}
-				if quest.objectives[i].target_id == npc.resource.id and quest.objectives[i].target_type == quest.objectives[i].TargetTypes["talk_to"] and not quest.objectives[i].is_completed:
+				if quest.objectives[i].target_id == npc.resource.id and quest.objectives[i].target_type == quest.objectives[i].TargetTypes.talk_to and not quest.objectives[i].is_completed:
 					if current_state == "greeting" or current_state == "meeting":
 						if current_state == "meeting":
 							player_has_met = false

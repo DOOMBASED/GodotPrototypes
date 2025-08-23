@@ -24,10 +24,18 @@ size_flags_vertical = 4
 [node name="Sprite" type="Sprite2D" parent="MarginContainer/CenterContainer"]
 scale = Vector2(2, 2)
 
-[node name="QuantityLabel" type="Label" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+
+[node name="QuantityLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
 theme_override_constants/outline_size = 2
+
+[node name="KeyLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="SlotButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)

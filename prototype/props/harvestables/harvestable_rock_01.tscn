@@ -4,6 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://cdj6xjp0enma7" path="res://props/harvestables/_textures/harvest_rocks_01.png" id="2_cskqs"]
 [ext_resource type="Resource" uid="uid://cxwnohnce3ov" path="res://items/items/materials/item_stone_01.tres" id="2_i4hsw"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4hsw"]
+size = Vector2(23, 11)
+
+[sub_resource type="Gradient" id="Gradient_i4hsw"]
+offsets = PackedFloat32Array(0.96, 1)
+colors = PackedColorArray(0.027451, 0.027451, 0.027451, 0.498039, 0.027451, 0.027451, 0.027451, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h4dba"]
+gradient = SubResource("Gradient_i4hsw")
+width = 26
+height = 10
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [sub_resource type="Animation" id="Animation_h4dba"]
 length = 0.001
 tracks/0/type = "value"
@@ -42,41 +57,26 @@ _data = {
 &"hit": SubResource("Animation_i4hsw")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4hsw"]
-size = Vector2(23, 11)
-
-[sub_resource type="Gradient" id="Gradient_i4hsw"]
-offsets = PackedFloat32Array(0.96, 1)
-colors = PackedColorArray(0.027451, 0.027451, 0.027451, 0.498039, 0.027451, 0.027451, 0.027451, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h4dba"]
-gradient = SubResource("Gradient_i4hsw")
-width = 26
-height = 10
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
-
 [node name="HarvestableRock01" instance=ExtResource("1_f8kgy")]
 resource = ExtResource("2_i4hsw")
 resource_min_amount = 5
 resource_max_amount = 10
 
-[node name="AnimationPlayer" parent="." index="0"]
-libraries = {
-&"": SubResource("AnimationLibrary_h4dba")
-}
-
-[node name="Collision" parent="." index="1"]
+[node name="Collision" parent="." index="0"]
 position = Vector2(1.5, 5.5)
 shape = SubResource("RectangleShape2D_i4hsw")
 
-[node name="Shadow" type="Sprite2D" parent="." index="2"]
+[node name="Shadow" parent="." index="1"]
 position = Vector2(1, 8)
 texture = SubResource("GradientTexture2D_h4dba")
 
-[node name="Sprite" parent="." index="3"]
+[node name="Sprite" parent="." index="2"]
 y_sort_enabled = true
 position = Vector2(0, -3)
 texture = ExtResource("2_cskqs")
 hframes = 4
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_h4dba")
+}

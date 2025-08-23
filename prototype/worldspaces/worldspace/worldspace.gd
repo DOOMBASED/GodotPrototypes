@@ -2,6 +2,7 @@
 class_name Worldspace extends Node2D
 
 @export var resource: WorldspaceResource
+var tilemap: Node2D = null
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion
 @onready var lighting_color: CanvasModulate = $LightingColor
 @onready var items: Node2D = $WorldItems
@@ -15,6 +16,9 @@ func _ready() -> void:
 	Inventory.item_added.connect(_on_item_added)
 	Inventory.item_dropped.connect(_on_item_dropped)
 	_get_world_items()
+
+func set_tilemap(current_tilemap: Node2D) -> void:
+	tilemap = current_tilemap
 
 func _get_world_items() -> void:
 	world_items.clear()

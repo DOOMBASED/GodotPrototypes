@@ -3,13 +3,19 @@ class_name StatsManager extends Node
 
 var character: Character
 
+var hunger_max: float = 100.0
+var thirst_max: float = 100.0
 @export var health_max: float = 100.0
 @export var stamina_max: float = 100.0
 @export var magic_max: float = 100.0
 
+var hunger: float
+var thirst: float
 var health: float
 var stamina: float
 var magic: float
+var hunger_drain: float = 0.105
+var thirst_drain: float = 0.125
 var stamina_drain: float = 0.30
 var stamina_gain: float = 0.15
 var stamina_cooldown: bool = false
@@ -19,11 +25,15 @@ var dead: bool = false
 func _ready() -> void:
 	if character == null and get_parent() is Character:
 		character = get_parent()
+	hunger = hunger_max
+	thirst = thirst_max
 	health = health_max
 	stamina = stamina_max
 	magic = magic_max
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	_hunger_check(delta)
+	_thirst_check(delta)
 	_health_check()
 	_stamina_check()
 	_magic_check()
@@ -32,8 +42,25 @@ func _process(_delta: float) -> void:
 		character.animation_manager.current_state = AnimationManager.AnimationState.DEAD
 
 func health_damage(damage: float) -> void:
+	Stats.exp_stats["health_exp"] += Stats.base_exp_rate * damage
 	Global.set_debug_text(str("Applied ", damage, " damage."))
 	health -= damage
+
+func _hunger_check(delta) -> void:
+	if not get_tree().paused:
+		if character is Player:
+			if hunger > 0:
+				hunger -= hunger_drain * delta
+				if hunger <= 0:
+					hunger = 0
+
+func _thirst_check(delta) -> void:
+	if not get_tree().paused:
+		if character is Player:
+			if thirst > 0:
+				thirst -= thirst_drain * delta
+				if thirst <= 0:
+					thirst = 0
 
 func _health_check() -> void:
 	if not get_tree().paused:

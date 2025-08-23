@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0eg54howxvnp"]
+[gd_scene load_steps=19 format=3 uid="uid://d0eg54howxvnp"]
 
 [ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://characters/character/character.tscn" id="1_68cpq"]
 [ext_resource type="Script" uid="uid://du8j6tr1ua2ap" path="res://characters/characters/npc/npc.gd" id="2_d78lq"]
@@ -28,6 +28,14 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="Animation" id="Animation_6m5nh"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5o6i"]
+_data = {
+&"RESET": SubResource("Animation_6m5nh")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_jfpsb"]
 radius = 24.0
 
@@ -45,6 +53,7 @@ position = Vector2(0.5, 6)
 shape = SubResource("CapsuleShape2D_rthyg")
 
 [node name="Shadow" type="Sprite2D" parent="." index="1"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(0.5, 9)
 texture = SubResource("GradientTexture2D_h5o6i")
 
@@ -52,7 +61,7 @@ texture = SubResource("GradientTexture2D_h5o6i")
 texture = ExtResource("4_ljv8k")
 hframes = 12
 vframes = 22
-frame = 3
+frame = 2
 
 [node name="DialogueManager" parent="." index="3" instance=ExtResource("3_jfpsb")]
 
@@ -68,6 +77,7 @@ run_speed = 90.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationManager" index="0"]
 libraries = {
+&"": SubResource("AnimationLibrary_h5o6i"),
 &"animations_human": ExtResource("5_1sat4")
 }
 

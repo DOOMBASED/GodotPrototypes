@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c5fhbqosoo7yc" path="res://props/harvestables/_textures/harvest_trees_01.png" id="2_uto5u"]
 [ext_resource type="Texture2D" uid="uid://b444urwjohplp" path="res://props/harvestables/_textures/harvest_trees_shadow.png" id="3_7cjrc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_glkmk"]
-radius = 14.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glkmk"]
+size = Vector2(14, 12)
 
 [sub_resource type="Animation" id="Animation_7cjrc"]
 length = 0.001
@@ -46,43 +46,43 @@ _data = {
 &"hit": SubResource("Animation_glkmk")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_glkmk"]
-size = Vector2(14, 12)
+[sub_resource type="CircleShape2D" id="CircleShape2D_glkmk"]
+radius = 14.0
 
 [node name="HarvestableTree01" instance=ExtResource("1_jcdri")]
 resource = ExtResource("2_glkmk")
 resource_min_amount = 5
 resource_max_amount = 10
 
-[node name="ModulateArea" type="Area2D" parent="." index="0"]
-position = Vector2(0, -10)
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ModulateArea" index="0"]
-position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_glkmk")
-
-[node name="AnimationPlayer" parent="." index="1"]
-libraries = {
-&"": SubResource("AnimationLibrary_fo28g")
-}
-
-[node name="Collision" parent="." index="2"]
+[node name="Collision" parent="." index="0"]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_glkmk")
 
-[node name="Shadow" type="Sprite2D" parent="." index="3"]
-self_modulate = Color(0.027451, 0.027451, 0.027451, 0.498039)
+[node name="Shadow" parent="." index="1"]
+self_modulate = Color(0, 0, 0, 0.498039)
 position = Vector2(0, -10)
 texture = ExtResource("3_7cjrc")
 
-[node name="Sprite" parent="." index="4"]
+[node name="Sprite" parent="." index="2"]
 y_sort_enabled = true
 position = Vector2(0, -10)
 texture = ExtResource("2_uto5u")
 hframes = 4
 vframes = 8
 frame = 4
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_fo28g")
+}
+
+[node name="ModulateArea" type="Area2D" parent="." index="4"]
+position = Vector2(0, -10)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ModulateArea" index="0"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_glkmk")
 
 [connection signal="body_entered" from="ModulateArea" to="." method="_on_modulate_area_body_entered"]
 [connection signal="body_exited" from="ModulateArea" to="." method="_on_modulate_area_body_exited"]

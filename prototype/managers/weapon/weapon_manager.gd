@@ -11,7 +11,7 @@ var projectile_direction: Vector2
 func _ready() -> void:
 	if character == null and get_parent() is Character:
 		character = get_parent()
-	Inventory.inventory_ui.menu.item_equipped.connect(_on_equipped)
+	Inventory.inventory_ui.menu.item_equipped.connect(_on_item_equipped)
 
 func action_shoot(projectile_scene: PackedScene) -> void:
 	var new_projectile: Node = projectile_scene.instantiate()
@@ -41,9 +41,12 @@ func _on_weapon_body_entered(body: Node2D) -> void:
 		if body.resource.material_tool_type == character.animation_manager.equip_anim:
 			body.material_harvest()
 	if body.resource is EnemyResource:
+		if Global.player.weapon_manager.equipped_item.type == "Weapon - Melee":
+			Stats.exp_stats["melee_exp"] += Stats.base_exp_rate * equipped_item.equip_effect_magnitude
 		_knockback(body)
 		body.stats_manager.health_damage(equipped_item.equip_effect_magnitude)
 		SignalBus.attacked.emit(body)
-func _on_equipped(_slot: int) -> void:
+
+func _on_item_equipped(_slot: int) -> void:
 	if equipped_item != null:
 		sprite.texture = equipped_item.texture

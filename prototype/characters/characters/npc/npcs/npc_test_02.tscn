@@ -1,21 +1,62 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwrlbriyysran"]
+[gd_scene load_steps=12 format=3 uid="uid://dwrlbriyysran"]
 
 [ext_resource type="PackedScene" uid="uid://d0eg54howxvnp" path="res://characters/characters/npc/npc.tscn" id="1_rcfsu"]
 [ext_resource type="Resource" uid="uid://ce3a1gfrc188o" path="res://characters/characters/npc/npcs/npc_test_02.tres" id="2_n7n0q"]
 [ext_resource type="Script" uid="uid://b6jqrdj0bdxd2" path="res://autoloads/quests/_quest_resource.gd" id="3_itre4"]
-[ext_resource type="Resource" uid="uid://bppupfk7fv21b" path="res://resources/quests/quest_test_02.tres" id="5_0vg10"]
+[ext_resource type="Script" uid="uid://d35atbvkibbaw" path="res://autoloads/quests/_quest_resource_objective.gd" id="5_kgrj5"]
+[ext_resource type="Script" uid="uid://xvfokx3era3m" path="res://autoloads/quests/_quest_resource_reward.gd" id="6_ujbii"]
+[ext_resource type="Resource" uid="uid://bhp4crbuakegm" path="res://items/items/equipment/weapons/item_arrow_01.tres" id="7_aa4mo"]
 [ext_resource type="Texture2D" uid="uid://c7f5xvx3iv80v" path="res://characters/characters/npc/npcs/npc_test_02.png" id="7_ga5qr"]
+
+[sub_resource type="Resource" id="Resource_4hbbq"]
+script = ExtResource("5_kgrj5")
+id = "quest_test_02_obj_01"
+description = "Kill the Big Purple Slime"
+target_id = "slime_purple_03"
+target_type = 2
+objective_dialogue = ""
+required_count = 0
+required_kills = 1
+metadata/_custom_type_script = "uid://dqdmxcap5f4pi"
+
+[sub_resource type="Resource" id="Resource_em5ly"]
+script = ExtResource("5_kgrj5")
+id = "quest_test_02_obj_02"
+description = "Talk to the Pink Girl again"
+target_id = "npc_test_02"
+target_type = 0
+objective_dialogue = "Thank you for killing that nasty thing. Here are some Arrows."
+required_count = 0
+required_kills = 0
+metadata/_custom_type_script = "uid://d35atbvkibbaw"
+
+[sub_resource type="Resource" id="Resource_6ymca"]
+script = ExtResource("6_ujbii")
+type = ExtResource("7_aa4mo")
+amount = 50
+metadata/_custom_type_script = "uid://dk6ick82r7vsf"
+
+[sub_resource type="Resource" id="Resource_kgrj5"]
+resource_local_to_scene = true
+script = ExtResource("3_itre4")
+id = "quest_test_02"
+unlock = "npc_test_02_01"
+name = "QuestTest02"
+description = "Kill the Big Purple Slime"
+state = "not_started"
+objectives = Array[ExtResource("5_kgrj5")]([SubResource("Resource_4hbbq"), SubResource("Resource_em5ly")])
+rewards = Array[ExtResource("6_ujbii")]([SubResource("Resource_6ymca")])
 
 [node name="NPCTest02" instance=ExtResource("1_rcfsu")]
 resource = ExtResource("2_n7n0q")
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="2"]
 texture = ExtResource("7_ga5qr")
-frame = 2
+frame = 0
 
-[node name="DialogueManager" parent="." index="2"]
-quests = Array[ExtResource("3_itre4")]([ExtResource("5_0vg10")])
+[node name="DialogueManager" parent="." index="3"]
+quests = Array[ExtResource("3_itre4")]([SubResource("Resource_kgrj5")])
 dialogue_file_path = "res://resources/dialogues/dialogue_test.json"
 
 [node name="Sprite" parent="WeaponManager" index="2"]
-position = Vector2(9, 0)
+position = Vector2(9, -1)

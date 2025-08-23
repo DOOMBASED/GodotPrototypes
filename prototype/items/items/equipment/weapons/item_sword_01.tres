@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemEquipment" load_steps=3 format=3 uid="uid://bbaf0bgbbc5m6"]
+
+[ext_resource type="Script" uid="uid://csnmkj7pgmfg2" path="res://items/item/classes/item_equipment.gd" id="1_q3u6n"]
+[ext_resource type="Texture2D" uid="uid://v2o364p6jxax" path="res://items/items/equipment/weapons/_textures/weapon_sword_01.png" id="2_8jfet"]
+
+[resource]
+script = ExtResource("1_q3u6n")
+equip_anim = "Sword"
+equip_effect = "Damage"
+equip_effect_magnitude = 5.0
+knockback_force = 3.0
+texture = ExtResource("2_8jfet")
+id = "item_sword_01"
+name = "Sword"
+type = "Weapon - Melee"
+init = Vector2(0, 0)
+count = 1
+maximum = 1
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://csnmkj7pgmfg2"

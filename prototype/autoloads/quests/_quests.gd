@@ -13,6 +13,7 @@ signal quest_updated(id)
 signal quest_list_updated()
 
 func _ready() -> void:
+	SignalBus.dead.connect(_on_enemy_killed)
 	quest_updated.connect(_on_quest_updated)
 	quest_ui.quests.hide()
 	quest_ui_tracker.hide()
@@ -34,17 +35,24 @@ func quest_get_active() -> Array:
 func quest_check_items(id: String) -> bool:
 	if current_quest != null:
 		for objective: QuestResourceObjective in current_quest.objectives:
-			if objective.target_id == id and objective.target_type == objective.TargetTypes["collection"] and not objective.is_completed:
+			if objective.target_id == id and objective.target_type == objective.TargetTypes.collection and not objective.is_completed:
 				return true
 	return false
 
-func quest_check_objectives(target_id: String, target_type: int, quantity: int = 1) -> void:
+func quest_check_kills(id: String) -> bool:
+	if current_quest != null:
+		for objective: QuestResourceObjective in current_quest.objectives:
+			if objective.target_id == id and objective.target_type == objective.TargetTypes.eliminate and not objective.is_completed:
+				return true
+	return false
+
+func quest_check_objectives(target_id: String, target_type: int, count: int = 1) -> void:
 	if current_quest == null:
 		return
 	var objective_updated: bool = false
 	for objective: QuestResourceObjective in current_quest.objectives:
 		if objective.target_id == target_id and objective.target_type == target_type and not objective.is_completed:
-			current_quest.complete_objective(objective.id, quantity)
+			current_quest.complete_objective(objective.id, count)
 			objective_updated = true
 			break
 	if objective_updated:
@@ -87,8 +95,10 @@ func _quest_check_tracker(quest: QuestResource) -> void:
 		for objective: QuestResourceObjective in quest.objectives:
 			var label := Label.new()
 			label.text = objective.description
-			if objective.target_type == objective.TargetTypes["collection"]:
-				label.text = str(objective.description, "(", str(objective.collected_quantity), "/", str(objective.required_quantity), ")")
+			if objective.target_type == objective.TargetTypes.collection:
+				label.text = str(objective.description, "(", str(objective.collected_count), "/", str(objective.required_count), ")")
+			if objective.target_type == objective.TargetTypes.eliminate:
+				label.text = str(objective.description, "(", str(objective.kill_count), "/", str(objective.required_kills), ")")
 			if objective.is_completed:
 				label.add_theme_color_override("font_color", Color(0, 1, 0))
 			else:
@@ -117,3 +127,8 @@ func _on_quest_updated(id: String) -> void:
 	if quest == current_quest:
 		_quest_check_tracker(quest)
 	current_quest = null
+
+func _on_enemy_killed(enemy: Character) -> void:
+	await Stats.kills_updated
+	if quest_check_kills(enemy.resource.id):
+		quest_check_objectives(enemy.resource.id, 2, Stats.kill_stats[enemy.resource.id])

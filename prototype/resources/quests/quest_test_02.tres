@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QuestResource" load_steps=7 format=3 uid="uid://bppupfk7fv21b"]
+[gd_resource type="Resource" script_class="QuestResource" load_steps=8 format=3 uid="uid://bppupfk7fv21b"]
 
 [ext_resource type="Script" uid="uid://d35atbvkibbaw" path="res://autoloads/quests/_quest_resource_objective.gd" id="1_74xb2"]
 [ext_resource type="Script" uid="uid://xvfokx3era3m" path="res://autoloads/quests/_quest_resource_reward.gd" id="2_glgwk"]
@@ -8,13 +8,24 @@
 [sub_resource type="Resource" id="Resource_4hbbq"]
 script = ExtResource("1_74xb2")
 id = "quest_test_02_obj_01"
-description = "Talk to Orange Guy"
-target_id = "npc_test_01"
-target_type = 0
-objective_dialogue = "The Health Potions are over there on the ground.
-They are the red ones. Here, have some arrows."
-required_quantity = 0
+description = "Kill the Big Purple Slime"
+target_id = "slime_purple_03"
+target_type = 2
+objective_dialogue = ""
+required_count = 0
+required_kills = 1
 metadata/_custom_type_script = "uid://dqdmxcap5f4pi"
+
+[sub_resource type="Resource" id="Resource_em5ly"]
+script = ExtResource("1_74xb2")
+id = "quest_test_02_obj_02"
+description = "Talk to the Pink Girl again"
+target_id = "npc_test_02"
+target_type = 0
+objective_dialogue = "Thank you for killing that nasty thing. Here are some Arrows."
+required_count = 0
+required_kills = 0
+metadata/_custom_type_script = "uid://d35atbvkibbaw"
 
 [sub_resource type="Resource" id="Resource_6ymca"]
 script = ExtResource("2_glgwk")
@@ -28,7 +39,7 @@ script = ExtResource("3_guq2i")
 id = "quest_test_02"
 unlock = "npc_test_02_01"
 name = "QuestTest02"
-description = "Ask Orange Guy about Red Items"
+description = "Kill the Big Purple Slime"
 state = "not_started"
-objectives = Array[ExtResource("1_74xb2")]([SubResource("Resource_4hbbq")])
+objectives = Array[ExtResource("1_74xb2")]([SubResource("Resource_4hbbq"), SubResource("Resource_em5ly")])
 rewards = Array[ExtResource("2_glgwk")]([SubResource("Resource_6ymca")])

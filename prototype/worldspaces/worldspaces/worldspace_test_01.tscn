@@ -1,10 +1,11 @@
-[gd_scene load_steps=335 format=3 uid="uid://d3imks6wf5d0s"]
+[gd_scene load_steps=346 format=3 uid="uid://d3imks6wf5d0s"]
 
 [ext_resource type="PackedScene" uid="uid://ba8h5aceaarer" path="res://worldspaces/worldspace/worldspace.tscn" id="1_uet8l"]
 [ext_resource type="PackedScene" uid="uid://ubj26actbhxg" path="res://characters/characters/player/player.tscn" id="2_5ph3w"]
 [ext_resource type="Resource" uid="uid://vqlxqt4lh0v4" path="res://worldspaces/worldspaces/worldspace_test_01.tres" id="2_wq1oj"]
 [ext_resource type="PackedScene" uid="uid://de8245v0vu2ka" path="res://tilemaps/tile_map_test_01.tscn" id="3_gc77g"]
 [ext_resource type="PackedScene" uid="uid://dw3bdqib6apgc" path="res://characters/characters/npc/npcs/npc_test_01.tscn" id="3_rhh2s"]
+[ext_resource type="PackedScene" uid="uid://cbbb3v3ciwb5j" path="res://items/items/equipment/weapons/item_sword_01.tscn" id="14_4wjy4"]
 [ext_resource type="PackedScene" uid="uid://o0grfqsry4j1" path="res://items/items/equipment/tools/item_axe_01.tscn" id="14_fki0f"]
 [ext_resource type="Script" uid="uid://csnmkj7pgmfg2" path="res://items/item/classes/item_equipment.gd" id="15_44jdy"]
 [ext_resource type="Texture2D" uid="uid://cpvinm7duai3x" path="res://items/items/equipment/tools/_textures/tool_axe_01.png" id="16_ild02"]
@@ -27,8 +28,12 @@
 [ext_resource type="Texture2D" uid="uid://bol8lpyamdi4x" path="res://items/items/potions/_textures/potion_purple_01.png" id="26_4wjy4"]
 [ext_resource type="Script" uid="uid://cnbsgt5bm575n" path="res://items/item/classes/item_projectile.gd" id="26_baf65"]
 [ext_resource type="PackedScene" uid="uid://dwrlbriyysran" path="res://characters/characters/npc/npcs/npc_test_02.tscn" id="26_yngfc"]
+[ext_resource type="PackedScene" uid="uid://7qwbimqlagl3" path="res://items/items/potions/item_potion_light_01.tscn" id="27_baf65"]
 [ext_resource type="Texture2D" uid="uid://deufkpg2e8qpv" path="res://items/items/equipment/weapons/_textures/weapon_bow_arrow_01.png" id="27_ygdhh"]
 [ext_resource type="Texture2D" uid="uid://bcdw6pb4w5kak" path="res://items/items/materials/_textures/material_wood_01.png" id="28_baf65"]
+[ext_resource type="Texture2D" uid="uid://bkdbvnfjgdxjv" path="res://items/items/potions/_textures/potion_yellow_01.png" id="28_ygdhh"]
+[ext_resource type="PackedScene" uid="uid://ba7lcrswqrncu" path="res://items/items/food/item_apple_01.tscn" id="30_o74ck"]
+[ext_resource type="PackedScene" uid="uid://sp20mtsnv8li" path="res://items/items/food/item_water_01.tscn" id="31_0atj2"]
 [ext_resource type="PackedScene" uid="uid://djp0vo766254n" path="res://characters/characters/slime/slimes/slime_purple_03.tscn" id="31_ljpwh"]
 [ext_resource type="PackedScene" uid="uid://djrkmc21airy4" path="res://characters/characters/enemy/enemies/enemy_test_dummy_01.tscn" id="33_ygdhh"]
 
@@ -3438,9 +3443,10 @@ quantity = 0
 quest = false
 metadata/_custom_type_script = "uid://hfcml6sgwe01"
 
-[sub_resource type="Resource" id="Resource_ysfsw"]
+[sub_resource type="Resource" id="Resource_0atj2"]
 resource_local_to_scene = true
 script = ExtResource("15_44jdy")
+valid_projectiles = Array[ExtResource("26_baf65")]([])
 equip_anim = "Axe"
 equip_effect = "Damage"
 equip_effect_magnitude = 2.0
@@ -3456,9 +3462,10 @@ quantity = 0
 quest = false
 metadata/_custom_type_script = "uid://csnmkj7pgmfg2"
 
-[sub_resource type="Resource" id="Resource_ljpwh"]
+[sub_resource type="Resource" id="Resource_kdeok"]
 resource_local_to_scene = true
 script = ExtResource("15_44jdy")
+valid_projectiles = Array[ExtResource("26_baf65")]([])
 equip_anim = "Pickaxe"
 equip_effect = "Damage"
 equip_effect_magnitude = 1.0
@@ -3473,126 +3480,6 @@ maximum = 1
 quantity = 0
 quest = false
 metadata/_custom_type_script = "uid://csnmkj7pgmfg2"
-
-[sub_resource type="Resource" id="Resource_baf65"]
-resource_local_to_scene = true
-script = ExtResource("26_baf65")
-projectile_damage = 2.0
-projectile_speed = 180.0
-projectile_range = 180.0
-knockback_force = 1.0
-is_spell = false
-recoverable = true
-texture = ExtResource("27_ygdhh")
-id = "item_arrow_01"
-name = "Wooden Arrow"
-type = "Projectile"
-init = Vector2(0, 0)
-count = 1
-maximum = 999
-quantity = 0
-quest = false
-metadata/_custom_type_script = "uid://cnbsgt5bm575n"
-
-[sub_resource type="Resource" id="Resource_ygdhh"]
-resource_local_to_scene = true
-script = ExtResource("26_baf65")
-projectile_damage = 2.0
-projectile_speed = 180.0
-projectile_range = 180.0
-knockback_force = 1.0
-is_spell = false
-recoverable = true
-texture = ExtResource("27_ygdhh")
-id = "item_arrow_01"
-name = "Wooden Arrow"
-type = "Projectile"
-init = Vector2(0, 0)
-count = 1
-maximum = 999
-quantity = 0
-quest = false
-metadata/_custom_type_script = "uid://cnbsgt5bm575n"
-
-[sub_resource type="Resource" id="Resource_4wjy4"]
-resource_local_to_scene = true
-script = ExtResource("26_baf65")
-projectile_damage = 2.0
-projectile_speed = 180.0
-projectile_range = 180.0
-knockback_force = 1.0
-is_spell = false
-recoverable = true
-texture = ExtResource("27_ygdhh")
-id = "item_arrow_01"
-name = "Wooden Arrow"
-type = "Projectile"
-init = Vector2(0, 0)
-count = 1
-maximum = 999
-quantity = 0
-quest = false
-metadata/_custom_type_script = "uid://cnbsgt5bm575n"
-
-[sub_resource type="Resource" id="Resource_o74ck"]
-resource_local_to_scene = true
-script = ExtResource("26_baf65")
-projectile_damage = 2.0
-projectile_speed = 180.0
-projectile_range = 180.0
-knockback_force = 1.0
-is_spell = false
-recoverable = true
-texture = ExtResource("27_ygdhh")
-id = "item_arrow_01"
-name = "Wooden Arrow"
-type = "Projectile"
-init = Vector2(0, 0)
-count = 1
-maximum = 999
-quantity = 0
-quest = false
-metadata/_custom_type_script = "uid://cnbsgt5bm575n"
-
-[sub_resource type="Resource" id="Resource_0atj2"]
-resource_local_to_scene = true
-script = ExtResource("26_baf65")
-projectile_damage = 2.0
-projectile_speed = 180.0
-projectile_range = 180.0
-knockback_force = 1.0
-is_spell = false
-recoverable = true
-texture = ExtResource("27_ygdhh")
-id = "item_arrow_01"
-name = "Wooden Arrow"
-type = "Projectile"
-init = Vector2(0, 0)
-count = 1
-maximum = 999
-quantity = 0
-quest = false
-metadata/_custom_type_script = "uid://cnbsgt5bm575n"
-
-[sub_resource type="Resource" id="Resource_kdeok"]
-resource_local_to_scene = true
-script = ExtResource("26_baf65")
-projectile_damage = 2.0
-projectile_speed = 180.0
-projectile_range = 180.0
-knockback_force = 1.0
-is_spell = false
-recoverable = true
-texture = ExtResource("27_ygdhh")
-id = "item_arrow_01"
-name = "Wooden Arrow"
-type = "Projectile"
-init = Vector2(0, 0)
-count = 1
-maximum = 999
-quantity = 0
-quest = false
-metadata/_custom_type_script = "uid://cnbsgt5bm575n"
 
 [sub_resource type="Resource" id="Resource_ge77w"]
 resource_local_to_scene = true
@@ -4276,105 +4163,131 @@ metadata/_custom_type_script = "uid://cnbsgt5bm575n"
 
 [sub_resource type="Resource" id="Resource_eev7o"]
 resource_local_to_scene = true
-script = ExtResource("19_ysfsw")
-effect = "Health"
-magnitude = 15.0
-texture = ExtResource("20_ljpwh")
-id = "item_potion_health_01"
-name = "Health Potion"
-type = "Potion"
+script = ExtResource("26_baf65")
+projectile_damage = 2.0
+projectile_speed = 180.0
+projectile_range = 180.0
+knockback_force = 1.0
+is_spell = false
+recoverable = true
+texture = ExtResource("27_ygdhh")
+id = "item_arrow_01"
+name = "Wooden Arrow"
+type = "Projectile"
 init = Vector2(0, 0)
 count = 1
-maximum = 10
+maximum = 999
 quantity = 0
 quest = false
-metadata/_custom_type_script = "uid://deo1was2s8qs1"
+metadata/_custom_type_script = "uid://cnbsgt5bm575n"
 
 [sub_resource type="Resource" id="Resource_x2nvi"]
 resource_local_to_scene = true
-script = ExtResource("19_ysfsw")
-effect = "Health"
-magnitude = 15.0
-texture = ExtResource("20_ljpwh")
-id = "item_potion_health_01"
-name = "Health Potion"
-type = "Potion"
+script = ExtResource("26_baf65")
+projectile_damage = 2.0
+projectile_speed = 180.0
+projectile_range = 180.0
+knockback_force = 1.0
+is_spell = false
+recoverable = true
+texture = ExtResource("27_ygdhh")
+id = "item_arrow_01"
+name = "Wooden Arrow"
+type = "Projectile"
 init = Vector2(0, 0)
 count = 1
-maximum = 10
+maximum = 999
 quantity = 0
 quest = false
-metadata/_custom_type_script = "uid://deo1was2s8qs1"
+metadata/_custom_type_script = "uid://cnbsgt5bm575n"
 
 [sub_resource type="Resource" id="Resource_xcjx8"]
 resource_local_to_scene = true
-script = ExtResource("19_ysfsw")
-effect = "Health"
-magnitude = 15.0
-texture = ExtResource("20_ljpwh")
-id = "item_potion_health_01"
-name = "Health Potion"
-type = "Potion"
+script = ExtResource("26_baf65")
+projectile_damage = 2.0
+projectile_speed = 180.0
+projectile_range = 180.0
+knockback_force = 1.0
+is_spell = false
+recoverable = true
+texture = ExtResource("27_ygdhh")
+id = "item_arrow_01"
+name = "Wooden Arrow"
+type = "Projectile"
 init = Vector2(0, 0)
 count = 1
-maximum = 10
+maximum = 999
 quantity = 0
 quest = false
-metadata/_custom_type_script = "uid://deo1was2s8qs1"
+metadata/_custom_type_script = "uid://cnbsgt5bm575n"
 
 [sub_resource type="Resource" id="Resource_156pe"]
 resource_local_to_scene = true
-script = ExtResource("19_ysfsw")
-effect = "Health"
-magnitude = 15.0
-texture = ExtResource("20_ljpwh")
-id = "item_potion_health_01"
-name = "Health Potion"
-type = "Potion"
+script = ExtResource("26_baf65")
+projectile_damage = 2.0
+projectile_speed = 180.0
+projectile_range = 180.0
+knockback_force = 1.0
+is_spell = false
+recoverable = true
+texture = ExtResource("27_ygdhh")
+id = "item_arrow_01"
+name = "Wooden Arrow"
+type = "Projectile"
 init = Vector2(0, 0)
 count = 1
-maximum = 10
+maximum = 999
 quantity = 0
 quest = false
-metadata/_custom_type_script = "uid://deo1was2s8qs1"
+metadata/_custom_type_script = "uid://cnbsgt5bm575n"
 
 [sub_resource type="Resource" id="Resource_ovv6o"]
 resource_local_to_scene = true
-script = ExtResource("19_ysfsw")
-effect = "Health"
-magnitude = 15.0
-texture = ExtResource("20_ljpwh")
-id = "item_potion_health_01"
-name = "Health Potion"
-type = "Potion"
+script = ExtResource("26_baf65")
+projectile_damage = 2.0
+projectile_speed = 180.0
+projectile_range = 180.0
+knockback_force = 1.0
+is_spell = false
+recoverable = true
+texture = ExtResource("27_ygdhh")
+id = "item_arrow_01"
+name = "Wooden Arrow"
+type = "Projectile"
 init = Vector2(0, 0)
 count = 1
-maximum = 10
+maximum = 999
 quantity = 0
 quest = false
-metadata/_custom_type_script = "uid://deo1was2s8qs1"
+metadata/_custom_type_script = "uid://cnbsgt5bm575n"
 
 [sub_resource type="Resource" id="Resource_xhs7t"]
 resource_local_to_scene = true
-script = ExtResource("19_ysfsw")
-effect = "Health"
-magnitude = 15.0
-texture = ExtResource("20_ljpwh")
-id = "item_potion_health_01"
-name = "Health Potion"
-type = "Potion"
+script = ExtResource("26_baf65")
+projectile_damage = 2.0
+projectile_speed = 180.0
+projectile_range = 180.0
+knockback_force = 1.0
+is_spell = false
+recoverable = true
+texture = ExtResource("27_ygdhh")
+id = "item_arrow_01"
+name = "Wooden Arrow"
+type = "Projectile"
 init = Vector2(0, 0)
 count = 1
-maximum = 10
+maximum = 999
 quantity = 0
 quest = false
-metadata/_custom_type_script = "uid://deo1was2s8qs1"
+metadata/_custom_type_script = "uid://cnbsgt5bm575n"
 
 [sub_resource type="Resource" id="Resource_h60lf"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Health"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("20_ljpwh")
 id = "item_potion_health_01"
 name = "Health Potion"
@@ -4391,6 +4304,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Health"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("20_ljpwh")
 id = "item_potion_health_01"
 name = "Health Potion"
@@ -4407,6 +4322,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Health"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("20_ljpwh")
 id = "item_potion_health_01"
 name = "Health Potion"
@@ -4423,6 +4340,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Health"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("20_ljpwh")
 id = "item_potion_health_01"
 name = "Health Potion"
@@ -4439,6 +4358,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Health"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("20_ljpwh")
 id = "item_potion_health_01"
 name = "Health Potion"
@@ -4455,6 +4376,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Health"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("20_ljpwh")
 id = "item_potion_health_01"
 name = "Health Potion"
@@ -4471,6 +4394,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Health"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("20_ljpwh")
 id = "item_potion_health_01"
 name = "Health Potion"
@@ -4487,6 +4412,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Health"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("20_ljpwh")
 id = "item_potion_health_01"
 name = "Health Potion"
@@ -4503,6 +4430,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Health"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("20_ljpwh")
 id = "item_potion_health_01"
 name = "Health Potion"
@@ -4517,11 +4446,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_h25c0"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Stamina"
+effect = "Health"
 magnitude = 15.0
-texture = ExtResource("22_baf65")
-id = "item_potion_stamina_01"
-name = "Stamina Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("20_ljpwh")
+id = "item_potion_health_01"
+name = "Health Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4533,11 +4464,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_w2osv"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Stamina"
+effect = "Health"
 magnitude = 15.0
-texture = ExtResource("22_baf65")
-id = "item_potion_stamina_01"
-name = "Stamina Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("20_ljpwh")
+id = "item_potion_health_01"
+name = "Health Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4549,11 +4482,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_2pe44"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Stamina"
+effect = "Health"
 magnitude = 15.0
-texture = ExtResource("22_baf65")
-id = "item_potion_stamina_01"
-name = "Stamina Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("20_ljpwh")
+id = "item_potion_health_01"
+name = "Health Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4565,11 +4500,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_6015s"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Stamina"
+effect = "Health"
 magnitude = 15.0
-texture = ExtResource("22_baf65")
-id = "item_potion_stamina_01"
-name = "Stamina Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("20_ljpwh")
+id = "item_potion_health_01"
+name = "Health Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4581,11 +4518,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_yrmij"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Stamina"
+effect = "Health"
 magnitude = 15.0
-texture = ExtResource("22_baf65")
-id = "item_potion_stamina_01"
-name = "Stamina Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("20_ljpwh")
+id = "item_potion_health_01"
+name = "Health Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4597,11 +4536,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_nhpdk"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Stamina"
+effect = "Health"
 magnitude = 15.0
-texture = ExtResource("22_baf65")
-id = "item_potion_stamina_01"
-name = "Stamina Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("20_ljpwh")
+id = "item_potion_health_01"
+name = "Health Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4615,6 +4556,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Stamina"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("22_baf65")
 id = "item_potion_stamina_01"
 name = "Stamina Potion"
@@ -4631,6 +4574,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Stamina"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("22_baf65")
 id = "item_potion_stamina_01"
 name = "Stamina Potion"
@@ -4647,6 +4592,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Stamina"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("22_baf65")
 id = "item_potion_stamina_01"
 name = "Stamina Potion"
@@ -4663,6 +4610,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Stamina"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("22_baf65")
 id = "item_potion_stamina_01"
 name = "Stamina Potion"
@@ -4679,6 +4628,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Stamina"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("22_baf65")
 id = "item_potion_stamina_01"
 name = "Stamina Potion"
@@ -4695,6 +4646,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Stamina"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("22_baf65")
 id = "item_potion_stamina_01"
 name = "Stamina Potion"
@@ -4711,6 +4664,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Stamina"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("22_baf65")
 id = "item_potion_stamina_01"
 name = "Stamina Potion"
@@ -4727,6 +4682,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Stamina"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("22_baf65")
 id = "item_potion_stamina_01"
 name = "Stamina Potion"
@@ -4743,6 +4700,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Stamina"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("22_baf65")
 id = "item_potion_stamina_01"
 name = "Stamina Potion"
@@ -4757,11 +4716,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_ofce6"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Magic"
+effect = "Stamina"
 magnitude = 15.0
-texture = ExtResource("24_ygdhh")
-id = "item_potion_magic_01"
-name = "Magic Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("22_baf65")
+id = "item_potion_stamina_01"
+name = "Stamina Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4773,11 +4734,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_ixp8a"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Magic"
+effect = "Stamina"
 magnitude = 15.0
-texture = ExtResource("24_ygdhh")
-id = "item_potion_magic_01"
-name = "Magic Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("22_baf65")
+id = "item_potion_stamina_01"
+name = "Stamina Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4789,11 +4752,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_3npbm"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Magic"
+effect = "Stamina"
 magnitude = 15.0
-texture = ExtResource("24_ygdhh")
-id = "item_potion_magic_01"
-name = "Magic Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("22_baf65")
+id = "item_potion_stamina_01"
+name = "Stamina Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4805,11 +4770,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_cv8lk"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Magic"
+effect = "Stamina"
 magnitude = 15.0
-texture = ExtResource("24_ygdhh")
-id = "item_potion_magic_01"
-name = "Magic Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("22_baf65")
+id = "item_potion_stamina_01"
+name = "Stamina Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4821,11 +4788,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_l0uw8"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Magic"
+effect = "Stamina"
 magnitude = 15.0
-texture = ExtResource("24_ygdhh")
-id = "item_potion_magic_01"
-name = "Magic Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("22_baf65")
+id = "item_potion_stamina_01"
+name = "Stamina Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4837,11 +4806,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_85yof"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Magic"
+effect = "Stamina"
 magnitude = 15.0
-texture = ExtResource("24_ygdhh")
-id = "item_potion_magic_01"
-name = "Magic Potion"
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("22_baf65")
+id = "item_potion_stamina_01"
+name = "Stamina Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -4855,6 +4826,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Magic"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("24_ygdhh")
 id = "item_potion_magic_01"
 name = "Magic Potion"
@@ -4871,6 +4844,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Magic"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("24_ygdhh")
 id = "item_potion_magic_01"
 name = "Magic Potion"
@@ -4887,6 +4862,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Magic"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("24_ygdhh")
 id = "item_potion_magic_01"
 name = "Magic Potion"
@@ -4903,6 +4880,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Magic"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("24_ygdhh")
 id = "item_potion_magic_01"
 name = "Magic Potion"
@@ -4919,6 +4898,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Magic"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("24_ygdhh")
 id = "item_potion_magic_01"
 name = "Magic Potion"
@@ -4935,6 +4916,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Magic"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("24_ygdhh")
 id = "item_potion_magic_01"
 name = "Magic Potion"
@@ -4951,6 +4934,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Magic"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("24_ygdhh")
 id = "item_potion_magic_01"
 name = "Magic Potion"
@@ -4967,6 +4952,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Magic"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("24_ygdhh")
 id = "item_potion_magic_01"
 name = "Magic Potion"
@@ -4983,6 +4970,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Magic"
 magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("24_ygdhh")
 id = "item_potion_magic_01"
 name = "Magic Potion"
@@ -4997,11 +4986,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_hqb3a"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Slot"
-magnitude = 1.0
-texture = ExtResource("26_4wjy4")
-id = "item_potion_slot_01"
-name = "Slot Increase Potion"
+effect = "Magic"
+magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("24_ygdhh")
+id = "item_potion_magic_01"
+name = "Magic Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -5013,11 +5004,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_jrhfm"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Slot"
-magnitude = 1.0
-texture = ExtResource("26_4wjy4")
-id = "item_potion_slot_01"
-name = "Slot Increase Potion"
+effect = "Magic"
+magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("24_ygdhh")
+id = "item_potion_magic_01"
+name = "Magic Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -5029,11 +5022,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_bnp0l"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Slot"
-magnitude = 1.0
-texture = ExtResource("26_4wjy4")
-id = "item_potion_slot_01"
-name = "Slot Increase Potion"
+effect = "Magic"
+magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("24_ygdhh")
+id = "item_potion_magic_01"
+name = "Magic Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -5045,11 +5040,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_haep3"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Slot"
-magnitude = 1.0
-texture = ExtResource("26_4wjy4")
-id = "item_potion_slot_01"
-name = "Slot Increase Potion"
+effect = "Magic"
+magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("24_ygdhh")
+id = "item_potion_magic_01"
+name = "Magic Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -5061,11 +5058,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_xvlxq"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Slot"
-magnitude = 1.0
-texture = ExtResource("26_4wjy4")
-id = "item_potion_slot_01"
-name = "Slot Increase Potion"
+effect = "Magic"
+magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("24_ygdhh")
+id = "item_potion_magic_01"
+name = "Magic Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -5077,11 +5076,13 @@ metadata/_custom_type_script = "uid://deo1was2s8qs1"
 [sub_resource type="Resource" id="Resource_cug1p"]
 resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
-effect = "Slot"
-magnitude = 1.0
-texture = ExtResource("26_4wjy4")
-id = "item_potion_slot_01"
-name = "Slot Increase Potion"
+effect = "Magic"
+magnitude = 15.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("24_ygdhh")
+id = "item_potion_magic_01"
+name = "Magic Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
@@ -5095,6 +5096,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Slot"
 magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("26_4wjy4")
 id = "item_potion_slot_01"
 name = "Slot Increase Potion"
@@ -5111,6 +5114,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Slot"
 magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("26_4wjy4")
 id = "item_potion_slot_01"
 name = "Slot Increase Potion"
@@ -5127,6 +5132,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Slot"
 magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("26_4wjy4")
 id = "item_potion_slot_01"
 name = "Slot Increase Potion"
@@ -5143,6 +5150,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Slot"
 magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("26_4wjy4")
 id = "item_potion_slot_01"
 name = "Slot Increase Potion"
@@ -5159,6 +5168,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Slot"
 magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("26_4wjy4")
 id = "item_potion_slot_01"
 name = "Slot Increase Potion"
@@ -5175,6 +5186,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Slot"
 magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("26_4wjy4")
 id = "item_potion_slot_01"
 name = "Slot Increase Potion"
@@ -5191,6 +5204,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Slot"
 magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("26_4wjy4")
 id = "item_potion_slot_01"
 name = "Slot Increase Potion"
@@ -5207,6 +5222,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Slot"
 magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("26_4wjy4")
 id = "item_potion_slot_01"
 name = "Slot Increase Potion"
@@ -5223,6 +5240,8 @@ resource_local_to_scene = true
 script = ExtResource("19_ysfsw")
 effect = "Slot"
 magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
 texture = ExtResource("26_4wjy4")
 id = "item_potion_slot_01"
 name = "Slot Increase Potion"
@@ -5233,6 +5252,222 @@ maximum = 10
 quantity = 0
 quest = false
 metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_gjgvr"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Slot"
+magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("26_4wjy4")
+id = "item_potion_slot_01"
+name = "Slot Increase Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 10
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_a6ss8"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Slot"
+magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("26_4wjy4")
+id = "item_potion_slot_01"
+name = "Slot Increase Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 10
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_gh0q1"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Slot"
+magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("26_4wjy4")
+id = "item_potion_slot_01"
+name = "Slot Increase Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 10
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_x1mu8"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Slot"
+magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("26_4wjy4")
+id = "item_potion_slot_01"
+name = "Slot Increase Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 10
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_4h4j6"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Slot"
+magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("26_4wjy4")
+id = "item_potion_slot_01"
+name = "Slot Increase Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 10
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_wum18"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Slot"
+magnitude = 1.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("26_4wjy4")
+id = "item_potion_slot_01"
+name = "Slot Increase Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 10
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
+
+[sub_resource type="Resource" id="Resource_iti3q"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Light"
+magnitude = 30.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("28_ygdhh")
+id = "item_potion_light_01"
+name = "Light Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_tgps8"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Light"
+magnitude = 30.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("28_ygdhh")
+id = "item_potion_light_01"
+name = "Light Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_ljnwp"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Light"
+magnitude = 30.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("28_ygdhh")
+id = "item_potion_light_01"
+name = "Light Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_mp63c"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Light"
+magnitude = 30.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("28_ygdhh")
+id = "item_potion_light_01"
+name = "Light Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_en6yr"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Light"
+magnitude = 30.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("28_ygdhh")
+id = "item_potion_light_01"
+name = "Light Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+
+[sub_resource type="Resource" id="Resource_dbkvm"]
+resource_local_to_scene = true
+script = ExtResource("19_ysfsw")
+effect = "Light"
+magnitude = 30.0
+secondary_effect = ""
+secondary_magnitude = 0.0
+texture = ExtResource("28_ygdhh")
+id = "item_potion_light_01"
+name = "Light Potion"
+type = "Potion"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://b6xt4cir80m7v"
 
 [node name="WorldspaceTest01" instance=ExtResource("1_uet8l")]
 y_sort_enabled = true
@@ -6050,414 +6285,471 @@ resource = SubResource("Resource_qp4ky")
 
 [node name="ItemAxe01" parent="WorldItems" index="0" instance=ExtResource("14_fki0f")]
 position = Vector2(32, -32)
-resource = SubResource("Resource_ysfsw")
+resource = SubResource("Resource_0atj2")
 
 [node name="ItemPickaxe01" parent="WorldItems" index="1" instance=ExtResource("17_g6d2y")]
 position = Vector2(-32, 32)
-resource = SubResource("Resource_ljpwh")
-
-[node name="ItemBow01" parent="WorldItems" index="2" instance=ExtResource("24_ysfsw")]
-position = Vector2(104, 24)
-
-[node name="ItemArrow01" parent="WorldItems" index="3" instance=ExtResource("25_ljpwh")]
-position = Vector2(16, 32)
-resource = SubResource("Resource_baf65")
-
-[node name="ItemArrow02" parent="WorldItems" index="4" instance=ExtResource("25_ljpwh")]
-position = Vector2(24, 32)
-resource = SubResource("Resource_ygdhh")
-
-[node name="ItemArrow03" parent="WorldItems" index="5" instance=ExtResource("25_ljpwh")]
-position = Vector2(32, 32)
-resource = SubResource("Resource_4wjy4")
-
-[node name="ItemArrow04" parent="WorldItems" index="6" instance=ExtResource("25_ljpwh")]
-position = Vector2(40, 32)
-resource = SubResource("Resource_o74ck")
-
-[node name="ItemArrow05" parent="WorldItems" index="7" instance=ExtResource("25_ljpwh")]
-position = Vector2(48, 32)
-resource = SubResource("Resource_0atj2")
-
-[node name="ItemArrow06" parent="WorldItems" index="8" instance=ExtResource("25_ljpwh")]
-position = Vector2(56, 32)
 resource = SubResource("Resource_kdeok")
 
-[node name="ItemArrow07" parent="WorldItems" index="9" instance=ExtResource("25_ljpwh")]
-position = Vector2(64, 32)
+[node name="ItemSword01" parent="WorldItems" index="2" instance=ExtResource("14_4wjy4")]
+position = Vector2(-32, -32)
+
+[node name="ItemBow01" parent="WorldItems" index="3" instance=ExtResource("24_ysfsw")]
+position = Vector2(104, 24)
+
+[node name="ItemArrow01" parent="WorldItems" index="4" instance=ExtResource("25_ljpwh")]
+position = Vector2(16, 32)
 resource = SubResource("Resource_ge77w")
 
-[node name="ItemArrow08" parent="WorldItems" index="10" instance=ExtResource("25_ljpwh")]
-position = Vector2(72, 32)
+[node name="ItemArrow02" parent="WorldItems" index="5" instance=ExtResource("25_ljpwh")]
+position = Vector2(24, 32)
 resource = SubResource("Resource_cs62o")
 
-[node name="ItemArrow09" parent="WorldItems" index="11" instance=ExtResource("25_ljpwh")]
-position = Vector2(80, 32)
+[node name="ItemArrow03" parent="WorldItems" index="6" instance=ExtResource("25_ljpwh")]
+position = Vector2(32, 32)
 resource = SubResource("Resource_fuk8i")
 
-[node name="ItemArrow10" parent="WorldItems" index="12" instance=ExtResource("25_ljpwh")]
-position = Vector2(88, 32)
+[node name="ItemArrow04" parent="WorldItems" index="7" instance=ExtResource("25_ljpwh")]
+position = Vector2(40, 32)
 resource = SubResource("Resource_k5uns")
 
-[node name="ItemArrow11" parent="WorldItems" index="13" instance=ExtResource("25_ljpwh")]
-position = Vector2(120, 32)
+[node name="ItemArrow05" parent="WorldItems" index="8" instance=ExtResource("25_ljpwh")]
+position = Vector2(48, 32)
 resource = SubResource("Resource_6whgu")
 
-[node name="ItemArrow12" parent="WorldItems" index="14" instance=ExtResource("25_ljpwh")]
-position = Vector2(128, 32)
+[node name="ItemArrow06" parent="WorldItems" index="9" instance=ExtResource("25_ljpwh")]
+position = Vector2(56, 32)
 resource = SubResource("Resource_yj1yi")
 
-[node name="ItemArrow13" parent="WorldItems" index="15" instance=ExtResource("25_ljpwh")]
-position = Vector2(136, 32)
+[node name="ItemArrow07" parent="WorldItems" index="10" instance=ExtResource("25_ljpwh")]
+position = Vector2(64, 32)
 resource = SubResource("Resource_bvk1f")
 
-[node name="ItemArrow14" parent="WorldItems" index="16" instance=ExtResource("25_ljpwh")]
-position = Vector2(144, 32)
+[node name="ItemArrow08" parent="WorldItems" index="11" instance=ExtResource("25_ljpwh")]
+position = Vector2(72, 32)
 resource = SubResource("Resource_lq3la")
 
-[node name="ItemArrow15" parent="WorldItems" index="17" instance=ExtResource("25_ljpwh")]
-position = Vector2(152, 32)
+[node name="ItemArrow09" parent="WorldItems" index="12" instance=ExtResource("25_ljpwh")]
+position = Vector2(80, 32)
 resource = SubResource("Resource_fbrf7")
 
-[node name="ItemArrow16" parent="WorldItems" index="18" instance=ExtResource("25_ljpwh")]
-position = Vector2(160, 32)
+[node name="ItemArrow10" parent="WorldItems" index="13" instance=ExtResource("25_ljpwh")]
+position = Vector2(88, 32)
 resource = SubResource("Resource_0tcvg")
 
-[node name="ItemArrow17" parent="WorldItems" index="19" instance=ExtResource("25_ljpwh")]
-position = Vector2(168, 32)
+[node name="ItemArrow11" parent="WorldItems" index="14" instance=ExtResource("25_ljpwh")]
+position = Vector2(120, 32)
 resource = SubResource("Resource_oxqtw")
 
-[node name="ItemArrow18" parent="WorldItems" index="20" instance=ExtResource("25_ljpwh")]
-position = Vector2(176, 32)
+[node name="ItemArrow12" parent="WorldItems" index="15" instance=ExtResource("25_ljpwh")]
+position = Vector2(128, 32)
 resource = SubResource("Resource_5u4hq")
 
-[node name="ItemArrow19" parent="WorldItems" index="21" instance=ExtResource("25_ljpwh")]
-position = Vector2(184, 32)
+[node name="ItemArrow13" parent="WorldItems" index="16" instance=ExtResource("25_ljpwh")]
+position = Vector2(136, 32)
 resource = SubResource("Resource_tv7sq")
 
-[node name="ItemArrow20" parent="WorldItems" index="22" instance=ExtResource("25_ljpwh")]
-position = Vector2(192, 32)
+[node name="ItemArrow14" parent="WorldItems" index="17" instance=ExtResource("25_ljpwh")]
+position = Vector2(144, 32)
 resource = SubResource("Resource_uabt0")
 
-[node name="ItemArrow21" parent="WorldItems" index="23" instance=ExtResource("25_ljpwh")]
-position = Vector2(16, 16)
+[node name="ItemArrow15" parent="WorldItems" index="18" instance=ExtResource("25_ljpwh")]
+position = Vector2(152, 32)
 resource = SubResource("Resource_lv815")
 
-[node name="ItemArrow22" parent="WorldItems" index="24" instance=ExtResource("25_ljpwh")]
-position = Vector2(24, 16)
+[node name="ItemArrow16" parent="WorldItems" index="19" instance=ExtResource("25_ljpwh")]
+position = Vector2(160, 32)
 resource = SubResource("Resource_vn6ad")
 
-[node name="ItemArrow23" parent="WorldItems" index="25" instance=ExtResource("25_ljpwh")]
-position = Vector2(32, 16)
+[node name="ItemArrow17" parent="WorldItems" index="20" instance=ExtResource("25_ljpwh")]
+position = Vector2(168, 32)
 resource = SubResource("Resource_igp3i")
 
-[node name="ItemArrow24" parent="WorldItems" index="26" instance=ExtResource("25_ljpwh")]
-position = Vector2(40, 16)
+[node name="ItemArrow18" parent="WorldItems" index="21" instance=ExtResource("25_ljpwh")]
+position = Vector2(176, 32)
 resource = SubResource("Resource_vgqnd")
 
-[node name="ItemArrow25" parent="WorldItems" index="27" instance=ExtResource("25_ljpwh")]
-position = Vector2(48, 16)
+[node name="ItemArrow19" parent="WorldItems" index="22" instance=ExtResource("25_ljpwh")]
+position = Vector2(184, 32)
 resource = SubResource("Resource_ld7rb")
 
-[node name="ItemArrow26" parent="WorldItems" index="28" instance=ExtResource("25_ljpwh")]
-position = Vector2(56, 16)
+[node name="ItemArrow20" parent="WorldItems" index="23" instance=ExtResource("25_ljpwh")]
+position = Vector2(192, 32)
 resource = SubResource("Resource_bo27w")
 
-[node name="ItemArrow27" parent="WorldItems" index="29" instance=ExtResource("25_ljpwh")]
-position = Vector2(64, 16)
+[node name="ItemArrow21" parent="WorldItems" index="24" instance=ExtResource("25_ljpwh")]
+position = Vector2(16, 16)
 resource = SubResource("Resource_v5kaa")
 
-[node name="ItemArrow28" parent="WorldItems" index="30" instance=ExtResource("25_ljpwh")]
-position = Vector2(72, 16)
+[node name="ItemArrow22" parent="WorldItems" index="25" instance=ExtResource("25_ljpwh")]
+position = Vector2(24, 16)
 resource = SubResource("Resource_46aqq")
 
-[node name="ItemArrow29" parent="WorldItems" index="31" instance=ExtResource("25_ljpwh")]
-position = Vector2(80, 16)
+[node name="ItemArrow23" parent="WorldItems" index="26" instance=ExtResource("25_ljpwh")]
+position = Vector2(32, 16)
 resource = SubResource("Resource_abp7x")
 
-[node name="ItemArrow30" parent="WorldItems" index="32" instance=ExtResource("25_ljpwh")]
-position = Vector2(88, 16)
+[node name="ItemArrow24" parent="WorldItems" index="27" instance=ExtResource("25_ljpwh")]
+position = Vector2(40, 16)
 resource = SubResource("Resource_m237i")
 
-[node name="ItemArrow31" parent="WorldItems" index="33" instance=ExtResource("25_ljpwh")]
-position = Vector2(120, 16)
+[node name="ItemArrow25" parent="WorldItems" index="28" instance=ExtResource("25_ljpwh")]
+position = Vector2(48, 16)
 resource = SubResource("Resource_d5vuu")
 
-[node name="ItemArrow32" parent="WorldItems" index="34" instance=ExtResource("25_ljpwh")]
-position = Vector2(128, 16)
+[node name="ItemArrow26" parent="WorldItems" index="29" instance=ExtResource("25_ljpwh")]
+position = Vector2(56, 16)
 resource = SubResource("Resource_260tm")
 
-[node name="ItemArrow33" parent="WorldItems" index="35" instance=ExtResource("25_ljpwh")]
-position = Vector2(136, 16)
+[node name="ItemArrow27" parent="WorldItems" index="30" instance=ExtResource("25_ljpwh")]
+position = Vector2(64, 16)
 resource = SubResource("Resource_qdjae")
 
-[node name="ItemArrow34" parent="WorldItems" index="36" instance=ExtResource("25_ljpwh")]
-position = Vector2(144, 16)
+[node name="ItemArrow28" parent="WorldItems" index="31" instance=ExtResource("25_ljpwh")]
+position = Vector2(72, 16)
 resource = SubResource("Resource_qh6k7")
 
-[node name="ItemArrow35" parent="WorldItems" index="37" instance=ExtResource("25_ljpwh")]
-position = Vector2(152, 16)
+[node name="ItemArrow29" parent="WorldItems" index="32" instance=ExtResource("25_ljpwh")]
+position = Vector2(80, 16)
 resource = SubResource("Resource_b0s7o")
 
-[node name="ItemArrow36" parent="WorldItems" index="38" instance=ExtResource("25_ljpwh")]
-position = Vector2(160, 16)
+[node name="ItemArrow30" parent="WorldItems" index="33" instance=ExtResource("25_ljpwh")]
+position = Vector2(88, 16)
 resource = SubResource("Resource_nsynq")
 
-[node name="ItemArrow37" parent="WorldItems" index="39" instance=ExtResource("25_ljpwh")]
-position = Vector2(168, 16)
+[node name="ItemArrow31" parent="WorldItems" index="34" instance=ExtResource("25_ljpwh")]
+position = Vector2(120, 16)
 resource = SubResource("Resource_e1860")
 
-[node name="ItemArrow38" parent="WorldItems" index="40" instance=ExtResource("25_ljpwh")]
-position = Vector2(176, 16)
+[node name="ItemArrow32" parent="WorldItems" index="35" instance=ExtResource("25_ljpwh")]
+position = Vector2(128, 16)
 resource = SubResource("Resource_8bnul")
 
-[node name="ItemArrow39" parent="WorldItems" index="41" instance=ExtResource("25_ljpwh")]
-position = Vector2(184, 16)
+[node name="ItemArrow33" parent="WorldItems" index="36" instance=ExtResource("25_ljpwh")]
+position = Vector2(136, 16)
 resource = SubResource("Resource_5hexx")
 
-[node name="ItemArrow40" parent="WorldItems" index="42" instance=ExtResource("25_ljpwh")]
-position = Vector2(192, 16)
+[node name="ItemArrow34" parent="WorldItems" index="37" instance=ExtResource("25_ljpwh")]
+position = Vector2(144, 16)
 resource = SubResource("Resource_tpf38")
 
-[node name="ItemPotionHealth01" parent="WorldItems" index="43" instance=ExtResource("18_onp00")]
-position = Vector2(-184, -184)
+[node name="ItemArrow35" parent="WorldItems" index="38" instance=ExtResource("25_ljpwh")]
+position = Vector2(152, 16)
 resource = SubResource("Resource_eev7o")
 
-[node name="ItemPotionHealth02" parent="WorldItems" index="44" instance=ExtResource("18_onp00")]
-position = Vector2(-152, -184)
+[node name="ItemArrow36" parent="WorldItems" index="39" instance=ExtResource("25_ljpwh")]
+position = Vector2(160, 16)
 resource = SubResource("Resource_x2nvi")
 
-[node name="ItemPotionHealth03" parent="WorldItems" index="45" instance=ExtResource("18_onp00")]
-position = Vector2(-120, -184)
+[node name="ItemArrow37" parent="WorldItems" index="40" instance=ExtResource("25_ljpwh")]
+position = Vector2(168, 16)
 resource = SubResource("Resource_xcjx8")
 
-[node name="ItemPotionHealth04" parent="WorldItems" index="46" instance=ExtResource("18_onp00")]
-position = Vector2(-184, -152)
+[node name="ItemArrow38" parent="WorldItems" index="41" instance=ExtResource("25_ljpwh")]
+position = Vector2(176, 16)
 resource = SubResource("Resource_156pe")
 
-[node name="ItemPotionHealth05" parent="WorldItems" index="47" instance=ExtResource("18_onp00")]
-position = Vector2(-152, -152)
+[node name="ItemArrow39" parent="WorldItems" index="42" instance=ExtResource("25_ljpwh")]
+position = Vector2(184, 16)
 resource = SubResource("Resource_ovv6o")
 
-[node name="ItemPotionHealth06" parent="WorldItems" index="48" instance=ExtResource("18_onp00")]
-position = Vector2(-120, -152)
+[node name="ItemArrow40" parent="WorldItems" index="43" instance=ExtResource("25_ljpwh")]
+position = Vector2(192, 16)
 resource = SubResource("Resource_xhs7t")
 
-[node name="ItemPotionHealth07" parent="WorldItems" index="49" instance=ExtResource("18_onp00")]
-position = Vector2(-184, -120)
+[node name="ItemPotionHealth01" parent="WorldItems" index="44" instance=ExtResource("18_onp00")]
+position = Vector2(-184, -184)
 resource = SubResource("Resource_h60lf")
 
-[node name="ItemPotionHealth08" parent="WorldItems" index="50" instance=ExtResource("18_onp00")]
-position = Vector2(-152, -120)
+[node name="ItemPotionHealth02" parent="WorldItems" index="45" instance=ExtResource("18_onp00")]
+position = Vector2(-152, -184)
 resource = SubResource("Resource_whhw3")
 
-[node name="ItemPotionHealth09" parent="WorldItems" index="51" instance=ExtResource("18_onp00")]
-position = Vector2(-120, -120)
+[node name="ItemPotionHealth03" parent="WorldItems" index="46" instance=ExtResource("18_onp00")]
+position = Vector2(-120, -184)
 resource = SubResource("Resource_ixv5q")
 
-[node name="ItemPotionHealth10" parent="WorldItems" index="52" instance=ExtResource("18_onp00")]
-position = Vector2(-184, -88)
+[node name="ItemPotionHealth04" parent="WorldItems" index="47" instance=ExtResource("18_onp00")]
+position = Vector2(-184, -152)
 resource = SubResource("Resource_xx2p2")
 
-[node name="ItemPotionHealth11" parent="WorldItems" index="53" instance=ExtResource("18_onp00")]
-position = Vector2(-152, -88)
+[node name="ItemPotionHealth05" parent="WorldItems" index="48" instance=ExtResource("18_onp00")]
+position = Vector2(-152, -152)
 resource = SubResource("Resource_axvnd")
 
-[node name="ItemPotionHealth12" parent="WorldItems" index="54" instance=ExtResource("18_onp00")]
-position = Vector2(-120, -88)
+[node name="ItemPotionHealth06" parent="WorldItems" index="49" instance=ExtResource("18_onp00")]
+position = Vector2(-120, -152)
 resource = SubResource("Resource_hwaif")
 
-[node name="ItemPotionHealth13" parent="WorldItems" index="55" instance=ExtResource("18_onp00")]
-position = Vector2(-184, -56)
+[node name="ItemPotionHealth07" parent="WorldItems" index="50" instance=ExtResource("18_onp00")]
+position = Vector2(-184, -120)
 resource = SubResource("Resource_x8upw")
 
-[node name="ItemPotionHealth14" parent="WorldItems" index="56" instance=ExtResource("18_onp00")]
-position = Vector2(-152, -56)
+[node name="ItemPotionHealth08" parent="WorldItems" index="51" instance=ExtResource("18_onp00")]
+position = Vector2(-152, -120)
 resource = SubResource("Resource_6j8ex")
 
-[node name="ItemPotionHealth15" parent="WorldItems" index="57" instance=ExtResource("18_onp00")]
-position = Vector2(-120, -56)
+[node name="ItemPotionHealth09" parent="WorldItems" index="52" instance=ExtResource("18_onp00")]
+position = Vector2(-120, -120)
 resource = SubResource("Resource_f8cbp")
 
-[node name="ItemPotionStamina01" parent="WorldItems" index="58" instance=ExtResource("19_odmvc")]
-position = Vector2(-88, -184)
+[node name="ItemPotionHealth10" parent="WorldItems" index="53" instance=ExtResource("18_onp00")]
+position = Vector2(-184, -88)
 resource = SubResource("Resource_h25c0")
 
-[node name="ItemPotionStamina02" parent="WorldItems" index="59" instance=ExtResource("19_odmvc")]
-position = Vector2(-56, -184)
+[node name="ItemPotionHealth11" parent="WorldItems" index="54" instance=ExtResource("18_onp00")]
+position = Vector2(-152, -88)
 resource = SubResource("Resource_w2osv")
 
-[node name="ItemPotionStamina03" parent="WorldItems" index="60" instance=ExtResource("19_odmvc")]
-position = Vector2(-24, -184)
+[node name="ItemPotionHealth12" parent="WorldItems" index="55" instance=ExtResource("18_onp00")]
+position = Vector2(-120, -88)
 resource = SubResource("Resource_2pe44")
 
-[node name="ItemPotionStamina04" parent="WorldItems" index="61" instance=ExtResource("19_odmvc")]
-position = Vector2(-88, -152)
+[node name="ItemPotionHealth13" parent="WorldItems" index="56" instance=ExtResource("18_onp00")]
+position = Vector2(-184, -56)
 resource = SubResource("Resource_6015s")
 
-[node name="ItemPotionStamina05" parent="WorldItems" index="62" instance=ExtResource("19_odmvc")]
-position = Vector2(-56, -152)
+[node name="ItemPotionHealth14" parent="WorldItems" index="57" instance=ExtResource("18_onp00")]
+position = Vector2(-152, -56)
 resource = SubResource("Resource_yrmij")
 
-[node name="ItemPotionStamina06" parent="WorldItems" index="63" instance=ExtResource("19_odmvc")]
-position = Vector2(-24, -152)
+[node name="ItemPotionHealth15" parent="WorldItems" index="58" instance=ExtResource("18_onp00")]
+position = Vector2(-120, -56)
 resource = SubResource("Resource_nhpdk")
 
-[node name="ItemPotionStamina07" parent="WorldItems" index="64" instance=ExtResource("19_odmvc")]
-position = Vector2(-88, -120)
+[node name="ItemPotionStamina01" parent="WorldItems" index="59" instance=ExtResource("19_odmvc")]
+position = Vector2(-88, -184)
 resource = SubResource("Resource_yawxa")
 
-[node name="ItemPotionStamina08" parent="WorldItems" index="65" instance=ExtResource("19_odmvc")]
-position = Vector2(-56, -120)
+[node name="ItemPotionStamina02" parent="WorldItems" index="60" instance=ExtResource("19_odmvc")]
+position = Vector2(-56, -184)
 resource = SubResource("Resource_r4six")
 
-[node name="ItemPotionStamina09" parent="WorldItems" index="66" instance=ExtResource("19_odmvc")]
-position = Vector2(-24, -120)
+[node name="ItemPotionStamina03" parent="WorldItems" index="61" instance=ExtResource("19_odmvc")]
+position = Vector2(-24, -184)
 resource = SubResource("Resource_prk8e")
 
-[node name="ItemPotionStamina10" parent="WorldItems" index="67" instance=ExtResource("19_odmvc")]
-position = Vector2(-88, -88)
+[node name="ItemPotionStamina04" parent="WorldItems" index="62" instance=ExtResource("19_odmvc")]
+position = Vector2(-88, -152)
 resource = SubResource("Resource_v8c3y")
 
-[node name="ItemPotionStamina11" parent="WorldItems" index="68" instance=ExtResource("19_odmvc")]
-position = Vector2(-56, -88)
+[node name="ItemPotionStamina05" parent="WorldItems" index="63" instance=ExtResource("19_odmvc")]
+position = Vector2(-56, -152)
 resource = SubResource("Resource_7qtc2")
 
-[node name="ItemPotionStamina12" parent="WorldItems" index="69" instance=ExtResource("19_odmvc")]
-position = Vector2(-24, -88)
+[node name="ItemPotionStamina06" parent="WorldItems" index="64" instance=ExtResource("19_odmvc")]
+position = Vector2(-24, -152)
 resource = SubResource("Resource_awyec")
 
-[node name="ItemPotionStamina13" parent="WorldItems" index="70" instance=ExtResource("19_odmvc")]
-position = Vector2(-88, -56)
+[node name="ItemPotionStamina07" parent="WorldItems" index="65" instance=ExtResource("19_odmvc")]
+position = Vector2(-88, -120)
 resource = SubResource("Resource_nv0lf")
 
-[node name="ItemPotionStamina14" parent="WorldItems" index="71" instance=ExtResource("19_odmvc")]
-position = Vector2(-56, -56)
+[node name="ItemPotionStamina08" parent="WorldItems" index="66" instance=ExtResource("19_odmvc")]
+position = Vector2(-56, -120)
 resource = SubResource("Resource_n1txd")
 
-[node name="ItemPotionStamina15" parent="WorldItems" index="72" instance=ExtResource("19_odmvc")]
-position = Vector2(-24, -56)
+[node name="ItemPotionStamina09" parent="WorldItems" index="67" instance=ExtResource("19_odmvc")]
+position = Vector2(-24, -120)
 resource = SubResource("Resource_h645j")
 
-[node name="ItemPotionMagic01" parent="WorldItems" index="73" instance=ExtResource("20_yngfc")]
-position = Vector2(24, 56)
+[node name="ItemPotionStamina10" parent="WorldItems" index="68" instance=ExtResource("19_odmvc")]
+position = Vector2(-88, -88)
 resource = SubResource("Resource_ofce6")
 
-[node name="ItemPotionMagic02" parent="WorldItems" index="74" instance=ExtResource("20_yngfc")]
-position = Vector2(56, 56)
+[node name="ItemPotionStamina11" parent="WorldItems" index="69" instance=ExtResource("19_odmvc")]
+position = Vector2(-56, -88)
 resource = SubResource("Resource_ixp8a")
 
-[node name="ItemPotionMagic03" parent="WorldItems" index="75" instance=ExtResource("20_yngfc")]
-position = Vector2(88, 56)
+[node name="ItemPotionStamina12" parent="WorldItems" index="70" instance=ExtResource("19_odmvc")]
+position = Vector2(-24, -88)
 resource = SubResource("Resource_3npbm")
 
-[node name="ItemPotionMagic04" parent="WorldItems" index="76" instance=ExtResource("20_yngfc")]
-position = Vector2(24, 88)
+[node name="ItemPotionStamina13" parent="WorldItems" index="71" instance=ExtResource("19_odmvc")]
+position = Vector2(-88, -56)
 resource = SubResource("Resource_cv8lk")
 
-[node name="ItemPotionMagic05" parent="WorldItems" index="77" instance=ExtResource("20_yngfc")]
-position = Vector2(56, 88)
+[node name="ItemPotionStamina14" parent="WorldItems" index="72" instance=ExtResource("19_odmvc")]
+position = Vector2(-56, -56)
 resource = SubResource("Resource_l0uw8")
 
-[node name="ItemPotionMagic06" parent="WorldItems" index="78" instance=ExtResource("20_yngfc")]
-position = Vector2(88, 88)
+[node name="ItemPotionStamina15" parent="WorldItems" index="73" instance=ExtResource("19_odmvc")]
+position = Vector2(-24, -56)
 resource = SubResource("Resource_85yof")
 
-[node name="ItemPotionMagic07" parent="WorldItems" index="79" instance=ExtResource("20_yngfc")]
-position = Vector2(24, 120)
+[node name="ItemPotionMagic01" parent="WorldItems" index="74" instance=ExtResource("20_yngfc")]
+position = Vector2(24, 96)
 resource = SubResource("Resource_nill6")
 
-[node name="ItemPotionMagic08" parent="WorldItems" index="80" instance=ExtResource("20_yngfc")]
-position = Vector2(56, 120)
+[node name="ItemPotionMagic02" parent="WorldItems" index="75" instance=ExtResource("20_yngfc")]
+position = Vector2(56, 96)
 resource = SubResource("Resource_b7ul1")
 
-[node name="ItemPotionMagic09" parent="WorldItems" index="81" instance=ExtResource("20_yngfc")]
-position = Vector2(88, 120)
+[node name="ItemPotionMagic03" parent="WorldItems" index="76" instance=ExtResource("20_yngfc")]
+position = Vector2(88, 96)
 resource = SubResource("Resource_fqyj0")
 
-[node name="ItemPotionMagic10" parent="WorldItems" index="82" instance=ExtResource("20_yngfc")]
-position = Vector2(24, 152)
+[node name="ItemPotionMagic04" parent="WorldItems" index="77" instance=ExtResource("20_yngfc")]
+position = Vector2(24, 128)
 resource = SubResource("Resource_hp1et")
 
-[node name="ItemPotionMagic11" parent="WorldItems" index="83" instance=ExtResource("20_yngfc")]
-position = Vector2(56, 152)
+[node name="ItemPotionMagic05" parent="WorldItems" index="78" instance=ExtResource("20_yngfc")]
+position = Vector2(56, 128)
 resource = SubResource("Resource_j3xe8")
 
-[node name="ItemPotionMagic12" parent="WorldItems" index="84" instance=ExtResource("20_yngfc")]
-position = Vector2(88, 152)
+[node name="ItemPotionMagic06" parent="WorldItems" index="79" instance=ExtResource("20_yngfc")]
+position = Vector2(88, 128)
 resource = SubResource("Resource_wjvep")
 
-[node name="ItemPotionMagic13" parent="WorldItems" index="85" instance=ExtResource("20_yngfc")]
-position = Vector2(24, 184)
+[node name="ItemPotionMagic07" parent="WorldItems" index="80" instance=ExtResource("20_yngfc")]
+position = Vector2(24, 160)
 resource = SubResource("Resource_sxxfc")
 
-[node name="ItemPotionMagic14" parent="WorldItems" index="86" instance=ExtResource("20_yngfc")]
-position = Vector2(56, 184)
+[node name="ItemPotionMagic08" parent="WorldItems" index="81" instance=ExtResource("20_yngfc")]
+position = Vector2(56, 160)
 resource = SubResource("Resource_67bh7")
 
-[node name="ItemPotionMagic15" parent="WorldItems" index="87" instance=ExtResource("20_yngfc")]
-position = Vector2(88, 184)
+[node name="ItemPotionMagic09" parent="WorldItems" index="82" instance=ExtResource("20_yngfc")]
+position = Vector2(88, 160)
 resource = SubResource("Resource_6x5gp")
 
-[node name="ItemPotionSlots01" parent="WorldItems" index="88" instance=ExtResource("21_pxa4t")]
-position = Vector2(120, 56)
+[node name="ItemPotionMagic10" parent="WorldItems" index="83" instance=ExtResource("20_yngfc")]
+position = Vector2(24, 192)
 resource = SubResource("Resource_hqb3a")
 
-[node name="ItemPotionSlots02" parent="WorldItems" index="89" instance=ExtResource("21_pxa4t")]
-position = Vector2(152, 56)
+[node name="ItemPotionMagic11" parent="WorldItems" index="84" instance=ExtResource("20_yngfc")]
+position = Vector2(56, 192)
 resource = SubResource("Resource_jrhfm")
 
-[node name="ItemPotionSlots03" parent="WorldItems" index="90" instance=ExtResource("21_pxa4t")]
-position = Vector2(184, 56)
+[node name="ItemPotionMagic12" parent="WorldItems" index="85" instance=ExtResource("20_yngfc")]
+position = Vector2(88, 192)
 resource = SubResource("Resource_bnp0l")
 
-[node name="ItemPotionSlots04" parent="WorldItems" index="91" instance=ExtResource("21_pxa4t")]
-position = Vector2(120, 88)
+[node name="ItemPotionMagic13" parent="WorldItems" index="86" instance=ExtResource("20_yngfc")]
+position = Vector2(24, 224)
 resource = SubResource("Resource_haep3")
 
-[node name="ItemPotionSlots05" parent="WorldItems" index="92" instance=ExtResource("21_pxa4t")]
-position = Vector2(152, 88)
+[node name="ItemPotionMagic14" parent="WorldItems" index="87" instance=ExtResource("20_yngfc")]
+position = Vector2(56, 224)
 resource = SubResource("Resource_xvlxq")
 
-[node name="ItemPotionSlots06" parent="WorldItems" index="93" instance=ExtResource("21_pxa4t")]
-position = Vector2(184, 88)
+[node name="ItemPotionMagic15" parent="WorldItems" index="88" instance=ExtResource("20_yngfc")]
+position = Vector2(88, 224)
 resource = SubResource("Resource_cug1p")
 
-[node name="ItemPotionSlots07" parent="WorldItems" index="94" instance=ExtResource("21_pxa4t")]
-position = Vector2(120, 120)
+[node name="ItemPotionSlots01" parent="WorldItems" index="89" instance=ExtResource("21_pxa4t")]
+position = Vector2(120, 96)
 resource = SubResource("Resource_xvdqx")
 
-[node name="ItemPotionSlots08" parent="WorldItems" index="95" instance=ExtResource("21_pxa4t")]
-position = Vector2(152, 120)
+[node name="ItemPotionSlots02" parent="WorldItems" index="90" instance=ExtResource("21_pxa4t")]
+position = Vector2(152, 96)
 resource = SubResource("Resource_hbl1i")
 
-[node name="ItemPotionSlots09" parent="WorldItems" index="96" instance=ExtResource("21_pxa4t")]
-position = Vector2(184, 120)
+[node name="ItemPotionSlots03" parent="WorldItems" index="91" instance=ExtResource("21_pxa4t")]
+position = Vector2(184, 96)
 resource = SubResource("Resource_djhvh")
 
-[node name="ItemPotionSlots10" parent="WorldItems" index="97" instance=ExtResource("21_pxa4t")]
-position = Vector2(120, 152)
+[node name="ItemPotionSlots04" parent="WorldItems" index="92" instance=ExtResource("21_pxa4t")]
+position = Vector2(120, 128)
 resource = SubResource("Resource_uv60a")
 
-[node name="ItemPotionSlots11" parent="WorldItems" index="98" instance=ExtResource("21_pxa4t")]
-position = Vector2(152, 152)
+[node name="ItemPotionSlots05" parent="WorldItems" index="93" instance=ExtResource("21_pxa4t")]
+position = Vector2(152, 128)
 resource = SubResource("Resource_urjcv")
 
-[node name="ItemPotionSlots12" parent="WorldItems" index="99" instance=ExtResource("21_pxa4t")]
-position = Vector2(184, 152)
+[node name="ItemPotionSlots06" parent="WorldItems" index="94" instance=ExtResource("21_pxa4t")]
+position = Vector2(184, 128)
 resource = SubResource("Resource_1n6wr")
 
-[node name="ItemPotionSlots13" parent="WorldItems" index="100" instance=ExtResource("21_pxa4t")]
-position = Vector2(120, 184)
+[node name="ItemPotionSlots07" parent="WorldItems" index="95" instance=ExtResource("21_pxa4t")]
+position = Vector2(120, 160)
 resource = SubResource("Resource_6jhfe")
 
-[node name="ItemPotionSlots14" parent="WorldItems" index="101" instance=ExtResource("21_pxa4t")]
-position = Vector2(152, 184)
+[node name="ItemPotionSlots08" parent="WorldItems" index="96" instance=ExtResource("21_pxa4t")]
+position = Vector2(152, 160)
 resource = SubResource("Resource_af388")
 
-[node name="ItemPotionSlots15" parent="WorldItems" index="102" instance=ExtResource("21_pxa4t")]
-position = Vector2(184, 184)
+[node name="ItemPotionSlots09" parent="WorldItems" index="97" instance=ExtResource("21_pxa4t")]
+position = Vector2(184, 160)
 resource = SubResource("Resource_l4j8i")
+
+[node name="ItemPotionSlots10" parent="WorldItems" index="98" instance=ExtResource("21_pxa4t")]
+position = Vector2(120, 192)
+resource = SubResource("Resource_gjgvr")
+
+[node name="ItemPotionSlots11" parent="WorldItems" index="99" instance=ExtResource("21_pxa4t")]
+position = Vector2(152, 192)
+resource = SubResource("Resource_a6ss8")
+
+[node name="ItemPotionSlots12" parent="WorldItems" index="100" instance=ExtResource("21_pxa4t")]
+position = Vector2(184, 192)
+resource = SubResource("Resource_gh0q1")
+
+[node name="ItemPotionSlots13" parent="WorldItems" index="101" instance=ExtResource("21_pxa4t")]
+position = Vector2(120, 224)
+resource = SubResource("Resource_x1mu8")
+
+[node name="ItemPotionSlots14" parent="WorldItems" index="102" instance=ExtResource("21_pxa4t")]
+position = Vector2(152, 224)
+resource = SubResource("Resource_4h4j6")
+
+[node name="ItemPotionSlots15" parent="WorldItems" index="103" instance=ExtResource("21_pxa4t")]
+position = Vector2(184, 224)
+resource = SubResource("Resource_wum18")
+
+[node name="ItemPotionLight01" parent="WorldItems" index="104" instance=ExtResource("27_baf65")]
+position = Vector2(24, 64)
+resource = SubResource("Resource_iti3q")
+
+[node name="ItemPotionLight02" parent="WorldItems" index="105" instance=ExtResource("27_baf65")]
+position = Vector2(56, 64)
+resource = SubResource("Resource_tgps8")
+
+[node name="ItemPotionLight03" parent="WorldItems" index="106" instance=ExtResource("27_baf65")]
+position = Vector2(88, 64)
+resource = SubResource("Resource_ljnwp")
+
+[node name="ItemPotionLight04" parent="WorldItems" index="107" instance=ExtResource("27_baf65")]
+position = Vector2(120, 64)
+resource = SubResource("Resource_mp63c")
+
+[node name="ItemPotionLight05" parent="WorldItems" index="108" instance=ExtResource("27_baf65")]
+position = Vector2(152, 64)
+resource = SubResource("Resource_en6yr")
+
+[node name="ItemPotionLight06" parent="WorldItems" index="109" instance=ExtResource("27_baf65")]
+position = Vector2(184, 64)
+resource = SubResource("Resource_dbkvm")
+
+[node name="ItemApple01" parent="WorldItems" index="110" instance=ExtResource("30_o74ck")]
+position = Vector2(-168, 24)
+
+[node name="ItemApple02" parent="WorldItems" index="111" instance=ExtResource("30_o74ck")]
+position = Vector2(-200, 24)
+
+[node name="ItemApple03" parent="WorldItems" index="112" instance=ExtResource("30_o74ck")]
+position = Vector2(-136, 24)
+
+[node name="ItemApple04" parent="WorldItems" index="113" instance=ExtResource("30_o74ck")]
+position = Vector2(-104, 24)
+
+[node name="ItemApple05" parent="WorldItems" index="114" instance=ExtResource("30_o74ck")]
+position = Vector2(-72, 24)
+
+[node name="ItemWater01" parent="WorldItems" index="115" instance=ExtResource("31_0atj2")]
+position = Vector2(-200, 40)
+
+[node name="ItemWater02" parent="WorldItems" index="116" instance=ExtResource("31_0atj2")]
+position = Vector2(-168, 40)
+
+[node name="ItemWater03" parent="WorldItems" index="117" instance=ExtResource("31_0atj2")]
+position = Vector2(-136, 40)
+
+[node name="ItemWater04" parent="WorldItems" index="118" instance=ExtResource("31_0atj2")]
+position = Vector2(-104, 40)
+
+[node name="ItemWater05" parent="WorldItems" index="119" instance=ExtResource("31_0atj2")]
+position = Vector2(-72, 40)
 
 [node name="Player" parent="." index="3" instance=ExtResource("2_5ph3w")]
 
@@ -6465,10 +6757,10 @@ resource = SubResource("Resource_l4j8i")
 position = Vector2(104, -32)
 
 [node name="NPCTest02" parent="." index="5" instance=ExtResource("26_yngfc")]
-position = Vector2(-104, 32)
+position = Vector2(72, -32)
 
 [node name="EnemyTestDummy01" parent="." index="6" instance=ExtResource("33_ygdhh")]
-position = Vector2(-184, 0)
+position = Vector2(-128, -32)
 
 [node name="SlimePurple03" parent="." index="7" instance=ExtResource("31_ljpwh")]
 position = Vector2(-104, -24)

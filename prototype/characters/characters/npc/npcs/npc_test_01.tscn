@@ -1,19 +1,110 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw3bdqib6apgc"]
+[gd_scene load_steps=18 format=3 uid="uid://dw3bdqib6apgc"]
 
 [ext_resource type="PackedScene" uid="uid://d0eg54howxvnp" path="res://characters/characters/npc/npc.tscn" id="1_ks3jg"]
 [ext_resource type="Resource" uid="uid://c148ehjk6la0a" path="res://characters/characters/npc/npcs/npc_test_01.tres" id="2_4iqtv"]
 [ext_resource type="Script" uid="uid://b6jqrdj0bdxd2" path="res://autoloads/quests/_quest_resource.gd" id="3_jk2qn"]
-[ext_resource type="Resource" uid="uid://chmvbo5vx0lfd" path="res://resources/quests/quest_test_01.tres" id="5_jl72f"]
-[ext_resource type="Resource" uid="uid://fadct2pluppl" path="res://resources/quests/quest_test_03.tres" id="6_g8skd"]
+[ext_resource type="Script" uid="uid://d35atbvkibbaw" path="res://autoloads/quests/_quest_resource_objective.gd" id="5_7cvyb"]
+[ext_resource type="Script" uid="uid://xvfokx3era3m" path="res://autoloads/quests/_quest_resource_reward.gd" id="6_s4tc7"]
+[ext_resource type="Resource" uid="uid://cxbcicmjerr6y" path="res://items/items/potions/item_potion_slots_01.tres" id="7_c6hm1"]
 [ext_resource type="Texture2D" uid="uid://b8frgge34sb43" path="res://characters/characters/npc/npcs/npc_test_01.png" id="7_o7m6m"]
+[ext_resource type="Resource" uid="uid://bhp4crbuakegm" path="res://items/items/equipment/weapons/item_arrow_01.tres" id="8_bpcbb"]
+
+[sub_resource type="Resource" id="Resource_w6ngp"]
+script = ExtResource("5_7cvyb")
+id = "quest_test_01_obj_01"
+description = "Talk to Pink Girl"
+target_id = "npc_test_02"
+target_type = 0
+objective_dialogue = "Go pick up some of those Magic Potions over there.
+They are the blue ones."
+required_count = 0
+required_kills = 0
+
+[sub_resource type="Resource" id="Resource_5dn57"]
+script = ExtResource("5_7cvyb")
+id = "quest_test_01_obj_02"
+description = "Collect the Magic Potions"
+target_id = "item_potion_magic_01"
+target_type = 1
+objective_dialogue = ""
+required_count = 5
+required_kills = 0
+metadata/_custom_type_script = "uid://bm8hpebg2ypo7"
+
+[sub_resource type="Resource" id="Resource_xnyo5"]
+script = ExtResource("5_7cvyb")
+id = "quest_test_01_obj_03"
+description = "Talk to the Orange Guy again"
+target_id = "npc_test_01"
+target_type = 0
+objective_dialogue = "Thanks for picking up that trash. 
+Here is a Slot Potion. You can use it 
+to add an extra slot for your Inventory."
+required_count = 0
+required_kills = 0
+metadata/_custom_type_script = "uid://d35atbvkibbaw"
+
+[sub_resource type="Resource" id="Resource_20hir"]
+script = ExtResource("6_s4tc7")
+type = ExtResource("7_c6hm1")
+amount = 1
+metadata/_custom_type_script = "uid://x8giocmgdxfo"
+
+[sub_resource type="Resource" id="Resource_vge28"]
+resource_local_to_scene = true
+script = ExtResource("3_jk2qn")
+id = "quest_test_01"
+unlock = "npc_test_01_01"
+name = "QuestTest01"
+description = "Talk to Pink Girl about Items"
+state = "not_started"
+objectives = Array[ExtResource("5_7cvyb")]([SubResource("Resource_w6ngp"), SubResource("Resource_5dn57"), SubResource("Resource_xnyo5")])
+rewards = Array[ExtResource("6_s4tc7")]([SubResource("Resource_20hir")])
+
+[sub_resource type="Resource" id="Resource_i5js0"]
+script = ExtResource("5_7cvyb")
+id = "quest_test_03_obj_01"
+description = "Collect the Health Potions"
+target_id = "item_potion_health_01"
+target_type = 1
+objective_dialogue = ""
+required_count = 5
+required_kills = 0
+
+[sub_resource type="Resource" id="Resource_odx8i"]
+script = ExtResource("5_7cvyb")
+id = "quest_test_03_obj_02"
+description = "Talk to the Orange Guy again"
+target_id = "npc_test_01"
+target_type = 0
+objective_dialogue = "Thanks again for the help. Here are some Wooden Arrows"
+required_count = 0
+required_kills = 0
+metadata/_custom_type_script = "uid://d35atbvkibbaw"
+
+[sub_resource type="Resource" id="Resource_1ralu"]
+script = ExtResource("6_s4tc7")
+type = ExtResource("8_bpcbb")
+amount = 50
+metadata/_custom_type_script = "uid://dk6ick82r7vsf"
+
+[sub_resource type="Resource" id="Resource_kul5b"]
+resource_local_to_scene = true
+script = ExtResource("3_jk2qn")
+id = "quest_test_03"
+unlock = "npc_test_01_02"
+name = "QuestTest03"
+description = "Get the Red Items"
+state = "not_started"
+objectives = Array[ExtResource("5_7cvyb")]([SubResource("Resource_i5js0"), SubResource("Resource_odx8i")])
+rewards = Array[ExtResource("6_s4tc7")]([SubResource("Resource_1ralu")])
 
 [node name="NPCTest01" instance=ExtResource("1_ks3jg")]
 resource = ExtResource("2_4iqtv")
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="2"]
 texture = ExtResource("7_o7m6m")
-frame = 1
 
-[node name="DialogueManager" parent="." index="2"]
-quests = Array[ExtResource("3_jk2qn")]([ExtResource("5_jl72f"), ExtResource("6_g8skd")])
+[node name="DialogueManager" parent="." index="3"]
+quests = Array[ExtResource("3_jk2qn")]([SubResource("Resource_vge28"), SubResource("Resource_kul5b")])
 dialogue_file_path = "res://resources/dialogues/dialogue_test.json"

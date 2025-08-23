@@ -4,8 +4,10 @@ class_name Harvestable extends StaticBody2D
 @export var resource: ItemMaterial
 @export var resource_min_amount: int
 @export var resource_max_amount: int
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shadow: Sprite2D = $Shadow
 @onready var sprite: Sprite2D = $Sprite
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 var resource_remaining: int
 
@@ -27,6 +29,8 @@ var tween: Tween
 signal harvested
 
 func _ready() -> void:
+	Global.time_is_dawn.connect(_at_dawn_hour)
+	Global.time_is_dusk.connect(_at_dusk_hour)
 	resource_remaining = randi_range(resource_min_amount, resource_max_amount)
 	await Global.worldspace_set
 	item_spawn_point = Global.worldspace.items
@@ -54,9 +58,9 @@ func material_harvest() -> void:
 	_material_spawn()
 	resource_remaining -= 1
 	if Global.player.weapon_manager.equipped_item.type == "Tool - Mining":
-		Stats.stats["mining_exp"] += Stats.base_exp_rate * resource.material_exp_multiplier
+		Stats.exp_stats["mining_exp"] += Stats.base_exp_rate * resource.material_exp_multiplier
 	if Global.player.weapon_manager.equipped_item.type == "Tool - Woodcutting":
-		Stats.stats["woodcutting_exp"] += Stats.base_exp_rate * resource.material_exp_multiplier
+		Stats.exp_stats["woodcutting_exp"] += Stats.base_exp_rate * resource.material_exp_multiplier
 
 func _material_spawn() -> void:
 	item_instance = item_scene.instantiate()
@@ -81,6 +85,18 @@ func _launch(velocity: Vector2, duration: float) -> void:
 	launch_duration = duration
 	launch_elapsed = 0.0
 	launching = true
+
+func _at_dawn_hour() -> void:
+	shadow.visible = true
+	var shadow_tween: Tween = create_tween()
+	shadow_tween.tween_property(shadow, "modulate", Color.WHITE, 60.0)
+	await shadow_tween.finished
+
+func _at_dusk_hour() -> void:
+	var shadow_tween: Tween = create_tween()
+	shadow_tween.tween_property(shadow, "modulate", Color.TRANSPARENT, 60.0)
+	await shadow_tween.finished
+	shadow.visible = false
 
 func _on_modulate_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

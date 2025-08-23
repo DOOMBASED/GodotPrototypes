@@ -1,41 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://djrkmc21airy4"]
+[gd_scene load_steps=7 format=3 uid="uid://djrkmc21airy4"]
 
 [ext_resource type="PackedScene" uid="uid://fv2yok26sk77" path="res://characters/characters/enemy/enemy.tscn" id="1_6xjia"]
 [ext_resource type="Resource" uid="uid://b0f1ltw4s6p8r" path="res://characters/characters/enemy/enemies/enemy_test_dummy_01.tres" id="2_cliwf"]
 [ext_resource type="Texture2D" uid="uid://m7h6s47sq0sp" path="res://characters/characters/enemy/enemies/enemy_test_dummy_01.png" id="3_c0ypu"]
 [ext_resource type="AnimationLibrary" uid="uid://cisf8ftdmh4yr" path="res://resources/animations/animations_human.res" id="3_liiom"]
-
-[sub_resource type="Animation" id="Animation_4x0iw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../WeaponManager/Weapon/WeaponCollision:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../WeaponManager/Weapon/WeaponCollision:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m5nh"]
-_data = {
-&"RESET": SubResource("Animation_4x0iw")
-}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i7rgl"]
 radius = 6.5
@@ -53,6 +21,7 @@ position = Vector2(0.5, 5)
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource("3_c0ypu")
+frame = 0
 
 [node name="DialogueManager" parent="." index="3"]
 process_mode = 4
@@ -62,7 +31,6 @@ walk_speed = 48.0
 
 [node name="AnimationPlayer" parent="AnimationManager" index="0"]
 libraries = {
-&"": SubResource("AnimationLibrary_6m5nh"),
 &"animations_human": ExtResource("3_liiom")
 }
 
@@ -92,8 +60,9 @@ grow_vertical = 2
 text = "100"
 
 [node name="WeaponCollision" parent="WeaponManager/Weapon" index="0"]
-position = Vector2(0.5, 0)
 shape = SubResource("CircleShape2D_x6tk1")
-disabled = true
+
+[node name="Sprite" parent="WeaponManager" index="2"]
+position = Vector2(9, -1)
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_enemy_interact_area_body_entered"]

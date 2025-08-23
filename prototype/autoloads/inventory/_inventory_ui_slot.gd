@@ -3,7 +3,9 @@ class_name InventorySlot extends Panel
 
 var resource: ItemResource = null
 @onready var sprite: Sprite2D = $MarginContainer/CenterContainer/Sprite
-@onready var quantity_label: Label = $MarginContainer/QuantityLabel
+@onready var quantity_label: Label = $MarginContainer/HBoxContainer/QuantityLabel
+@onready var key_label: Label = $MarginContainer/HBoxContainer/KeyLabel
+
 var init_position := Vector2.ZERO
 var assigned: bool = false
 
@@ -21,6 +23,10 @@ func _on_slot_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if resource != null:
 			if event.button_index == MOUSE_BUTTON_RIGHT:
+				if Global.player.weapon_manager.equipped_item == resource:
+					Inventory.inventory_ui.menu.equip_button.text = "UNEQUIP"
+				else:
+					Inventory.inventory_ui.menu.equip_button.text = "EQUIP"
 				if Inventory.inventory_ui.inventory_ui_hotbar.hotbar_assignment_check(resource):
 					Inventory.inventory_ui.menu.assign_button.text = "UNASSIGN"
 				else:

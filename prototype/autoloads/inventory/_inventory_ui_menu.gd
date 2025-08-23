@@ -66,6 +66,8 @@ func _on_assign_button_pressed() -> void:
 				Inventory.item_remove_from_hotbar(current_item.id)
 				if assign_button.text == "UNASSIGN":
 					assign_button.text = "ASSIGN"
+					if current_item == Global.player.weapon_manager.equipped_item:
+						_on_equip_button_pressed()
 				assigned = false
 			elif !assigned:
 				Inventory.item_add(current_item, false, true)
@@ -92,15 +94,26 @@ func _on_use_button_pressed() -> void:
 
 func _on_equip_button_pressed() -> void:
 	if Global.player.animation_manager.current_state != AnimationManager.AnimationState.ACTION:
-		if current_item != null and current_item is ItemEquipment:
-			Global.player.animation_manager.equip_anim = current_item.equip_anim
-			Global.player.weapon_manager.equipped_item = current_item
-			if not Inventory.inventory_ui.inventory_ui_hotbar.hotbar_assignment_check(current_item):
-				Inventory.item_add(current_item, false, true)
-			if assign_button.text == "ASSIGN":
-				assign_button.text = "UNASSIGN"
-			item_equipped.emit(current_iterator)
-			item_assigned.emit(current_item)
+		if equip_button.text == "EQUIP":
+			if current_item != null and current_item is ItemEquipment:
+				Global.player.animation_manager.equip_anim = current_item.equip_anim
+				Global.player.weapon_manager.equipped_item = current_item
+				if not Inventory.inventory_ui.inventory_ui_hotbar.hotbar_assignment_check(current_item):
+					Inventory.item_add(current_item, false, true)
+				if equip_button.text == "EQUIP":
+					equip_button.text = "UNEQUIP"
+				if assign_button.text == "ASSIGN":
+					assign_button.text = "UNASSIGN"
+				item_equipped.emit(current_iterator)
+				item_assigned.emit(current_item)
+				hide()
+				Inventory.inventory_updated.emit()
+		elif  equip_button.text == "UNEQUIP":
+			Global.player.animation_manager.equip_anim = ""
+			Global.player.weapon_manager.equipped_item = null
+			Global.player.weapon_manager.sprite.texture = null
+			if equip_button.text == "UNEQUIP":
+					equip_button.text = "EQUIP"
 			hide()
 			Inventory.inventory_updated.emit()
 
