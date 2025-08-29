@@ -3,10 +3,10 @@ class_name WeaponManager extends Node2D
 
 @onready var character: Character = null
 var equipped_item: ItemEquipment = null
-@onready var projectile_origin: Marker2D = $ProjectileOrigin
 var projectile_direction: Vector2
+@onready var projectile_origin: Marker2D = $ProjectileOrigin
+@onready var weapon_point: Marker2D = $WeaponPoint
 @onready var sprite: Sprite2D = $Sprite
-
 
 func _ready() -> void:
 	if character == null and get_parent() is Character:

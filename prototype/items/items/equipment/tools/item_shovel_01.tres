@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemEquipment" load_steps=4 format=3 uid="uid://b0klrcihqwlet"]
+
+[ext_resource type="Script" uid="uid://csnmkj7pgmfg2" path="res://items/item/classes/item_equipment.gd" id="1_oftro"]
+[ext_resource type="Script" uid="uid://cnbsgt5bm575n" path="res://items/item/classes/item_projectile.gd" id="2_dcv3b"]
+[ext_resource type="Texture2D" uid="uid://cojm7qiwas0nn" path="res://items/items/equipment/tools/_textures/tool_shovel_01.png" id="2_vftjr"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_oftro")
+valid_projectiles = Array[ExtResource("2_dcv3b")]([])
+equip_anim = "Shovel"
+equip_effect = "Damage"
+equip_effect_magnitude = 3.0
+knockback_force = 2.0
+texture = ExtResource("2_vftjr")
+id = "item_shovel_01"
+name = "Shovel"
+type = "Tool - Farming"
+init = Vector2(0, 0)
+count = 1
+maximum = 1
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://csnmkj7pgmfg2"

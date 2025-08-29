@@ -58,5 +58,5 @@ frame = 0
 quests = Array[ExtResource("3_itre4")]([SubResource("Resource_kgrj5")])
 dialogue_file_path = "res://resources/dialogues/dialogue_test.json"
 
-[node name="Sprite" parent="WeaponManager" index="2"]
+[node name="Sprite" parent="WeaponManager" index="3"]
 position = Vector2(9, -1)

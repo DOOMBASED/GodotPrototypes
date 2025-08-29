@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://5qcq0y7gh4ak"]
+
+[ext_resource type="Script" uid="uid://bxvy8dikcw6un" path="res://items/item/item.gd" id="1_2nbik"]
+[ext_resource type="Resource" uid="uid://b7g7c1gpmwjbu" path="res://items/items/equipment/tools/item_sickle_01.tres" id="2_eqaqx"]
+[ext_resource type="Texture2D" uid="uid://dswgxflue1jgo" path="res://items/items/equipment/tools/_textures/tool_sickle_01.png" id="3_vj0u5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_buxpb"]
+radius = 16.0
+
+[node name="ItemSickle01" type="Area2D" groups=["Item"]]
+z_index = -1
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_2nbik")
+resource = ExtResource("2_eqaqx")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_buxpb")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_vj0u5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

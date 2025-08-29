@@ -1,14 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://68baroii34et"]
+[gd_scene load_steps=12 format=3 uid="uid://68baroii34et"]
 
 [ext_resource type="Script" uid="uid://d0oefn44ewu0o" path="res://autoloads/stats/_stats_ui.gd" id="1_i52xt"]
-[ext_resource type="Texture2D" uid="uid://ot2c0scv2b" path="res://resources/_textures/placeholder_08.tres" id="2_8o1cx"]
 
-[sub_resource type="Gradient" id="Gradient_3dvs4"]
+[sub_resource type="Gradient" id="Gradient_i52xt"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8o1cx"]
-gradient = SubResource("Gradient_3dvs4")
+gradient = SubResource("Gradient_i52xt")
 width = 84
+height = 14
+
+[sub_resource type="Gradient" id="Gradient_f72fy"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hq5s2"]
+gradient = SubResource("Gradient_f72fy")
+width = 84
+height = 14
+
+[sub_resource type="Gradient" id="Gradient_2kqaf"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1ma3"]
+gradient = SubResource("Gradient_2kqaf")
+width = 172
+height = 14
+
+[sub_resource type="Gradient" id="Gradient_uc6wb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6iha3"]
+gradient = SubResource("Gradient_uc6wb")
+width = 172
+height = 14
+
+[sub_resource type="Gradient" id="Gradient_1kyrx"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lf2uw"]
+gradient = SubResource("Gradient_1kyrx")
+width = 172
 height = 14
 
 [node name="StatsUI" type="Control"]
@@ -67,7 +98,7 @@ layout_mode = 2
 min_value = 1.0
 value = 100.0
 rounded = true
-texture_progress = SubResource("GradientTexture2D_8o1cx")
+texture_progress = SubResource("GradientTexture2D_hq5s2")
 tint_progress = Color(0.156863, 0.392157, 1, 1)
 
 [node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/HBoxContainer/ThirstBar"]
@@ -87,7 +118,7 @@ layout_mode = 2
 min_value = 1.0
 value = 100.0
 rounded = true
-texture_progress = ExtResource("2_8o1cx")
+texture_progress = SubResource("GradientTexture2D_x1ma3")
 tint_progress = Color(1, 0, 0.156863, 1)
 
 [node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/HealthBar"]
@@ -107,7 +138,7 @@ layout_mode = 2
 min_value = 1.0
 value = 100.0
 rounded = true
-texture_progress = ExtResource("2_8o1cx")
+texture_progress = SubResource("GradientTexture2D_6iha3")
 tint_progress = Color(0, 1, 0.156863, 1)
 
 [node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/StaminaBar"]
@@ -127,7 +158,7 @@ layout_mode = 2
 min_value = 1.0
 value = 100.0
 rounded = true
-texture_progress = ExtResource("2_8o1cx")
+texture_progress = SubResource("GradientTexture2D_lf2uw")
 tint_progress = Color(0.392157, 0, 1, 1)
 
 [node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/MagicBar"]

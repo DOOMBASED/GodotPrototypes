@@ -10,7 +10,7 @@ radius = 6.5
 height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6tk1"]
-radius = 4.0
+radius = 0.0
 
 [node name="EnemyTestDummy01" instance=ExtResource("1_6xjia")]
 collision_mask = 109
@@ -21,7 +21,7 @@ position = Vector2(0.5, 5)
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource("3_c0ypu")
-frame = 0
+frame = 2
 
 [node name="DialogueManager" parent="." index="3"]
 process_mode = 4
@@ -61,8 +61,5 @@ text = "100"
 
 [node name="WeaponCollision" parent="WeaponManager/Weapon" index="0"]
 shape = SubResource("CircleShape2D_x6tk1")
-
-[node name="Sprite" parent="WeaponManager" index="2"]
-position = Vector2(9, -1)
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_enemy_interact_area_body_entered"]

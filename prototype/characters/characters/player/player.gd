@@ -17,10 +17,6 @@ func _ready() -> void:
 	Global.set_player(self)
 	name = resource.name
 
-#func _process(_delta: float) -> void:
-	#if Input.is_action_pressed("interact"):
-		#Global.worldspace.tilemap.replace_terrain(0, 1)
-
 func _physics_process(delta: float) -> void:
 	if input_manager.direction:
 		_movement_check(delta)

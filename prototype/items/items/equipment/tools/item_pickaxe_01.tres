@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="ItemEquipment" load_steps=3 format=3 uid="uid://dyqacn6kumtu6"]
+[gd_resource type="Resource" script_class="ItemEquipment" load_steps=4 format=3 uid="uid://dyqacn6kumtu6"]
 
 [ext_resource type="Script" uid="uid://csnmkj7pgmfg2" path="res://items/item/classes/item_equipment.gd" id="1_c66eo"]
 [ext_resource type="Texture2D" uid="uid://d1tbg04lnc1lu" path="res://items/items/equipment/tools/_textures/tool_pickaxe_01.png" id="2_c66eo"]
+[ext_resource type="Script" uid="uid://cnbsgt5bm575n" path="res://items/item/classes/item_projectile.gd" id="3_8gaqy"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_c66eo")
+valid_projectiles = Array[ExtResource("3_8gaqy")]([])
 equip_anim = "Pickaxe"
 equip_effect = "Damage"
-equip_effect_magnitude = 1.0
+equip_effect_magnitude = 2.0
 knockback_force = 3.0
 texture = ExtResource("2_c66eo")
 id = "item_pickaxe_01"

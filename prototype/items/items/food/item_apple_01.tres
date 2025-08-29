@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cfhlcvcnxxtrb" path="res://items/items/food/_textures/food_apple_01.png" id="2_8a11r"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_rxqql")
 effect = "Hunger"
 magnitude = 10.0

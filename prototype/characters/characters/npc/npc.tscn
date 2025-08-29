@@ -40,7 +40,7 @@ _data = {
 radius = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6tk1"]
-radius = 4.0
+radius = 0.0
 
 [node name="NPC" instance=ExtResource("1_68cpq")]
 collision_layer = 8
@@ -61,7 +61,6 @@ texture = SubResource("GradientTexture2D_h5o6i")
 texture = ExtResource("4_ljv8k")
 hframes = 12
 vframes = 22
-frame = 2
 
 [node name="DialogueManager" parent="." index="3" instance=ExtResource("3_jfpsb")]
 
@@ -88,6 +87,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/ActionAxe/blend_position = Vector2(0, 0)
 parameters/ActionBow/blend_position = Vector2(0, 0)
 parameters/ActionPickaxe/blend_position = Vector2(0, 0)
+parameters/ActionSword/blend_position = Vector2(0, 0)
 parameters/DEAD/blend_position = Vector2(0, 0)
 parameters/Damage/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
@@ -110,11 +110,14 @@ collision_mask = 32
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="WeaponManager/Weapon" index="0"]
 shape = SubResource("CircleShape2D_x6tk1")
+disabled = true
 
 [node name="ProjectileOrigin" type="Marker2D" parent="WeaponManager" index="1"]
 
-[node name="Sprite" type="Sprite2D" parent="WeaponManager" index="2"]
-position = Vector2(9, 0)
+[node name="WeaponPoint" type="Marker2D" parent="WeaponManager" index="2"]
+
+[node name="Sprite" type="Sprite2D" parent="WeaponManager" index="3"]
+position = Vector2(9, -1)
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

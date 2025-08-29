@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dm2t3bvkn25q3" path="res://items/items/food/_textures/food_water_01.png" id="2_1y8og"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_63cak")
 effect = "Thirst"
 magnitude = 15.0

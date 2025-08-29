@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="ItemEquipment" load_steps=3 format=3 uid="uid://dju0nbsqof4js"]
+[gd_resource type="Resource" script_class="ItemEquipment" load_steps=4 format=3 uid="uid://dju0nbsqof4js"]
 
 [ext_resource type="Script" uid="uid://csnmkj7pgmfg2" path="res://items/item/classes/item_equipment.gd" id="1_5a8jm"]
 [ext_resource type="Texture2D" uid="uid://cpvinm7duai3x" path="res://items/items/equipment/tools/_textures/tool_axe_01.png" id="2_q527m"]
+[ext_resource type="Script" uid="uid://cnbsgt5bm575n" path="res://items/item/classes/item_projectile.gd" id="3_vmvkq"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_5a8jm")
+valid_projectiles = Array[ExtResource("3_vmvkq")]([])
 equip_anim = "Axe"
 equip_effect = "Damage"
 equip_effect_magnitude = 2.0

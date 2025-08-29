@@ -104,6 +104,7 @@ resource = ExtResource("2_4iqtv")
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource("7_o7m6m")
+frame = 2
 
 [node name="DialogueManager" parent="." index="3"]
 quests = Array[ExtResource("3_jk2qn")]([SubResource("Resource_vge28"), SubResource("Resource_kul5b")])

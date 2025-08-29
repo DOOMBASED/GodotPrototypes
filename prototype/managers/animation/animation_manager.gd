@@ -48,6 +48,15 @@ func _process(_delta: float) -> void:
 				current_state = AnimationState.IDLE
 				animation_tree["parameters/Idle/blend_position"] = character.movement_manager.facing.normalized()
 
+func action_hoe() -> void:
+	Global.worldspace.tilemap.terrain_till(0, 3)
+
+func action_shovel() -> void:
+	Global.worldspace.tilemap.terrain_path(0, 1)
+
+func action_sickle() -> void:
+	Global.worldspace.tilemap.terrain_harvest()
+
 func action_start() -> void:
 	current_state = AnimationState.ACTION
 	animation_tree[str("parameters/Action", equip_anim,"/blend_position")] = character.movement_manager.facing.normalized()

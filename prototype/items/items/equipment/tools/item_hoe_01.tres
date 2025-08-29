@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemEquipment" load_steps=4 format=3 uid="uid://d35ocae2wkcrl"]
+
+[ext_resource type="Script" uid="uid://csnmkj7pgmfg2" path="res://items/item/classes/item_equipment.gd" id="1_71r21"]
+[ext_resource type="Texture2D" uid="uid://cf2ii1hlnro46" path="res://items/items/equipment/tools/_textures/tool_hoe_01.png" id="2_flhnq"]
+[ext_resource type="Script" uid="uid://cnbsgt5bm575n" path="res://items/item/classes/item_projectile.gd" id="3_kg0ge"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_71r21")
+valid_projectiles = Array[ExtResource("3_kg0ge")]([])
+equip_anim = "Hoe"
+equip_effect = "Damage"
+equip_effect_magnitude = 1.0
+knockback_force = 1.0
+texture = ExtResource("2_flhnq")
+id = "item_hoe_01"
+name = "Hoe"
+type = "Tool - Farming"
+init = Vector2(0, 0)
+count = 1
+maximum = 1
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://csnmkj7pgmfg2"

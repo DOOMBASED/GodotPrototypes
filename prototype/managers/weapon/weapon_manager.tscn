@@ -19,6 +19,8 @@ disabled = true
 
 [node name="ProjectileOrigin" type="Marker2D" parent="."]
 
+[node name="WeaponPoint" type="Marker2D" parent="."]
+
 [node name="Sprite" type="Sprite2D" parent="."]
 
 [connection signal="body_entered" from="Weapon" to="." method="_on_weapon_body_entered"]

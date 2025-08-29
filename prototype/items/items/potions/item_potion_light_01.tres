@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemUseable" load_steps=3 format=3 uid="uid://bi37dwl48b1my"]
+[gd_resource type="Resource" script_class="ItemUseable" load_steps=3 format=3 uid="uid://p3ynhtxhlmfd"]
 
 [ext_resource type="Script" uid="uid://deo1was2s8qs1" path="res://items/item/classes/item_useable.gd" id="1_5ojpv"]
 [ext_resource type="Texture2D" uid="uid://bkdbvnfjgdxjv" path="res://items/items/potions/_textures/potion_yellow_01.png" id="2_l5xgn"]
@@ -16,7 +16,7 @@ name = "Light Potion"
 type = "Potion"
 init = Vector2(0, 0)
 count = 1
-maximum = 999
+maximum = 10
 quantity = 0
 quest = false
-metadata/_custom_type_script = "uid://b6xt4cir80m7v"
+metadata/_custom_type_script = "uid://deo1was2s8qs1"
