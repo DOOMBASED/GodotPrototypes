@@ -23,7 +23,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.is_key_pressed(KEY_SHIFT) and Input.is_action_just_pressed("show_inventory"):
 			_hotbar_toggle()
 		if visible and not Dialogue.dialogue_ui.dialogue.visible and Global.player.animation_manager.current_state != AnimationManager.AnimationState.ACTION:
-			for i in range(Inventory.hotbar_size):
+			for i: int in range(Inventory.hotbar_size):
 					if Input.is_action_just_pressed(str(i + 1)):
 						_hotbar_use_item(i)
 						break

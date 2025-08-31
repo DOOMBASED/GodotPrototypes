@@ -16,7 +16,9 @@ func _ready() -> void:
 	Global.time_is_dawn.connect(_at_dawn_hour)
 	Global.time_is_dusk.connect(_at_dusk_hour)
 	SignalBus.dead.connect(_on_death)
-	name = resource.name
+	name = str(resource.name, "_" , self.get_instance_id())
+	await Global.worldspace_set
+	reparent(Global.worldspace)
 
 func _process(_delta: float) -> void:
 	if navigation_manager.current_state == NavigationManager.NavigationState.SEARCH:
@@ -61,13 +63,15 @@ func _at_dusk_hour() -> void:
 	shadow.visible = false
 
 func _on_death(character: Character) -> void:
-	if character == self:
+	if character.resource == resource:
 		z_index = -1
 		collision.disabled = true
 		interact_area.monitoring = false
-		for key in Stats.kill_stats.keys():
+		if Stats.kill_stats.size() == 0:
+			Stats.kill_stats[character.resource.name] = 0
+		for key: String in Stats.kill_stats.keys():
 			if key == character.resource.id:
-				Stats.kill_stats[character.resource.id] += 1
+				Stats.kill_stats[character.resource.name] += 1
 			else:
-				Stats.kill_stats[character.resource.id] = 1
+				Stats.kill_stats[character.resource.name] = 1
 			Stats.kills_updated.emit()

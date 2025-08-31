@@ -41,6 +41,8 @@ func dialogue_ui_show(npc: NPC, text: String, options: Dictionary) -> void:
 	await get_tree().create_timer(visible_characters_duration + 0.5).timeout
 	dialogue_typing = false
 	if options.keys().size() == 0 and not dialogue_typing:
+		npc.navigation_manager.current_state = NavigationManager.NavigationState.WANDER
+		npc.navigation_manager.target_set = true
 		_dialogue_timeout()
 
 func dialogue_ui_hide() -> void:

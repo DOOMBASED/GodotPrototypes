@@ -23,7 +23,7 @@ func item_effect(item: ItemResource) -> void:
 				else:
 					_item_not_used("Already at max Hunger")
 			"Thirst":
-				if Global.player.stats_manager.thirst < Global.player.stats_manager.thirst_max:
+				if Global.player.stats_manager.thirst + item.magnitude < Global.player.stats_manager.thirst_max:
 					Global.player.stats_manager.thirst += item.magnitude
 					if Global.player.stats_manager.thirst > Global.player.stats_manager.thirst_max:
 						Global.player.stats_manager.thirst = Global.player.stats_manager.thirst_max

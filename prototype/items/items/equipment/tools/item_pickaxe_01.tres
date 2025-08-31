@@ -12,6 +12,7 @@ equip_anim = "Pickaxe"
 equip_effect = "Damage"
 equip_effect_magnitude = 2.0
 knockback_force = 3.0
+exp_multiplier = 1.0
 texture = ExtResource("2_c66eo")
 id = "item_pickaxe_01"
 name = "Pickaxe"

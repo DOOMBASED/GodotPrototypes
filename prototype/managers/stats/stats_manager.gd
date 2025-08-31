@@ -42,7 +42,9 @@ func _process(delta: float) -> void:
 		character.animation_manager.current_state = AnimationManager.AnimationState.DEAD
 
 func health_damage(damage: float) -> void:
-	Stats.exp_stats["health_exp"] += Stats.base_exp_rate * damage
+	if character is Player:
+		Stats.exp_stats["Health"] += Stats.base_exp_rate * damage
+		Stats.exp_updated.emit()
 	Global.set_debug_text(str("Applied ", damage, " damage."))
 	health -= damage
 

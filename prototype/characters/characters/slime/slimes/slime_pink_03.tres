@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://kf2emxsuv6fc"]
+
+[ext_resource type="Script" uid="uid://b33pbrpxg44aq" path="res://characters/characters/enemy/enemy_resource.gd" id="1_uxd8d"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_uxd8d")
+touch_damage = 5.0
+touch_knockback_force = 2.0
+id = "slime_pink_03"
+name = "Big Pink Slime"
+color_hex = "ff64ff"
+color = Color(1, 0.392157, 1, 1)
+metadata/_custom_type_script = "uid://b33pbrpxg44aq"

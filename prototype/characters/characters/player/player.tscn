@@ -61,8 +61,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6xi3"]
-radius = 4.0
-height = 8.0
+radius = 0.0
+height = 0.0
 
 [sub_resource type="Gradient" id="Gradient_2h2fy"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -144,6 +144,7 @@ disabled = true
 [node name="WeaponPoint" type="Marker2D" parent="WeaponManager" index="2"]
 
 [node name="Sprite" type="Sprite2D" parent="WeaponManager" index="3"]
+position = Vector2(9, -1)
 
 [node name="Light" type="PointLight2D" parent="." index="8"]
 enabled = false

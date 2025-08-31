@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://djp0vo766254n"]
+[gd_scene load_steps=10 format=3 uid="uid://djp0vo766254n"]
 
 [ext_resource type="PackedScene" uid="uid://dur01paq6nlp2" path="res://characters/characters/slime/slime.tscn" id="1_0bbw8"]
 [ext_resource type="Resource" uid="uid://copxsvgmroud6" path="res://characters/characters/slime/slimes/slime_purple_03.tres" id="2_twiv2"]
 [ext_resource type="AnimationLibrary" uid="uid://b15coitwgry3r" path="res://resources/animations/animations_slime.res" id="3_jmcvl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jmcvl"]
+radius = 5.0
+height = 20.0
 
 [sub_resource type="Gradient" id="Gradient_jmcvl"]
 offsets = PackedFloat32Array(0.96, 1)
@@ -36,19 +40,26 @@ _data = {
 &"RESET": SubResource("Animation_sgegx")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sgegx"]
+radius = 7.0
+height = 24.0
+
 [node name="SlimePurple03" instance=ExtResource("1_0bbw8")]
 resource = ExtResource("2_twiv2")
+
+[node name="Collision" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_jmcvl")
 
 [node name="Shadow" parent="." index="1"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(0, 4)
 texture = SubResource("GradientTexture2D_jmcvl")
 
-[node name="Sprite" parent="." index="2"]
-frame = 4
-
 [node name="MovementManager" parent="." index="3"]
 walk_speed = 48.0
+
+[node name="StatsManager" parent="." index="4"]
+health_max = 50.0
 
 [node name="AnimationPlayer" parent="AnimationManager" index="0"]
 libraries = {
@@ -58,3 +69,6 @@ libraries = {
 
 [node name="AnimationTree" parent="AnimationManager" index="1"]
 advance_expression_base_node = NodePath("..")
+
+[node name="Collision" parent="InteractArea" index="0"]
+shape = SubResource("CapsuleShape2D_sgegx")

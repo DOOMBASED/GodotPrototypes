@@ -3,6 +3,10 @@ class_name Enemy extends NPC
 
 @onready var test_health_label: Label = $Control/TestHealthLabel
 
+func _ready() -> void:
+	super._ready()
+	name = str(resource.name, "_" , self.get_instance_id())
+
 func _process(_delta: float) -> void:
 	if navigation_manager.current_state == NavigationManager.NavigationState.SEARCH:
 		test_health_label.text = str(stats_manager.health).pad_zeros(2).pad_decimals(0)

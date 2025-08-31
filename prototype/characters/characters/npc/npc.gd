@@ -20,6 +20,8 @@ func _ready() -> void:
 	dialogue_manager.npc = self
 	weapon_collision.disabled = true
 	name = resource.name
+	await Global.worldspace_set
+	reparent(Global.worldspace)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -67,9 +69,11 @@ func _on_death(character: Character) -> void:
 		z_index = -1
 		collision.disabled = true
 		interact_area.monitoring = false
-		for key in Stats.kill_stats.keys():
+		if Stats.kill_stats.size() == 0:
+			Stats.kill_stats[character.resource.name] = 0
+		for key: String in Stats.kill_stats.keys():
 			if key == character.resource.id:
-				Stats.kill_stats[character.resource.id] += 1
+				Stats.kill_stats[character.resource.name] += 1
 			else:
-				Stats.kill_stats[character.resource.id] = 1
+				Stats.kill_stats[character.resource.name] = 1
 			Stats.kills_updated.emit()

@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://bnv7n1b2v7ehu"]
+
+[ext_resource type="PackedScene" uid="uid://dur01paq6nlp2" path="res://characters/characters/slime/slime.tscn" id="1_gkge0"]
+[ext_resource type="Resource" uid="uid://kwn8jeu6bq8c" path="res://characters/characters/slime/slimes/slime_golden_03.tres" id="2_gkge0"]
+[ext_resource type="Texture2D" uid="uid://ceuiqgxiduvif" path="res://characters/characters/slime/slimes/slime_golden_03.png" id="3_gkge0"]
+[ext_resource type="AnimationLibrary" uid="uid://b15coitwgry3r" path="res://resources/animations/animations_slime.res" id="4_6y530"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gkge0"]
+radius = 5.0
+height = 20.0
+
+[sub_resource type="Gradient" id="Gradient_jmcvl"]
+offsets = PackedFloat32Array(0.96, 1)
+colors = PackedColorArray(0.027451, 0.027451, 0.027451, 0.498039, 0.027451, 0.027451, 0.027451, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jmcvl"]
+gradient = SubResource("Gradient_jmcvl")
+width = 24
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Animation" id="Animation_sgegx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Shadow:texture:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_741r3"]
+_data = {
+&"RESET": SubResource("Animation_sgegx")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m2tn3"]
+radius = 7.0
+height = 24.0
+
+[node name="SlimeGolden03" instance=ExtResource("1_gkge0")]
+resource = ExtResource("2_gkge0")
+
+[node name="Collision" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_gkge0")
+
+[node name="Shadow" parent="." index="1"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 4)
+texture = SubResource("GradientTexture2D_jmcvl")
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource("3_gkge0")
+frame = 5
+
+[node name="MovementManager" parent="." index="3"]
+walk_speed = 48.0
+
+[node name="AnimationPlayer" parent="AnimationManager" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_741r3"),
+&"slime": ExtResource("4_6y530")
+}
+
+[node name="AnimationTree" parent="AnimationManager" index="1"]
+advance_expression_base_node = NodePath("..")
+
+[node name="Collision" parent="InteractArea" index="0"]
+shape = SubResource("CapsuleShape2D_m2tn3")

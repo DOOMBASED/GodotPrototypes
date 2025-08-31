@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcruq7p6pnmbs"]
+
+[ext_resource type="PackedScene" uid="uid://dur01paq6nlp2" path="res://characters/characters/slime/slime.tscn" id="1_lu3u2"]
+[ext_resource type="Resource" uid="uid://d1jcrwagg0h7a" path="res://characters/characters/slime/slimes/slime_green_02.tres" id="2_8cjbo"]
+[ext_resource type="Texture2D" uid="uid://bixf5dkasnq6y" path="res://characters/characters/slime/slimes/slime_green_02.png" id="3_lu3u2"]
+
+[sub_resource type="Gradient" id="Gradient_m7a4k"]
+offsets = PackedFloat32Array(0.96, 1)
+colors = PackedColorArray(0.027451, 0.027451, 0.027451, 0.498039, 0.027451, 0.027451, 0.027451, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a4idt"]
+gradient = SubResource("Gradient_m7a4k")
+width = 24
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="SlimeGreen02" instance=ExtResource("1_lu3u2")]
+resource = ExtResource("2_8cjbo")
+
+[node name="Collision" parent="." index="0"]
+position = Vector2(0, 0)
+
+[node name="Shadow" parent="." index="1"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 4)
+scale = Vector2(0.7, 1)
+texture = SubResource("GradientTexture2D_a4idt")
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource("3_lu3u2")
+
+[node name="MovementManager" parent="." index="3"]
+walk_speed = 40.0
+
+[node name="StatsManager" parent="." index="4"]
+health_max = 30.0
+
+[node name="AnimationTree" parent="AnimationManager" index="1"]
+advance_expression_base_node = NodePath("..")
+
+[node name="Collision" parent="InteractArea" index="0"]
+position = Vector2(0, 0)

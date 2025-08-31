@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://bup3cmsxxufxk"]
+
+[ext_resource type="Script" uid="uid://b33pbrpxg44aq" path="res://characters/characters/enemy/enemy_resource.gd" id="1_mksig"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_mksig")
+touch_damage = 5.0
+touch_knockback_force = 2.0
+id = "slime_golden_02"
+name = "Golden Slime"
+color_hex = "ffff28"
+color = Color(1, 1, 0.156863, 1)
+metadata/_custom_type_script = "uid://b33pbrpxg44aq"

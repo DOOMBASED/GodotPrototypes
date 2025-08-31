@@ -7,4 +7,5 @@ path_desired_distance = 16.0
 target_desired_distance = 24.0
 path_max_distance = 10.0
 avoidance_enabled = true
+radius = 16.0
 script = ExtResource("1_uq6b0")

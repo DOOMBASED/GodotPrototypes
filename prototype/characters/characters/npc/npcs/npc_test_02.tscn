@@ -52,11 +52,16 @@ resource = ExtResource("2_n7n0q")
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource("7_ga5qr")
-frame = 0
+frame = 2
 
 [node name="DialogueManager" parent="." index="3"]
 quests = Array[ExtResource("3_itre4")]([SubResource("Resource_kgrj5")])
 dialogue_file_path = "res://resources/dialogues/dialogue_test.json"
 
+[node name="AnimationTree" parent="AnimationManager" index="1"]
+parameters/ActionHoe/blend_position = Vector2(0, 0)
+parameters/ActionShovel/blend_position = Vector2(0, 0)
+parameters/ActionSickle/blend_position = Vector2(0, 0)
+
 [node name="Sprite" parent="WeaponManager" index="3"]
-position = Vector2(9, -1)
+position = Vector2(9, 0)

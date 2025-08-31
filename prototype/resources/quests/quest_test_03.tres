@@ -13,6 +13,7 @@ target_id = "item_potion_health_01"
 target_type = 1
 objective_dialogue = ""
 required_count = 5
+required_kills = 0
 
 [sub_resource type="Resource" id="Resource_odx8i"]
 script = ExtResource("1_74xb2")
@@ -22,6 +23,7 @@ target_id = "npc_test_01"
 target_type = 0
 objective_dialogue = "Thanks again for the help. Here are some Wooden Arrows"
 required_count = 0
+required_kills = 0
 metadata/_custom_type_script = "uid://d35atbvkibbaw"
 
 [sub_resource type="Resource" id="Resource_1ralu"]

@@ -131,4 +131,4 @@ func _on_quest_updated(id: String) -> void:
 func _on_enemy_killed(enemy: Character) -> void:
 	await Stats.kills_updated
 	if quest_check_kills(enemy.resource.id):
-		quest_check_objectives(enemy.resource.id, 2, Stats.kill_stats[enemy.resource.id])
+		quest_check_objectives(enemy.resource.id, 2, Stats.kill_stats[enemy.resource.name])

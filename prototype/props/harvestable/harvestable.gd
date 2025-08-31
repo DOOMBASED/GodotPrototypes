@@ -58,9 +58,11 @@ func material_harvest() -> void:
 	_material_spawn()
 	resource_remaining -= 1
 	if Global.player.weapon_manager.equipped_item.type == "Tool - Mining":
-		Stats.exp_stats["mining_exp"] += Stats.base_exp_rate * resource.material_exp_multiplier
+		Stats.exp_stats["Mining"] += Stats.base_exp_rate * resource.material_exp_multiplier
+		Stats.exp_updated.emit()
 	if Global.player.weapon_manager.equipped_item.type == "Tool - Woodcutting":
-		Stats.exp_stats["woodcutting_exp"] += Stats.base_exp_rate * resource.material_exp_multiplier
+		Stats.exp_stats["Woodcutting"] += Stats.base_exp_rate * resource.material_exp_multiplier
+		Stats.exp_updated.emit()
 
 func _material_spawn() -> void:
 	item_instance = item_scene.instantiate()

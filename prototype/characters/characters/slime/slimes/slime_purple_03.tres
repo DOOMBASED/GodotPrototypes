@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b33pbrpxg44aq" path="res://characters/characters/enemy/enemy_resource.gd" id="1_0kbp5"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_0kbp5")
 touch_damage = 5.0
 touch_knockback_force = 2.0

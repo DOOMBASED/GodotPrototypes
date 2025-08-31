@@ -16,6 +16,8 @@ func _ready() -> void:
 	SignalBus.dead.connect(_on_death)
 	Global.set_player(self)
 	name = resource.name
+	await Global.worldspace_set
+	reparent(Global.worldspace)
 
 func _physics_process(delta: float) -> void:
 	if input_manager.direction:
@@ -27,7 +29,7 @@ func _physics_process(delta: float) -> void:
 func _movement_check(delta: float) -> void:
 	if movement_manager.moving and input_manager.run  and stats_manager.stamina > 0.0 and not stats_manager.stamina_cooldown:
 		stats_manager.stamina -= stats_manager.stamina_drain
-		Stats.exp_stats["stamina_exp"] += Stats.base_exp_rate / PI
+		Stats.exp_stats["Stamina"] += Stats.base_exp_rate / PI
 		movement_manager.speed = movement_manager.run_speed
 		input_manager.direction = input_manager.direction.normalized().round()
 		if stats_manager.stamina <= 0.0:

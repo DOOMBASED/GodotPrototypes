@@ -6,12 +6,14 @@
 [ext_resource type="Resource" uid="uid://bhp4crbuakegm" path="res://items/items/equipment/weapons/item_arrow_01.tres" id="4_q22mr"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_caf0e")
 valid_projectiles = Array[ExtResource("3_xfyrg")]([ExtResource("4_q22mr")])
 equip_anim = "Bow"
 equip_effect = "Damage"
 equip_effect_magnitude = 3.0
 knockback_force = 0.0
+exp_multiplier = 1.0
 texture = ExtResource("2_m7hw3")
 id = "item_bow_01"
 name = "Wooden Bow"

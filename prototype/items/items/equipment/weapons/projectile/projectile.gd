@@ -58,7 +58,8 @@ func _set_drop_direction(instance: Item) -> void:
 func _on_body_entered(body) -> void:
 	if body.resource is EnemyResource:
 		if Global.player.weapon_manager.equipped_item.type == "Weapon - Ranged":
-			Stats.exp_stats["ranged_exp"] += Stats.base_exp_rate * damage_full
+			Stats.exp_stats["Ranged"] += Stats.base_exp_rate * damage_full
+			Stats.exp_updated.emit()
 		_knockback(body)
 		body.stats_manager.health_damage(damage_full)
 		SignalBus.attacked.emit(body)

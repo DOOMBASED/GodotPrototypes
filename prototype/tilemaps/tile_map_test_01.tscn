@@ -25,3 +25,15 @@ navigation_enabled = false
 [node name="Soil" type="TileMapLayer" parent="."]
 tile_set = ExtResource("1_0qau1")
 navigation_enabled = false
+
+[node name="Crops" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_0qau1")
+navigation_enabled = false
+
+[node name="Floors" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_0qau1")
+navigation_enabled = false
+
+[node name="Walls" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_0qau1")
+navigation_enabled = false

@@ -42,7 +42,8 @@ func _on_weapon_body_entered(body: Node2D) -> void:
 			body.material_harvest()
 	if body.resource is EnemyResource:
 		if Global.player.weapon_manager.equipped_item.type == "Weapon - Melee":
-			Stats.exp_stats["melee_exp"] += Stats.base_exp_rate * equipped_item.equip_effect_magnitude
+			Stats.exp_stats["Melee"] += Stats.base_exp_rate * equipped_item.equip_effect_magnitude
+			Stats.exp_updated.emit()
 		_knockback(body)
 		body.stats_manager.health_damage(equipped_item.equip_effect_magnitude)
 		SignalBus.attacked.emit(body)

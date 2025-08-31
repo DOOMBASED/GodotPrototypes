@@ -12,6 +12,7 @@ equip_anim = "Hoe"
 equip_effect = "Damage"
 equip_effect_magnitude = 1.0
 knockback_force = 1.0
+exp_multiplier = 2.0
 texture = ExtResource("2_flhnq")
 id = "item_hoe_01"
 name = "Hoe"

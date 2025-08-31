@@ -52,7 +52,52 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_i52xt")
 
-[node name="Stats" type="PanelContainer" parent="."]
+[node name="StatsDisplay" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(212, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="StatsDisplay"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsDisplay/MarginContainer"]
+layout_mode = 2
+
+[node name="ExpLabel" type="Label" parent="StatsDisplay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Skills"
+horizontal_alignment = 1
+
+[node name="ExpSeparator" type="HSeparator" parent="StatsDisplay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExpLabels" type="VBoxContainer" parent="StatsDisplay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator" type="HSeparator" parent="StatsDisplay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="KillLabel" type="Label" parent="StatsDisplay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Kills"
+horizontal_alignment = 1
+
+[node name="KillSeparator" type="HSeparator" parent="StatsDisplay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="KillLabels" type="VBoxContainer" parent="StatsDisplay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StatsBars" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -61,19 +106,19 @@ offset_top = -42.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Stats"]
+[node name="MarginContainer" type="MarginContainer" parent="StatsBars"]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Stats/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsBars/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Stats/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsBars/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HungerBar" type="TextureProgressBar" parent="Stats/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HungerBar" type="TextureProgressBar" parent="StatsBars/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 100.0
@@ -81,7 +126,7 @@ rounded = true
 texture_progress = SubResource("GradientTexture2D_8o1cx")
 tint_progress = Color(1, 0.392157, 0.156863, 1)
 
-[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/HBoxContainer/HungerBar"]
+[node name="Label" type="Label" parent="StatsBars/MarginContainer/VBoxContainer/HBoxContainer/HungerBar"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -93,7 +138,7 @@ grow_horizontal = 2
 text = "HUNGER"
 horizontal_alignment = 1
 
-[node name="ThirstBar" type="TextureProgressBar" parent="Stats/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ThirstBar" type="TextureProgressBar" parent="StatsBars/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 100.0
@@ -101,7 +146,7 @@ rounded = true
 texture_progress = SubResource("GradientTexture2D_hq5s2")
 tint_progress = Color(0.156863, 0.392157, 1, 1)
 
-[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/HBoxContainer/ThirstBar"]
+[node name="Label" type="Label" parent="StatsBars/MarginContainer/VBoxContainer/HBoxContainer/ThirstBar"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -113,7 +158,7 @@ grow_horizontal = 2
 text = "THIRST"
 horizontal_alignment = 1
 
-[node name="HealthBar" type="TextureProgressBar" parent="Stats/MarginContainer/VBoxContainer"]
+[node name="HealthBar" type="TextureProgressBar" parent="StatsBars/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 100.0
@@ -121,7 +166,7 @@ rounded = true
 texture_progress = SubResource("GradientTexture2D_x1ma3")
 tint_progress = Color(1, 0, 0.156863, 1)
 
-[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/HealthBar"]
+[node name="Label" type="Label" parent="StatsBars/MarginContainer/VBoxContainer/HealthBar"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -133,7 +178,7 @@ grow_horizontal = 2
 text = "HEALTH"
 horizontal_alignment = 1
 
-[node name="StaminaBar" type="TextureProgressBar" parent="Stats/MarginContainer/VBoxContainer"]
+[node name="StaminaBar" type="TextureProgressBar" parent="StatsBars/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 100.0
@@ -141,7 +186,7 @@ rounded = true
 texture_progress = SubResource("GradientTexture2D_6iha3")
 tint_progress = Color(0, 1, 0.156863, 1)
 
-[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/StaminaBar"]
+[node name="Label" type="Label" parent="StatsBars/MarginContainer/VBoxContainer/StaminaBar"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -153,7 +198,7 @@ grow_horizontal = 2
 text = "STAMINA"
 horizontal_alignment = 1
 
-[node name="MagicBar" type="TextureProgressBar" parent="Stats/MarginContainer/VBoxContainer"]
+[node name="MagicBar" type="TextureProgressBar" parent="StatsBars/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 100.0
@@ -161,7 +206,7 @@ rounded = true
 texture_progress = SubResource("GradientTexture2D_lf2uw")
 tint_progress = Color(0.392157, 0, 1, 1)
 
-[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/MagicBar"]
+[node name="Label" type="Label" parent="StatsBars/MarginContainer/VBoxContainer/MagicBar"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

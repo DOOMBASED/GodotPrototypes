@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://dpcf1e453tw1l"]
+
+[ext_resource type="Script" uid="uid://b33pbrpxg44aq" path="res://characters/characters/enemy/enemy_resource.gd" id="1_qlvqk"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_qlvqk")
+touch_damage = 4.0
+touch_knockback_force = 1.0
+id = "slime_gray_02"
+name = "Gray Slime"
+color_hex = "646464"
+color = Color(0.392157, 0.392157, 0.392157, 1)
+metadata/_custom_type_script = "uid://b33pbrpxg44aq"

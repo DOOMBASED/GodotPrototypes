@@ -36,6 +36,8 @@ func menu_show(item: ItemResource, iterator: int) -> void:
 		effect_label.show()
 		assign_button.show()
 		equip_button.show()
+	if item is ItemSeed:
+		equip_button.show()
 	if current_item.quantity >= 2:
 		split_button.disabled = false
 		split_button.show()
@@ -95,9 +97,13 @@ func _on_use_button_pressed() -> void:
 func _on_equip_button_pressed() -> void:
 	if Global.player.animation_manager.current_state != AnimationManager.AnimationState.ACTION:
 		if equip_button.text == "EQUIP":
-			if current_item != null and current_item is ItemEquipment:
-				Global.player.animation_manager.equip_anim = current_item.equip_anim
-				Global.player.weapon_manager.equipped_item = current_item
+			if current_item != null:
+				if current_item is ItemEquipment:
+					Global.player.animation_manager.equip_anim = current_item.equip_anim
+					Global.player.weapon_manager.equipped_item = current_item
+				if current_item is ItemSeed:
+					Global.worldspace.equipped_seed = current_item
+					Global.worldspace.equipped_seed_atlas = current_item.seed_atlas
 				if not Inventory.inventory_ui.inventory_ui_hotbar.hotbar_assignment_check(current_item):
 					Inventory.item_add(current_item, false, true)
 				if equip_button.text == "EQUIP":
@@ -146,6 +152,7 @@ func _on_drop_button_pressed() -> void:
 						await Global.player.animation_manager.animation_player.animation_finished
 					Global.player.animation_manager.equip_anim = ""
 					Global.player.weapon_manager.equipped_item = null
+					Global.player.weapon_manager.sprite.texture = null
 			Inventory.item_remove(current_item, current_item.slot)
 			current_item = null
 			Inventory.item_cooldown_timer()

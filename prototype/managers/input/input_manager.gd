@@ -14,6 +14,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		if direction != Vector2.ZERO:
+			if Input.is_action_just_released("run"):
+				Stats.exp_updated.emit()
 			run = Input.is_action_pressed("run")
 		else:
 			run = false

@@ -12,6 +12,7 @@ equip_anim = "Sickle"
 equip_effect = "Damage"
 equip_effect_magnitude = 5.0
 knockback_force = 2.0
+exp_multiplier = 2.0
 texture = ExtResource("2_3xqh6")
 id = "item_sickle_01"
 name = "Sickle"

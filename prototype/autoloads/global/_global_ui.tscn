@@ -14,7 +14,7 @@ script = ExtResource("1_rw1ud")
 
 [node name="Global" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_right = 1285.0
+offset_right = 1280.0
 offset_bottom = 26.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Global"]

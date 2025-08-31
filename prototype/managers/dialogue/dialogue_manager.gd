@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func dialogue_start() -> void:
 	if not Dialogue.dialogue_ui.dialogue_timeout:
-		for action in InputMap.get_actions():
+		for action: StringName in InputMap.get_actions():
 			Input.action_release(action)
 		Global.player.animation_manager.current_state = AnimationManager.AnimationState.IDLE
 		npc.movement_manager.facing = Global.player.global_position - npc.global_position

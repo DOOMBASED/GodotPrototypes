@@ -6,8 +6,12 @@ var tilemap: Node2D = null
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion
 @onready var lighting_color: CanvasModulate = $LightingColor
 @onready var items: Node2D = $WorldItems
+@onready var characters: Node2D = $Characters
 var world_items: Array[Item]
 var world_harvestables: Array[Harvestable]
+var planted_crops: Array
+var equipped_seed: ItemSeed
+var equipped_seed_atlas: Vector2i
 
 func _ready() -> void:
 	Global.set_worldspace(self)
@@ -16,6 +20,7 @@ func _ready() -> void:
 	Inventory.item_added.connect(_on_item_added)
 	Inventory.item_dropped.connect(_on_item_dropped)
 	_get_world_items()
+	characters.queue_free()
 
 func set_tilemap(current_tilemap: Node2D) -> void:
 	tilemap = current_tilemap

@@ -41,7 +41,7 @@ func set_hotbar(current_hotbar_ui: PanelContainer):
 func item_add(item: ItemResource, split: bool = false, assign: bool = false) -> bool:
 	var assigned: bool = false
 	if assign:
-		for i in range(hotbar_inventory.size()):
+		for i: int in range(hotbar_inventory.size()):
 			assigned = _item_assign_hotbar(item)
 			inventory_updated.emit()
 			item_added.emit(item, i)
@@ -118,7 +118,7 @@ func item_remove(item: ItemResource, slot_index: int) -> bool:
 		if Effects.should_use:
 			Effects.should_use = false
 			return true
-		if item is not ItemProjectile and item.quantity >= 0:
+		if item is not ItemProjectile and item is not ItemSeed and item.quantity >= 0:
 			item_drop(item)
 		return true
 	if Inventory.inventory_ui.menu.visible:
@@ -126,7 +126,7 @@ func item_remove(item: ItemResource, slot_index: int) -> bool:
 	return false
 
 func item_remove_from_hotbar(id: String) -> bool:
-	for i in range(hotbar_inventory.size()):
+	for i: int in range(hotbar_inventory.size()):
 		if hotbar_inventory[i] != null and hotbar_inventory[i].id == id:
 			hotbar_inventory[i] = null
 			inventory_updated.emit()
@@ -135,7 +135,7 @@ func item_remove_from_hotbar(id: String) -> bool:
 
 func item_get_count(item: ItemResource) -> int:
 	var count: int = 0
-	for i in range(inventory.size()):
+	for i: int in range(inventory.size()):
 		if inventory[i] != null:
 			if inventory[i].id == item.id:
 				count = inventory[i].quantity
@@ -143,7 +143,7 @@ func item_get_count(item: ItemResource) -> int:
 
 func item_get_index(item: ItemResource) -> int:
 	var index: int = -1
-	for i in range(inventory.size()):
+	for i: int in range(inventory.size()):
 		if inventory[i] != null:
 			if inventory[i].id == item.id:
 				index = inventory[i].slot
@@ -155,14 +155,14 @@ func item_cooldown_timer() -> void:
 	cooldown = false
 
 func _item_assign_hotbar(item: ItemResource) -> bool:
-	for i in range(hotbar_size):
+	for i: int in range(hotbar_size):
 		if hotbar_inventory[i] == null:
 			hotbar_inventory[i] = item
 			return true
 	return false
 
 func _item_unassign_hotbar(item: ItemResource) -> bool:
-	for i in range(hotbar_inventory.size()):
+	for i: int in range(hotbar_inventory.size()):
 		if hotbar_inventory[i] != null and hotbar_inventory[i].id == item.id:
 			if hotbar_inventory[i].quantity <= 0:
 				hotbar_inventory[i] = null

@@ -12,6 +12,7 @@ equip_anim = "Shovel"
 equip_effect = "Damage"
 equip_effect_magnitude = 3.0
 knockback_force = 2.0
+exp_multiplier = 2.0
 texture = ExtResource("2_vftjr")
 id = "item_shovel_01"
 name = "Shovel"

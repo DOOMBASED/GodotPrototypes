@@ -6,7 +6,7 @@ var kill_stats: Dictionary = {}
 
 var base_exp_rate: float = 0.01
 
-@warning_ignore("unused_signal")
+signal exp_updated
 signal kills_updated
 
 func _ready() -> void:
@@ -15,13 +15,15 @@ func _ready() -> void:
 	_init_stats_kills()
 
 func _init_stats_exp() -> void:
-	exp_stats["health_exp"] = 0.0
-	exp_stats["stamina_exp"] = 0.0
-	exp_stats["magic_exp"] = 0.0
-	exp_stats["melee_exp"] = 0.0
-	exp_stats["ranged_exp"] = 0.0
-	exp_stats["woodcutting_exp"] = 0.0
-	exp_stats["mining_exp"] = 0.0
+	exp_stats["Health"] = 0.0
+	exp_stats["Stamina"] = 0.0
+	exp_stats["Magic"] = 0.0
+	exp_stats["Melee"] = 0.0
+	exp_stats["Ranged"] = 0.0
+	exp_stats["Farming"] = 0.0
+	exp_stats["Woodcutting"] = 0.0
+	exp_stats["Mining"] = 0.0
+	exp_updated.emit()
 
 func _init_stats_kills() -> void:
-	kill_stats["null"] = 0
+	kills_updated.emit()

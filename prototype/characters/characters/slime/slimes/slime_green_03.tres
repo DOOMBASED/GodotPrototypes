@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://dy5kypnowlidm"]
+
+[ext_resource type="Script" uid="uid://b33pbrpxg44aq" path="res://characters/characters/enemy/enemy_resource.gd" id="1_bbk40"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_bbk40")
+touch_damage = 5.0
+touch_knockback_force = 2.0
+id = "slime_green_03"
+name = "Big Green Slime"
+color_hex = "00ff28"
+color = Color(0, 1, 0.156863, 1)
+metadata/_custom_type_script = "uid://b33pbrpxg44aq"
