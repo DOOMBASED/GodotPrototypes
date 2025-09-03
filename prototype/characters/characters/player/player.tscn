@@ -95,6 +95,7 @@ y_sort_enabled = true
 texture = ExtResource("6_4lert")
 hframes = 12
 vframes = 22
+frame = 210
 
 [node name="AnimationManager" parent="." index="3" instance=ExtResource("6_twsev")]
 
@@ -115,6 +116,7 @@ parameters/ActionPickaxe/blend_position = Vector2(0, 0)
 parameters/ActionShovel/blend_position = Vector2(0, 0)
 parameters/ActionSickle/blend_position = Vector2(0, 0)
 parameters/ActionSword/blend_position = Vector2(0, 0)
+parameters/ActionWater/blend_position = Vector2(0, 0)
 parameters/DEAD/blend_position = Vector2(0, 0)
 parameters/Damage/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
@@ -144,7 +146,7 @@ disabled = true
 [node name="WeaponPoint" type="Marker2D" parent="WeaponManager" index="2"]
 
 [node name="Sprite" type="Sprite2D" parent="WeaponManager" index="3"]
-position = Vector2(9, -1)
+scale = Vector2(1e-05, 1e-05)
 
 [node name="Light" type="PointLight2D" parent="." index="8"]
 enabled = false

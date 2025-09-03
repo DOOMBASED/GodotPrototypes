@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=141 format=3 uid="uid://bdh0fnwt0lekf"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=155 format=3 uid="uid://bdh0fnwt0lekf"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h8fy8"]
 animation = &"animations_human/axe_down"
@@ -158,6 +158,29 @@ blend_point_1/pos = Vector2(0, -1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_4hkuu")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_jpyyu")
+blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_huepw"]
+animation = &"animations_human/water_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hlvrj"]
+animation = &"animations_human/water_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_irsgx"]
+animation = &"animations_human/water_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mt4s4"]
+animation = &"animations_human/water_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_a6oy1"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_huepw")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_hlvrj")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_irsgx")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_mt4s4")
 blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
@@ -654,6 +677,49 @@ advance_expression = "current_state == 3 and equip_anim == \"Shovel\""
 advance_mode = 2
 advance_expression = "current_state == 5"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ho3o6"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_expression = "current_state == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_latwk"]
+advance_mode = 2
+advance_expression = "current_state == 3 and equip_anim == \"Water\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tqrxg"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_expression = "current_state == 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0awur"]
+advance_mode = 2
+advance_expression = "current_state == 3 and equip_anim == \"Water\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lrkc1"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_expression = "current_state == 2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h5cm5"]
+advance_mode = 2
+advance_expression = "current_state == 3 and equip_anim == \"Water\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gcpkr"]
+advance_mode = 2
+advance_expression = "current_state == 4"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qhso5"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "current_state == 3 and equip_anim == \"Water\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jy1s1"]
+advance_mode = 2
+advance_expression = "current_state == 5"
+
 [resource]
 states/ActionAxe/node = SubResource("AnimationNodeBlendSpace2D_klsy1")
 states/ActionAxe/position = Vector2(1005, -93)
@@ -669,6 +735,8 @@ states/ActionSickle/node = SubResource("AnimationNodeBlendSpace2D_hs8wx")
 states/ActionSickle/position = Vector2(377, 83)
 states/ActionSword/node = SubResource("AnimationNodeBlendSpace2D_vbsoe")
 states/ActionSword/position = Vector2(1005, -271)
+states/ActionWater/node = SubResource("AnimationNodeBlendSpace2D_a6oy1")
+states/ActionWater/position = Vector2(377, -5)
 states/DEAD/node = SubResource("AnimationNodeBlendSpace2D_xc7ek")
 states/DEAD/position = Vector2(689, 83)
 states/Damage/node = SubResource("AnimationNodeBlendSpace2D_fcd10")
@@ -681,5 +749,5 @@ states/Run/position = Vector2(689, -93)
 states/Start/position = Vector2(689, -330)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_j2llw")
 states/Walk/position = Vector2(689, -181)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_xc7ek"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_r6w5g"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_j2llw"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_klsy1"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_fcd10"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_ogs70"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_vbsoe"), "Idle", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_a6oy1"), "ActionAxe", "Idle", SubResource("AnimationNodeStateMachineTransition_1fuik"), "Run", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_tf3pr"), "Walk", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_1wcx3"), "ActionAxe", "Walk", SubResource("AnimationNodeStateMachineTransition_e6d8s"), "ActionAxe", "Run", SubResource("AnimationNodeStateMachineTransition_h8fy8"), "Idle", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_df6lw"), "ActionPickaxe", "Idle", SubResource("AnimationNodeStateMachineTransition_pa0f5"), "ActionPickaxe", "Run", SubResource("AnimationNodeStateMachineTransition_xkhob"), "Run", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_e0jlf"), "Walk", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_t5dfg"), "ActionPickaxe", "Walk", SubResource("AnimationNodeStateMachineTransition_3lyhp"), "Idle", "ActionBow", SubResource("AnimationNodeStateMachineTransition_6c8io"), "ActionBow", "Idle", SubResource("AnimationNodeStateMachineTransition_1wjk5"), "Walk", "ActionBow", SubResource("AnimationNodeStateMachineTransition_nkvwp"), "ActionBow", "Walk", SubResource("AnimationNodeStateMachineTransition_hptau"), "Run", "ActionBow", SubResource("AnimationNodeStateMachineTransition_2lfb0"), "ActionBow", "Run", SubResource("AnimationNodeStateMachineTransition_mcmgv"), "Run", "Damage", SubResource("AnimationNodeStateMachineTransition_okuo0"), "ActionAxe", "Damage", SubResource("AnimationNodeStateMachineTransition_eigbe"), "Walk", "Damage", SubResource("AnimationNodeStateMachineTransition_pjo8h"), "Idle", "Damage", SubResource("AnimationNodeStateMachineTransition_4hkuu"), "ActionBow", "Damage", SubResource("AnimationNodeStateMachineTransition_jpyyu"), "ActionPickaxe", "Damage", SubResource("AnimationNodeStateMachineTransition_3xo5t"), "Damage", "Run", SubResource("AnimationNodeStateMachineTransition_pd8u0"), "Damage", "Walk", SubResource("AnimationNodeStateMachineTransition_ejsdi"), "Damage", "Idle", SubResource("AnimationNodeStateMachineTransition_jjvbw"), "Damage", "DEAD", SubResource("AnimationNodeStateMachineTransition_8b2ot"), "Idle", "DEAD", SubResource("AnimationNodeStateMachineTransition_usapr"), "ActionBow", "DEAD", SubResource("AnimationNodeStateMachineTransition_4vqy8"), "ActionAxe", "DEAD", SubResource("AnimationNodeStateMachineTransition_0ry2n"), "ActionPickaxe", "DEAD", SubResource("AnimationNodeStateMachineTransition_ikunf"), "Walk", "DEAD", SubResource("AnimationNodeStateMachineTransition_7nmln"), "Run", "DEAD", SubResource("AnimationNodeStateMachineTransition_17232"), "Idle", "ActionSword", SubResource("AnimationNodeStateMachineTransition_vu8x7"), "ActionSword", "Idle", SubResource("AnimationNodeStateMachineTransition_fck55"), "Walk", "ActionSword", SubResource("AnimationNodeStateMachineTransition_oyos1"), "ActionSword", "Walk", SubResource("AnimationNodeStateMachineTransition_hs8wx"), "ActionSword", "Run", SubResource("AnimationNodeStateMachineTransition_juuol"), "Run", "ActionSword", SubResource("AnimationNodeStateMachineTransition_em5qr"), "ActionSword", "Damage", SubResource("AnimationNodeStateMachineTransition_7m54k"), "ActionSword", "DEAD", SubResource("AnimationNodeStateMachineTransition_huepw"), "Damage", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_hlvrj"), "Damage", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_irsgx"), "Damage", "ActionSword", SubResource("AnimationNodeStateMachineTransition_mt4s4"), "Damage", "ActionBow", SubResource("AnimationNodeStateMachineTransition_mv0t6"), "Idle", "ActionHoe", SubResource("AnimationNodeStateMachineTransition_6s53e"), "ActionHoe", "Idle", SubResource("AnimationNodeStateMachineTransition_iq73c"), "ActionHoe", "Walk", SubResource("AnimationNodeStateMachineTransition_semmo"), "Walk", "ActionHoe", SubResource("AnimationNodeStateMachineTransition_0nxej"), "ActionHoe", "Run", SubResource("AnimationNodeStateMachineTransition_rcsaa"), "Run", "ActionHoe", SubResource("AnimationNodeStateMachineTransition_qmhas"), "ActionHoe", "Damage", SubResource("AnimationNodeStateMachineTransition_18jp2"), "Damage", "ActionHoe", SubResource("AnimationNodeStateMachineTransition_4nl72"), "ActionHoe", "DEAD", SubResource("AnimationNodeStateMachineTransition_r3mmt"), "ActionSickle", "Idle", SubResource("AnimationNodeStateMachineTransition_d5vdv"), "Idle", "ActionSickle", SubResource("AnimationNodeStateMachineTransition_yac24"), "Walk", "ActionSickle", SubResource("AnimationNodeStateMachineTransition_67m2u"), "ActionSickle", "Walk", SubResource("AnimationNodeStateMachineTransition_ac3wx"), "Run", "ActionSickle", SubResource("AnimationNodeStateMachineTransition_uswe2"), "ActionSickle", "Run", SubResource("AnimationNodeStateMachineTransition_y8l7n"), "ActionSickle", "Damage", SubResource("AnimationNodeStateMachineTransition_mfvfx"), "Damage", "ActionSickle", SubResource("AnimationNodeStateMachineTransition_bodsv"), "ActionSickle", "DEAD", SubResource("AnimationNodeStateMachineTransition_lfsq5"), "Idle", "ActionShovel", SubResource("AnimationNodeStateMachineTransition_r2n5y"), "ActionShovel", "Idle", SubResource("AnimationNodeStateMachineTransition_cx188"), "Walk", "ActionShovel", SubResource("AnimationNodeStateMachineTransition_4csny"), "ActionShovel", "Walk", SubResource("AnimationNodeStateMachineTransition_haeej"), "ActionShovel", "Run", SubResource("AnimationNodeStateMachineTransition_t1qe6"), "Run", "ActionShovel", SubResource("AnimationNodeStateMachineTransition_l26r7"), "ActionShovel", "Damage", SubResource("AnimationNodeStateMachineTransition_e5q3p"), "Damage", "ActionShovel", SubResource("AnimationNodeStateMachineTransition_i6aq5"), "ActionShovel", "DEAD", SubResource("AnimationNodeStateMachineTransition_c0dum")]
-graph_offset = Vector2(20, -509)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_xc7ek"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_r6w5g"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_j2llw"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_klsy1"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_fcd10"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_ogs70"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_vbsoe"), "Idle", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_a6oy1"), "ActionAxe", "Idle", SubResource("AnimationNodeStateMachineTransition_1fuik"), "Run", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_tf3pr"), "Walk", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_1wcx3"), "ActionAxe", "Walk", SubResource("AnimationNodeStateMachineTransition_e6d8s"), "ActionAxe", "Run", SubResource("AnimationNodeStateMachineTransition_h8fy8"), "Idle", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_df6lw"), "ActionPickaxe", "Idle", SubResource("AnimationNodeStateMachineTransition_pa0f5"), "ActionPickaxe", "Run", SubResource("AnimationNodeStateMachineTransition_xkhob"), "Run", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_e0jlf"), "Walk", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_t5dfg"), "ActionPickaxe", "Walk", SubResource("AnimationNodeStateMachineTransition_3lyhp"), "Idle", "ActionBow", SubResource("AnimationNodeStateMachineTransition_6c8io"), "ActionBow", "Idle", SubResource("AnimationNodeStateMachineTransition_1wjk5"), "Walk", "ActionBow", SubResource("AnimationNodeStateMachineTransition_nkvwp"), "ActionBow", "Walk", SubResource("AnimationNodeStateMachineTransition_hptau"), "Run", "ActionBow", SubResource("AnimationNodeStateMachineTransition_2lfb0"), "ActionBow", "Run", SubResource("AnimationNodeStateMachineTransition_mcmgv"), "Run", "Damage", SubResource("AnimationNodeStateMachineTransition_okuo0"), "ActionAxe", "Damage", SubResource("AnimationNodeStateMachineTransition_eigbe"), "Walk", "Damage", SubResource("AnimationNodeStateMachineTransition_pjo8h"), "Idle", "Damage", SubResource("AnimationNodeStateMachineTransition_4hkuu"), "ActionBow", "Damage", SubResource("AnimationNodeStateMachineTransition_jpyyu"), "ActionPickaxe", "Damage", SubResource("AnimationNodeStateMachineTransition_3xo5t"), "Damage", "Run", SubResource("AnimationNodeStateMachineTransition_pd8u0"), "Damage", "Walk", SubResource("AnimationNodeStateMachineTransition_ejsdi"), "Damage", "Idle", SubResource("AnimationNodeStateMachineTransition_jjvbw"), "Damage", "DEAD", SubResource("AnimationNodeStateMachineTransition_8b2ot"), "Idle", "DEAD", SubResource("AnimationNodeStateMachineTransition_usapr"), "ActionBow", "DEAD", SubResource("AnimationNodeStateMachineTransition_4vqy8"), "ActionAxe", "DEAD", SubResource("AnimationNodeStateMachineTransition_0ry2n"), "ActionPickaxe", "DEAD", SubResource("AnimationNodeStateMachineTransition_ikunf"), "Walk", "DEAD", SubResource("AnimationNodeStateMachineTransition_7nmln"), "Run", "DEAD", SubResource("AnimationNodeStateMachineTransition_17232"), "Idle", "ActionSword", SubResource("AnimationNodeStateMachineTransition_vu8x7"), "ActionSword", "Idle", SubResource("AnimationNodeStateMachineTransition_fck55"), "Walk", "ActionSword", SubResource("AnimationNodeStateMachineTransition_oyos1"), "ActionSword", "Walk", SubResource("AnimationNodeStateMachineTransition_hs8wx"), "ActionSword", "Run", SubResource("AnimationNodeStateMachineTransition_juuol"), "Run", "ActionSword", SubResource("AnimationNodeStateMachineTransition_em5qr"), "ActionSword", "Damage", SubResource("AnimationNodeStateMachineTransition_7m54k"), "ActionSword", "DEAD", SubResource("AnimationNodeStateMachineTransition_huepw"), "Damage", "ActionPickaxe", SubResource("AnimationNodeStateMachineTransition_hlvrj"), "Damage", "ActionAxe", SubResource("AnimationNodeStateMachineTransition_irsgx"), "Damage", "ActionSword", SubResource("AnimationNodeStateMachineTransition_mt4s4"), "Damage", "ActionBow", SubResource("AnimationNodeStateMachineTransition_mv0t6"), "Idle", "ActionHoe", SubResource("AnimationNodeStateMachineTransition_6s53e"), "ActionHoe", "Idle", SubResource("AnimationNodeStateMachineTransition_iq73c"), "ActionHoe", "Walk", SubResource("AnimationNodeStateMachineTransition_semmo"), "Walk", "ActionHoe", SubResource("AnimationNodeStateMachineTransition_0nxej"), "ActionHoe", "Run", SubResource("AnimationNodeStateMachineTransition_rcsaa"), "Run", "ActionHoe", SubResource("AnimationNodeStateMachineTransition_qmhas"), "ActionHoe", "Damage", SubResource("AnimationNodeStateMachineTransition_18jp2"), "Damage", "ActionHoe", SubResource("AnimationNodeStateMachineTransition_4nl72"), "ActionHoe", "DEAD", SubResource("AnimationNodeStateMachineTransition_r3mmt"), "ActionSickle", "Idle", SubResource("AnimationNodeStateMachineTransition_d5vdv"), "Idle", "ActionSickle", SubResource("AnimationNodeStateMachineTransition_yac24"), "Walk", "ActionSickle", SubResource("AnimationNodeStateMachineTransition_67m2u"), "ActionSickle", "Walk", SubResource("AnimationNodeStateMachineTransition_ac3wx"), "Run", "ActionSickle", SubResource("AnimationNodeStateMachineTransition_uswe2"), "ActionSickle", "Run", SubResource("AnimationNodeStateMachineTransition_y8l7n"), "ActionSickle", "Damage", SubResource("AnimationNodeStateMachineTransition_mfvfx"), "Damage", "ActionSickle", SubResource("AnimationNodeStateMachineTransition_bodsv"), "ActionSickle", "DEAD", SubResource("AnimationNodeStateMachineTransition_lfsq5"), "Idle", "ActionShovel", SubResource("AnimationNodeStateMachineTransition_r2n5y"), "ActionShovel", "Idle", SubResource("AnimationNodeStateMachineTransition_cx188"), "Walk", "ActionShovel", SubResource("AnimationNodeStateMachineTransition_4csny"), "ActionShovel", "Walk", SubResource("AnimationNodeStateMachineTransition_haeej"), "ActionShovel", "Run", SubResource("AnimationNodeStateMachineTransition_t1qe6"), "Run", "ActionShovel", SubResource("AnimationNodeStateMachineTransition_l26r7"), "ActionShovel", "Damage", SubResource("AnimationNodeStateMachineTransition_e5q3p"), "Damage", "ActionShovel", SubResource("AnimationNodeStateMachineTransition_i6aq5"), "ActionShovel", "DEAD", SubResource("AnimationNodeStateMachineTransition_c0dum"), "ActionWater", "Idle", SubResource("AnimationNodeStateMachineTransition_ho3o6"), "Idle", "ActionWater", SubResource("AnimationNodeStateMachineTransition_latwk"), "ActionWater", "Walk", SubResource("AnimationNodeStateMachineTransition_tqrxg"), "Walk", "ActionWater", SubResource("AnimationNodeStateMachineTransition_0awur"), "ActionWater", "Run", SubResource("AnimationNodeStateMachineTransition_lrkc1"), "Run", "ActionWater", SubResource("AnimationNodeStateMachineTransition_h5cm5"), "ActionWater", "Damage", SubResource("AnimationNodeStateMachineTransition_gcpkr"), "Damage", "ActionWater", SubResource("AnimationNodeStateMachineTransition_qhso5"), "ActionWater", "DEAD", SubResource("AnimationNodeStateMachineTransition_jy1s1")]
+graph_offset = Vector2(94, -132)

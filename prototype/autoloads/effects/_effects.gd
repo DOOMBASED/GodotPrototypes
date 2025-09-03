@@ -84,6 +84,7 @@ func _item_not_used(item_message: String) -> void:
 
 func _add_slots(amount: int) -> void:
 	Inventory.inventory.resize(Inventory.inventory.size() + amount)
+	Inventory.inventory_size += amount
 	Inventory.inventory_full = false
 	if Inventory.inventory.size() >= Inventory.inventory_max:
 		Inventory.inventory.resize(Inventory.inventory_max)

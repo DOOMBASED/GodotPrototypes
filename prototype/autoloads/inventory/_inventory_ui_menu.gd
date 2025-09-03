@@ -1,8 +1,6 @@
 # inventory_ui_menu.gd
 extends PanelContainer
 
-var current_iterator: int = -1
-var current_item: ItemResource = null
 @onready var name_label: Label = $MarginContainer/VBoxContainer/NameLabel
 @onready var effect_label: Label = $MarginContainer/VBoxContainer/EffectLabel
 @onready var assign_button: Button = $MarginContainer/VBoxContainer/ButtonContainer/AssignButton
@@ -10,6 +8,8 @@ var current_item: ItemResource = null
 @onready var equip_button: Button = $MarginContainer/VBoxContainer/ButtonContainer/EquipButton
 @onready var split_button: Button = $MarginContainer/VBoxContainer/ButtonContainer/SplitButton
 @onready var drop_button: Button = $MarginContainer/VBoxContainer/ButtonContainer/DropButton
+var current_item: ItemResource = null
+var current_iterator: int = -1
 
 signal item_assigned(current_item: ItemResource)
 signal item_equipped(current_iterator: int)
@@ -37,6 +37,7 @@ func menu_show(item: ItemResource, iterator: int) -> void:
 		assign_button.show()
 		equip_button.show()
 	if item is ItemSeed:
+		assign_button.show()
 		equip_button.show()
 	if current_item.quantity >= 2:
 		split_button.disabled = false
@@ -62,6 +63,10 @@ func _on_assign_button_pressed() -> void:
 		var assigned = Inventory.inventory_ui.inventory_ui_hotbar.hotbar_assignment_check(current_item)
 		if current_item != null:
 			if assigned:
+				if current_item is ItemSeed:
+					Global.worldspace.equipped_seed_atlas = Vector2i.MAX
+					Global.worldspace.equipped_seed = null
+					Global.player.weapon_manager.sprite.texture = null
 				if current_item is ItemEquipment:
 					if current_item.equip_anim == current_item.equip_anim:
 						Global.player.animation_manager.equip_anim = ""
@@ -99,9 +104,14 @@ func _on_equip_button_pressed() -> void:
 		if equip_button.text == "EQUIP":
 			if current_item != null:
 				if current_item is ItemEquipment:
-					Global.player.animation_manager.equip_anim = current_item.equip_anim
+					Global.worldspace.equipped_seed_atlas = Vector2i.MAX
+					Global.worldspace.equipped_seed = null
 					Global.player.weapon_manager.equipped_item = current_item
+					Global.player.animation_manager.equip_anim = current_item.equip_anim
 				if current_item is ItemSeed:
+					Global.player.animation_manager.equip_anim = ""
+					Global.player.weapon_manager.equipped_item = null
+					Global.player.weapon_manager.sprite.texture = current_item.texture
 					Global.worldspace.equipped_seed = current_item
 					Global.worldspace.equipped_seed_atlas = current_item.seed_atlas
 				if not Inventory.inventory_ui.inventory_ui_hotbar.hotbar_assignment_check(current_item):
@@ -114,10 +124,12 @@ func _on_equip_button_pressed() -> void:
 				item_assigned.emit(current_item)
 				hide()
 				Inventory.inventory_updated.emit()
-		elif  equip_button.text == "UNEQUIP":
+		elif equip_button.text == "UNEQUIP":
 			Global.player.animation_manager.equip_anim = ""
 			Global.player.weapon_manager.equipped_item = null
 			Global.player.weapon_manager.sprite.texture = null
+			Global.worldspace.equipped_seed = null
+			Global.worldspace.equipped_seed_atlas = Vector2i.MAX
 			if equip_button.text == "UNEQUIP":
 					equip_button.text = "EQUIP"
 			hide()

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://suu37xmbowdh"]
+
+[ext_resource type="PackedScene" uid="uid://dc83rlggq7rri" path="res://items/item/item.tscn" id="1_xefuf"]
+[ext_resource type="Resource" uid="uid://dxak523q4vmmu" path="res://items/items/seeds/item_seed_cauliflower_01.tres" id="2_xefuf"]
+[ext_resource type="Texture2D" uid="uid://cvhnpny6p88av" path="res://items/items/seeds/_textures/seed_cauliflower_01.png" id="3_8x328"]
+
+[node name="ItemSeedCauliflower01" instance=ExtResource("1_xefuf")]
+resource = ExtResource("2_xefuf")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("3_8x328")

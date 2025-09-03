@@ -17,10 +17,13 @@ func _ready() -> void:
 		direction = Vector2(0.0, -1.0)
 	damage_full = Global.player.weapon_manager.equipped_item.equip_effect_magnitude + resource.projectile_damage
 	distance = 0.0
+	resource.fired = true
 
 func _physics_process(delta: float) -> void:
 	position += direction * resource.projectile_speed * delta
 	distance += resource.projectile_speed * delta
+	if distance == resource.projectile_range:
+		resource.fired = false
 	if distance > resource.projectile_range:
 		if resource.is_spell:
 			tween = get_tree().create_tween()
@@ -32,6 +35,7 @@ func _physics_process(delta: float) -> void:
 				instance.resource = resource
 				instance.global_position = global_position
 				get_tree().get_first_node_in_group("Worldspace").items.add_child(instance)
+				instance.sprite.texture = resource.texture
 				Inventory.item_dropped.emit(instance)
 				_set_drop_direction(instance)
 				queue_free.call_deferred()

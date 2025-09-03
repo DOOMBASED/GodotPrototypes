@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemSeed" load_steps=4 format=3 uid="uid://dxak523q4vmmu"]
+
+[ext_resource type="Script" uid="uid://t70nm5qw225n" path="res://items/item/classes/item_seed.gd" id="1_x5mb8"]
+[ext_resource type="Texture2D" uid="uid://cvhnpny6p88av" path="res://items/items/seeds/_textures/seed_cauliflower_01.png" id="2_x5mb8"]
+[ext_resource type="Texture2D" uid="uid://c2071v3vcf85n" path="res://items/items/seeds/_textures/seeds_cauliflower_01.png" id="3_wx1jb"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_x5mb8")
+seed_texture = ExtResource("2_x5mb8")
+seed_type = "Cauliflower"
+seed_atlas = Vector2i(0, 17)
+seed_atlas_final = Vector2i(5, 17)
+texture = ExtResource("3_wx1jb")
+id = "items_seed_cauliflower_01"
+name = "Cauliflower Seeds"
+type = "Seed"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://t70nm5qw225n"

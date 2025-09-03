@@ -57,6 +57,9 @@ func action_shovel() -> void:
 func action_sickle() -> void:
 	Global.worldspace.tilemap.terrain_harvest()
 
+func action_water() -> void:
+	Global.worldspace.tilemap.terrain_water(0, 4)
+
 func action_start() -> void:
 	current_state = AnimationState.ACTION
 	animation_tree[str("parameters/Action", equip_anim,"/blend_position")] = character.movement_manager.facing.normalized()

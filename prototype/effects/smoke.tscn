@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf4ko8mvuuodp"]
+[gd_scene load_steps=6 format=3 uid="uid://cf4ko8mvuuodp"]
+
+[ext_resource type="Script" uid="uid://dlifky7vcakaq" path="res://effects/smoke.gd" id="1_by6y2"]
 
 [sub_resource type="Gradient" id="Gradient_e57q8"]
 offsets = PackedFloat32Array(0.49, 0.5)
@@ -45,3 +47,4 @@ scale_amount_min = 0.49
 scale_amount_max = 0.99
 scale_amount_curve = SubResource("Curve_e57q8")
 color_ramp = SubResource("Gradient_fvhq4")
+script = ExtResource("1_by6y2")

@@ -10,7 +10,6 @@ func _ready() -> void:
 	resource.init = position
 	if resource != null:
 		name = str(resource.name, "_" , self.get_instance_id())
-		sprite.texture = resource.texture
 
 func _process(delta: float) -> void:
 	if player_in_range:

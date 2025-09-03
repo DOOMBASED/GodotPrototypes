@@ -47,7 +47,6 @@ func _process(delta: float) -> void:
 		tween.tween_property(self, "scale", Vector2.ZERO, 0.5)
 		if scale.x < 0.96:
 			smoke_instance.emitting = false
-			smoke_instance.queue_free.call_deferred()
 		harvested.emit(init_position)
 		if not launching:
 			queue_free.call_deferred()
@@ -68,13 +67,14 @@ func _material_spawn() -> void:
 	item_instance = item_scene.instantiate()
 	item_instance.resource = resource
 	item_instance.position = position
-	item_spawn_point.call_deferred("add_child", item_instance)
+	item_spawn_point.add_child.call_deferred(item_instance)
 	Inventory.item_dropped.emit(item_instance)
 	launch_direction = Vector2(randf_range(-1.0,1.0), randf_range(-1.0,1.0)).normalized()
 	_launch(launch_direction * launch_speed, launch_duration)
 
 func _launch_check(delta: float) -> void:
 	if launching:
+		item_instance.sprite.texture = resource.texture
 		item_instance.collision.disabled = true
 		item_instance.position += launch_velocity * delta
 		launch_elapsed += delta

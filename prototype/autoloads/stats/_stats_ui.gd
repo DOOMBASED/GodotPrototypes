@@ -9,15 +9,14 @@ extends Control
 @onready var health_bar: TextureProgressBar = $StatsBars/MarginContainer/VBoxContainer/HealthBar
 @onready var stamina_bar: TextureProgressBar = $StatsBars/MarginContainer/VBoxContainer/StaminaBar
 @onready var magic_bar: TextureProgressBar = $StatsBars/MarginContainer/VBoxContainer/MagicBar
-
-var hunger_float: float
-var thirst_float: float
-var health_float: float
-var stamina_float: float
 var hunger_tween: Tween
 var thirst_tween: Tween
 var health_tween: Tween
 var stamina_tween: Tween
+var hunger_float: float
+var thirst_float: float
+var health_float: float
+var stamina_float: float
 
 func _ready() -> void:
 	Stats.exp_updated.connect(_on_exp_updated)

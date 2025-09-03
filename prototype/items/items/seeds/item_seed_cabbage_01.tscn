@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://88247g87jwea"]
+
+[ext_resource type="PackedScene" uid="uid://dc83rlggq7rri" path="res://items/item/item.tscn" id="1_2vjra"]
+[ext_resource type="Resource" uid="uid://byv4x0u27787r" path="res://items/items/seeds/item_seed_cabbage_01.tres" id="2_2vjra"]
+[ext_resource type="Texture2D" uid="uid://cjjakxnoat2rr" path="res://items/items/seeds/_textures/seed_cabbage_01.png" id="3_3ak86"]
+
+[node name="ItemSeedCabbage01" instance=ExtResource("1_2vjra")]
+resource = ExtResource("2_2vjra")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("3_3ak86")

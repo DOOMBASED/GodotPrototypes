@@ -6,13 +6,12 @@ var viewport: SubViewportContainer = null
 var worldspace: Worldspace = null
 var lighting_color: CanvasModulate = null
 var player: Player = null
-
+var daytime_color := Color(1.0, 1.0, 0.8)
+var nightime_color := Color(0.1, 0.1, 0.2)
 var days_passed: int = 0
 var hours_per_daytime: int = 14
 var hours_per_nighttime: int = 10
-var seconds_per_hour: float = 30.0
-var daytime_color := Color(1.0, 1.0, 0.8)
-var nightime_color := Color(0.1, 0.1, 0.2)
+var seconds_per_hour: float = 10.0
 var time_in_hours: float = 0.0
 var total_day_length: float = 0.0
 

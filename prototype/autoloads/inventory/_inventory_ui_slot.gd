@@ -23,7 +23,7 @@ func _on_slot_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if resource != null:
 			if event.button_index == MOUSE_BUTTON_RIGHT:
-				if Global.player.weapon_manager.equipped_item == resource:
+				if Global.player.weapon_manager.equipped_item == resource or Global.worldspace.equipped_seed == resource:
 					Inventory.inventory_ui.menu.equip_button.text = "UNEQUIP"
 				else:
 					Inventory.inventory_ui.menu.equip_button.text = "EQUIP"
@@ -41,8 +41,13 @@ func _on_slot_button_gui_input(event: InputEvent) -> void:
 					drag_release.emit()
 
 func _on_item_equipped(iterator: int) -> void:
+	if resource is ItemSeed:
+		if iterator == resource.slot:
+			self_modulate = Color.GREEN
+		else:
+			self_modulate = Color.WHITE
 	if resource is ItemEquipment:
-		if iterator == int(name):
+		if iterator == resource.slot:
 			quantity_label.text = "E"
 			self_modulate = Color.GREEN
 		else:

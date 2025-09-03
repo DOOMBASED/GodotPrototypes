@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfy5wi7q4b4g"]
+
+[ext_resource type="PackedScene" uid="uid://dc83rlggq7rri" path="res://items/item/item.tscn" id="1_1wj45"]
+[ext_resource type="Resource" uid="uid://b8majqye1dgt7" path="res://items/items/seeds/item_seed_strawberry_01.tres" id="2_1wj45"]
+[ext_resource type="Texture2D" uid="uid://er6ltjgp3d0g" path="res://items/items/seeds/_textures/seed_strawberry_01.png" id="3_kq16h"]
+
+[node name="ItemSeedStrawberry01" instance=ExtResource("1_1wj45")]
+resource = ExtResource("2_1wj45")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("3_kq16h")

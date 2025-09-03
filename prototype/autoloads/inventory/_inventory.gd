@@ -5,7 +5,7 @@ var inventory: Array[ItemResource] = []
 var hotbar_inventory: Array[ItemResource] = []
 var inventory_ui: Control = null
 var hotbar_ui: PanelContainer = null
-var inventory_size: int = 8
+var inventory_size: int = 12
 var inventory_max: int = 24
 var hotbar_size: int = 9
 var hotbar_max: int = 9
@@ -80,12 +80,14 @@ func item_swap(_inventory: Array, index1: int, index2: int) -> bool:
 	if index1 < 0 or index1 > _inventory.size() or index2 > _inventory.size():
 		return false
 	var temp_item: ItemResource = _inventory[index1]
-	var temp_slot: int = _inventory[index1].slot
+	var temp_slot: int = -1
+	if temp_item != null:
+		temp_slot = _inventory[index1].slot
 	if _inventory == Inventory.inventory:
-		if _inventory[index2] != null:
+		if _inventory[index2] != null and _inventory[index2] != null:
 			_inventory[index1].slot = _inventory[index2].slot
 			_inventory[index2].slot = temp_slot
-		else:
+		elif _inventory[index1] != null:
 			_inventory[index1].slot = index2
 	_inventory[index1] = _inventory[index2]
 	_inventory[index2] = temp_item
@@ -102,6 +104,7 @@ func item_drop(item: ItemResource) -> bool:
 		instance.resource.init = instance.position
 		instance.name = str(item.name, "_" , instance.get_instance_id())
 		get_tree().get_first_node_in_group("Worldspace").items.add_child(instance)
+		instance.sprite.texture = instance.resource.texture
 		instance.resource.quantity = 0
 		item_dropped.emit(instance)
 		return true
@@ -118,7 +121,14 @@ func item_remove(item: ItemResource, slot_index: int) -> bool:
 		if Effects.should_use:
 			Effects.should_use = false
 			return true
-		if item is not ItemProjectile and item is not ItemSeed and item.quantity >= 0:
+		if item.quantity >= 0:
+			if item is ItemProjectile:
+				if item.fired:
+					return true
+			if item is ItemSeed:
+				if item.planted:
+					Global.worldspace.equipped_seed.planted = false
+					return true
 			item_drop(item)
 		return true
 	if Inventory.inventory_ui.menu.visible:

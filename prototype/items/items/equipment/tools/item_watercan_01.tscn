@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6tqstwg7kvnj"]
+
+[ext_resource type="Script" uid="uid://bxvy8dikcw6un" path="res://items/item/item.gd" id="1_xakw0"]
+[ext_resource type="Texture2D" uid="uid://vvlj5n4wpwo8" path="res://items/items/equipment/tools/_textures/tool_watercan_01.png" id="2_00jvc"]
+[ext_resource type="Resource" uid="uid://boi0ylcugma7n" path="res://items/items/equipment/tools/item_watercan_01.tres" id="2_eanyy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_buxpb"]
+radius = 16.0
+
+[node name="ItemWaterCan01" type="Area2D" groups=["Item"]]
+z_index = -1
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_xakw0")
+resource = ExtResource("2_eanyy")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_buxpb")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_00jvc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
