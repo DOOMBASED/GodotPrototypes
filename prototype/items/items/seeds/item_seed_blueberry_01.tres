@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ItemSeed" load_steps=4 format=3 uid="uid://g1l8p8gt40oj"]
+[gd_resource type="Resource" script_class="ItemSeed" load_steps=5 format=3 uid="uid://g1l8p8gt40oj"]
 
+[ext_resource type="PackedScene" uid="uid://bowyykyc2u4bd" path="res://props/harvestables/harvestable_blueberry_01.tscn" id="1_56bpb"]
 [ext_resource type="Script" uid="uid://t70nm5qw225n" path="res://items/item/classes/item_seed.gd" id="1_yv56r"]
 [ext_resource type="Texture2D" uid="uid://bm8c77xvatayc" path="res://items/items/seeds/_textures/seed_blueberry_01.png" id="2_yv56r"]
 [ext_resource type="Texture2D" uid="uid://1hcplviwj4xd" path="res://items/items/seeds/_textures/seeds_blueberry_01.png" id="3_56bpb"]
@@ -7,10 +8,11 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_yv56r")
+harvestable = ExtResource("1_56bpb")
 seed_texture = ExtResource("2_yv56r")
 seed_type = "Blueberry"
-seed_atlas = Vector2i(0, 9)
-seed_atlas_final = Vector2i(5, 9)
+seed_atlas = Vector2i(0, 11)
+seed_atlas_final = Vector2i(5, 11)
 texture = ExtResource("3_56bpb")
 id = "items_seed_blueberry_01"
 name = "Blueberry Seeds"

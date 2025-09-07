@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="ItemSeed" load_steps=4 format=3 uid="uid://dmjq6ulfer52k"]
+[gd_resource type="Resource" script_class="ItemSeed" load_steps=5 format=3 uid="uid://dmjq6ulfer52k"]
 
 [ext_resource type="Script" uid="uid://t70nm5qw225n" path="res://items/item/classes/item_seed.gd" id="1_1yg11"]
+[ext_resource type="PackedScene" uid="uid://b61l26iu16ow0" path="res://props/harvestables/harvestable_carrot_01.tscn" id="1_ujqlh"]
 [ext_resource type="Texture2D" uid="uid://pwpk3lg0psmg" path="res://items/items/seeds/_textures/seed_carrot_01.png" id="2_kk76h"]
 [ext_resource type="Texture2D" uid="uid://b8ge02n6s06cb" path="res://items/items/seeds/_textures/seeds_carrot_01.png" id="2_p275f"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_1yg11")
+harvestable = ExtResource("1_ujqlh")
 seed_texture = ExtResource("2_kk76h")
 seed_type = "Carrot"
 seed_atlas = Vector2i(0, 9)

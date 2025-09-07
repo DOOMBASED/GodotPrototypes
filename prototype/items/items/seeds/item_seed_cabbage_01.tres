@@ -1,19 +1,21 @@
-[gd_resource type="Resource" script_class="ItemSeed" load_steps=4 format=3 uid="uid://byv4x0u27787r"]
+[gd_resource type="Resource" script_class="ItemSeed" load_steps=5 format=3 uid="uid://byv4x0u27787r"]
 
+[ext_resource type="PackedScene" uid="uid://bb3i8co8kp7nq" path="res://props/harvestables/harvestable_cabbage_01.tscn" id="1_16ca7"]
 [ext_resource type="Script" uid="uid://t70nm5qw225n" path="res://items/item/classes/item_seed.gd" id="1_n04qu"]
-[ext_resource type="Texture2D" uid="uid://pwpk3lg0psmg" path="res://items/items/seeds/_textures/seed_carrot_01.png" id="2_16ca7"]
-[ext_resource type="Texture2D" uid="uid://b8ge02n6s06cb" path="res://items/items/seeds/_textures/seeds_carrot_01.png" id="3_8afsm"]
+[ext_resource type="Texture2D" uid="uid://cjjakxnoat2rr" path="res://items/items/seeds/_textures/seed_cabbage_01.png" id="2_n04qu"]
+[ext_resource type="Texture2D" uid="uid://cswhopkcitiw8" path="res://items/items/seeds/_textures/seeds_cabbage_01.png" id="3_16ca7"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_n04qu")
-seed_texture = ExtResource("2_16ca7")
-seed_type = "Carrot"
-seed_atlas = Vector2i(0, 9)
-seed_atlas_final = Vector2i(5, 9)
-texture = ExtResource("3_8afsm")
-id = "items_seed_carrot_01"
-name = "Carrot Seeds"
+harvestable = ExtResource("1_16ca7")
+seed_texture = ExtResource("2_n04qu")
+seed_type = "Cabbage"
+seed_atlas = Vector2i(0, 15)
+seed_atlas_final = Vector2i(5, 15)
+texture = ExtResource("3_16ca7")
+id = "items_seed_cabbage_01"
+name = "Cabbage Seeds"
 type = "Seed"
 init = Vector2(0, 0)
 count = 1

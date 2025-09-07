@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnyo18mlk3xei"]
+
+[ext_resource type="PackedScene" uid="uid://dc83rlggq7rri" path="res://items/item/item.tscn" id="1_uhueq"]
+[ext_resource type="Resource" uid="uid://bd7int4l8f4mn" path="res://items/items/crops/item_parsnip_01.tres" id="2_uhueq"]
+[ext_resource type="Texture2D" uid="uid://ddj3pyt41ttpk" path="res://items/items/crops/_textures/crop_parsnip_01.png" id="3_hlu62"]
+
+[node name="ItemParsnip01" instance=ExtResource("1_uhueq")]
+resource = ExtResource("2_uhueq")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("3_hlu62")

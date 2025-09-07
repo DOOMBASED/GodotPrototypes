@@ -58,7 +58,7 @@ texture = SubResource("GradientTexture2D_jmcvl")
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource("3_x1vxo")
-frame = 5
+frame = 4
 
 [node name="MovementManager" parent="." index="3"]
 walk_speed = 48.0

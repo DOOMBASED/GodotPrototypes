@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0eg54howxvnp"]
+[gd_scene load_steps=20 format=3 uid="uid://d0eg54howxvnp"]
 
 [ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://characters/character/character.tscn" id="1_68cpq"]
 [ext_resource type="Script" uid="uid://du8j6tr1ua2ap" path="res://characters/characters/npc/npc.gd" id="2_d78lq"]
@@ -11,6 +11,7 @@
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bdh0fnwt0lekf" path="res://resources/animations/animation_human_state_machine.tres" id="6_1sat4"]
 [ext_resource type="PackedScene" uid="uid://dmhjqbrfbr5mx" path="res://managers/stats/stats_manager.tscn" id="6_6m5nh"]
 [ext_resource type="Script" uid="uid://mhjw5u6cfc10" path="res://managers/weapon/weapon_manager.gd" id="7_5ji7b"]
+[ext_resource type="Texture2D" uid="uid://ot2c0scv2b" path="res://resources/_textures/placeholder_08.tres" id="12_h5o6i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rthyg"]
 radius = 5.5
@@ -61,6 +62,7 @@ texture = SubResource("GradientTexture2D_h5o6i")
 texture = ExtResource("4_ljv8k")
 hframes = 12
 vframes = 22
+frame = 3
 
 [node name="DialogueManager" parent="." index="3" instance=ExtResource("3_jfpsb")]
 
@@ -86,8 +88,12 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/ActionAxe/blend_position = Vector2(0, 0)
 parameters/ActionBow/blend_position = Vector2(0, 0)
+parameters/ActionHoe/blend_position = Vector2(0, 0)
 parameters/ActionPickaxe/blend_position = Vector2(0, 0)
+parameters/ActionShovel/blend_position = Vector2(0, 0)
+parameters/ActionSickle/blend_position = Vector2(0, 0)
 parameters/ActionSword/blend_position = Vector2(0, 0)
+parameters/ActionWater/blend_position = Vector2(0, 0)
 parameters/DEAD/blend_position = Vector2(0, 0)
 parameters/Damage/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
@@ -115,9 +121,15 @@ disabled = true
 [node name="ProjectileOrigin" type="Marker2D" parent="WeaponManager" index="1"]
 
 [node name="WeaponPoint" type="Marker2D" parent="WeaponManager" index="2"]
+position = Vector2(0.5, 15)
+
+[node name="WeaponPointSprite" type="Sprite2D" parent="WeaponManager/WeaponPoint" index="0"]
+visible = false
+modulate = Color(1, 0.392157, 0.156863, 0.392157)
+texture = ExtResource("12_h5o6i")
 
 [node name="Sprite" type="Sprite2D" parent="WeaponManager" index="3"]
-position = Vector2(9, -1)
+position = Vector2(9, 0)
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

@@ -4,6 +4,7 @@ class_name WeaponManager extends Node2D
 @onready var character: Character = null
 @onready var projectile_origin: Marker2D = $ProjectileOrigin
 @onready var weapon_point: Marker2D = $WeaponPoint
+@onready var weapon_point_sprite: Sprite2D = $WeaponPoint/WeaponPointSprite
 @onready var sprite: Sprite2D = $Sprite
 var equipped_item: ItemEquipment = null
 var projectile_direction: Vector2
@@ -27,7 +28,7 @@ func action_shoot(projectile_scene: PackedScene) -> void:
 			return
 		new_projectile.global_position = character.weapon_manager.projectile_origin.global_position
 		Global.worldspace.add_child(new_projectile)
-		Inventory.item_remove(projectile, projectile.slot)
+		Inventory.item_remove(projectile, projectile.slot, false)
 	else:
 		Global.set_debug_text(str("No ", projectile.name))
 
@@ -38,8 +39,12 @@ func _knockback(body: Character) -> void:
 
 func _on_weapon_body_entered(body: Node2D) -> void:
 	if body is Harvestable:
-		if body.resource.material_tool_type == character.animation_manager.equip_anim:
-			body.material_harvest()
+		if body.resource is ItemMaterial:
+			if body.resource.material_tool_type == character.animation_manager.equip_anim:
+				body.material_harvest()
+		elif body.resource is ItemCrop:
+			if body.resource.crop_tool_type == character.animation_manager.equip_anim:
+				body.material_harvest()
 	if body.resource is EnemyResource:
 		if Global.player.weapon_manager.equipped_item.type == "Weapon - Melee":
 			Stats.exp_stats["Melee"] += Stats.base_exp_rate * equipped_item.equip_effect_magnitude
@@ -50,4 +55,8 @@ func _on_weapon_body_entered(body: Node2D) -> void:
 
 func _on_item_equipped(_slot: int) -> void:
 	if equipped_item != null:
+		if equipped_item.type == "Tool - Farming":
+			weapon_point_sprite.visible = true
+		else:
+			weapon_point_sprite.visible = false
 		sprite.texture = equipped_item.texture

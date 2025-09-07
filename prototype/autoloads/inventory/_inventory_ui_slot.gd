@@ -7,6 +7,8 @@ var resource: ItemResource = null
 @onready var key_label: Label = $MarginContainer/HBoxContainer/KeyLabel
 
 var init_position := Vector2.ZERO
+var container_slot: bool = false
+var hotbar_slot: bool = false
 var assigned: bool = false
 
 signal drag_start(slot: InventorySlot)
@@ -22,7 +24,7 @@ func _slot_set_assignment(item: ItemResource) -> void:
 func _on_slot_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if resource != null:
-			if event.button_index == MOUSE_BUTTON_RIGHT:
+			if event.button_index == MOUSE_BUTTON_RIGHT and not container_slot and not hotbar_slot:
 				if Global.player.weapon_manager.equipped_item == resource or Global.worldspace.equipped_seed == resource:
 					Inventory.inventory_ui.menu.equip_button.text = "UNEQUIP"
 				else:

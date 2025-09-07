@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d35atbvkibbaw" path="res://autoloads/quests/_quest_resource_objective.gd" id="1_20hir"]
 [ext_resource type="Script" uid="uid://b6jqrdj0bdxd2" path="res://autoloads/quests/_quest_resource.gd" id="1_vqgeq"]
 [ext_resource type="Script" uid="uid://xvfokx3era3m" path="res://autoloads/quests/_quest_resource_reward.gd" id="2_a1s43"]
-[ext_resource type="Resource" uid="uid://cxbcicmjerr6y" path="res://items/items/potions/item_potion_slots_01.tres" id="3_xnyo5"]
+[ext_resource type="Resource" uid="uid://bhp4crbuakegm" path="res://items/items/equipment/weapons/item_arrow_01.tres" id="3_xnyo5"]
 
 [sub_resource type="Resource" id="Resource_w6ngp"]
 script = ExtResource("1_20hir")
@@ -34,8 +34,7 @@ description = "Talk to the Orange Guy again"
 target_id = "npc_test_01"
 target_type = 0
 objective_dialogue = "Thanks for picking up that trash. 
-Here is a Slot Potion. You can use it 
-to add an extra slot for your Inventory."
+Here are some arrows."
 required_count = 0
 required_kills = 0
 metadata/_custom_type_script = "uid://d35atbvkibbaw"
@@ -43,7 +42,7 @@ metadata/_custom_type_script = "uid://d35atbvkibbaw"
 [sub_resource type="Resource" id="Resource_20hir"]
 script = ExtResource("2_a1s43")
 type = ExtResource("3_xnyo5")
-amount = 1
+amount = 50
 metadata/_custom_type_script = "uid://x8giocmgdxfo"
 
 [resource]

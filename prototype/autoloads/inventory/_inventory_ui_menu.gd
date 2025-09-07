@@ -20,8 +20,6 @@ func _ready() -> void:
 func menu_show(item: ItemResource, iterator: int) -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var offset := Vector2(8.0, 8.0)
-	if mouse_position.y > Global.viewport.size.y - Inventory.inventory_ui.inventory_ui_hotbar.size.y:
-		return
 	current_item = item
 	current_iterator = iterator
 	name_label.text = item.name
@@ -37,8 +35,9 @@ func menu_show(item: ItemResource, iterator: int) -> void:
 		assign_button.show()
 		equip_button.show()
 	if item is ItemSeed:
-		assign_button.show()
-		equip_button.show()
+		if item.seed_type != "Grass":
+			assign_button.show()
+			equip_button.show()
 	if current_item.quantity >= 2:
 		split_button.disabled = false
 		split_button.show()
@@ -131,7 +130,8 @@ func _on_equip_button_pressed() -> void:
 			Global.worldspace.equipped_seed = null
 			Global.worldspace.equipped_seed_atlas = Vector2i.MAX
 			if equip_button.text == "UNEQUIP":
-					equip_button.text = "EQUIP"
+				equip_button.text = "EQUIP"
+				Global.player.weapon_manager.weapon_point_sprite.visible = false
 			hide()
 			Inventory.inventory_updated.emit()
 
@@ -139,9 +139,18 @@ func _on_split_button_pressed() -> void:
 	if not Inventory.inventory_full:
 		if current_item.quantity >= 2:
 			var instance: ItemResource = current_item.duplicate(true)
-			instance.quantity = 0
-			Inventory.item_add(instance, true)
-			current_item.quantity -= 1
+			@warning_ignore_start("integer_division")
+			if current_item.quantity % 2 != 0:
+				current_item.quantity -= 1
+				instance.count = current_item.quantity / 2
+				Inventory.item_add(instance, true)
+				current_item.quantity = current_item.quantity / 2
+				current_item.quantity += 1
+			else:
+				instance.count = current_item.quantity / 2
+				Inventory.item_add(instance, true)
+				current_item.quantity = current_item.quantity / 2
+			@warning_ignore_restore("integer_division")
 			Inventory.inventory_updated.emit()
 			if current_item.quantity < 2:
 				split_button.disabled = true

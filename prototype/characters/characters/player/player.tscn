@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ubj26actbhxg"]
+[gd_scene load_steps=21 format=3 uid="uid://ubj26actbhxg"]
 
 [ext_resource type="PackedScene" uid="uid://b2ni2uwb26rem" path="res://characters/character/character.tscn" id="1_tqfce"]
 [ext_resource type="Script" uid="uid://d34qsdvnwjw8h" path="res://characters/characters/player/player.gd" id="1_w1msd"]
@@ -11,6 +11,7 @@
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bdh0fnwt0lekf" path="res://resources/animations/animation_human_state_machine.tres" id="8_h2ua1"]
 [ext_resource type="Script" uid="uid://mhjw5u6cfc10" path="res://managers/weapon/weapon_manager.gd" id="9_grl8r"]
 [ext_resource type="PackedScene" uid="uid://dmhjqbrfbr5mx" path="res://managers/stats/stats_manager.tscn" id="9_u6xi3"]
+[ext_resource type="Texture2D" uid="uid://ot2c0scv2b" path="res://resources/_textures/placeholder_08.tres" id="12_1ubcm"]
 
 [sub_resource type="Gradient" id="Gradient_6m5nh"]
 offsets = PackedFloat32Array(0.96, 1)
@@ -95,7 +96,7 @@ y_sort_enabled = true
 texture = ExtResource("6_4lert")
 hframes = 12
 vframes = 22
-frame = 210
+frame = 1
 
 [node name="AnimationManager" parent="." index="3" instance=ExtResource("6_twsev")]
 
@@ -144,9 +145,15 @@ disabled = true
 [node name="ProjectileOrigin" type="Marker2D" parent="WeaponManager" index="1"]
 
 [node name="WeaponPoint" type="Marker2D" parent="WeaponManager" index="2"]
+position = Vector2(0.5, 15)
+
+[node name="WeaponPointSprite" type="Sprite2D" parent="WeaponManager/WeaponPoint" index="0"]
+visible = false
+modulate = Color(1, 0.392157, 0.156863, 0.392157)
+texture = ExtResource("12_1ubcm")
 
 [node name="Sprite" type="Sprite2D" parent="WeaponManager" index="3"]
-scale = Vector2(1e-05, 1e-05)
+position = Vector2(9, -1)
 
 [node name="Light" type="PointLight2D" parent="." index="8"]
 enabled = false

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="ItemSeed" load_steps=4 format=3 uid="uid://di8msekr6bef"]
+[gd_resource type="Resource" script_class="ItemSeed" load_steps=5 format=3 uid="uid://di8msekr6bef"]
 
 [ext_resource type="Script" uid="uid://t70nm5qw225n" path="res://items/item/classes/item_seed.gd" id="1_m7o7t"]
+[ext_resource type="PackedScene" uid="uid://c4btr8on3ybtr" path="res://props/harvestables/harvestable_broccoli_01.tscn" id="1_p8ovx"]
 [ext_resource type="Texture2D" uid="uid://d30vkpd5r4n2v" path="res://items/items/seeds/_textures/seed_broccoli_01.png" id="2_m7o7t"]
 [ext_resource type="Texture2D" uid="uid://cip402nps5bxy" path="res://items/items/seeds/_textures/seeds_broccoli_01.png" id="3_p8ovx"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_m7o7t")
+harvestable = ExtResource("1_p8ovx")
 seed_texture = ExtResource("2_m7o7t")
 seed_type = "Broccoli"
 seed_atlas = Vector2i(0, 21)

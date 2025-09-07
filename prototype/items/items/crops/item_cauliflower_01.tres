@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemCrop" load_steps=3 format=3 uid="uid://bvpjyyh0kyk5k"]
+
+[ext_resource type="Script" uid="uid://cvuu83u2p6fp1" path="res://items/item/classes/item_crop.gd" id="1_s01g3"]
+[ext_resource type="Texture2D" uid="uid://o4is2tml5lpy" path="res://items/items/crops/_textures/crop_cauliflower_01.png" id="2_s01g3"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_s01g3")
+crop_type = "Cauliflower"
+crop_tool_type = "Sickle"
+crop_exp_multiplier = 2.0
+texture = ExtResource("2_s01g3")
+id = "item_cauliflower_01"
+name = "Cauliflower"
+type = "Crop"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://cvuu83u2p6fp1"

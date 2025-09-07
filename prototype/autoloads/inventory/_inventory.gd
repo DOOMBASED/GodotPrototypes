@@ -5,8 +5,8 @@ var inventory: Array[ItemResource] = []
 var hotbar_inventory: Array[ItemResource] = []
 var inventory_ui: Control = null
 var hotbar_ui: PanelContainer = null
-var inventory_size: int = 12
-var inventory_max: int = 24
+var inventory_size: int = 16
+var inventory_max: int = 32
 var hotbar_size: int = 9
 var hotbar_max: int = 9
 var cooldown_time: float = 0.25
@@ -22,6 +22,7 @@ signal inventory_ui_set
 signal item_added(item: ItemResource, iterator: int)
 signal item_dropped(item: Item)
 signal inventory_updated
+signal container_updated
 
 func _ready() -> void:
 	inventory.resize(inventory_size)
@@ -67,6 +68,7 @@ func item_add(item: ItemResource, split: bool = false, assign: bool = false) -> 
 		if inventory[i] == null:
 			inventory[i] = item
 			item.quantity = item.count
+			item.count = 1
 			inventory[i].slot = i
 			item_added.emit(item, i)
 			recent_pickup_time = 0.0
@@ -83,15 +85,18 @@ func item_swap(_inventory: Array, index1: int, index2: int) -> bool:
 	var temp_slot: int = -1
 	if temp_item != null:
 		temp_slot = _inventory[index1].slot
-	if _inventory == Inventory.inventory:
-		if _inventory[index2] != null and _inventory[index2] != null:
-			_inventory[index1].slot = _inventory[index2].slot
-			_inventory[index2].slot = temp_slot
-		elif _inventory[index1] != null:
-			_inventory[index1].slot = index2
+	if _inventory[index1] != null and _inventory[index2] != null:
+		_inventory[index1].slot = _inventory[index2].slot
+		_inventory[index2].slot = temp_slot
+	elif _inventory[index1] != null:
+		_inventory[index1].slot = index2
+	elif _inventory[index1] == null:
+		return false
 	_inventory[index1] = _inventory[index2]
 	_inventory[index2] = temp_item
 	inventory_updated.emit()
+	if inventory_ui.container_inventory.visible:
+		container_updated.emit()
 	return true
 
 func item_drop(item: ItemResource) -> bool:
@@ -110,18 +115,36 @@ func item_drop(item: ItemResource) -> bool:
 		return true
 	return false
 
-func item_remove(item: ItemResource, slot_index: int) -> bool:
+func item_move_to(i_slot: InventorySlot, c_slot: InventorySlot) -> void:
+	var i_slot_index = int(i_slot.name)
+	var c_slot_index = int(c_slot.name)
+	inventory_ui.current_container.inventory[c_slot_index] = inventory[i_slot_index]
+	inventory_ui.current_container.inventory[c_slot_index].count = inventory_ui.current_container.inventory[c_slot_index].quantity
+	if inventory[i_slot_index].quantity == 1:
+		item_remove(inventory[i_slot_index], i_slot_index, false)
+	else:
+		inventory[i_slot_index] = null
+	inventory_updated.emit()
+	container_updated.emit()
+
+func item_remove(item: ItemResource, slot_index: int, drop: bool = true) -> bool:
 	if item != null:
-		Inventory.inventory[slot_index].quantity -= item.count
-		if Inventory.inventory[slot_index].quantity <= 0:
+		inventory[slot_index].quantity -= item.count
+		if inventory[slot_index].quantity <= 0:
 			_item_unassign_hotbar(item)
-			Inventory.inventory[slot_index] = null
-			Inventory.inventory_full = false
-		Inventory.inventory_updated.emit()
+			inventory[slot_index] = null
+			inventory_full = false
+		inventory_updated.emit()
 		if Effects.should_use:
 			Effects.should_use = false
 			return true
 		if item.quantity >= 0:
+			if item is ItemEquipment:
+				if item.equip_anim == Global.player.animation_manager.equip_anim:
+					Global.player.animation_manager.equip_anim = ""
+					Global.player.weapon_manager.equipped_item = null
+					Global.player.weapon_manager.sprite.texture = null
+					return true
 			if item is ItemProjectile:
 				if item.fired:
 					return true
@@ -129,10 +152,11 @@ func item_remove(item: ItemResource, slot_index: int) -> bool:
 				if item.planted:
 					Global.worldspace.equipped_seed.planted = false
 					return true
-			item_drop(item)
+			if drop:
+				item_drop(item)
 		return true
-	if Inventory.inventory_ui.menu.visible:
-		Inventory.inventory_ui.menu.hide()
+	if inventory_ui.menu.visible:
+		inventory_ui.menu.hide()
 	return false
 
 func item_remove_from_hotbar(id: String) -> bool:

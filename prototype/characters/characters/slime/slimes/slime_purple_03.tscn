@@ -55,6 +55,9 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(0, 4)
 texture = SubResource("GradientTexture2D_jmcvl")
 
+[node name="Sprite" parent="." index="2"]
+frame = 4
+
 [node name="MovementManager" parent="." index="3"]
 walk_speed = 48.0
 

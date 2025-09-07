@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://db0kh6t1j1i2h"]
+
+[ext_resource type="Script" uid="uid://bdxcvv52vpcp8" path="res://props/harvestable/harvestable.gd" id="1_1s5i6"]
+[ext_resource type="Resource" uid="uid://b6q7qmua7rf7w" path="res://items/items/crops/item_strawberry_01.tres" id="2_gjbaa"]
+[ext_resource type="Texture2D" uid="uid://ckl86e1oh4nks" path="res://tilemaps/spritesheets/tileset_crops_spring.png" id="2_kksft"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjbaa"]
+size = Vector2(12, 14)
+
+[node name="HarvestableStrawberry" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 12
+script = ExtResource("1_1s5i6")
+resource = ExtResource("2_gjbaa")
+resource_min_amount = 1
+resource_max_amount = 1
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_gjbaa")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_kksft")
+hframes = 9
+vframes = 22
+frame = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

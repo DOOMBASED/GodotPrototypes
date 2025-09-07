@@ -1,7 +1,7 @@
 # harvestable.gd
 class_name Harvestable extends StaticBody2D
 
-@export var resource: ItemMaterial
+@export var resource: ItemResource
 @export var resource_min_amount: int
 @export var resource_max_amount: int
 @onready var shadow: Sprite2D = $Shadow
@@ -32,27 +32,29 @@ func _ready() -> void:
 	Global.time_is_dawn.connect(_at_dawn_hour)
 	Global.time_is_dusk.connect(_at_dusk_hour)
 	resource_remaining = randi_range(resource_min_amount, resource_max_amount)
-	await Global.worldspace_set
+	if Global.worldspace == null:
+		await Global.worldspace_set
 	item_spawn_point = Global.worldspace.items
 	init_position = global_position
 
 func _process(delta: float) -> void:
 	_launch_check(delta)
 	if resource_remaining <= 0:
-		smoke_instance = smoke_scene.instantiate()
-		item_spawn_point.add_child(smoke_instance)
-		smoke_instance.position = position
-		tween = create_tween()
-		smoke_instance.emitting = true
-		tween.tween_property(self, "scale", Vector2.ZERO, 0.5)
-		if scale.x < 0.96:
-			smoke_instance.emitting = false
+		if resource is not ItemCrop:
+			smoke_instance = smoke_scene.instantiate()
+			item_spawn_point.add_child(smoke_instance)
+			smoke_instance.position = position
+			tween = create_tween()
+			smoke_instance.emitting = true
+			tween.tween_property(self, "scale", Vector2.ZERO, 0.5)
+			if scale.x < 0.96:
+				smoke_instance.emitting = false
 		harvested.emit(init_position)
 		if not launching:
 			queue_free.call_deferred()
 
 func material_harvest() -> void:
-	if resource_remaining > 1:
+	if resource_remaining > 1 and animation_player.has_animation("hit"):
 		animation_player.play("hit")
 	_material_spawn()
 	resource_remaining -= 1
@@ -62,6 +64,13 @@ func material_harvest() -> void:
 	if Global.player.weapon_manager.equipped_item.type == "Tool - Woodcutting":
 		Stats.exp_stats["Woodcutting"] += Stats.base_exp_rate * resource.material_exp_multiplier
 		Stats.exp_updated.emit()
+	if Global.player.weapon_manager.equipped_item.type == "Tool - Farming":
+		Stats.exp_stats["Farming"] += Stats.base_exp_rate * resource.crop_exp_multiplier
+		Stats.exp_updated.emit()
+	for seed_resource: ItemSeed in Global.worldspace.planted_crops:
+		if seed_resource.planted == false:
+			Global.worldspace.planted_crops.erase(seed_resource)
+			break
 
 func _material_spawn() -> void:
 	item_instance = item_scene.instantiate()

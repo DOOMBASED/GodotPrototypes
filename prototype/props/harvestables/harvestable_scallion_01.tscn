@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq0klvq7e3li2"]
+
+[ext_resource type="Script" uid="uid://bdxcvv52vpcp8" path="res://props/harvestable/harvestable.gd" id="1_njeb5"]
+[ext_resource type="Resource" uid="uid://dmfw5t61528hy" path="res://items/items/crops/item_scallion_01.tres" id="2_njeb5"]
+[ext_resource type="Texture2D" uid="uid://ckl86e1oh4nks" path="res://tilemaps/spritesheets/tileset_crops_spring.png" id="3_2l1kr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njeb5"]
+size = Vector2(11, 13)
+
+[node name="HarvestableScallion" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 12
+script = ExtResource("1_njeb5")
+resource = ExtResource("2_njeb5")
+resource_min_amount = 1
+resource_max_amount = 1
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_njeb5")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_2l1kr")
+hframes = 9
+vframes = 22
+frame = 32
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

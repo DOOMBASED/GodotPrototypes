@@ -72,7 +72,7 @@ func _on_death(character: Character) -> void:
 		if Stats.kill_stats.size() == 0:
 			Stats.kill_stats[character.resource.name] = 0
 		for key: String in Stats.kill_stats.keys():
-			if key == character.resource.id:
+			if key == character.resource.name:
 				Stats.kill_stats[character.resource.name] += 1
 			else:
 				Stats.kill_stats[character.resource.name] = 1

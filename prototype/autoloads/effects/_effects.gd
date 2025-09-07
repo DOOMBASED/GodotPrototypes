@@ -77,7 +77,7 @@ func item_effect(item: ItemResource) -> void:
 
 func _item_used(item: ItemResource, slot_index: int) -> void:
 	should_use = true
-	Inventory.item_remove(item, slot_index)
+	Inventory.item_remove(item, slot_index, false)
 
 func _item_not_used(item_message: String) -> void:
 	Global.set_debug_text(item_message)

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="ItemSeed" load_steps=4 format=3 uid="uid://cudhib54ck7tr"]
+[gd_resource type="Resource" script_class="ItemSeed" load_steps=5 format=3 uid="uid://cudhib54ck7tr"]
 
 [ext_resource type="Script" uid="uid://t70nm5qw225n" path="res://items/item/classes/item_seed.gd" id="1_vo1b2"]
+[ext_resource type="PackedScene" uid="uid://dq0klvq7e3li2" path="res://props/harvestables/harvestable_scallion_01.tscn" id="1_vvkbf"]
 [ext_resource type="Texture2D" uid="uid://dq0y4s15hswrv" path="res://items/items/seeds/_textures/seed_scallion_01.png" id="2_vo1b2"]
 [ext_resource type="Texture2D" uid="uid://deivx67k8qqgc" path="res://items/items/seeds/_textures/seeds_scallion_01.png" id="3_vvkbf"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_vo1b2")
+harvestable = ExtResource("1_vvkbf")
 seed_texture = ExtResource("2_vo1b2")
 seed_type = "Scallion"
 seed_atlas = Vector2i(0, 3)

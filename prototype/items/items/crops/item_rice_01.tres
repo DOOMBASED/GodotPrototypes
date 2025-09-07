@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemCrop" load_steps=3 format=3 uid="uid://brgl3m7x7e1lf"]
+
+[ext_resource type="Script" uid="uid://cvuu83u2p6fp1" path="res://items/item/classes/item_crop.gd" id="1_ul2ub"]
+[ext_resource type="Texture2D" uid="uid://bbcgeel58nxhr" path="res://items/items/crops/_textures/crop_rice_01.png" id="2_ul2ub"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_ul2ub")
+crop_type = "Rice"
+crop_tool_type = "Sickle"
+crop_exp_multiplier = 2.0
+texture = ExtResource("2_ul2ub")
+id = "item_rice_01"
+name = "Rice"
+type = "Crop"
+init = Vector2(0, 0)
+count = 1
+maximum = 999
+quantity = 0
+quest = false
+metadata/_custom_type_script = "uid://cvuu83u2p6fp1"

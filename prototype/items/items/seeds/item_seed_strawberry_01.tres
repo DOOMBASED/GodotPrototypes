@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ItemSeed" load_steps=4 format=3 uid="uid://b8majqye1dgt7"]
+[gd_resource type="Resource" script_class="ItemSeed" load_steps=5 format=3 uid="uid://b8majqye1dgt7"]
 
+[ext_resource type="PackedScene" uid="uid://db0kh6t1j1i2h" path="res://props/harvestables/harvestable_strawberry_01.tscn" id="1_3r5g6"]
 [ext_resource type="Script" uid="uid://t70nm5qw225n" path="res://items/item/classes/item_seed.gd" id="1_dq3ww"]
 [ext_resource type="Texture2D" uid="uid://er6ltjgp3d0g" path="res://items/items/seeds/_textures/seed_strawberry_01.png" id="2_dq3ww"]
 [ext_resource type="Texture2D" uid="uid://qa47hwg5mcx" path="res://items/items/seeds/_textures/seeds_strawberry_01.png" id="3_3r5g6"]
@@ -7,6 +8,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_dq3ww")
+harvestable = ExtResource("1_3r5g6")
 seed_texture = ExtResource("2_dq3ww")
 seed_type = "Strawberry"
 seed_atlas = Vector2i(0, 1)

@@ -14,8 +14,9 @@ var equipped_seed_atlas: Vector2i
 
 func _ready() -> void:
 	Global.set_worldspace(self)
-	for node: Harvestable in navigation_region.get_children():
-		node.harvested.connect(_on_harvested)
+	for node: Node2D in navigation_region.get_children():
+		if node is Harvestable:
+			node.harvested.connect(on_harvested)
 	Inventory.item_added.connect(_on_item_added)
 	Inventory.item_dropped.connect(_on_item_dropped)
 	_get_world_items()
@@ -28,10 +29,11 @@ func _get_world_items() -> void:
 	world_items.clear()
 	for item: Item in items.get_children():
 		world_items.append(item)
-	for node: Harvestable in navigation_region.get_children():
-		world_harvestables.append(node)
+	for node: Node2D in navigation_region.get_children():
+		if node is Harvestable:
+			world_harvestables.append(node)
 
-func _on_harvested(pos: Vector2) -> void:
+func on_harvested(pos: Vector2) -> void:
 	for i: int in range(world_harvestables.size()):
 		if world_harvestables[i] != null:
 			if world_harvestables[i].init_position == pos:

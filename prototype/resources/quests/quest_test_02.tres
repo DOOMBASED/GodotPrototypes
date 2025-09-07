@@ -9,7 +9,7 @@
 script = ExtResource("1_74xb2")
 id = "quest_test_02_obj_01"
 description = "Kill the Big Purple Slime"
-target_id = "slime_purple_03"
+target_id = "Big Purple Slime"
 target_type = 2
 objective_dialogue = ""
 required_count = 0

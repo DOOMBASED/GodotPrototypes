@@ -5,7 +5,11 @@ extends Control
 @onready var inventory: PanelContainer = $Inventory
 @onready var inventory_grid: GridContainer = $Inventory/MarginContainer/VBoxContainer/InventoryGrid
 @onready var inventory_ui_hotbar: PanelContainer = $InventoryUIHotbar
+@onready var container_inventory: PanelContainer = $ContainerInventory
+@onready var container_inventory_grid: GridContainer = $ContainerInventory/MarginContainer/VBoxContainer/ContainerInventoryGrid
+@onready var container_label: Label = $ContainerInventory/MarginContainer/VBoxContainer/ContainerLabel
 
+var current_container: PropContainer = null
 var current_slot: InventorySlot = null
 
 const slot_scene: PackedScene = preload("res://autoloads/inventory/_inventory_ui_slot.tscn")
@@ -14,8 +18,8 @@ func _ready() -> void:
 	Inventory.set_ui(self)
 	Inventory.item_added.connect(_on_item_added)
 	for i: int in Inventory.inventory_size:
-		_slot_new(str(Inventory.inventory.size()))
-	_inventory_toggle()
+		_slot_new(str(i))
+	inventory_toggle()
 
 func _process(_delta: float) -> void:
 	if current_slot != null:
@@ -26,15 +30,18 @@ func _process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if not Input.is_key_pressed(KEY_SHIFT) and Input.is_action_just_pressed("show_inventory"):
-			_inventory_toggle()
+			inventory_toggle()
 
-func _inventory_toggle() -> void:
+func inventory_toggle() -> void:
 	inventory.visible = not inventory.visible
+
+func container_inventory_toggle() -> void:
+	container_inventory.visible = not container_inventory.visible
 
 func _slot_new(new_name: String) -> void:
 	var new_slot: InventorySlot = slot_scene.instantiate()
-	new_slot.drag_start.connect(_on_drag_start)
-	new_slot.drag_release.connect(_on_drag_release)
+	new_slot.drag_start.connect(on_drag_start)
+	new_slot.drag_release.connect(on_drag_release)
 	inventory_grid.add_child(new_slot)
 	new_slot.name = new_name
 
@@ -52,6 +59,10 @@ func _slot_check(target_slot: InventorySlot) -> void:
 	_on_drag_end(current_slot, target_slot)
 
 func _get_slot_index(slot: InventorySlot) -> int:
+	if container_inventory.visible and slot.container_slot:
+		for i: int in range(container_inventory_grid.get_child_count()):
+			if container_inventory_grid.get_child(i) == slot:
+				return i
 	for i: int in range(inventory_grid.get_child_count()):
 		if inventory_grid.get_child(i) == slot:
 			return i
@@ -59,26 +70,40 @@ func _get_slot_index(slot: InventorySlot) -> int:
 
 func _get_slot_target() -> InventorySlot:
 	var mouse_position: Vector2 = get_global_mouse_position()
-	for slot: InventorySlot in inventory_grid.get_children():
-		var slot_rect := Rect2(slot.global_position, slot.size)
-		if slot_rect.has_point(mouse_position) and slot != current_slot:
-			slot.init_position = slot.global_position
-			return slot
+	if container_inventory.visible and mouse_position.x > inventory.size.x + 16.0:
+		for slot: InventorySlot in container_inventory_grid.get_children():
+			var slot_rect := Rect2(slot.global_position, slot.size)
+			if slot_rect.has_point(mouse_position) and slot != current_slot:
+				slot.init_position = slot.global_position
+				return slot
+	else:
+		for slot: InventorySlot in inventory_grid.get_children():
+			var slot_rect := Rect2(slot.global_position, slot.size)
+			if slot_rect.has_point(mouse_position) and slot != current_slot:
+				slot.init_position = slot.global_position
+				return slot
 	return null
 
-func _on_drag_start(dragged_slot: InventorySlot) -> void:
+func on_drag_start(dragged_slot: InventorySlot) -> void:
 	dragged_slot.self_modulate = Color.WHITE
 	dragged_slot.init_position = dragged_slot.global_position
 	current_slot = dragged_slot
 	current_slot.z_index = 1
 
-func _on_drag_release() -> void:
+func on_drag_release() -> void:
 	var target_slot: InventorySlot = _get_slot_target()
-	if target_slot and current_slot != target_slot:
-		if current_slot.resource != null and target_slot.resource != null:
-			_slot_check(target_slot)
-		else:
-			_on_drag_end(current_slot, target_slot)
+	if target_slot and not target_slot.container_slot:
+		if current_slot != target_slot:
+			if current_slot.resource != null and target_slot.resource != null:
+				_slot_check(target_slot)
+			else:
+				_on_drag_end(current_slot, target_slot)
+	elif target_slot and current_slot.container_slot and target_slot.container_slot:
+		Inventory.item_swap(current_container.inventory, int(current_slot.name), int(target_slot.name))
+	elif target_slot:
+		if target_slot.resource == null:
+			Inventory.item_move_to(current_slot, target_slot)
+		_on_drag_end(current_slot, target_slot)
 	if current_slot.resource is ItemEquipment:
 		if current_slot.resource.equip_anim == Global.player.animation_manager.equip_anim:
 			current_slot.self_modulate = Color.GREEN
@@ -110,9 +135,17 @@ func _on_drag_end(slot_1: InventorySlot, slot_2: InventorySlot) -> void:
 					slot_1.self_modulate = Color.GREEN
 	if slot_1_index == -1 or slot_2_index == -1:
 		return
+	if slot_1.container_slot:
+		Inventory.item_add(slot_1.resource)
+		current_container.inventory[int(slot_1.name)] = null
+		Inventory.container_updated.emit()
 	else:
+		if slot_1.container_slot and not slot_2.container_slot:
+			return
+		if not slot_1.container_slot and slot_2.container_slot:
+			return
 		if Inventory.item_swap(Inventory.inventory, slot_1_index, slot_2_index):
-			_on_inventory_updated()
+			Inventory.inventory_updated.emit()
 
 func _on_item_added(item: ItemResource, iterator: int) -> void:
 	if item != null:
@@ -130,7 +163,6 @@ func _on_inventory_updated() -> void:
 					if slot.resource != null:
 						if slot.resource is not ItemEquipment:
 							slot.quantity_label.text = str(slot.resource.quantity)
-							slot.self_modulate = Color.WHITE
 						else:
 							if slot.resource.equip_anim == Global.player.animation_manager.equip_anim:
 								slot.quantity_label.text = "E"
@@ -139,8 +171,10 @@ func _on_inventory_updated() -> void:
 								slot.quantity_label.text = ""
 								slot.self_modulate = Color.WHITE
 					slot.resource = Inventory.inventory[i]
+					slot.resource.slot = int(slot.name)
 			else:
 				if i == slot.get_index():
 					slot.sprite.texture = null
 					slot.quantity_label.text = ""
 					slot.resource = null
+					slot.self_modulate = Color.WHITE

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2hnyogmbnoa5"]
+
+[ext_resource type="Script" uid="uid://bdxcvv52vpcp8" path="res://props/harvestable/harvestable.gd" id="1_kd4d6"]
+[ext_resource type="Resource" uid="uid://cspmvh1lfl1bg" path="res://items/items/crops/item_potato_01.tres" id="2_kd4d6"]
+[ext_resource type="Texture2D" uid="uid://ckl86e1oh4nks" path="res://tilemaps/spritesheets/tileset_crops_spring.png" id="3_bt57v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd4d6"]
+size = Vector2(11, 13)
+
+[node name="HarvestablePotato" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 12
+script = ExtResource("1_kd4d6")
+resource = ExtResource("2_kd4d6")
+resource_min_amount = 1
+resource_max_amount = 1
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_kd4d6")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_bt57v")
+hframes = 9
+vframes = 22
+frame = 50
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

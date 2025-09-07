@@ -17,6 +17,7 @@ func _process(_delta: float) -> void:
 		var mouse_position: Vector2 = get_global_mouse_position()
 		var offset := Vector2(current_slot.size / 2)
 		current_slot.global_position = mouse_position - offset
+		current_slot.key_label.text = ""
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -56,21 +57,28 @@ func _hotbar_equip_item(item: ItemResource) -> void:
 			Global.player.animation_manager.equip_anim = ""
 			Global.player.weapon_manager.equipped_item = null
 			Global.player.weapon_manager.sprite.texture = null
+			Global.player.weapon_manager.weapon_point_sprite.visible = false
 		elif Global.player.animation_manager.equip_anim != "" and Global.player.animation_manager.equip_anim != effect:
 			Global.player.animation_manager.equip_anim = ""
 			Global.player.weapon_manager.equipped_item = null
 			Global.player.weapon_manager.sprite.texture = null
+			if item.type == "Tool - Farming":
+				Global.player.weapon_manager.weapon_point_sprite.visible = true
+			elif item.type != "Tool - Farming" or item == Global.player.weapon_manager.equipped_item:
+				Global.player.weapon_manager.weapon_point_sprite.visible = false
 			_hotbar_equip_item(item)
 		Inventory.inventory_updated.emit()
+		Inventory.inventory_ui.menu.item_equipped.emit(item.slot)
 		Inventory.item_cooldown_timer()
 
 func _slot_new(new_name: String) -> void:
 	var new_slot: InventorySlot = Inventory.inventory_ui.slot_scene.instantiate()
-	new_slot.drag_start.connect(_on_drag_start)
-	new_slot.drag_release.connect(_on_drag_release)
+	new_slot.drag_start.connect(on_drag_start)
+	new_slot.drag_release.connect(on_drag_release)
 	hotbar_container.add_child(new_slot)
 	new_slot.name = new_name
 	new_slot.key_label.text = str(int(new_name) + 1)
+	new_slot.hotbar_slot = true
 
 func _slot_check(target_slot: InventorySlot) -> void:
 	var current_slot_index: int = _get_slot_index(current_slot)
@@ -100,13 +108,13 @@ func _get_slot_target() -> InventorySlot:
 			return slot
 	return null
 
-func _on_drag_start(dragged_slot: InventorySlot) -> void:
+func on_drag_start(dragged_slot: InventorySlot) -> void:
 	dragged_slot.self_modulate = Color.WHITE
 	dragged_slot.init_position = dragged_slot.global_position
 	current_slot = dragged_slot
 	current_slot.z_index = 1
 
-func _on_drag_release() -> void:
+func on_drag_release() -> void:
 	var target_slot: InventorySlot = _get_slot_target()
 	if target_slot and current_slot != target_slot:
 		if current_slot.resource != null and target_slot.resource != null:
@@ -119,6 +127,7 @@ func _on_drag_release() -> void:
 			current_slot.quantity_label.text = "E"
 	current_slot.global_position = current_slot.init_position
 	current_slot.z_index = 0
+	current_slot.key_label.text = str(int(current_slot.name) + 1)
 	current_slot = null
 
 func _on_drag_end(slot_1: InventorySlot, slot_2: InventorySlot) -> void:
@@ -128,6 +137,8 @@ func _on_drag_end(slot_1: InventorySlot, slot_2: InventorySlot) -> void:
 	slot_2.z_index = 0
 	slot_1.global_position = slot_1.init_position
 	slot_2.global_position = slot_2.init_position
+	slot_1.key_label.text = str(int(slot_1.name) + 1)
+	slot_2.key_label.text = str(int(slot_2.name) + 1)
 	if slot_1.resource is ItemEquipment:
 		if slot_1.resource.equip_anim == Global.player.animation_manager.equip_anim:
 			slot_1.quantity_label.text = ""

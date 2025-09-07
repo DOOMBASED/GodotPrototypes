@@ -49,6 +49,7 @@ func dialogue_choice(option: String) -> void:
 			Dialogue.dialogue_ui.dialogue_ui_show(npc, valediction, {})
 	elif next_state == "exit":
 		npc.navigation_manager.target_set = true
+		npc.navigation_manager.current_state = NavigationManager.NavigationState.WANDER
 		Dialogue.dialogue_ui.dialogue_ui_hide()
 	else:
 		_dialogue_show()
